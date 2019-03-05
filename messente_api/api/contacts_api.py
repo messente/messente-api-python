@@ -524,7 +524,7 @@ class ContactsApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param list[str] group_ids: Group id string in uuid format.
+        :param list[str] group_ids: Optional one or many group id strings in uuid format. For example: \"/contacts?groupIds=group_id_one&groupIds=group_id_two\" 
         :return: ContactListEnvelope
                  If the method is called asynchronously,
                  returns the request thread.
@@ -545,7 +545,7 @@ class ContactsApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param list[str] group_ids: Group id string in uuid format.
+        :param list[str] group_ids: Optional one or many group id strings in uuid format. For example: \"/contacts?groupIds=group_id_one&groupIds=group_id_two\" 
         :return: ContactListEnvelope
                  If the method is called asynchronously,
                  returns the request thread.

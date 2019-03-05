@@ -296,7 +296,7 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = messente_api.ContactsApi(messente_api.ApiClient(configuration))
-group_ids = ['group_ids_example'] # list[str] | Group id string in uuid format. (optional)
+group_ids = ['group_ids_example'] # list[str] | Optional one or many group id strings in uuid format. For example: \"/contacts?groupIds=group_id_one&groupIds=group_id_two\"  (optional)
 
 try:
     # Returns all contacts.
@@ -310,7 +310,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **group_ids** | [**list[str]**](str.md)| Group id string in uuid format. | [optional] 
+ **group_ids** | [**list[str]**](str.md)| Optional one or many group id strings in uuid format. For example: \&quot;/contacts?groupIds&#x3D;group_id_one&amp;groupIds&#x3D;group_id_two\&quot;  | [optional] 
 
 ### Return type
 
