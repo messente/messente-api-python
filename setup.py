@@ -29,7 +29,7 @@ setup(
     version=VERSION,
     description="Messente API",
     author_email="messente@messente.com",
-    url="https://messente.com/documentation",
+    url="https://pypi.org/project/messente-api",
     keywords=["OpenAPI", "OpenAPI-Generator", "Messente API"],
     install_requires=REQUIRES,
     packages=find_packages(),
