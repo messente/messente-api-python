@@ -32,7 +32,7 @@ class TestDeliveryReportApi(unittest.TestCase):
     def test_retrieve_delivery_report(self):
         """Test case for retrieve_delivery_report
 
-        Retrieves the delivery report for the Omnimessage  # noqa: E501
+        Retrieves the delivery report for the Omnimessage.  # noqa: E501
         """
         pass
 

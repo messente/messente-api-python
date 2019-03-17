@@ -74,7 +74,7 @@ class TestContactsApi(unittest.TestCase):
     def test_remove_contact_from_group(self):
         """Test case for remove_contact_from_group
 
-        Remove a contact from a group.  # noqa: E501
+        Removes a contact from a group.  # noqa: E501
         """
         pass
 

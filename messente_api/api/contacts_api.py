@@ -607,7 +607,7 @@ class ContactsApi(object):
             collection_formats=collection_formats)
 
     def remove_contact_from_group(self, group_id, phone, **kwargs):  # noqa: E501
-        """Remove a contact from a group.  # noqa: E501
+        """Removes a contact from a group.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -629,7 +629,7 @@ class ContactsApi(object):
             return data
 
     def remove_contact_from_group_with_http_info(self, group_id, phone, **kwargs):  # noqa: E501
-        """Remove a contact from a group.  # noqa: E501
+        """Removes a contact from a group.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True

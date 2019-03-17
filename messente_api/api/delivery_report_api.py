@@ -34,7 +34,7 @@ class DeliveryReportApi(object):
         self.api_client = api_client
 
     def retrieve_delivery_report(self, omnimessage_id, **kwargs):  # noqa: E501
-        """Retrieves the delivery report for the Omnimessage  # noqa: E501
+        """Retrieves the delivery report for the Omnimessage.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -55,7 +55,7 @@ class DeliveryReportApi(object):
             return data
 
     def retrieve_delivery_report_with_http_info(self, omnimessage_id, **kwargs):  # noqa: E501
-        """Retrieves the delivery report for the Omnimessage  # noqa: E501
+        """Retrieves the delivery report for the Omnimessage.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True

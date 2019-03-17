@@ -4,13 +4,13 @@ All URIs are relative to *https://api.messente.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**retrieve_delivery_report**](DeliveryReportApi.md#retrieve_delivery_report) | **GET** /omnimessage/{omnimessageId}/status | Retrieves the delivery report for the Omnimessage
+[**retrieve_delivery_report**](DeliveryReportApi.md#retrieve_delivery_report) | **GET** /omnimessage/{omnimessageId}/status | Retrieves the delivery report for the Omnimessage.
 
 
 # **retrieve_delivery_report**
 > DeliveryReportResponse retrieve_delivery_report(omnimessage_id)
 
-Retrieves the delivery report for the Omnimessage
+Retrieves the delivery report for the Omnimessage.
 
 ### Example
 
@@ -31,7 +31,7 @@ api_instance = messente_api.DeliveryReportApi(messente_api.ApiClient(configurati
 omnimessage_id = 'omnimessage_id_example' # str | UUID of the Omnimessage to for which the delivery report is to be retrieved
 
 try:
-    # Retrieves the delivery report for the Omnimessage
+    # Retrieves the delivery report for the Omnimessage.
     api_response = api_instance.retrieve_delivery_report(omnimessage_id)
     pprint(api_response)
 except ApiException as e:
