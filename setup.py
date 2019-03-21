@@ -30,7 +30,7 @@ setup(
     description="Messente API",
     author_email="messente@messente.com",
     url="https://pypi.org/project/messente-api",
-    keywords=["OpenAPI", "OpenAPI-Generator", "Messente API"],
+    keywords=["viber", "sms", "whatsapp", "phonebook"],
     install_requires=REQUIRES,
     packages=find_packages(),
     include_package_data=True,
