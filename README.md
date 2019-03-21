@@ -113,9 +113,7 @@ try:
     # Sends an Omnimessage
     response = api_instance.send_omnimessage(omnimessage)
     print(
-        'Successfully sent Omnimessage with id: '
-        '%s that consists of the following messages: '
-        '% response.omnimessage_id'
+        'Successfully sent Omnimessage with id: %s that consists of the following messages:' % response.omnimessage_id
     )
     for message in response.messages:
         pprint(message)
