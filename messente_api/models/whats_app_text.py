@@ -79,7 +79,7 @@ class WhatsAppText(object):
     def body(self):
         """Gets the body of this WhatsAppText.  # noqa: E501
 
-        Plaintext content for WhatsApp, can contains URLs, emojis and formatting  # noqa: E501
+        Plaintext content for WhatsApp, can contain URLs, emojis and formatting  # noqa: E501
 
         :return: The body of this WhatsAppText.  # noqa: E501
         :rtype: str
@@ -90,7 +90,7 @@ class WhatsAppText(object):
     def body(self, body):
         """Sets the body of this WhatsAppText.
 
-        Plaintext content for WhatsApp, can contains URLs, emojis and formatting  # noqa: E501
+        Plaintext content for WhatsApp, can contain URLs, emojis and formatting  # noqa: E501
 
         :param body: The body of this WhatsAppText.  # noqa: E501
         :type: str
