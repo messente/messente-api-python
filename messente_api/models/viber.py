@@ -174,7 +174,7 @@ class Viber(object):
     def button_url(self):
         """Gets the button_url of this Viber.  # noqa: E501
 
-        URL of the button, must be specified along with ''text'', ''button_text''  and ''image_url'' (optional)  # noqa: E501
+        URL of the button, must be specified along with ''text'', ''button_text'' and ''image_url'' (optional)  # noqa: E501
 
         :return: The button_url of this Viber.  # noqa: E501
         :rtype: str
@@ -185,7 +185,7 @@ class Viber(object):
     def button_url(self, button_url):
         """Sets the button_url of this Viber.
 
-        URL of the button, must be specified along with ''text'', ''button_text''  and ''image_url'' (optional)  # noqa: E501
+        URL of the button, must be specified along with ''text'', ''button_text'' and ''image_url'' (optional)  # noqa: E501
 
         :param button_url: The button_url of this Viber.  # noqa: E501
         :type: str
