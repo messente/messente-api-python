@@ -49,7 +49,7 @@ class SMS(object):
         'channel': 'channel'
     }
 
-    def __init__(self, text='Hello world!', sender=None, validity=360, autoconvert=None, udh=None, channel=None):  # noqa: E501
+    def __init__(self, text='Hello world!', sender=None, validity=360, autoconvert=None, udh=None, channel='sms'):  # noqa: E501
         """SMS - a model defined in OpenAPI"""  # noqa: E501
 
         self._text = None

@@ -51,7 +51,7 @@ class WhatsApp(object):
         'channel': 'channel'
     }
 
-    def __init__(self, sender=None, validity=360, text=None, image=None, document=None, audio=None, channel=None):  # noqa: E501
+    def __init__(self, sender=None, validity=360, text=None, image=None, document=None, audio=None, channel='whatsapp'):  # noqa: E501
         """WhatsApp - a model defined in OpenAPI"""  # noqa: E501
 
         self._sender = None

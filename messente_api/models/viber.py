@@ -51,7 +51,7 @@ class Viber(object):
         'channel': 'channel'
     }
 
-    def __init__(self, sender=None, validity=360, text=None, image_url=None, button_url=None, button_text=None, channel=None):  # noqa: E501
+    def __init__(self, sender=None, validity=360, text=None, image_url=None, button_url=None, button_text=None, channel='viber'):  # noqa: E501
         """Viber - a model defined in OpenAPI"""  # noqa: E501
 
         self._sender = None
