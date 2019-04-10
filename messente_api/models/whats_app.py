@@ -51,7 +51,7 @@ class WhatsApp(object):
         'channel': 'channel'
     }
 
-    def __init__(self, sender=None, validity=360, text=None, image=None, document=None, audio=None, channel='whatsapp'):  # noqa: E501
+    def __init__(self, sender=None, validity=360, text=None, image=None, document=None, audio=None, channel=None):  # noqa: E501
         """WhatsApp - a model defined in OpenAPI"""  # noqa: E501
 
         self._sender = None
@@ -226,6 +226,12 @@ class WhatsApp(object):
         :param channel: The channel of this WhatsApp.  # noqa: E501
         :type: str
         """
+        allowed_values = ["whatsapp"]  # noqa: E501
+        if channel not in allowed_values:
+            raise ValueError(
+                "Invalid value for `channel` ({0}), must be one of {1}"  # noqa: E501
+                .format(channel, allowed_values)
+            )
 
         self._channel = channel
 

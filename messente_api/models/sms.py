@@ -49,7 +49,7 @@ class SMS(object):
         'channel': 'channel'
     }
 
-    def __init__(self, text='Hello world!', sender=None, validity=360, autoconvert=None, udh=None, channel='sms'):  # noqa: E501
+    def __init__(self, text='Hello world!', sender=None, validity=360, autoconvert=None, udh=None, channel=None):  # noqa: E501
         """SMS - a model defined in OpenAPI"""  # noqa: E501
 
         self._text = None
@@ -213,6 +213,12 @@ class SMS(object):
         :param channel: The channel of this SMS.  # noqa: E501
         :type: str
         """
+        allowed_values = ["sms"]  # noqa: E501
+        if channel not in allowed_values:
+            raise ValueError(
+                "Invalid value for `channel` ({0}), must be one of {1}"  # noqa: E501
+                .format(channel, allowed_values)
+            )
 
         self._channel = channel
 
