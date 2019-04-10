@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **image_url** | **str** | URL for the embedded image.    Valid combinations:    1) image_url,    2) text, image_url, button_url, button_text | [optional] 
 **button_url** | **str** | URL of the button, must be specified along with &#39;&#39;text&#39;&#39;, &#39;&#39;button_text&#39;&#39; and &#39;&#39;image_url&#39;&#39; (optional) | [optional] 
 **button_text** | **str** | Must be specified along with &#39;&#39;text&#39;&#39;, &#39;&#39;button_url&#39;&#39;, &#39;&#39;button_text&#39;&#39;, &#39;&#39;image_url&#39;&#39; (optional) | [optional] 
-**channel** | **str** |  | [default to 'viber']
+**channel** | **str** |  | [optional] [default to 'viber']
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

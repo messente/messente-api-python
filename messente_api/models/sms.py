@@ -69,7 +69,8 @@ class SMS(object):
             self.autoconvert = autoconvert
         if udh is not None:
             self.udh = udh
-        self.channel = channel
+        if channel is not None:
+            self.channel = channel
 
     @property
     def text(self):
@@ -212,8 +213,6 @@ class SMS(object):
         :param channel: The channel of this SMS.  # noqa: E501
         :type: str
         """
-        if channel is None:
-            raise ValueError("Invalid value for `channel`, must not be `None`")  # noqa: E501
         allowed_values = ["sms"]  # noqa: E501
         if channel not in allowed_values:
             raise ValueError(
