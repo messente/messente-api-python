@@ -75,8 +75,7 @@ class Viber(object):
             self.button_url = button_url
         if button_text is not None:
             self.button_text = button_text
-        if channel is not None:
-            self.channel = channel
+        self.channel = channel
 
     @property
     def sender(self):
@@ -234,6 +233,8 @@ class Viber(object):
         :param channel: The channel of this Viber.  # noqa: E501
         :type: str
         """
+        if channel is None:
+            raise ValueError("Invalid value for `channel`, must not be `None`")  # noqa: E501
         allowed_values = ["viber"]  # noqa: E501
         if channel not in allowed_values:
             raise ValueError(

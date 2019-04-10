@@ -75,8 +75,7 @@ class WhatsApp(object):
             self.document = document
         if audio is not None:
             self.audio = audio
-        if channel is not None:
-            self.channel = channel
+        self.channel = channel
 
     @property
     def sender(self):
@@ -226,6 +225,8 @@ class WhatsApp(object):
         :param channel: The channel of this WhatsApp.  # noqa: E501
         :type: str
         """
+        if channel is None:
+            raise ValueError("Invalid value for `channel`, must not be `None`")  # noqa: E501
         allowed_values = ["whatsapp"]  # noqa: E501
         if channel not in allowed_values:
             raise ValueError(
