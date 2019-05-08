@@ -42,6 +42,7 @@ from messente_api.models.omni_message_create_success_response import OmniMessage
 from messente_api.models.omnimessage import Omnimessage
 from messente_api.models.sms import SMS
 from messente_api.models.status import Status
+from messente_api.models.text_store import TextStore
 from messente_api.models.viber import Viber
 from messente_api.models.whats_app import WhatsApp
 from messente_api.models.whats_app_audio import WhatsAppAudio
