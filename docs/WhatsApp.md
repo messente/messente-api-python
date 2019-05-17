@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **sender** | **str** | Phone number or alphanumeric sender name | [optional] 
-**validity** | **int** | After how many minutes this channel is   considered as failed and the next channel is attempted | [optional] [default to 360]
+**validity** | **int** | After how many minutes this channel is   considered as failed and the next channel is attempted | [optional] 
 **text** | [**WhatsAppText**](WhatsAppText.md) |  | [optional] 
 **image** | [**WhatsAppImage**](WhatsAppImage.md) |  | [optional] 
 **document** | [**WhatsAppDocument**](WhatsAppDocument.md) |  | [optional] 
