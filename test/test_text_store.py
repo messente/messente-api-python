@@ -16,12 +16,12 @@ from __future__ import absolute_import
 import unittest
 
 import messente_api
-from messente_api.models.group_name import GroupName  # noqa: E501
+from messente_api.models.text_store import TextStore  # noqa: E501
 from messente_api.rest import ApiException
 
 
-class TestGroupName(unittest.TestCase):
-    """GroupName unit test stubs"""
+class TestTextStore(unittest.TestCase):
+    """TextStore unit test stubs"""
 
     def setUp(self):
         pass
@@ -29,10 +29,10 @@ class TestGroupName(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def testGroupName(self):
-        """Test GroupName"""
+    def testTextStore(self):
+        """Test TextStore"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = messente_api.models.group_name.GroupName()  # noqa: E501
+        # model = messente_api.models.text_store.TextStore()  # noqa: E501
         pass
 
 
