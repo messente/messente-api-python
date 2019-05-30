@@ -147,7 +147,7 @@ class SMS(object):
     def autoconvert(self):
         """Gets the autoconvert of this SMS.  # noqa: E501
 
-        Defines how non-GSM characters will be treated:    - \"on\" Use replacement settings from the account's [API Auto Replace settings page](https://dashboard.messente.com/api-settings/auto-replace)(default)   - \"full\" All non GSM 03.38 characters will be replaced with suitable alternatives   - \"off\" Message content is not modified in any way  # noqa: E501
+        Defines how non-GSM characters will be treated:    - \"on\" Use replacement settings from the account's [API Auto Replace settings page](https://dashboard.messente.com/api-settings/auto-replace) (default)   - \"full\" All non GSM 03.38 characters will be replaced with suitable alternatives   - \"off\" Message content is not modified in any way  # noqa: E501
 
         :return: The autoconvert of this SMS.  # noqa: E501
         :rtype: str
@@ -158,7 +158,7 @@ class SMS(object):
     def autoconvert(self, autoconvert):
         """Sets the autoconvert of this SMS.
 
-        Defines how non-GSM characters will be treated:    - \"on\" Use replacement settings from the account's [API Auto Replace settings page](https://dashboard.messente.com/api-settings/auto-replace)(default)   - \"full\" All non GSM 03.38 characters will be replaced with suitable alternatives   - \"off\" Message content is not modified in any way  # noqa: E501
+        Defines how non-GSM characters will be treated:    - \"on\" Use replacement settings from the account's [API Auto Replace settings page](https://dashboard.messente.com/api-settings/auto-replace) (default)   - \"full\" All non GSM 03.38 characters will be replaced with suitable alternatives   - \"off\" Message content is not modified in any way  # noqa: E501
 
         :param autoconvert: The autoconvert of this SMS.  # noqa: E501
         :type: str
