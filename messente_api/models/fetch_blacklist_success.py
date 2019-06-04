@@ -52,6 +52,7 @@ class FetchBlacklistSuccess(object):
     def phone_numbers(self):
         """Gets the phone_numbers of this FetchBlacklistSuccess.  # noqa: E501
 
+        Array of unique phone numbers  # noqa: E501
 
         :return: The phone_numbers of this FetchBlacklistSuccess.  # noqa: E501
         :rtype: list[str]
@@ -62,6 +63,7 @@ class FetchBlacklistSuccess(object):
     def phone_numbers(self, phone_numbers):
         """Sets the phone_numbers of this FetchBlacklistSuccess.
 
+        Array of unique phone numbers  # noqa: E501
 
         :param phone_numbers: The phone_numbers of this FetchBlacklistSuccess.  # noqa: E501
         :type: list[str]
