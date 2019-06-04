@@ -42,7 +42,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **omnimessage_id** | [**str**](.md)| UUID of the scheduled Omnimessage to be cancelled | 
+ **omnimessage_id** | **str**| UUID of the scheduled Omnimessage to be cancelled | 
 
 ### Return type
 

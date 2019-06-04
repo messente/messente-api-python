@@ -42,7 +42,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **omnimessage_id** | [**str**](.md)| UUID of the Omnimessage to for which the delivery report is to be retrieved | 
+ **omnimessage_id** | **str**| UUID of the Omnimessage to for which the delivery report is to be retrieved | 
 
 ### Return type
 

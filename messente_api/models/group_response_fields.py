@@ -63,7 +63,7 @@ class GroupResponseFields(object):
     def id(self):
         """Gets the id of this GroupResponseFields.  # noqa: E501
 
-        Id string in uuid format  # noqa: E501
+        Id string in UUID format  # noqa: E501
 
         :return: The id of this GroupResponseFields.  # noqa: E501
         :rtype: str
@@ -74,7 +74,7 @@ class GroupResponseFields(object):
     def id(self, id):
         """Sets the id of this GroupResponseFields.
 
-        Id string in uuid format  # noqa: E501
+        Id string in UUID format  # noqa: E501
 
         :param id: The id of this GroupResponseFields.  # noqa: E501
         :type: str

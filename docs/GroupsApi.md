@@ -84,7 +84,7 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = messente_api.GroupsApi(messente_api.ApiClient(configuration))
-group_id = 'group_id_example' # str | String in uuid format.
+group_id = 'group_id_example' # str | String in UUID format.
 
 try:
     # Deletes a group
@@ -97,7 +97,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **group_id** | **str**| String in uuid format. | 
+ **group_id** | **str**| String in UUID format. | 
 
 ### Return type
 
@@ -135,7 +135,7 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = messente_api.GroupsApi(messente_api.ApiClient(configuration))
-group_id = 'group_id_example' # str | String in uuid format.
+group_id = 'group_id_example' # str | String in UUID format.
 
 try:
     # Lists a group
@@ -149,7 +149,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **group_id** | **str**| String in uuid format. | 
+ **group_id** | **str**| String in UUID format. | 
 
 ### Return type
 
@@ -235,7 +235,7 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = messente_api.GroupsApi(messente_api.ApiClient(configuration))
-group_id = 'group_id_example' # str | String in uuid format.
+group_id = 'group_id_example' # str | String in UUID format.
 group_name = messente_api.GroupName() # GroupName | 
 
 try:
@@ -250,7 +250,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **group_id** | **str**| String in uuid format. | 
+ **group_id** | **str**| String in UUID format. | 
  **group_name** | [**GroupName**](GroupName.md)|  | 
 
 ### Return type

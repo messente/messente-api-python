@@ -46,7 +46,7 @@ class ContactsApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param str group_id: String in uuid format. (required)
+        :param str group_id: String in UUID format. (required)
         :param str phone: A phone number (required)
         :return: object
                  If the method is called asynchronously,
@@ -68,7 +68,7 @@ class ContactsApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param str group_id: String in uuid format. (required)
+        :param str group_id: String in UUID format. (required)
         :param str phone: A phone number (required)
         :return: object
                  If the method is called asynchronously,
@@ -528,7 +528,7 @@ class ContactsApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param list[str] group_ids: Optional one or many group id strings in uuid format. For example: \"/contacts?groupIds=group_id_one&groupIds=group_id_two\" 
+        :param list[str] group_ids: Optional one or many group id strings in UUID format. For example: \"/contacts?groupIds=group_id_one&groupIds=group_id_two\" 
         :return: ContactListEnvelope
                  If the method is called asynchronously,
                  returns the request thread.
@@ -549,7 +549,7 @@ class ContactsApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param list[str] group_ids: Optional one or many group id strings in uuid format. For example: \"/contacts?groupIds=group_id_one&groupIds=group_id_two\" 
+        :param list[str] group_ids: Optional one or many group id strings in UUID format. For example: \"/contacts?groupIds=group_id_one&groupIds=group_id_two\" 
         :return: ContactListEnvelope
                  If the method is called asynchronously,
                  returns the request thread.
@@ -619,7 +619,7 @@ class ContactsApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param str group_id: String in uuid format. (required)
+        :param str group_id: String in UUID format. (required)
         :param str phone: A phone number (required)
         :return: None
                  If the method is called asynchronously,
@@ -641,7 +641,7 @@ class ContactsApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param str group_id: String in uuid format. (required)
+        :param str group_id: String in UUID format. (required)
         :param str phone: A phone number (required)
         :return: None
                  If the method is called asynchronously,

@@ -35,7 +35,7 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = messente_api.ContactsApi(messente_api.ApiClient(configuration))
-group_id = 'group_id_example' # str | String in uuid format.
+group_id = 'group_id_example' # str | String in UUID format.
 phone = 'phone_example' # str | A phone number
 
 try:
@@ -50,7 +50,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **group_id** | **str**| String in uuid format. | 
+ **group_id** | **str**| String in UUID format. | 
  **phone** | **str**| A phone number | 
 
 ### Return type
@@ -296,7 +296,7 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = messente_api.ContactsApi(messente_api.ApiClient(configuration))
-group_ids = ['group_ids_example'] # list[str] | Optional one or many group id strings in uuid format. For example: \"/contacts?groupIds=group_id_one&groupIds=group_id_two\"  (optional)
+group_ids = ['group_ids_example'] # list[str] | Optional one or many group id strings in UUID format. For example: \"/contacts?groupIds=group_id_one&groupIds=group_id_two\"  (optional)
 
 try:
     # Returns all contacts
@@ -310,7 +310,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **group_ids** | [**list[str]**](str.md)| Optional one or many group id strings in uuid format. For example: \&quot;/contacts?groupIds&#x3D;group_id_one&amp;groupIds&#x3D;group_id_two\&quot;  | [optional] 
+ **group_ids** | [**list[str]**](str.md)| Optional one or many group id strings in UUID format. For example: \&quot;/contacts?groupIds&#x3D;group_id_one&amp;groupIds&#x3D;group_id_two\&quot;  | [optional] 
 
 ### Return type
 
@@ -348,7 +348,7 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = messente_api.ContactsApi(messente_api.ApiClient(configuration))
-group_id = 'group_id_example' # str | String in uuid format.
+group_id = 'group_id_example' # str | String in UUID format.
 phone = 'phone_example' # str | A phone number
 
 try:
@@ -362,7 +362,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **group_id** | **str**| String in uuid format. | 
+ **group_id** | **str**| String in UUID format. | 
  **phone** | **str**| A phone number | 
 
 ### Return type
