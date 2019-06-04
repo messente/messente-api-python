@@ -4,20 +4,20 @@ All URIs are relative to *https://api.messente.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**add_contact_to_group**](ContactsApi.md#add_contact_to_group) | **POST** /groups/{groupId}/contacts/{phone} | Adds a contact to a group.
-[**create_contact**](ContactsApi.md#create_contact) | **POST** /contacts | Creates a new contact.
-[**delete_contact**](ContactsApi.md#delete_contact) | **DELETE** /contacts/{phone} | Deletes a contact.
-[**fetch_contact**](ContactsApi.md#fetch_contact) | **GET** /contacts/{phone} | Lists a contact.
-[**fetch_contact_groups**](ContactsApi.md#fetch_contact_groups) | **GET** /contacts/{phone}/groups | Lists groups of a contact.
-[**fetch_contacts**](ContactsApi.md#fetch_contacts) | **GET** /contacts | Returns all contacts.
-[**remove_contact_from_group**](ContactsApi.md#remove_contact_from_group) | **DELETE** /groups/{groupId}/contacts/{phone} | Removes a contact from a group.
-[**update_contact**](ContactsApi.md#update_contact) | **PATCH** /contacts/{phone} | Updates a contact.
+[**add_contact_to_group**](ContactsApi.md#add_contact_to_group) | **POST** /groups/{groupId}/contacts/{phone} | Adds a contact to a group
+[**create_contact**](ContactsApi.md#create_contact) | **POST** /contacts | Creates a new contact
+[**delete_contact**](ContactsApi.md#delete_contact) | **DELETE** /contacts/{phone} | Deletes a contact
+[**fetch_contact**](ContactsApi.md#fetch_contact) | **GET** /contacts/{phone} | Lists a contact
+[**fetch_contact_groups**](ContactsApi.md#fetch_contact_groups) | **GET** /contacts/{phone}/groups | Lists groups of a contact
+[**fetch_contacts**](ContactsApi.md#fetch_contacts) | **GET** /contacts | Returns all contacts
+[**remove_contact_from_group**](ContactsApi.md#remove_contact_from_group) | **DELETE** /groups/{groupId}/contacts/{phone} | Removes a contact from a group
+[**update_contact**](ContactsApi.md#update_contact) | **PATCH** /contacts/{phone} | Updates a contact
 
 
 # **add_contact_to_group**
 > object add_contact_to_group(group_id, phone)
 
-Adds a contact to a group.
+Adds a contact to a group
 
 ### Example
 
@@ -39,7 +39,7 @@ group_id = 'group_id_example' # str | String in uuid format.
 phone = 'phone_example' # str | A phone number
 
 try:
-    # Adds a contact to a group.
+    # Adds a contact to a group
     api_response = api_instance.add_contact_to_group(group_id, phone)
     pprint(api_response)
 except ApiException as e:
@@ -71,7 +71,7 @@ Name | Type | Description  | Notes
 # **create_contact**
 > ContactEnvelope create_contact(contact_fields)
 
-Creates a new contact.
+Creates a new contact
 
 ### Example
 
@@ -92,7 +92,7 @@ api_instance = messente_api.ContactsApi(messente_api.ApiClient(configuration))
 contact_fields = messente_api.ContactFields() # ContactFields | 
 
 try:
-    # Creates a new contact.
+    # Creates a new contact
     api_response = api_instance.create_contact(contact_fields)
     pprint(api_response)
 except ApiException as e:
@@ -123,7 +123,7 @@ Name | Type | Description  | Notes
 # **delete_contact**
 > delete_contact(phone)
 
-Deletes a contact.
+Deletes a contact
 
 ### Example
 
@@ -144,7 +144,7 @@ api_instance = messente_api.ContactsApi(messente_api.ApiClient(configuration))
 phone = 'phone_example' # str | A phone number
 
 try:
-    # Deletes a contact.
+    # Deletes a contact
     api_instance.delete_contact(phone)
 except ApiException as e:
     print("Exception when calling ContactsApi->delete_contact: %s\n" % e)
@@ -174,7 +174,7 @@ void (empty response body)
 # **fetch_contact**
 > ContactEnvelope fetch_contact(phone)
 
-Lists a contact.
+Lists a contact
 
 ### Example
 
@@ -195,7 +195,7 @@ api_instance = messente_api.ContactsApi(messente_api.ApiClient(configuration))
 phone = 'phone_example' # str | A phone number
 
 try:
-    # Lists a contact.
+    # Lists a contact
     api_response = api_instance.fetch_contact(phone)
     pprint(api_response)
 except ApiException as e:
@@ -226,7 +226,7 @@ Name | Type | Description  | Notes
 # **fetch_contact_groups**
 > GroupListEnvelope fetch_contact_groups(phone)
 
-Lists groups of a contact.
+Lists groups of a contact
 
 ### Example
 
@@ -247,7 +247,7 @@ api_instance = messente_api.ContactsApi(messente_api.ApiClient(configuration))
 phone = 'phone_example' # str | A phone number
 
 try:
-    # Lists groups of a contact.
+    # Lists groups of a contact
     api_response = api_instance.fetch_contact_groups(phone)
     pprint(api_response)
 except ApiException as e:
@@ -278,7 +278,7 @@ Name | Type | Description  | Notes
 # **fetch_contacts**
 > ContactListEnvelope fetch_contacts(group_ids=group_ids)
 
-Returns all contacts.
+Returns all contacts
 
 ### Example
 
@@ -299,7 +299,7 @@ api_instance = messente_api.ContactsApi(messente_api.ApiClient(configuration))
 group_ids = ['group_ids_example'] # list[str] | Optional one or many group id strings in uuid format. For example: \"/contacts?groupIds=group_id_one&groupIds=group_id_two\"  (optional)
 
 try:
-    # Returns all contacts.
+    # Returns all contacts
     api_response = api_instance.fetch_contacts(group_ids=group_ids)
     pprint(api_response)
 except ApiException as e:
@@ -330,7 +330,7 @@ Name | Type | Description  | Notes
 # **remove_contact_from_group**
 > remove_contact_from_group(group_id, phone)
 
-Removes a contact from a group.
+Removes a contact from a group
 
 ### Example
 
@@ -352,7 +352,7 @@ group_id = 'group_id_example' # str | String in uuid format.
 phone = 'phone_example' # str | A phone number
 
 try:
-    # Removes a contact from a group.
+    # Removes a contact from a group
     api_instance.remove_contact_from_group(group_id, phone)
 except ApiException as e:
     print("Exception when calling ContactsApi->remove_contact_from_group: %s\n" % e)
@@ -383,7 +383,7 @@ void (empty response body)
 # **update_contact**
 > ContactEnvelope update_contact(phone, contact_update_fields)
 
-Updates a contact.
+Updates a contact
 
 ### Example
 
@@ -405,7 +405,7 @@ phone = 'phone_example' # str | A phone number
 contact_update_fields = messente_api.ContactUpdateFields() # ContactUpdateFields | 
 
 try:
-    # Updates a contact.
+    # Updates a contact
     api_response = api_instance.update_contact(phone, contact_update_fields)
     pprint(api_response)
 except ApiException as e:

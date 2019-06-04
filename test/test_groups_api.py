@@ -32,35 +32,35 @@ class TestGroupsApi(unittest.TestCase):
     def test_create_group(self):
         """Test case for create_group
 
-        Creates a new group with the provided name.  # noqa: E501
+        Creates a new group with the provided name  # noqa: E501
         """
         pass
 
     def test_delete_group(self):
         """Test case for delete_group
 
-        Deletes a group.  # noqa: E501
+        Deletes a group  # noqa: E501
         """
         pass
 
     def test_fetch_group(self):
         """Test case for fetch_group
 
-        Lists a group.  # noqa: E501
+        Lists a group  # noqa: E501
         """
         pass
 
     def test_fetch_groups(self):
         """Test case for fetch_groups
 
-        Returns all groups.  # noqa: E501
+        Returns all groups  # noqa: E501
         """
         pass
 
     def test_update_group(self):
         """Test case for update_group
 
-        Updates a group with the provided name.  # noqa: E501
+        Updates a group with the provided name  # noqa: E501
         """
         pass
 

@@ -38,7 +38,7 @@ class GroupsApi(object):
         self.api_client = api_client
 
     def create_group(self, group_name, **kwargs):  # noqa: E501
-        """Creates a new group with the provided name.  # noqa: E501
+        """Creates a new group with the provided name  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -59,7 +59,7 @@ class GroupsApi(object):
             return data
 
     def create_group_with_http_info(self, group_name, **kwargs):  # noqa: E501
-        """Creates a new group with the provided name.  # noqa: E501
+        """Creates a new group with the provided name  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -136,7 +136,7 @@ class GroupsApi(object):
             collection_formats=collection_formats)
 
     def delete_group(self, group_id, **kwargs):  # noqa: E501
-        """Deletes a group.  # noqa: E501
+        """Deletes a group  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -157,7 +157,7 @@ class GroupsApi(object):
             return data
 
     def delete_group_with_http_info(self, group_id, **kwargs):  # noqa: E501
-        """Deletes a group.  # noqa: E501
+        """Deletes a group  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -230,7 +230,7 @@ class GroupsApi(object):
             collection_formats=collection_formats)
 
     def fetch_group(self, group_id, **kwargs):  # noqa: E501
-        """Lists a group.  # noqa: E501
+        """Lists a group  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -251,7 +251,7 @@ class GroupsApi(object):
             return data
 
     def fetch_group_with_http_info(self, group_id, **kwargs):  # noqa: E501
-        """Lists a group.  # noqa: E501
+        """Lists a group  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -324,7 +324,7 @@ class GroupsApi(object):
             collection_formats=collection_formats)
 
     def fetch_groups(self, **kwargs):  # noqa: E501
-        """Returns all groups.  # noqa: E501
+        """Returns all groups  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -344,7 +344,7 @@ class GroupsApi(object):
             return data
 
     def fetch_groups_with_http_info(self, **kwargs):  # noqa: E501
-        """Returns all groups.  # noqa: E501
+        """Returns all groups  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -410,7 +410,7 @@ class GroupsApi(object):
             collection_formats=collection_formats)
 
     def update_group(self, group_id, group_name, **kwargs):  # noqa: E501
-        """Updates a group with the provided name.  # noqa: E501
+        """Updates a group with the provided name  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -432,7 +432,7 @@ class GroupsApi(object):
             return data
 
     def update_group_with_http_info(self, group_id, group_name, **kwargs):  # noqa: E501
-        """Updates a group with the provided name.  # noqa: E501
+        """Updates a group with the provided name  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True

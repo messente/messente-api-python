@@ -32,28 +32,28 @@ class TestBlacklistApi(unittest.TestCase):
     def test_add_to_blacklist(self):
         """Test case for add_to_blacklist
 
-        Adds a phone number to the blacklist.  # noqa: E501
+        Adds a phone number to the blacklist  # noqa: E501
         """
         pass
 
     def test_delete_from_blacklist(self):
         """Test case for delete_from_blacklist
 
-        Deletes a phone number from the blacklist.  # noqa: E501
+        Deletes a phone number from the blacklist  # noqa: E501
         """
         pass
 
     def test_fetch_blacklist(self):
         """Test case for fetch_blacklist
 
-        Returns all blacklisted phone numbers.  # noqa: E501
+        Returns all blacklisted phone numbers  # noqa: E501
         """
         pass
 
     def test_is_blacklisted(self):
         """Test case for is_blacklisted
 
-        Checks if a phone number is blacklisted.  # noqa: E501
+        Checks if a phone number is blacklisted  # noqa: E501
         """
         pass
 

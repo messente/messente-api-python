@@ -38,7 +38,7 @@ class OmnimessageApi(object):
         self.api_client = api_client
 
     def cancel_scheduled_message(self, omnimessage_id, **kwargs):  # noqa: E501
-        """Cancels a scheduled Omnimessage.  # noqa: E501
+        """Cancels a scheduled Omnimessage  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -59,7 +59,7 @@ class OmnimessageApi(object):
             return data
 
     def cancel_scheduled_message_with_http_info(self, omnimessage_id, **kwargs):  # noqa: E501
-        """Cancels a scheduled Omnimessage.  # noqa: E501
+        """Cancels a scheduled Omnimessage  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -132,7 +132,7 @@ class OmnimessageApi(object):
             collection_formats=collection_formats)
 
     def send_omnimessage(self, omnimessage, **kwargs):  # noqa: E501
-        """Sends an Omnimessage.  # noqa: E501
+        """Sends an Omnimessage  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -153,7 +153,7 @@ class OmnimessageApi(object):
             return data
 
     def send_omnimessage_with_http_info(self, omnimessage, **kwargs):  # noqa: E501
-        """Sends an Omnimessage.  # noqa: E501
+        """Sends an Omnimessage  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True

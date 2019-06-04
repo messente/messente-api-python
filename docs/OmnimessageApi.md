@@ -4,14 +4,14 @@ All URIs are relative to *https://api.messente.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**cancel_scheduled_message**](OmnimessageApi.md#cancel_scheduled_message) | **DELETE** /omnimessage/{omnimessageId} | Cancels a scheduled Omnimessage.
-[**send_omnimessage**](OmnimessageApi.md#send_omnimessage) | **POST** /omnimessage | Sends an Omnimessage.
+[**cancel_scheduled_message**](OmnimessageApi.md#cancel_scheduled_message) | **DELETE** /omnimessage/{omnimessageId} | Cancels a scheduled Omnimessage
+[**send_omnimessage**](OmnimessageApi.md#send_omnimessage) | **POST** /omnimessage | Sends an Omnimessage
 
 
 # **cancel_scheduled_message**
 > cancel_scheduled_message(omnimessage_id)
 
-Cancels a scheduled Omnimessage.
+Cancels a scheduled Omnimessage
 
 ### Example
 
@@ -32,7 +32,7 @@ api_instance = messente_api.OmnimessageApi(messente_api.ApiClient(configuration)
 omnimessage_id = 'omnimessage_id_example' # str | UUID of the scheduled Omnimessage to be cancelled
 
 try:
-    # Cancels a scheduled Omnimessage.
+    # Cancels a scheduled Omnimessage
     api_instance.cancel_scheduled_message(omnimessage_id)
 except ApiException as e:
     print("Exception when calling OmnimessageApi->cancel_scheduled_message: %s\n" % e)
@@ -62,7 +62,7 @@ void (empty response body)
 # **send_omnimessage**
 > OmniMessageCreateSuccessResponse send_omnimessage(omnimessage)
 
-Sends an Omnimessage.
+Sends an Omnimessage
 
 ### Example
 
@@ -83,7 +83,7 @@ api_instance = messente_api.OmnimessageApi(messente_api.ApiClient(configuration)
 omnimessage = messente_api.Omnimessage() # Omnimessage | Omnimessage to be sent
 
 try:
-    # Sends an Omnimessage.
+    # Sends an Omnimessage
     api_response = api_instance.send_omnimessage(omnimessage)
     pprint(api_response)
 except ApiException as e:

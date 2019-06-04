@@ -32,14 +32,14 @@ class TestOmnimessageApi(unittest.TestCase):
     def test_cancel_scheduled_message(self):
         """Test case for cancel_scheduled_message
 
-        Cancels a scheduled Omnimessage.  # noqa: E501
+        Cancels a scheduled Omnimessage  # noqa: E501
         """
         pass
 
     def test_send_omnimessage(self):
         """Test case for send_omnimessage
 
-        Sends an Omnimessage.  # noqa: E501
+        Sends an Omnimessage  # noqa: E501
         """
         pass
 

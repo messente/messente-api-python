@@ -38,7 +38,7 @@ class ContactsApi(object):
         self.api_client = api_client
 
     def add_contact_to_group(self, group_id, phone, **kwargs):  # noqa: E501
-        """Adds a contact to a group.  # noqa: E501
+        """Adds a contact to a group  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -60,7 +60,7 @@ class ContactsApi(object):
             return data
 
     def add_contact_to_group_with_http_info(self, group_id, phone, **kwargs):  # noqa: E501
-        """Adds a contact to a group.  # noqa: E501
+        """Adds a contact to a group  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -140,7 +140,7 @@ class ContactsApi(object):
             collection_formats=collection_formats)
 
     def create_contact(self, contact_fields, **kwargs):  # noqa: E501
-        """Creates a new contact.  # noqa: E501
+        """Creates a new contact  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -161,7 +161,7 @@ class ContactsApi(object):
             return data
 
     def create_contact_with_http_info(self, contact_fields, **kwargs):  # noqa: E501
-        """Creates a new contact.  # noqa: E501
+        """Creates a new contact  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -238,7 +238,7 @@ class ContactsApi(object):
             collection_formats=collection_formats)
 
     def delete_contact(self, phone, **kwargs):  # noqa: E501
-        """Deletes a contact.  # noqa: E501
+        """Deletes a contact  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -259,7 +259,7 @@ class ContactsApi(object):
             return data
 
     def delete_contact_with_http_info(self, phone, **kwargs):  # noqa: E501
-        """Deletes a contact.  # noqa: E501
+        """Deletes a contact  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -332,7 +332,7 @@ class ContactsApi(object):
             collection_formats=collection_formats)
 
     def fetch_contact(self, phone, **kwargs):  # noqa: E501
-        """Lists a contact.  # noqa: E501
+        """Lists a contact  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -353,7 +353,7 @@ class ContactsApi(object):
             return data
 
     def fetch_contact_with_http_info(self, phone, **kwargs):  # noqa: E501
-        """Lists a contact.  # noqa: E501
+        """Lists a contact  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -426,7 +426,7 @@ class ContactsApi(object):
             collection_formats=collection_formats)
 
     def fetch_contact_groups(self, phone, **kwargs):  # noqa: E501
-        """Lists groups of a contact.  # noqa: E501
+        """Lists groups of a contact  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -447,7 +447,7 @@ class ContactsApi(object):
             return data
 
     def fetch_contact_groups_with_http_info(self, phone, **kwargs):  # noqa: E501
-        """Lists groups of a contact.  # noqa: E501
+        """Lists groups of a contact  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -520,7 +520,7 @@ class ContactsApi(object):
             collection_formats=collection_formats)
 
     def fetch_contacts(self, **kwargs):  # noqa: E501
-        """Returns all contacts.  # noqa: E501
+        """Returns all contacts  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -541,7 +541,7 @@ class ContactsApi(object):
             return data
 
     def fetch_contacts_with_http_info(self, **kwargs):  # noqa: E501
-        """Returns all contacts.  # noqa: E501
+        """Returns all contacts  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -611,7 +611,7 @@ class ContactsApi(object):
             collection_formats=collection_formats)
 
     def remove_contact_from_group(self, group_id, phone, **kwargs):  # noqa: E501
-        """Removes a contact from a group.  # noqa: E501
+        """Removes a contact from a group  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -633,7 +633,7 @@ class ContactsApi(object):
             return data
 
     def remove_contact_from_group_with_http_info(self, group_id, phone, **kwargs):  # noqa: E501
-        """Removes a contact from a group.  # noqa: E501
+        """Removes a contact from a group  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -713,7 +713,7 @@ class ContactsApi(object):
             collection_formats=collection_formats)
 
     def update_contact(self, phone, contact_update_fields, **kwargs):  # noqa: E501
-        """Updates a contact.  # noqa: E501
+        """Updates a contact  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -735,7 +735,7 @@ class ContactsApi(object):
             return data
 
     def update_contact_with_http_info(self, phone, contact_update_fields, **kwargs):  # noqa: E501
-        """Updates a contact.  # noqa: E501
+        """Updates a contact  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True

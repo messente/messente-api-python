@@ -32,56 +32,56 @@ class TestContactsApi(unittest.TestCase):
     def test_add_contact_to_group(self):
         """Test case for add_contact_to_group
 
-        Adds a contact to a group.  # noqa: E501
+        Adds a contact to a group  # noqa: E501
         """
         pass
 
     def test_create_contact(self):
         """Test case for create_contact
 
-        Creates a new contact.  # noqa: E501
+        Creates a new contact  # noqa: E501
         """
         pass
 
     def test_delete_contact(self):
         """Test case for delete_contact
 
-        Deletes a contact.  # noqa: E501
+        Deletes a contact  # noqa: E501
         """
         pass
 
     def test_fetch_contact(self):
         """Test case for fetch_contact
 
-        Lists a contact.  # noqa: E501
+        Lists a contact  # noqa: E501
         """
         pass
 
     def test_fetch_contact_groups(self):
         """Test case for fetch_contact_groups
 
-        Lists groups of a contact.  # noqa: E501
+        Lists groups of a contact  # noqa: E501
         """
         pass
 
     def test_fetch_contacts(self):
         """Test case for fetch_contacts
 
-        Returns all contacts.  # noqa: E501
+        Returns all contacts  # noqa: E501
         """
         pass
 
     def test_remove_contact_from_group(self):
         """Test case for remove_contact_from_group
 
-        Removes a contact from a group.  # noqa: E501
+        Removes a contact from a group  # noqa: E501
         """
         pass
 
     def test_update_contact(self):
         """Test case for update_contact
 
-        Updates a contact.  # noqa: E501
+        Updates a contact  # noqa: E501
         """
         pass
 

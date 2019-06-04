@@ -38,7 +38,7 @@ class BlacklistApi(object):
         self.api_client = api_client
 
     def add_to_blacklist(self, number_to_blacklist, **kwargs):  # noqa: E501
-        """Adds a phone number to the blacklist.  # noqa: E501
+        """Adds a phone number to the blacklist  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -59,7 +59,7 @@ class BlacklistApi(object):
             return data
 
     def add_to_blacklist_with_http_info(self, number_to_blacklist, **kwargs):  # noqa: E501
-        """Adds a phone number to the blacklist.  # noqa: E501
+        """Adds a phone number to the blacklist  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -136,7 +136,7 @@ class BlacklistApi(object):
             collection_formats=collection_formats)
 
     def delete_from_blacklist(self, phone, **kwargs):  # noqa: E501
-        """Deletes a phone number from the blacklist.  # noqa: E501
+        """Deletes a phone number from the blacklist  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -157,7 +157,7 @@ class BlacklistApi(object):
             return data
 
     def delete_from_blacklist_with_http_info(self, phone, **kwargs):  # noqa: E501
-        """Deletes a phone number from the blacklist.  # noqa: E501
+        """Deletes a phone number from the blacklist  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -230,7 +230,7 @@ class BlacklistApi(object):
             collection_formats=collection_formats)
 
     def fetch_blacklist(self, **kwargs):  # noqa: E501
-        """Returns all blacklisted phone numbers.  # noqa: E501
+        """Returns all blacklisted phone numbers  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -250,7 +250,7 @@ class BlacklistApi(object):
             return data
 
     def fetch_blacklist_with_http_info(self, **kwargs):  # noqa: E501
-        """Returns all blacklisted phone numbers.  # noqa: E501
+        """Returns all blacklisted phone numbers  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -316,7 +316,7 @@ class BlacklistApi(object):
             collection_formats=collection_formats)
 
     def is_blacklisted(self, phone, **kwargs):  # noqa: E501
-        """Checks if a phone number is blacklisted.  # noqa: E501
+        """Checks if a phone number is blacklisted  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -337,7 +337,7 @@ class BlacklistApi(object):
             return data
 
     def is_blacklisted_with_http_info(self, phone, **kwargs):  # noqa: E501
-        """Checks if a phone number is blacklisted.  # noqa: E501
+        """Checks if a phone number is blacklisted  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
