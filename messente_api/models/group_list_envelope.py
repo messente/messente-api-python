@@ -52,6 +52,7 @@ class GroupListEnvelope(object):
     def groups(self):
         """Gets the groups of this GroupListEnvelope.  # noqa: E501
 
+        An array of groups  # noqa: E501
 
         :return: The groups of this GroupListEnvelope.  # noqa: E501
         :rtype: list[GroupResponseFields]
@@ -62,6 +63,7 @@ class GroupListEnvelope(object):
     def groups(self, groups):
         """Sets the groups of this GroupListEnvelope.
 
+        An array of groups  # noqa: E501
 
         :param groups: The groups of this GroupListEnvelope.  # noqa: E501
         :type: list[GroupResponseFields]

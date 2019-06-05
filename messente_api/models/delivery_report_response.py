@@ -59,7 +59,7 @@ class DeliveryReportResponse(object):
     def statuses(self):
         """Gets the statuses of this DeliveryReportResponse.  # noqa: E501
 
-        Contains the delivery reports for each channnel, ordered by send order  # noqa: E501
+        Contains the delivery reports for each channel, ordered by send order  # noqa: E501
 
         :return: The statuses of this DeliveryReportResponse.  # noqa: E501
         :rtype: list[DeliveryResult]
@@ -70,7 +70,7 @@ class DeliveryReportResponse(object):
     def statuses(self, statuses):
         """Sets the statuses of this DeliveryReportResponse.
 
-        Contains the delivery reports for each channnel, ordered by send order  # noqa: E501
+        Contains the delivery reports for each channel, ordered by send order  # noqa: E501
 
         :param statuses: The statuses of this DeliveryReportResponse.  # noqa: E501
         :type: list[DeliveryResult]

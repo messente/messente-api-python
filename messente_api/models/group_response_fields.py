@@ -88,6 +88,7 @@ class GroupResponseFields(object):
     def name(self):
         """Gets the name of this GroupResponseFields.  # noqa: E501
 
+        The name of the group  # noqa: E501
 
         :return: The name of this GroupResponseFields.  # noqa: E501
         :rtype: str
@@ -98,6 +99,7 @@ class GroupResponseFields(object):
     def name(self, name):
         """Sets the name of this GroupResponseFields.
 
+        The name of the group  # noqa: E501
 
         :param name: The name of this GroupResponseFields.  # noqa: E501
         :type: str
@@ -111,7 +113,7 @@ class GroupResponseFields(object):
     def created_on(self):
         """Gets the created_on of this GroupResponseFields.  # noqa: E501
 
-        Format %Y-%m-%dT%H:%M:%S.%fZ  # noqa: E501
+        When the group was created  # noqa: E501
 
         :return: The created_on of this GroupResponseFields.  # noqa: E501
         :rtype: str
@@ -122,7 +124,7 @@ class GroupResponseFields(object):
     def created_on(self, created_on):
         """Sets the created_on of this GroupResponseFields.
 
-        Format %Y-%m-%dT%H:%M:%S.%fZ  # noqa: E501
+        When the group was created  # noqa: E501
 
         :param created_on: The created_on of this GroupResponseFields.  # noqa: E501
         :type: str
@@ -134,6 +136,7 @@ class GroupResponseFields(object):
     def contacts_count(self):
         """Gets the contacts_count of this GroupResponseFields.  # noqa: E501
 
+        The count of contacts in the group  # noqa: E501
 
         :return: The contacts_count of this GroupResponseFields.  # noqa: E501
         :rtype: int
@@ -144,6 +147,7 @@ class GroupResponseFields(object):
     def contacts_count(self, contacts_count):
         """Sets the contacts_count of this GroupResponseFields.
 
+        The count of contacts in the group  # noqa: E501
 
         :param contacts_count: The contacts_count of this GroupResponseFields.  # noqa: E501
         :type: int

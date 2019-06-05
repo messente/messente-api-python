@@ -199,6 +199,7 @@ class SMS(object):
     def channel(self):
         """Gets the channel of this SMS.  # noqa: E501
 
+        The channel used to deliver the message  # noqa: E501
 
         :return: The channel of this SMS.  # noqa: E501
         :rtype: str
@@ -209,6 +210,7 @@ class SMS(object):
     def channel(self, channel):
         """Sets the channel of this SMS.
 
+        The channel used to deliver the message  # noqa: E501
 
         :param channel: The channel of this SMS.  # noqa: E501
         :type: str

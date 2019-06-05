@@ -51,6 +51,7 @@ class ErrorOmnichannel(object):
     def errors(self):
         """Gets the errors of this ErrorOmnichannel.  # noqa: E501
 
+        An array of errors  # noqa: E501
 
         :return: The errors of this ErrorOmnichannel.  # noqa: E501
         :rtype: list[ErrorItemOmnichannel]
@@ -61,6 +62,7 @@ class ErrorOmnichannel(object):
     def errors(self, errors):
         """Sets the errors of this ErrorOmnichannel.
 
+        An array of errors  # noqa: E501
 
         :param errors: The errors of this ErrorOmnichannel.  # noqa: E501
         :type: list[ErrorItemOmnichannel]

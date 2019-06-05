@@ -95,6 +95,7 @@ class Omnimessage(object):
     def messages(self):
         """Gets the messages of this Omnimessage.  # noqa: E501
 
+        An array of messages  # noqa: E501
 
         :return: The messages of this Omnimessage.  # noqa: E501
         :rtype: list[OneOfViberSMSWhatsApp]
@@ -105,6 +106,7 @@ class Omnimessage(object):
     def messages(self, messages):
         """Sets the messages of this Omnimessage.
 
+        An array of messages  # noqa: E501
 
         :param messages: The messages of this Omnimessage.  # noqa: E501
         :type: list[OneOfViberSMSWhatsApp]

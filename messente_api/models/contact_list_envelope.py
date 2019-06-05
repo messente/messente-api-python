@@ -52,6 +52,7 @@ class ContactListEnvelope(object):
     def contacts(self):
         """Gets the contacts of this ContactListEnvelope.  # noqa: E501
 
+        An array of contacts  # noqa: E501
 
         :return: The contacts of this ContactListEnvelope.  # noqa: E501
         :rtype: list[ContactFields]
@@ -62,6 +63,7 @@ class ContactListEnvelope(object):
     def contacts(self, contacts):
         """Sets the contacts of this ContactListEnvelope.
 
+        An array of contacts  # noqa: E501
 
         :param contacts: The contacts of this ContactListEnvelope.  # noqa: E501
         :type: list[ContactFields]

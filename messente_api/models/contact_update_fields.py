@@ -83,6 +83,7 @@ class ContactUpdateFields(object):
     def email(self):
         """Gets the email of this ContactUpdateFields.  # noqa: E501
 
+        The contact's email  # noqa: E501
 
         :return: The email of this ContactUpdateFields.  # noqa: E501
         :rtype: str
@@ -93,6 +94,7 @@ class ContactUpdateFields(object):
     def email(self, email):
         """Sets the email of this ContactUpdateFields.
 
+        The contact's email  # noqa: E501
 
         :param email: The email of this ContactUpdateFields.  # noqa: E501
         :type: str
@@ -104,6 +106,7 @@ class ContactUpdateFields(object):
     def first_name(self):
         """Gets the first_name of this ContactUpdateFields.  # noqa: E501
 
+        The contact's first name  # noqa: E501
 
         :return: The first_name of this ContactUpdateFields.  # noqa: E501
         :rtype: str
@@ -114,6 +117,7 @@ class ContactUpdateFields(object):
     def first_name(self, first_name):
         """Sets the first_name of this ContactUpdateFields.
 
+        The contact's first name  # noqa: E501
 
         :param first_name: The first_name of this ContactUpdateFields.  # noqa: E501
         :type: str
@@ -125,6 +129,7 @@ class ContactUpdateFields(object):
     def last_name(self):
         """Gets the last_name of this ContactUpdateFields.  # noqa: E501
 
+        The contact's last name  # noqa: E501
 
         :return: The last_name of this ContactUpdateFields.  # noqa: E501
         :rtype: str
@@ -135,6 +140,7 @@ class ContactUpdateFields(object):
     def last_name(self, last_name):
         """Sets the last_name of this ContactUpdateFields.
 
+        The contact's last name  # noqa: E501
 
         :param last_name: The last_name of this ContactUpdateFields.  # noqa: E501
         :type: str
@@ -146,6 +152,7 @@ class ContactUpdateFields(object):
     def company(self):
         """Gets the company of this ContactUpdateFields.  # noqa: E501
 
+        The contact's company  # noqa: E501
 
         :return: The company of this ContactUpdateFields.  # noqa: E501
         :rtype: str
@@ -156,6 +163,7 @@ class ContactUpdateFields(object):
     def company(self, company):
         """Sets the company of this ContactUpdateFields.
 
+        The contact's company  # noqa: E501
 
         :param company: The company of this ContactUpdateFields.  # noqa: E501
         :type: str
@@ -167,6 +175,7 @@ class ContactUpdateFields(object):
     def title(self):
         """Gets the title of this ContactUpdateFields.  # noqa: E501
 
+        The contact's title  # noqa: E501
 
         :return: The title of this ContactUpdateFields.  # noqa: E501
         :rtype: str
@@ -177,6 +186,7 @@ class ContactUpdateFields(object):
     def title(self, title):
         """Sets the title of this ContactUpdateFields.
 
+        The contact's title  # noqa: E501
 
         :param title: The title of this ContactUpdateFields.  # noqa: E501
         :type: str
@@ -188,6 +198,7 @@ class ContactUpdateFields(object):
     def custom(self):
         """Gets the custom of this ContactUpdateFields.  # noqa: E501
 
+        The first custom field  # noqa: E501
 
         :return: The custom of this ContactUpdateFields.  # noqa: E501
         :rtype: str
@@ -198,6 +209,7 @@ class ContactUpdateFields(object):
     def custom(self, custom):
         """Sets the custom of this ContactUpdateFields.
 
+        The first custom field  # noqa: E501
 
         :param custom: The custom of this ContactUpdateFields.  # noqa: E501
         :type: str
@@ -209,6 +221,7 @@ class ContactUpdateFields(object):
     def custom2(self):
         """Gets the custom2 of this ContactUpdateFields.  # noqa: E501
 
+        The second custom field  # noqa: E501
 
         :return: The custom2 of this ContactUpdateFields.  # noqa: E501
         :rtype: str
@@ -219,6 +232,7 @@ class ContactUpdateFields(object):
     def custom2(self, custom2):
         """Sets the custom2 of this ContactUpdateFields.
 
+        The second custom field  # noqa: E501
 
         :param custom2: The custom2 of this ContactUpdateFields.  # noqa: E501
         :type: str
@@ -230,6 +244,7 @@ class ContactUpdateFields(object):
     def custom3(self):
         """Gets the custom3 of this ContactUpdateFields.  # noqa: E501
 
+        The third custom field  # noqa: E501
 
         :return: The custom3 of this ContactUpdateFields.  # noqa: E501
         :rtype: str
@@ -240,6 +255,7 @@ class ContactUpdateFields(object):
     def custom3(self, custom3):
         """Sets the custom3 of this ContactUpdateFields.
 
+        The third custom field  # noqa: E501
 
         :param custom3: The custom3 of this ContactUpdateFields.  # noqa: E501
         :type: str
@@ -251,6 +267,7 @@ class ContactUpdateFields(object):
     def custom4(self):
         """Gets the custom4 of this ContactUpdateFields.  # noqa: E501
 
+        The fourth custom field  # noqa: E501
 
         :return: The custom4 of this ContactUpdateFields.  # noqa: E501
         :rtype: str
@@ -261,6 +278,7 @@ class ContactUpdateFields(object):
     def custom4(self, custom4):
         """Sets the custom4 of this ContactUpdateFields.
 
+        The fourth custom field  # noqa: E501
 
         :param custom4: The custom4 of this ContactUpdateFields.  # noqa: E501
         :type: str
