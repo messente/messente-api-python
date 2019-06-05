@@ -35,7 +35,7 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = messente_api.ContactsApi(messente_api.ApiClient(configuration))
-group_id = 'group_id_example' # str | String in UUID format.
+group_id = 'group_id_example' # str | String in UUID format
 phone = 'phone_example' # str | A phone number
 
 try:
@@ -50,7 +50,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **group_id** | **str**| String in UUID format. | 
+ **group_id** | **str**| String in UUID format | 
  **phone** | **str**| A phone number | 
 
 ### Return type
@@ -348,7 +348,7 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = messente_api.ContactsApi(messente_api.ApiClient(configuration))
-group_id = 'group_id_example' # str | String in UUID format.
+group_id = 'group_id_example' # str | String in UUID format
 phone = 'phone_example' # str | A phone number
 
 try:
@@ -362,7 +362,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **group_id** | **str**| String in UUID format. | 
+ **group_id** | **str**| String in UUID format | 
  **phone** | **str**| A phone number | 
 
 ### Return type

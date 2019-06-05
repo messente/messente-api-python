@@ -86,7 +86,7 @@ class ErrorItemOmnichannel(object):
     def detail(self):
         """Gets the detail of this ErrorItemOmnichannel.  # noqa: E501
 
-        Free form more detailed description of the error.  # noqa: E501
+        Free form more detailed description of the error  # noqa: E501
 
         :return: The detail of this ErrorItemOmnichannel.  # noqa: E501
         :rtype: str
@@ -97,7 +97,7 @@ class ErrorItemOmnichannel(object):
     def detail(self, detail):
         """Sets the detail of this ErrorItemOmnichannel.
 
-        Free form more detailed description of the error.  # noqa: E501
+        Free form more detailed description of the error  # noqa: E501
 
         :param detail: The detail of this ErrorItemOmnichannel.  # noqa: E501
         :type: str

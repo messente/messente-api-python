@@ -144,7 +144,7 @@ class GroupsApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param str group_id: String in UUID format. (required)
+        :param str group_id: String in UUID format (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -165,7 +165,7 @@ class GroupsApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param str group_id: String in UUID format. (required)
+        :param str group_id: String in UUID format (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -238,7 +238,7 @@ class GroupsApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param str group_id: String in UUID format. (required)
+        :param str group_id: String in UUID format (required)
         :return: GroupEnvelope
                  If the method is called asynchronously,
                  returns the request thread.
@@ -259,7 +259,7 @@ class GroupsApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param str group_id: String in UUID format. (required)
+        :param str group_id: String in UUID format (required)
         :return: GroupEnvelope
                  If the method is called asynchronously,
                  returns the request thread.
@@ -418,7 +418,7 @@ class GroupsApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param str group_id: String in UUID format. (required)
+        :param str group_id: String in UUID format (required)
         :param GroupName group_name: (required)
         :return: GroupEnvelope
                  If the method is called asynchronously,
@@ -440,7 +440,7 @@ class GroupsApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param str group_id: String in UUID format. (required)
+        :param str group_id: String in UUID format (required)
         :param GroupName group_name: (required)
         :return: GroupEnvelope
                  If the method is called asynchronously,

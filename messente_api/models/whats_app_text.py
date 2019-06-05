@@ -56,7 +56,7 @@ class WhatsAppText(object):
     def preview_url(self):
         """Gets the preview_url of this WhatsAppText.  # noqa: E501
 
-        Whether to display link preview if the message contains a hyperlink.  # noqa: E501
+        Whether to display link preview if the message contains a hyperlink  # noqa: E501
 
         :return: The preview_url of this WhatsAppText.  # noqa: E501
         :rtype: bool
@@ -67,7 +67,7 @@ class WhatsAppText(object):
     def preview_url(self, preview_url):
         """Sets the preview_url of this WhatsAppText.
 
-        Whether to display link preview if the message contains a hyperlink.  # noqa: E501
+        Whether to display link preview if the message contains a hyperlink  # noqa: E501
 
         :param preview_url: The preview_url of this WhatsAppText.  # noqa: E501
         :type: bool

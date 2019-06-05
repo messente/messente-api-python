@@ -151,7 +151,7 @@ class Viber(object):
     def image_url(self):
         """Gets the image_url of this Viber.  # noqa: E501
 
-        URL for the embedded image.    Valid combinations:    1) image_url,    2) text, image_url, button_url, button_text  # noqa: E501
+        URL for the embedded image    Valid combinations:    1) image_url,    2) text, image_url, button_url, button_text  # noqa: E501
 
         :return: The image_url of this Viber.  # noqa: E501
         :rtype: str
@@ -162,7 +162,7 @@ class Viber(object):
     def image_url(self, image_url):
         """Sets the image_url of this Viber.
 
-        URL for the embedded image.    Valid combinations:    1) image_url,    2) text, image_url, button_url, button_text  # noqa: E501
+        URL for the embedded image    Valid combinations:    1) image_url,    2) text, image_url, button_url, button_text  # noqa: E501
 
         :param image_url: The image_url of this Viber.  # noqa: E501
         :type: str
