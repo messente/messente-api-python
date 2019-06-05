@@ -37,6 +37,7 @@ class ContactFields(object):
         'first_name': 'str',
         'last_name': 'str',
         'company': 'str',
+        'title': 'str',
         'custom': 'str',
         'custom2': 'str',
         'custom3': 'str',
@@ -49,13 +50,14 @@ class ContactFields(object):
         'first_name': 'firstName',
         'last_name': 'lastName',
         'company': 'company',
+        'title': 'title',
         'custom': 'custom',
         'custom2': 'custom2',
         'custom3': 'custom3',
         'custom4': 'custom4'
     }
 
-    def __init__(self, phone_number=None, email=None, first_name=None, last_name=None, company=None, custom=None, custom2=None, custom3=None, custom4=None):  # noqa: E501
+    def __init__(self, phone_number=None, email=None, first_name=None, last_name=None, company=None, title=None, custom=None, custom2=None, custom3=None, custom4=None):  # noqa: E501
         """ContactFields - a model defined in OpenAPI"""  # noqa: E501
 
         self._phone_number = None
@@ -63,6 +65,7 @@ class ContactFields(object):
         self._first_name = None
         self._last_name = None
         self._company = None
+        self._title = None
         self._custom = None
         self._custom2 = None
         self._custom3 = None
@@ -74,6 +77,7 @@ class ContactFields(object):
         self.first_name = first_name
         self.last_name = last_name
         self.company = company
+        self.title = title
         self.custom = custom
         self.custom2 = custom2
         self.custom3 = custom3
@@ -195,6 +199,29 @@ class ContactFields(object):
         """
 
         self._company = company
+
+    @property
+    def title(self):
+        """Gets the title of this ContactFields.  # noqa: E501
+
+        The title of the contact  # noqa: E501
+
+        :return: The title of this ContactFields.  # noqa: E501
+        :rtype: str
+        """
+        return self._title
+
+    @title.setter
+    def title(self, title):
+        """Sets the title of this ContactFields.
+
+        The title of the contact  # noqa: E501
+
+        :param title: The title of this ContactFields.  # noqa: E501
+        :type: str
+        """
+
+        self._title = title
 
     @property
     def custom(self):
