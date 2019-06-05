@@ -111,7 +111,7 @@ class GroupResponseFields(object):
     def created_on(self):
         """Gets the created_on of this GroupResponseFields.  # noqa: E501
 
-        format %Y-%m-%dT%H:%M:%S.%fZ  # noqa: E501
+        Format %Y-%m-%dT%H:%M:%S.%fZ  # noqa: E501
 
         :return: The created_on of this GroupResponseFields.  # noqa: E501
         :rtype: str
@@ -122,7 +122,7 @@ class GroupResponseFields(object):
     def created_on(self, created_on):
         """Sets the created_on of this GroupResponseFields.
 
-        format %Y-%m-%dT%H:%M:%S.%fZ  # noqa: E501
+        Format %Y-%m-%dT%H:%M:%S.%fZ  # noqa: E501
 
         :param created_on: The created_on of this GroupResponseFields.  # noqa: E501
         :type: str

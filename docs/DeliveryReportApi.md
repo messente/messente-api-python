@@ -28,7 +28,7 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = messente_api.DeliveryReportApi(messente_api.ApiClient(configuration))
-omnimessage_id = 'omnimessage_id_example' # str | UUID of the Omnimessage to for which the delivery report is to be retrieved
+omnimessage_id = 'omnimessage_id_example' # str | UUID of the omnimessage to for which the delivery report is to be retrieved
 
 try:
     # Retrieves the delivery report for the Omnimessage
@@ -42,7 +42,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **omnimessage_id** | **str**| UUID of the Omnimessage to for which the delivery report is to be retrieved | 
+ **omnimessage_id** | **str**| UUID of the omnimessage to for which the delivery report is to be retrieved | 
 
 ### Return type
 

@@ -59,7 +59,7 @@ class OmniMessageCreateSuccessResponse(object):
     def messages(self):
         """Gets the messages of this OmniMessageCreateSuccessResponse.  # noqa: E501
 
-        List of messages that compose the Omnimessage  # noqa: E501
+        List of messages that compose the omnimessage  # noqa: E501
 
         :return: The messages of this OmniMessageCreateSuccessResponse.  # noqa: E501
         :rtype: list[MessageResult]
@@ -70,7 +70,7 @@ class OmniMessageCreateSuccessResponse(object):
     def messages(self, messages):
         """Sets the messages of this OmniMessageCreateSuccessResponse.
 
-        List of messages that compose the Omnimessage  # noqa: E501
+        List of messages that compose the omnimessage  # noqa: E501
 
         :param messages: The messages of this OmniMessageCreateSuccessResponse.  # noqa: E501
         :type: list[MessageResult]
@@ -109,7 +109,7 @@ class OmniMessageCreateSuccessResponse(object):
     def omnimessage_id(self):
         """Gets the omnimessage_id of this OmniMessageCreateSuccessResponse.  # noqa: E501
 
-        Unique identifier for the Omnimessage  # noqa: E501
+        Unique identifier for the omnimessage  # noqa: E501
 
         :return: The omnimessage_id of this OmniMessageCreateSuccessResponse.  # noqa: E501
         :rtype: str
@@ -120,7 +120,7 @@ class OmniMessageCreateSuccessResponse(object):
     def omnimessage_id(self, omnimessage_id):
         """Sets the omnimessage_id of this OmniMessageCreateSuccessResponse.
 
-        Unique identifier for the Omnimessage  # noqa: E501
+        Unique identifier for the omnimessage  # noqa: E501
 
         :param omnimessage_id: The omnimessage_id of this OmniMessageCreateSuccessResponse.  # noqa: E501
         :type: str

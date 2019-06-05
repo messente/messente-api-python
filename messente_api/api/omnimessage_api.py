@@ -46,7 +46,7 @@ class OmnimessageApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param str omnimessage_id: UUID of the scheduled Omnimessage to be cancelled (required)
+        :param str omnimessage_id: UUID of the scheduled omnimessage to be cancelled (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -67,7 +67,7 @@ class OmnimessageApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param str omnimessage_id: UUID of the scheduled Omnimessage to be cancelled (required)
+        :param str omnimessage_id: UUID of the scheduled omnimessage to be cancelled (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.

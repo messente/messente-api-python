@@ -109,7 +109,7 @@ class DeliveryReportResponse(object):
     def omnimessage_id(self):
         """Gets the omnimessage_id of this DeliveryReportResponse.  # noqa: E501
 
-        Unique identifier for the Omnimessage  # noqa: E501
+        Unique identifier for the omnimessage  # noqa: E501
 
         :return: The omnimessage_id of this DeliveryReportResponse.  # noqa: E501
         :rtype: str
@@ -120,7 +120,7 @@ class DeliveryReportResponse(object):
     def omnimessage_id(self, omnimessage_id):
         """Sets the omnimessage_id of this DeliveryReportResponse.
 
-        Unique identifier for the Omnimessage  # noqa: E501
+        Unique identifier for the omnimessage  # noqa: E501
 
         :param omnimessage_id: The omnimessage_id of this DeliveryReportResponse.  # noqa: E501
         :type: str

@@ -142,7 +142,7 @@ class DeliveryResult(object):
     def error(self):
         """Gets the error of this DeliveryResult.  # noqa: E501
 
-        Human-readable description of what went wrong, *null* in case of success or if the messages has not been processed yet  # noqa: E501
+        Human-readable description of what went wrong, *null* in case of success or if the message has not been processed yet  # noqa: E501
 
         :return: The error of this DeliveryResult.  # noqa: E501
         :rtype: str
@@ -153,7 +153,7 @@ class DeliveryResult(object):
     def error(self, error):
         """Sets the error of this DeliveryResult.
 
-        Human-readable description of what went wrong, *null* in case of success or if the messages has not been processed yet  # noqa: E501
+        Human-readable description of what went wrong, *null* in case of success or if the message has not been processed yet  # noqa: E501
 
         :param error: The error of this DeliveryResult.  # noqa: E501
         :type: str

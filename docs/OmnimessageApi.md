@@ -29,7 +29,7 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = messente_api.OmnimessageApi(messente_api.ApiClient(configuration))
-omnimessage_id = 'omnimessage_id_example' # str | UUID of the scheduled Omnimessage to be cancelled
+omnimessage_id = 'omnimessage_id_example' # str | UUID of the scheduled omnimessage to be cancelled
 
 try:
     # Cancels a scheduled Omnimessage
@@ -42,7 +42,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **omnimessage_id** | **str**| UUID of the scheduled Omnimessage to be cancelled | 
+ **omnimessage_id** | **str**| UUID of the scheduled omnimessage to be cancelled | 
 
 ### Return type
 

@@ -46,7 +46,7 @@ class DeliveryReportApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param str omnimessage_id: UUID of the Omnimessage to for which the delivery report is to be retrieved (required)
+        :param str omnimessage_id: UUID of the omnimessage to for which the delivery report is to be retrieved (required)
         :return: DeliveryReportResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -67,7 +67,7 @@ class DeliveryReportApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param str omnimessage_id: UUID of the Omnimessage to for which the delivery report is to be retrieved (required)
+        :param str omnimessage_id: UUID of the omnimessage to for which the delivery report is to be retrieved (required)
         :return: DeliveryReportResponse
                  If the method is called asynchronously,
                  returns the request thread.
