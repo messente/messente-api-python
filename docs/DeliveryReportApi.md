@@ -4,13 +4,13 @@ All URIs are relative to *https://api.messente.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**retrieve_delivery_report**](DeliveryReportApi.md#retrieve_delivery_report) | **GET** /omnimessage/{omnimessageId}/status | Retrieves the delivery report for the Omnimessage.
+[**retrieve_delivery_report**](DeliveryReportApi.md#retrieve_delivery_report) | **GET** /omnimessage/{omnimessageId}/status | Retrieves the delivery report for the Omnimessage
 
 
 # **retrieve_delivery_report**
 > DeliveryReportResponse retrieve_delivery_report(omnimessage_id)
 
-Retrieves the delivery report for the Omnimessage.
+Retrieves the delivery report for the Omnimessage
 
 ### Example
 
@@ -28,10 +28,10 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = messente_api.DeliveryReportApi(messente_api.ApiClient(configuration))
-omnimessage_id = 'omnimessage_id_example' # str | UUID of the Omnimessage to for which the delivery report is to be retrieved
+omnimessage_id = 'omnimessage_id_example' # str | UUID of the omnimessage to for which the delivery report is to be retrieved
 
 try:
-    # Retrieves the delivery report for the Omnimessage.
+    # Retrieves the delivery report for the Omnimessage
     api_response = api_instance.retrieve_delivery_report(omnimessage_id)
     pprint(api_response)
 except ApiException as e:
@@ -42,7 +42,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **omnimessage_id** | [**str**](.md)| UUID of the Omnimessage to for which the delivery report is to be retrieved | 
+ **omnimessage_id** | **str**| UUID of the omnimessage to for which the delivery report is to be retrieved | 
 
 ### Return type
 
@@ -55,7 +55,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: */*
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
