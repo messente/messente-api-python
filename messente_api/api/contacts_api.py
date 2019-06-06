@@ -124,7 +124,7 @@ class ContactsApi(object):
         auth_settings = ['basicAuth']  # noqa: E501
 
         return self.api_client.call_api(
-            '/groups/{groupId}/contacts/{phone}', 'POST',
+            '/phonebook/groups/{groupId}/contacts/{phone}', 'POST',
             path_params,
             query_params,
             header_params,
@@ -222,7 +222,7 @@ class ContactsApi(object):
         auth_settings = ['basicAuth']  # noqa: E501
 
         return self.api_client.call_api(
-            '/contacts', 'POST',
+            '/phonebook/contacts', 'POST',
             path_params,
             query_params,
             header_params,
@@ -316,7 +316,7 @@ class ContactsApi(object):
         auth_settings = ['basicAuth']  # noqa: E501
 
         return self.api_client.call_api(
-            '/contacts/{phone}', 'DELETE',
+            '/phonebook/contacts/{phone}', 'DELETE',
             path_params,
             query_params,
             header_params,
@@ -410,7 +410,7 @@ class ContactsApi(object):
         auth_settings = ['basicAuth']  # noqa: E501
 
         return self.api_client.call_api(
-            '/contacts/{phone}', 'GET',
+            '/phonebook/contacts/{phone}', 'GET',
             path_params,
             query_params,
             header_params,
@@ -504,7 +504,7 @@ class ContactsApi(object):
         auth_settings = ['basicAuth']  # noqa: E501
 
         return self.api_client.call_api(
-            '/contacts/{phone}/groups', 'GET',
+            '/phonebook/contacts/{phone}/groups', 'GET',
             path_params,
             query_params,
             header_params,
@@ -595,7 +595,7 @@ class ContactsApi(object):
         auth_settings = ['basicAuth']  # noqa: E501
 
         return self.api_client.call_api(
-            '/contacts', 'GET',
+            '/phonebook/contacts', 'GET',
             path_params,
             query_params,
             header_params,
@@ -697,7 +697,7 @@ class ContactsApi(object):
         auth_settings = ['basicAuth']  # noqa: E501
 
         return self.api_client.call_api(
-            '/groups/{groupId}/contacts/{phone}', 'DELETE',
+            '/phonebook/groups/{groupId}/contacts/{phone}', 'DELETE',
             path_params,
             query_params,
             header_params,
@@ -803,7 +803,7 @@ class ContactsApi(object):
         auth_settings = ['basicAuth']  # noqa: E501
 
         return self.api_client.call_api(
-            '/contacts/{phone}', 'PATCH',
+            '/phonebook/contacts/{phone}', 'PATCH',
             path_params,
             query_params,
             header_params,

@@ -120,7 +120,7 @@ class GroupsApi(object):
         auth_settings = ['basicAuth']  # noqa: E501
 
         return self.api_client.call_api(
-            '/groups', 'POST',
+            '/phonebook/groups', 'POST',
             path_params,
             query_params,
             header_params,
@@ -214,7 +214,7 @@ class GroupsApi(object):
         auth_settings = ['basicAuth']  # noqa: E501
 
         return self.api_client.call_api(
-            '/groups/{groupId}', 'DELETE',
+            '/phonebook/groups/{groupId}', 'DELETE',
             path_params,
             query_params,
             header_params,
@@ -308,7 +308,7 @@ class GroupsApi(object):
         auth_settings = ['basicAuth']  # noqa: E501
 
         return self.api_client.call_api(
-            '/groups/{groupId}', 'GET',
+            '/phonebook/groups/{groupId}', 'GET',
             path_params,
             query_params,
             header_params,
@@ -394,7 +394,7 @@ class GroupsApi(object):
         auth_settings = ['basicAuth']  # noqa: E501
 
         return self.api_client.call_api(
-            '/groups', 'GET',
+            '/phonebook/groups', 'GET',
             path_params,
             query_params,
             header_params,
@@ -500,7 +500,7 @@ class GroupsApi(object):
         auth_settings = ['basicAuth']  # noqa: E501
 
         return self.api_client.call_api(
-            '/groups/{groupId}', 'PUT',
+            '/phonebook/groups/{groupId}', 'PUT',
             path_params,
             query_params,
             header_params,

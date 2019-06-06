@@ -214,7 +214,7 @@ class BlacklistApi(object):
         auth_settings = ['basicAuth']  # noqa: E501
 
         return self.api_client.call_api(
-            '/blacklist/{phone}', 'DELETE',
+            '/phonebook/blacklist/{phone}', 'DELETE',
             path_params,
             query_params,
             header_params,
@@ -394,7 +394,7 @@ class BlacklistApi(object):
         auth_settings = ['basicAuth']  # noqa: E501
 
         return self.api_client.call_api(
-            '/blacklist/{phone}', 'GET',
+            '/phonebook/blacklist/{phone}', 'GET',
             path_params,
             query_params,
             header_params,
