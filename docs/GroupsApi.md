@@ -84,7 +84,7 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = messente_api.GroupsApi(messente_api.ApiClient(configuration))
-group_id = 'group_id_example' # str | String in UUID format
+group_id = '5792a02a-e5c2-422b-a0a0-0ae65d814663' # str | String in UUID format
 
 try:
     # Deletes a group
@@ -135,7 +135,7 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = messente_api.GroupsApi(messente_api.ApiClient(configuration))
-group_id = 'group_id_example' # str | String in UUID format
+group_id = '5792a02a-e5c2-422b-a0a0-0ae65d814663' # str | String in UUID format
 
 try:
     # Lists a group
@@ -235,7 +235,7 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = messente_api.GroupsApi(messente_api.ApiClient(configuration))
-group_id = 'group_id_example' # str | String in UUID format
+group_id = '5792a02a-e5c2-422b-a0a0-0ae65d814663' # str | String in UUID format
 group_name = {"name":"Any group name"} # GroupName | 
 
 try:

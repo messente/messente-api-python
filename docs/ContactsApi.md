@@ -35,8 +35,8 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = messente_api.ContactsApi(messente_api.ApiClient(configuration))
-group_id = 'group_id_example' # str | String in UUID format
-phone = 'phone_example' # str | A phone number
+group_id = '5792a02a-e5c2-422b-a0a0-0ae65d814663' # str | String in UUID format
+phone = '+37251000000' # str | A phone number
 
 try:
     # Adds a contact to a group
@@ -141,7 +141,7 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = messente_api.ContactsApi(messente_api.ApiClient(configuration))
-phone = 'phone_example' # str | A phone number
+phone = '+37251000000' # str | A phone number
 
 try:
     # Deletes a contact
@@ -192,7 +192,7 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = messente_api.ContactsApi(messente_api.ApiClient(configuration))
-phone = 'phone_example' # str | A phone number
+phone = '+37251000000' # str | A phone number
 
 try:
     # Lists a contact
@@ -244,7 +244,7 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = messente_api.ContactsApi(messente_api.ApiClient(configuration))
-phone = 'phone_example' # str | A phone number
+phone = '+37251000000' # str | A phone number
 
 try:
     # Lists groups of a contact
@@ -296,7 +296,7 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = messente_api.ContactsApi(messente_api.ApiClient(configuration))
-group_ids = ['group_ids_example'] # list[str] | Optional one or many group id strings in UUID format. For example: \"/contacts?groupIds=group_id_one&groupIds=group_id_two\"  (optional)
+group_ids = ['[\"5792a02a-e5c2-422b-a0a0-0ae65d814663\",\"4792a02a-e5c2-422b-a0a0-0ae65d814662\"]'] # list[str] | Optional one or many group id strings in UUID format. For example: \"/contacts?groupIds=group_id_one&groupIds=group_id_two\"  (optional)
 
 try:
     # Returns all contacts
@@ -348,8 +348,8 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = messente_api.ContactsApi(messente_api.ApiClient(configuration))
-group_id = 'group_id_example' # str | String in UUID format
-phone = 'phone_example' # str | A phone number
+group_id = '5792a02a-e5c2-422b-a0a0-0ae65d814663' # str | String in UUID format
+phone = '+37251000000' # str | A phone number
 
 try:
     # Removes a contact from a group
@@ -401,7 +401,7 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = messente_api.ContactsApi(messente_api.ApiClient(configuration))
-phone = 'phone_example' # str | A phone number
+phone = '+37251000000' # str | A phone number
 contact_update_fields = {"email":"anyone@messente.com","firstName":"Any","lastName":"One","company":"Messente","title":"Sir","custom":"Any custom","custom2":"Any custom two","custom3":"Any custom three","custom4":"Any custom four"} # ContactUpdateFields | 
 
 try:
