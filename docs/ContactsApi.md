@@ -89,7 +89,7 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = messente_api.ContactsApi(messente_api.ApiClient(configuration))
-contact_fields = messente_api.ContactFields() # ContactFields | 
+contact_fields = {"phoneNumber":"+37251000000","email":"anyone@messente.com","firstName":"Any","lastName":"One","company":"Messente","title":"Sir","custom":"Any custom","custom2":"Any custom two","custom3":"Any custom three","custom4":"Any custom four"} # ContactFields | 
 
 try:
     # Creates a new contact
