@@ -31,7 +31,7 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = messente_api.BlacklistApi(messente_api.ApiClient(configuration))
-number_to_blacklist = messente_api.NumberToBlacklist() # NumberToBlacklist | Phone number to be blacklisted
+number_to_blacklist = {"phoneNumber":"+37251000000"} # NumberToBlacklist | Phone number to be blacklisted
 
 try:
     # Adds a phone number to the blacklist
@@ -82,7 +82,7 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = messente_api.BlacklistApi(messente_api.ApiClient(configuration))
-phone = 'phone_example' # str | A phone number
+phone = '+37251000000' # str | A phone number
 
 try:
     # Deletes a phone number from the blacklist
@@ -181,7 +181,7 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = messente_api.BlacklistApi(messente_api.ApiClient(configuration))
-phone = 'phone_example' # str | A phone number
+phone = '+37251000000' # str | A phone number
 
 try:
     # Checks if a phone number is blacklisted
