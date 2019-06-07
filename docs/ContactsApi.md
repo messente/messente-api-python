@@ -402,7 +402,7 @@ configuration.password = 'YOUR_PASSWORD'
 # create an instance of the API class
 api_instance = messente_api.ContactsApi(messente_api.ApiClient(configuration))
 phone = 'phone_example' # str | A phone number
-contact_update_fields = messente_api.ContactUpdateFields() # ContactUpdateFields | 
+contact_update_fields = {"email":"anyone@messente.com","firstName":"Any","lastName":"One","company":"Messente","title":"Sir","custom":"Any custom","custom2":"Any custom two","custom3":"Any custom three","custom4":"Any custom four"} # ContactUpdateFields | 
 
 try:
     # Updates a contact

@@ -32,7 +32,7 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = messente_api.GroupsApi(messente_api.ApiClient(configuration))
-group_name = {"name":"Any name"} # GroupName | 
+group_name = {"name":"Any group name"} # GroupName | 
 
 try:
     # Creates a new group with the provided name
@@ -236,7 +236,7 @@ configuration.password = 'YOUR_PASSWORD'
 # create an instance of the API class
 api_instance = messente_api.GroupsApi(messente_api.ApiClient(configuration))
 group_id = 'group_id_example' # str | String in UUID format
-group_name = {"name":"Any name"} # GroupName | 
+group_name = {"name":"Any group name"} # GroupName | 
 
 try:
     # Updates a group with the provided name
