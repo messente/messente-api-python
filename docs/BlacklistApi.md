@@ -29,7 +29,9 @@ configuration = messente_api.Configuration()
 configuration.username = 'YOUR_USERNAME'
 configuration.password = 'YOUR_PASSWORD'
 
-# create an instance of the API class
+# Defining host is optional and default to https://api.messente.com/v1
+configuration.host = "https://api.messente.com/v1"
+# Create an instance of the API class
 api_instance = messente_api.BlacklistApi(messente_api.ApiClient(configuration))
 number_to_blacklist = {"phoneNumber":"+37251000000"} # NumberToBlacklist | Phone number to be blacklisted
 
@@ -59,6 +61,15 @@ void (empty response body)
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | Phone number added to the blacklist |  -  |
+**400** | Invalid phone number provided |  -  |
+**401** | Unauthorized |  -  |
+**409** | Phone number already blacklisted |  -  |
+**0** | General error |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_from_blacklist**
@@ -80,7 +91,9 @@ configuration = messente_api.Configuration()
 configuration.username = 'YOUR_USERNAME'
 configuration.password = 'YOUR_PASSWORD'
 
-# create an instance of the API class
+# Defining host is optional and default to https://api.messente.com/v1
+configuration.host = "https://api.messente.com/v1"
+# Create an instance of the API class
 api_instance = messente_api.BlacklistApi(messente_api.ApiClient(configuration))
 phone = '+37251000000' # str | A phone number
 
@@ -110,6 +123,15 @@ void (empty response body)
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | Phone number deleted from the blacklist |  -  |
+**400** | Invalid phone number provided |  -  |
+**401** | Unauthorized |  -  |
+**404** | Phone number is not in the blacklist |  -  |
+**0** | General error |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **fetch_blacklist**
@@ -131,7 +153,9 @@ configuration = messente_api.Configuration()
 configuration.username = 'YOUR_USERNAME'
 configuration.password = 'YOUR_PASSWORD'
 
-# create an instance of the API class
+# Defining host is optional and default to https://api.messente.com/v1
+configuration.host = "https://api.messente.com/v1"
+# Create an instance of the API class
 api_instance = messente_api.BlacklistApi(messente_api.ApiClient(configuration))
 
 try:
@@ -158,6 +182,13 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | An object containing a list of blacklisted phone numbers |  -  |
+**401** | Unauthorized |  -  |
+**0** | General error |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **is_blacklisted**
@@ -179,7 +210,9 @@ configuration = messente_api.Configuration()
 configuration.username = 'YOUR_USERNAME'
 configuration.password = 'YOUR_PASSWORD'
 
-# create an instance of the API class
+# Defining host is optional and default to https://api.messente.com/v1
+configuration.host = "https://api.messente.com/v1"
+# Create an instance of the API class
 api_instance = messente_api.BlacklistApi(messente_api.ApiClient(configuration))
 phone = '+37251000000' # str | A phone number
 
@@ -208,6 +241,14 @@ void (empty response body)
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | Phone number is in the blacklist |  -  |
+**400** | Invalid phone number provided |  -  |
+**401** | Unauthorized |  -  |
+**404** | Phone number is not in the blacklist |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

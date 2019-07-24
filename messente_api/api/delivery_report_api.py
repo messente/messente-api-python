@@ -45,18 +45,21 @@ class DeliveryReportApi(object):
         >>> thread = api.retrieve_delivery_report(omnimessage_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool
+        :param async_req bool: execute request asynchronously
         :param str omnimessage_id: UUID of the omnimessage to for which the delivery report is to be retrieved (required)
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
         :return: DeliveryReportResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async_req'):
-            return self.retrieve_delivery_report_with_http_info(omnimessage_id, **kwargs)  # noqa: E501
-        else:
-            (data) = self.retrieve_delivery_report_with_http_info(omnimessage_id, **kwargs)  # noqa: E501
-            return data
+        return self.retrieve_delivery_report_with_http_info(omnimessage_id, **kwargs)  # noqa: E501
 
     def retrieve_delivery_report_with_http_info(self, omnimessage_id, **kwargs):  # noqa: E501
         """Retrieves the delivery report for the Omnimessage  # noqa: E501
@@ -66,9 +69,18 @@ class DeliveryReportApi(object):
         >>> thread = api.retrieve_delivery_report_with_http_info(omnimessage_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool
+        :param async_req bool: execute request asynchronously
         :param str omnimessage_id: UUID of the omnimessage to for which the delivery report is to be retrieved (required)
-        :return: DeliveryReportResponse
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(DeliveryReportResponse, status_code(int), headers(HTTPHeaderDict))
                  If the method is called asynchronously,
                  returns the request thread.
         """

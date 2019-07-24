@@ -33,7 +33,9 @@ configuration = messente_api.Configuration()
 configuration.username = 'YOUR_USERNAME'
 configuration.password = 'YOUR_PASSWORD'
 
-# create an instance of the API class
+# Defining host is optional and default to https://api.messente.com/v1
+configuration.host = "https://api.messente.com/v1"
+# Create an instance of the API class
 api_instance = messente_api.ContactsApi(messente_api.ApiClient(configuration))
 group_id = '5792a02a-e5c2-422b-a0a0-0ae65d814663' # str | String in UUID format
 phone = '+37251000000' # str | A phone number
@@ -66,6 +68,16 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | An empty object |  -  |
+**400** | Invalid phone number provided |  -  |
+**401** | Unauthorized |  -  |
+**404** | Contact or group is missing |  -  |
+**409** | Contact already added to group |  -  |
+**0** | General error |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_contact**
@@ -87,7 +99,9 @@ configuration = messente_api.Configuration()
 configuration.username = 'YOUR_USERNAME'
 configuration.password = 'YOUR_PASSWORD'
 
-# create an instance of the API class
+# Defining host is optional and default to https://api.messente.com/v1
+configuration.host = "https://api.messente.com/v1"
+# Create an instance of the API class
 api_instance = messente_api.ContactsApi(messente_api.ApiClient(configuration))
 contact_fields = {"phoneNumber":"+37251000000","email":"anyone@messente.com","firstName":"Any","lastName":"One","company":"Messente","title":"Sir","custom":"Any custom","custom2":"Any custom two","custom3":"Any custom three","custom4":"Any custom four"} # ContactFields | 
 
@@ -118,6 +132,15 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | An object containing a contact object |  -  |
+**400** | Invalid phone number provided |  -  |
+**401** | Unauthorized |  -  |
+**409** | Contact with phone already created |  -  |
+**0** | General error |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_contact**
@@ -139,7 +162,9 @@ configuration = messente_api.Configuration()
 configuration.username = 'YOUR_USERNAME'
 configuration.password = 'YOUR_PASSWORD'
 
-# create an instance of the API class
+# Defining host is optional and default to https://api.messente.com/v1
+configuration.host = "https://api.messente.com/v1"
+# Create an instance of the API class
 api_instance = messente_api.ContactsApi(messente_api.ApiClient(configuration))
 phone = '+37251000000' # str | A phone number
 
@@ -169,6 +194,15 @@ void (empty response body)
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | Contact deleted |  -  |
+**400** | Invalid phone number provided |  -  |
+**401** | Unauthorized |  -  |
+**404** | Contact missing |  -  |
+**0** | General error |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **fetch_contact**
@@ -190,7 +224,9 @@ configuration = messente_api.Configuration()
 configuration.username = 'YOUR_USERNAME'
 configuration.password = 'YOUR_PASSWORD'
 
-# create an instance of the API class
+# Defining host is optional and default to https://api.messente.com/v1
+configuration.host = "https://api.messente.com/v1"
+# Create an instance of the API class
 api_instance = messente_api.ContactsApi(messente_api.ApiClient(configuration))
 phone = '+37251000000' # str | A phone number
 
@@ -221,6 +257,14 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | An object containing a contact object |  -  |
+**400** | Invalid phone number provided |  -  |
+**401** | Unauthorized |  -  |
+**404** | Contact missing |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **fetch_contact_groups**
@@ -242,7 +286,9 @@ configuration = messente_api.Configuration()
 configuration.username = 'YOUR_USERNAME'
 configuration.password = 'YOUR_PASSWORD'
 
-# create an instance of the API class
+# Defining host is optional and default to https://api.messente.com/v1
+configuration.host = "https://api.messente.com/v1"
+# Create an instance of the API class
 api_instance = messente_api.ContactsApi(messente_api.ApiClient(configuration))
 phone = '+37251000000' # str | A phone number
 
@@ -273,6 +319,14 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | An object containing a list of group objects |  -  |
+**400** | Invalid phone number provided |  -  |
+**401** | Unauthorized |  -  |
+**404** | Contact missing |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **fetch_contacts**
@@ -294,7 +348,9 @@ configuration = messente_api.Configuration()
 configuration.username = 'YOUR_USERNAME'
 configuration.password = 'YOUR_PASSWORD'
 
-# create an instance of the API class
+# Defining host is optional and default to https://api.messente.com/v1
+configuration.host = "https://api.messente.com/v1"
+# Create an instance of the API class
 api_instance = messente_api.ContactsApi(messente_api.ApiClient(configuration))
 group_ids = ['[\"5792a02a-e5c2-422b-a0a0-0ae65d814663\",\"4792a02a-e5c2-422b-a0a0-0ae65d814662\"]'] # list[str] | Optional one or many group id strings in UUID format. For example: \"/contacts?groupIds=group_id_one&groupIds=group_id_two\"  (optional)
 
@@ -325,6 +381,14 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | An object containing a list of contact objects |  -  |
+**400** | Invalid \&quot;groupIds\&quot; parameters provided |  -  |
+**401** | Unauthorized |  -  |
+**0** | General error |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **remove_contact_from_group**
@@ -346,7 +410,9 @@ configuration = messente_api.Configuration()
 configuration.username = 'YOUR_USERNAME'
 configuration.password = 'YOUR_PASSWORD'
 
-# create an instance of the API class
+# Defining host is optional and default to https://api.messente.com/v1
+configuration.host = "https://api.messente.com/v1"
+# Create an instance of the API class
 api_instance = messente_api.ContactsApi(messente_api.ApiClient(configuration))
 group_id = '5792a02a-e5c2-422b-a0a0-0ae65d814663' # str | String in UUID format
 phone = '+37251000000' # str | A phone number
@@ -378,6 +444,15 @@ void (empty response body)
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | Contact removed from group |  -  |
+**400** | Invalid phone number provided |  -  |
+**401** | Unauthorized |  -  |
+**404** | Contact or group is missing or contact is missing from group |  -  |
+**0** | General error |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_contact**
@@ -399,7 +474,9 @@ configuration = messente_api.Configuration()
 configuration.username = 'YOUR_USERNAME'
 configuration.password = 'YOUR_PASSWORD'
 
-# create an instance of the API class
+# Defining host is optional and default to https://api.messente.com/v1
+configuration.host = "https://api.messente.com/v1"
+# Create an instance of the API class
 api_instance = messente_api.ContactsApi(messente_api.ApiClient(configuration))
 phone = '+37251000000' # str | A phone number
 contact_update_fields = {"email":"anyone@messente.com","firstName":"Any","lastName":"One","company":"Messente","title":"Sir","custom":"Any custom","custom2":"Any custom two","custom3":"Any custom three","custom4":"Any custom four"} # ContactUpdateFields | 
@@ -431,6 +508,15 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | An object containing a contact object |  -  |
+**400** | Invalid phone number or empty patch body or unknown fields provided |  -  |
+**401** | Unauthorized |  -  |
+**404** | Contact missing |  -  |
+**0** | General error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

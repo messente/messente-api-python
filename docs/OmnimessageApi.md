@@ -27,7 +27,9 @@ configuration = messente_api.Configuration()
 configuration.username = 'YOUR_USERNAME'
 configuration.password = 'YOUR_PASSWORD'
 
-# create an instance of the API class
+# Defining host is optional and default to https://api.messente.com/v1
+configuration.host = "https://api.messente.com/v1"
+# Create an instance of the API class
 api_instance = messente_api.OmnimessageApi(messente_api.ApiClient(configuration))
 omnimessage_id = 'omnimessage_id_example' # str | UUID of the scheduled omnimessage to be cancelled
 
@@ -57,6 +59,12 @@ void (empty response body)
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**202** | Scheduled omnimessage successfully cancelled |  -  |
+**404** | If the omnimessage has already been sent or no such message exists |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **send_omnimessage**
@@ -78,7 +86,9 @@ configuration = messente_api.Configuration()
 configuration.username = 'YOUR_USERNAME'
 configuration.password = 'YOUR_PASSWORD'
 
-# create an instance of the API class
+# Defining host is optional and default to https://api.messente.com/v1
+configuration.host = "https://api.messente.com/v1"
+# Create an instance of the API class
 api_instance = messente_api.OmnimessageApi(messente_api.ApiClient(configuration))
 omnimessage = messente_api.Omnimessage() # Omnimessage | Omnimessage to be sent
 
@@ -108,6 +118,12 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Omnimessage success response |  -  |
+**400** | Invalid input |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

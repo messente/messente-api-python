@@ -45,18 +45,21 @@ class BlacklistApi(object):
         >>> thread = api.add_to_blacklist(number_to_blacklist, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool
+        :param async_req bool: execute request asynchronously
         :param NumberToBlacklist number_to_blacklist: Phone number to be blacklisted (required)
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async_req'):
-            return self.add_to_blacklist_with_http_info(number_to_blacklist, **kwargs)  # noqa: E501
-        else:
-            (data) = self.add_to_blacklist_with_http_info(number_to_blacklist, **kwargs)  # noqa: E501
-            return data
+        return self.add_to_blacklist_with_http_info(number_to_blacklist, **kwargs)  # noqa: E501
 
     def add_to_blacklist_with_http_info(self, number_to_blacklist, **kwargs):  # noqa: E501
         """Adds a phone number to the blacklist  # noqa: E501
@@ -66,8 +69,17 @@ class BlacklistApi(object):
         >>> thread = api.add_to_blacklist_with_http_info(number_to_blacklist, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool
+        :param async_req bool: execute request asynchronously
         :param NumberToBlacklist number_to_blacklist: Phone number to be blacklisted (required)
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -143,18 +155,21 @@ class BlacklistApi(object):
         >>> thread = api.delete_from_blacklist(phone, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool
+        :param async_req bool: execute request asynchronously
         :param str phone: A phone number (required)
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async_req'):
-            return self.delete_from_blacklist_with_http_info(phone, **kwargs)  # noqa: E501
-        else:
-            (data) = self.delete_from_blacklist_with_http_info(phone, **kwargs)  # noqa: E501
-            return data
+        return self.delete_from_blacklist_with_http_info(phone, **kwargs)  # noqa: E501
 
     def delete_from_blacklist_with_http_info(self, phone, **kwargs):  # noqa: E501
         """Deletes a phone number from the blacklist  # noqa: E501
@@ -164,8 +179,17 @@ class BlacklistApi(object):
         >>> thread = api.delete_from_blacklist_with_http_info(phone, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool
+        :param async_req bool: execute request asynchronously
         :param str phone: A phone number (required)
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -237,17 +261,20 @@ class BlacklistApi(object):
         >>> thread = api.fetch_blacklist(async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool
+        :param async_req bool: execute request asynchronously
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
         :return: FetchBlacklistSuccess
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async_req'):
-            return self.fetch_blacklist_with_http_info(**kwargs)  # noqa: E501
-        else:
-            (data) = self.fetch_blacklist_with_http_info(**kwargs)  # noqa: E501
-            return data
+        return self.fetch_blacklist_with_http_info(**kwargs)  # noqa: E501
 
     def fetch_blacklist_with_http_info(self, **kwargs):  # noqa: E501
         """Returns all blacklisted phone numbers  # noqa: E501
@@ -257,8 +284,17 @@ class BlacklistApi(object):
         >>> thread = api.fetch_blacklist_with_http_info(async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool
-        :return: FetchBlacklistSuccess
+        :param async_req bool: execute request asynchronously
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(FetchBlacklistSuccess, status_code(int), headers(HTTPHeaderDict))
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -323,18 +359,21 @@ class BlacklistApi(object):
         >>> thread = api.is_blacklisted(phone, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool
+        :param async_req bool: execute request asynchronously
         :param str phone: A phone number (required)
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async_req'):
-            return self.is_blacklisted_with_http_info(phone, **kwargs)  # noqa: E501
-        else:
-            (data) = self.is_blacklisted_with_http_info(phone, **kwargs)  # noqa: E501
-            return data
+        return self.is_blacklisted_with_http_info(phone, **kwargs)  # noqa: E501
 
     def is_blacklisted_with_http_info(self, phone, **kwargs):  # noqa: E501
         """Checks if a phone number is blacklisted  # noqa: E501
@@ -344,8 +383,17 @@ class BlacklistApi(object):
         >>> thread = api.is_blacklisted_with_http_info(phone, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool
+        :param async_req bool: execute request asynchronously
         :param str phone: A phone number (required)
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.

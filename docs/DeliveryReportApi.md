@@ -26,7 +26,9 @@ configuration = messente_api.Configuration()
 configuration.username = 'YOUR_USERNAME'
 configuration.password = 'YOUR_PASSWORD'
 
-# create an instance of the API class
+# Defining host is optional and default to https://api.messente.com/v1
+configuration.host = "https://api.messente.com/v1"
+# Create an instance of the API class
 api_instance = messente_api.DeliveryReportApi(messente_api.ApiClient(configuration))
 omnimessage_id = 'omnimessage_id_example' # str | UUID of the omnimessage to for which the delivery report is to be retrieved
 
@@ -56,6 +58,12 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Delivery report success |  -  |
+**404** | If no such message exists or you do not have access to the particular message |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
