@@ -45,18 +45,21 @@ class OmnimessageApi(object):
         >>> thread = api.cancel_scheduled_message(omnimessage_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool
+        :param async_req bool: execute request asynchronously
         :param str omnimessage_id: UUID of the scheduled omnimessage to be cancelled (required)
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async_req'):
-            return self.cancel_scheduled_message_with_http_info(omnimessage_id, **kwargs)  # noqa: E501
-        else:
-            (data) = self.cancel_scheduled_message_with_http_info(omnimessage_id, **kwargs)  # noqa: E501
-            return data
+        return self.cancel_scheduled_message_with_http_info(omnimessage_id, **kwargs)  # noqa: E501
 
     def cancel_scheduled_message_with_http_info(self, omnimessage_id, **kwargs):  # noqa: E501
         """Cancels a scheduled Omnimessage  # noqa: E501
@@ -66,8 +69,17 @@ class OmnimessageApi(object):
         >>> thread = api.cancel_scheduled_message_with_http_info(omnimessage_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool
+        :param async_req bool: execute request asynchronously
         :param str omnimessage_id: UUID of the scheduled omnimessage to be cancelled (required)
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -139,18 +151,21 @@ class OmnimessageApi(object):
         >>> thread = api.send_omnimessage(omnimessage, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool
+        :param async_req bool: execute request asynchronously
         :param Omnimessage omnimessage: Omnimessage to be sent (required)
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
         :return: OmniMessageCreateSuccessResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async_req'):
-            return self.send_omnimessage_with_http_info(omnimessage, **kwargs)  # noqa: E501
-        else:
-            (data) = self.send_omnimessage_with_http_info(omnimessage, **kwargs)  # noqa: E501
-            return data
+        return self.send_omnimessage_with_http_info(omnimessage, **kwargs)  # noqa: E501
 
     def send_omnimessage_with_http_info(self, omnimessage, **kwargs):  # noqa: E501
         """Sends an Omnimessage  # noqa: E501
@@ -160,9 +175,18 @@ class OmnimessageApi(object):
         >>> thread = api.send_omnimessage_with_http_info(omnimessage, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool
+        :param async_req bool: execute request asynchronously
         :param Omnimessage omnimessage: Omnimessage to be sent (required)
-        :return: OmniMessageCreateSuccessResponse
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(OmniMessageCreateSuccessResponse, status_code(int), headers(HTTPHeaderDict))
                  If the method is called asynchronously,
                  returns the request thread.
         """

@@ -45,18 +45,21 @@ class GroupsApi(object):
         >>> thread = api.create_group(group_name, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool
+        :param async_req bool: execute request asynchronously
         :param GroupName group_name: (required)
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
         :return: GroupEnvelope
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async_req'):
-            return self.create_group_with_http_info(group_name, **kwargs)  # noqa: E501
-        else:
-            (data) = self.create_group_with_http_info(group_name, **kwargs)  # noqa: E501
-            return data
+        return self.create_group_with_http_info(group_name, **kwargs)  # noqa: E501
 
     def create_group_with_http_info(self, group_name, **kwargs):  # noqa: E501
         """Creates a new group with the provided name  # noqa: E501
@@ -66,9 +69,18 @@ class GroupsApi(object):
         >>> thread = api.create_group_with_http_info(group_name, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool
+        :param async_req bool: execute request asynchronously
         :param GroupName group_name: (required)
-        :return: GroupEnvelope
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(GroupEnvelope, status_code(int), headers(HTTPHeaderDict))
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -143,18 +155,21 @@ class GroupsApi(object):
         >>> thread = api.delete_group(group_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool
+        :param async_req bool: execute request asynchronously
         :param str group_id: String in UUID format (required)
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async_req'):
-            return self.delete_group_with_http_info(group_id, **kwargs)  # noqa: E501
-        else:
-            (data) = self.delete_group_with_http_info(group_id, **kwargs)  # noqa: E501
-            return data
+        return self.delete_group_with_http_info(group_id, **kwargs)  # noqa: E501
 
     def delete_group_with_http_info(self, group_id, **kwargs):  # noqa: E501
         """Deletes a group  # noqa: E501
@@ -164,8 +179,17 @@ class GroupsApi(object):
         >>> thread = api.delete_group_with_http_info(group_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool
+        :param async_req bool: execute request asynchronously
         :param str group_id: String in UUID format (required)
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -237,18 +261,21 @@ class GroupsApi(object):
         >>> thread = api.fetch_group(group_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool
+        :param async_req bool: execute request asynchronously
         :param str group_id: String in UUID format (required)
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
         :return: GroupEnvelope
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async_req'):
-            return self.fetch_group_with_http_info(group_id, **kwargs)  # noqa: E501
-        else:
-            (data) = self.fetch_group_with_http_info(group_id, **kwargs)  # noqa: E501
-            return data
+        return self.fetch_group_with_http_info(group_id, **kwargs)  # noqa: E501
 
     def fetch_group_with_http_info(self, group_id, **kwargs):  # noqa: E501
         """Lists a group  # noqa: E501
@@ -258,9 +285,18 @@ class GroupsApi(object):
         >>> thread = api.fetch_group_with_http_info(group_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool
+        :param async_req bool: execute request asynchronously
         :param str group_id: String in UUID format (required)
-        :return: GroupEnvelope
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(GroupEnvelope, status_code(int), headers(HTTPHeaderDict))
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -331,17 +367,20 @@ class GroupsApi(object):
         >>> thread = api.fetch_groups(async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool
+        :param async_req bool: execute request asynchronously
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
         :return: GroupListEnvelope
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async_req'):
-            return self.fetch_groups_with_http_info(**kwargs)  # noqa: E501
-        else:
-            (data) = self.fetch_groups_with_http_info(**kwargs)  # noqa: E501
-            return data
+        return self.fetch_groups_with_http_info(**kwargs)  # noqa: E501
 
     def fetch_groups_with_http_info(self, **kwargs):  # noqa: E501
         """Returns all groups  # noqa: E501
@@ -351,8 +390,17 @@ class GroupsApi(object):
         >>> thread = api.fetch_groups_with_http_info(async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool
-        :return: GroupListEnvelope
+        :param async_req bool: execute request asynchronously
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(GroupListEnvelope, status_code(int), headers(HTTPHeaderDict))
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -417,19 +465,22 @@ class GroupsApi(object):
         >>> thread = api.update_group(group_id, group_name, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool
+        :param async_req bool: execute request asynchronously
         :param str group_id: String in UUID format (required)
         :param GroupName group_name: (required)
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
         :return: GroupEnvelope
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async_req'):
-            return self.update_group_with_http_info(group_id, group_name, **kwargs)  # noqa: E501
-        else:
-            (data) = self.update_group_with_http_info(group_id, group_name, **kwargs)  # noqa: E501
-            return data
+        return self.update_group_with_http_info(group_id, group_name, **kwargs)  # noqa: E501
 
     def update_group_with_http_info(self, group_id, group_name, **kwargs):  # noqa: E501
         """Updates a group with the provided name  # noqa: E501
@@ -439,10 +490,19 @@ class GroupsApi(object):
         >>> thread = api.update_group_with_http_info(group_id, group_name, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool
+        :param async_req bool: execute request asynchronously
         :param str group_id: String in UUID format (required)
         :param GroupName group_name: (required)
-        :return: GroupEnvelope
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(GroupEnvelope, status_code(int), headers(HTTPHeaderDict))
                  If the method is called asynchronously,
                  returns the request thread.
         """

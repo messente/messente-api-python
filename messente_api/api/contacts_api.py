@@ -45,19 +45,22 @@ class ContactsApi(object):
         >>> thread = api.add_contact_to_group(group_id, phone, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool
+        :param async_req bool: execute request asynchronously
         :param str group_id: String in UUID format (required)
         :param str phone: A phone number (required)
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
         :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async_req'):
-            return self.add_contact_to_group_with_http_info(group_id, phone, **kwargs)  # noqa: E501
-        else:
-            (data) = self.add_contact_to_group_with_http_info(group_id, phone, **kwargs)  # noqa: E501
-            return data
+        return self.add_contact_to_group_with_http_info(group_id, phone, **kwargs)  # noqa: E501
 
     def add_contact_to_group_with_http_info(self, group_id, phone, **kwargs):  # noqa: E501
         """Adds a contact to a group  # noqa: E501
@@ -67,10 +70,19 @@ class ContactsApi(object):
         >>> thread = api.add_contact_to_group_with_http_info(group_id, phone, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool
+        :param async_req bool: execute request asynchronously
         :param str group_id: String in UUID format (required)
         :param str phone: A phone number (required)
-        :return: object
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(object, status_code(int), headers(HTTPHeaderDict))
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -147,18 +159,21 @@ class ContactsApi(object):
         >>> thread = api.create_contact(contact_fields, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool
+        :param async_req bool: execute request asynchronously
         :param ContactFields contact_fields: (required)
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
         :return: ContactEnvelope
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async_req'):
-            return self.create_contact_with_http_info(contact_fields, **kwargs)  # noqa: E501
-        else:
-            (data) = self.create_contact_with_http_info(contact_fields, **kwargs)  # noqa: E501
-            return data
+        return self.create_contact_with_http_info(contact_fields, **kwargs)  # noqa: E501
 
     def create_contact_with_http_info(self, contact_fields, **kwargs):  # noqa: E501
         """Creates a new contact  # noqa: E501
@@ -168,9 +183,18 @@ class ContactsApi(object):
         >>> thread = api.create_contact_with_http_info(contact_fields, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool
+        :param async_req bool: execute request asynchronously
         :param ContactFields contact_fields: (required)
-        :return: ContactEnvelope
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(ContactEnvelope, status_code(int), headers(HTTPHeaderDict))
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -245,18 +269,21 @@ class ContactsApi(object):
         >>> thread = api.delete_contact(phone, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool
+        :param async_req bool: execute request asynchronously
         :param str phone: A phone number (required)
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async_req'):
-            return self.delete_contact_with_http_info(phone, **kwargs)  # noqa: E501
-        else:
-            (data) = self.delete_contact_with_http_info(phone, **kwargs)  # noqa: E501
-            return data
+        return self.delete_contact_with_http_info(phone, **kwargs)  # noqa: E501
 
     def delete_contact_with_http_info(self, phone, **kwargs):  # noqa: E501
         """Deletes a contact  # noqa: E501
@@ -266,8 +293,17 @@ class ContactsApi(object):
         >>> thread = api.delete_contact_with_http_info(phone, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool
+        :param async_req bool: execute request asynchronously
         :param str phone: A phone number (required)
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -339,18 +375,21 @@ class ContactsApi(object):
         >>> thread = api.fetch_contact(phone, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool
+        :param async_req bool: execute request asynchronously
         :param str phone: A phone number (required)
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
         :return: ContactEnvelope
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async_req'):
-            return self.fetch_contact_with_http_info(phone, **kwargs)  # noqa: E501
-        else:
-            (data) = self.fetch_contact_with_http_info(phone, **kwargs)  # noqa: E501
-            return data
+        return self.fetch_contact_with_http_info(phone, **kwargs)  # noqa: E501
 
     def fetch_contact_with_http_info(self, phone, **kwargs):  # noqa: E501
         """Lists a contact  # noqa: E501
@@ -360,9 +399,18 @@ class ContactsApi(object):
         >>> thread = api.fetch_contact_with_http_info(phone, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool
+        :param async_req bool: execute request asynchronously
         :param str phone: A phone number (required)
-        :return: ContactEnvelope
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(ContactEnvelope, status_code(int), headers(HTTPHeaderDict))
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -433,18 +481,21 @@ class ContactsApi(object):
         >>> thread = api.fetch_contact_groups(phone, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool
+        :param async_req bool: execute request asynchronously
         :param str phone: A phone number (required)
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
         :return: GroupListEnvelope
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async_req'):
-            return self.fetch_contact_groups_with_http_info(phone, **kwargs)  # noqa: E501
-        else:
-            (data) = self.fetch_contact_groups_with_http_info(phone, **kwargs)  # noqa: E501
-            return data
+        return self.fetch_contact_groups_with_http_info(phone, **kwargs)  # noqa: E501
 
     def fetch_contact_groups_with_http_info(self, phone, **kwargs):  # noqa: E501
         """Lists groups of a contact  # noqa: E501
@@ -454,9 +505,18 @@ class ContactsApi(object):
         >>> thread = api.fetch_contact_groups_with_http_info(phone, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool
+        :param async_req bool: execute request asynchronously
         :param str phone: A phone number (required)
-        :return: GroupListEnvelope
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(GroupListEnvelope, status_code(int), headers(HTTPHeaderDict))
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -527,18 +587,21 @@ class ContactsApi(object):
         >>> thread = api.fetch_contacts(async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool
+        :param async_req bool: execute request asynchronously
         :param list[str] group_ids: Optional one or many group id strings in UUID format. For example: \"/contacts?groupIds=group_id_one&groupIds=group_id_two\" 
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
         :return: ContactListEnvelope
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async_req'):
-            return self.fetch_contacts_with_http_info(**kwargs)  # noqa: E501
-        else:
-            (data) = self.fetch_contacts_with_http_info(**kwargs)  # noqa: E501
-            return data
+        return self.fetch_contacts_with_http_info(**kwargs)  # noqa: E501
 
     def fetch_contacts_with_http_info(self, **kwargs):  # noqa: E501
         """Returns all contacts  # noqa: E501
@@ -548,9 +611,18 @@ class ContactsApi(object):
         >>> thread = api.fetch_contacts_with_http_info(async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool
+        :param async_req bool: execute request asynchronously
         :param list[str] group_ids: Optional one or many group id strings in UUID format. For example: \"/contacts?groupIds=group_id_one&groupIds=group_id_two\" 
-        :return: ContactListEnvelope
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(ContactListEnvelope, status_code(int), headers(HTTPHeaderDict))
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -618,19 +690,22 @@ class ContactsApi(object):
         >>> thread = api.remove_contact_from_group(group_id, phone, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool
+        :param async_req bool: execute request asynchronously
         :param str group_id: String in UUID format (required)
         :param str phone: A phone number (required)
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async_req'):
-            return self.remove_contact_from_group_with_http_info(group_id, phone, **kwargs)  # noqa: E501
-        else:
-            (data) = self.remove_contact_from_group_with_http_info(group_id, phone, **kwargs)  # noqa: E501
-            return data
+        return self.remove_contact_from_group_with_http_info(group_id, phone, **kwargs)  # noqa: E501
 
     def remove_contact_from_group_with_http_info(self, group_id, phone, **kwargs):  # noqa: E501
         """Removes a contact from a group  # noqa: E501
@@ -640,9 +715,18 @@ class ContactsApi(object):
         >>> thread = api.remove_contact_from_group_with_http_info(group_id, phone, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool
+        :param async_req bool: execute request asynchronously
         :param str group_id: String in UUID format (required)
         :param str phone: A phone number (required)
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -720,19 +804,22 @@ class ContactsApi(object):
         >>> thread = api.update_contact(phone, contact_update_fields, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool
+        :param async_req bool: execute request asynchronously
         :param str phone: A phone number (required)
         :param ContactUpdateFields contact_update_fields: (required)
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
         :return: ContactEnvelope
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async_req'):
-            return self.update_contact_with_http_info(phone, contact_update_fields, **kwargs)  # noqa: E501
-        else:
-            (data) = self.update_contact_with_http_info(phone, contact_update_fields, **kwargs)  # noqa: E501
-            return data
+        return self.update_contact_with_http_info(phone, contact_update_fields, **kwargs)  # noqa: E501
 
     def update_contact_with_http_info(self, phone, contact_update_fields, **kwargs):  # noqa: E501
         """Updates a contact  # noqa: E501
@@ -742,10 +829,19 @@ class ContactsApi(object):
         >>> thread = api.update_contact_with_http_info(phone, contact_update_fields, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool
+        :param async_req bool: execute request asynchronously
         :param str phone: A phone number (required)
         :param ContactUpdateFields contact_update_fields: (required)
-        :return: ContactEnvelope
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(ContactEnvelope, status_code(int), headers(HTTPHeaderDict))
                  If the method is called asynchronously,
                  returns the request thread.
         """

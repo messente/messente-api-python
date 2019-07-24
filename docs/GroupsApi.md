@@ -30,9 +30,11 @@ configuration = messente_api.Configuration()
 configuration.username = 'YOUR_USERNAME'
 configuration.password = 'YOUR_PASSWORD'
 
-# create an instance of the API class
+# Defining host is optional and default to https://api.messente.com/v1
+configuration.host = "https://api.messente.com/v1"
+# Create an instance of the API class
 api_instance = messente_api.GroupsApi(messente_api.ApiClient(configuration))
-group_name = messente_api.GroupName() # GroupName | 
+group_name = {"name":"Any group name"} # GroupName | 
 
 try:
     # Creates a new group with the provided name
@@ -61,6 +63,14 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | An object containing a group object |  -  |
+**400** | Name is invalid string or shorter than length 1 |  -  |
+**401** | Unauthorized |  -  |
+**0** | General error |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_group**
@@ -82,9 +92,11 @@ configuration = messente_api.Configuration()
 configuration.username = 'YOUR_USERNAME'
 configuration.password = 'YOUR_PASSWORD'
 
-# create an instance of the API class
+# Defining host is optional and default to https://api.messente.com/v1
+configuration.host = "https://api.messente.com/v1"
+# Create an instance of the API class
 api_instance = messente_api.GroupsApi(messente_api.ApiClient(configuration))
-group_id = 'group_id_example' # str | String in UUID format
+group_id = '5792a02a-e5c2-422b-a0a0-0ae65d814663' # str | String in UUID format
 
 try:
     # Deletes a group
@@ -112,6 +124,14 @@ void (empty response body)
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | Group deleted |  -  |
+**401** | Unauthorized |  -  |
+**404** | Group missing |  -  |
+**0** | General error |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **fetch_group**
@@ -133,9 +153,11 @@ configuration = messente_api.Configuration()
 configuration.username = 'YOUR_USERNAME'
 configuration.password = 'YOUR_PASSWORD'
 
-# create an instance of the API class
+# Defining host is optional and default to https://api.messente.com/v1
+configuration.host = "https://api.messente.com/v1"
+# Create an instance of the API class
 api_instance = messente_api.GroupsApi(messente_api.ApiClient(configuration))
-group_id = 'group_id_example' # str | String in UUID format
+group_id = '5792a02a-e5c2-422b-a0a0-0ae65d814663' # str | String in UUID format
 
 try:
     # Lists a group
@@ -164,6 +186,13 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | An object containing a group object |  -  |
+**401** | Unauthorized |  -  |
+**404** | Missing group |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **fetch_groups**
@@ -185,7 +214,9 @@ configuration = messente_api.Configuration()
 configuration.username = 'YOUR_USERNAME'
 configuration.password = 'YOUR_PASSWORD'
 
-# create an instance of the API class
+# Defining host is optional and default to https://api.messente.com/v1
+configuration.host = "https://api.messente.com/v1"
+# Create an instance of the API class
 api_instance = messente_api.GroupsApi(messente_api.ApiClient(configuration))
 
 try:
@@ -212,6 +243,13 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | An object containing a list of group objects |  -  |
+**401** | Unauthorized |  -  |
+**0** | General error |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_group**
@@ -233,10 +271,12 @@ configuration = messente_api.Configuration()
 configuration.username = 'YOUR_USERNAME'
 configuration.password = 'YOUR_PASSWORD'
 
-# create an instance of the API class
+# Defining host is optional and default to https://api.messente.com/v1
+configuration.host = "https://api.messente.com/v1"
+# Create an instance of the API class
 api_instance = messente_api.GroupsApi(messente_api.ApiClient(configuration))
-group_id = 'group_id_example' # str | String in UUID format
-group_name = messente_api.GroupName() # GroupName | 
+group_id = '5792a02a-e5c2-422b-a0a0-0ae65d814663' # str | String in UUID format
+group_name = {"name":"Any group name"} # GroupName | 
 
 try:
     # Updates a group with the provided name
@@ -265,6 +305,15 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | An object containing a group object |  -  |
+**400** | Name is invalid string or shorter than length 1 |  -  |
+**401** | Unauthorized |  -  |
+**404** | Group missing |  -  |
+**0** | General error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
