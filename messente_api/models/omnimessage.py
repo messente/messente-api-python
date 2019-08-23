@@ -3,7 +3,7 @@
 """
     Messente API
 
-    [Messente](https://messente.com) is a global provider of messaging and user verification services. Use Messente API library to send and receive SMS, Viber and WhatsApp messages, blacklist phone numbers to make sure you're not sending any unwanted messages, manage contacts and groups.  Messente builds [tools](https://messente.com/documentation) to help organizations connect their services to people anywhere in the world.  # noqa: E501
+    [Messente](https://messente.com) is a global provider of messaging and user verification services. Use Messente API library to send and receive SMS, Viber, WhatsApp and Telegram messages, blacklist phone numbers to make sure you're not sending any unwanted messages, manage contacts and groups.  Messente builds [tools](https://messente.com/documentation) to help organizations connect their services to people anywhere in the world.  # noqa: E501
 
     The version of the OpenAPI document: 1.0.2
     Contact: messente@messente.com
@@ -33,7 +33,7 @@ class Omnimessage(object):
     """
     openapi_types = {
         'to': 'str',
-        'messages': 'list[OneOfViberSMSWhatsApp]',
+        'messages': 'list[OneOfViberSMSWhatsAppTelegram]',
         'dlr_url': 'str',
         'text_store': 'TextStore',
         'time_to_send': 'datetime'
@@ -98,7 +98,7 @@ class Omnimessage(object):
         An array of messages  # noqa: E501
 
         :return: The messages of this Omnimessage.  # noqa: E501
-        :rtype: list[OneOfViberSMSWhatsApp]
+        :rtype: list[OneOfViberSMSWhatsAppTelegram]
         """
         return self._messages
 
@@ -109,7 +109,7 @@ class Omnimessage(object):
         An array of messages  # noqa: E501
 
         :param messages: The messages of this Omnimessage.  # noqa: E501
-        :type: list[OneOfViberSMSWhatsApp]
+        :type: list[OneOfViberSMSWhatsAppTelegram]
         """
         if messages is None:
             raise ValueError("Invalid value for `messages`, must not be `None`")  # noqa: E501
