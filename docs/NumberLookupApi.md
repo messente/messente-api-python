@@ -4,13 +4,13 @@ All URIs are relative to *https://api.messente.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**sync_number_lookup**](NumberLookupApi.md#sync_number_lookup) | **POST** /hlr/sync | Requests info about a phone number
+[**sync_number_lookup**](NumberLookupApi.md#sync_number_lookup) | **POST** /hlr/sync | Requests info about phone numbers
 
 
 # **sync_number_lookup**
 > SyncNumberLookupSuccess sync_number_lookup(sync_number_lookup)
 
-Requests info about a phone number
+Requests info about phone numbers
 
 ### Example
 
@@ -30,10 +30,10 @@ configuration.password = 'YOUR_PASSWORD'
 configuration.host = "https://api.messente.com/v1"
 # Create an instance of the API class
 api_instance = messente_api.NumberLookupApi(messente_api.ApiClient(configuration))
-sync_number_lookup = {"numbers":["+37251000000","+37251000001"]} # SyncNumberLookup | Numbers to lookup
+sync_number_lookup = {"numbers":["+37251000000","+37251000001"]} # SyncNumberLookup | Numbers for lookup
 
 try:
-    # Requests info about a phone number
+    # Requests info about phone numbers
     api_response = api_instance.sync_number_lookup(sync_number_lookup)
     pprint(api_response)
 except ApiException as e:
@@ -44,7 +44,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **sync_number_lookup** | [**SyncNumberLookup**](SyncNumberLookup.md)| Numbers to lookup | 
+ **sync_number_lookup** | [**SyncNumberLookup**](SyncNumberLookup.md)| Numbers for lookup | 
 
 ### Return type
 

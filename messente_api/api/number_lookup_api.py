@@ -38,7 +38,7 @@ class NumberLookupApi(object):
         self.api_client = api_client
 
     def sync_number_lookup(self, sync_number_lookup, **kwargs):  # noqa: E501
-        """Requests info about a phone number  # noqa: E501
+        """Requests info about phone numbers  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -46,7 +46,7 @@ class NumberLookupApi(object):
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
-        :param SyncNumberLookup sync_number_lookup: Numbers to lookup (required)
+        :param SyncNumberLookup sync_number_lookup: Numbers for lookup (required)
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -62,7 +62,7 @@ class NumberLookupApi(object):
         return self.sync_number_lookup_with_http_info(sync_number_lookup, **kwargs)  # noqa: E501
 
     def sync_number_lookup_with_http_info(self, sync_number_lookup, **kwargs):  # noqa: E501
-        """Requests info about a phone number  # noqa: E501
+        """Requests info about phone numbers  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -70,7 +70,7 @@ class NumberLookupApi(object):
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
-        :param SyncNumberLookup sync_number_lookup: Numbers to lookup (required)
+        :param SyncNumberLookup sync_number_lookup: Numbers for lookup (required)
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
