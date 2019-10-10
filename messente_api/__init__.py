@@ -5,7 +5,7 @@
 """
     Messente API
 
-    [Messente](https://messente.com) is a global provider of messaging and user verification services. Use Messente API library to send and receive SMS, Viber, WhatsApp and Telegram messages, blacklist phone numbers to make sure you're not sending any unwanted messages, manage contacts and groups.  Messente builds [tools](https://messente.com/documentation) to help organizations connect their services to people anywhere in the world.  # noqa: E501
+    [Messente](https://messente.com) is a global provider of messaging and user verification services.  * Send and receive SMS, Viber, WhatsApp and Telegram messages. * Manage contacts and groups. * Fetch detailed info about phone numbers. * Blacklist phone numbers to make sure you're not sending any unwanted messages.  Messente builds [tools](https://messente.com/documentation) to help organizations connect their services to people anywhere in the world.  # noqa: E501
 
     The version of the OpenAPI document: 1.1.1
     Contact: messente@messente.com
@@ -22,6 +22,7 @@ from messente_api.api.blacklist_api import BlacklistApi
 from messente_api.api.contacts_api import ContactsApi
 from messente_api.api.delivery_report_api import DeliveryReportApi
 from messente_api.api.groups_api import GroupsApi
+from messente_api.api.number_lookup_api import NumberLookupApi
 from messente_api.api.omnimessage_api import OmnimessageApi
 
 # import ApiClient
@@ -43,8 +44,11 @@ from messente_api.models.delivery_result import DeliveryResult
 from messente_api.models.error_code_omnichannel import ErrorCodeOmnichannel
 from messente_api.models.error_code_omnichannel_machine import ErrorCodeOmnichannelMachine
 from messente_api.models.error_code_phonebook import ErrorCodePhonebook
+from messente_api.models.error_item_number_lookup import ErrorItemNumberLookup
+from messente_api.models.error_item_number_lookup_error import ErrorItemNumberLookupError
 from messente_api.models.error_item_omnichannel import ErrorItemOmnichannel
 from messente_api.models.error_item_phonebook import ErrorItemPhonebook
+from messente_api.models.error_number_lookup import ErrorNumberLookup
 from messente_api.models.error_omnichannel import ErrorOmnichannel
 from messente_api.models.error_phonebook import ErrorPhonebook
 from messente_api.models.error_title_omnichannel import ErrorTitleOmnichannel
@@ -55,11 +59,15 @@ from messente_api.models.group_list_envelope import GroupListEnvelope
 from messente_api.models.group_name import GroupName
 from messente_api.models.group_response_fields import GroupResponseFields
 from messente_api.models.message_result import MessageResult
+from messente_api.models.mobile_network import MobileNetwork
 from messente_api.models.number_to_blacklist import NumberToBlacklist
 from messente_api.models.omni_message_create_success_response import OmniMessageCreateSuccessResponse
 from messente_api.models.omnimessage import Omnimessage
 from messente_api.models.sms import SMS
 from messente_api.models.status import Status
+from messente_api.models.sync_number_lookup import SyncNumberLookup
+from messente_api.models.sync_number_lookup_result import SyncNumberLookupResult
+from messente_api.models.sync_number_lookup_success import SyncNumberLookupSuccess
 from messente_api.models.telegram import Telegram
 from messente_api.models.text_store import TextStore
 from messente_api.models.viber import Viber
