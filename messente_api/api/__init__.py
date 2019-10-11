@@ -9,3 +9,4 @@ from messente_api.api.delivery_report_api import DeliveryReportApi
 from messente_api.api.groups_api import GroupsApi
 from messente_api.api.number_lookup_api import NumberLookupApi
 from messente_api.api.omnimessage_api import OmnimessageApi
+from messente_api.api.statistics_api import StatisticsApi
