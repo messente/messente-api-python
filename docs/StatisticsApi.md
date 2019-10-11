@@ -4,13 +4,13 @@ All URIs are relative to *https://api.messente.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_statistics_report**](StatisticsApi.md#create_statistics_report) | **POST** /statistics/reports | Requests statistcs reports for each country
+[**create_statistics_report**](StatisticsApi.md#create_statistics_report) | **POST** /statistics/reports | Requests statistics reports for each country
 
 
 # **create_statistics_report**
 > StatisticsReportSuccess create_statistics_report(statistics_report_settings)
 
-Requests statistcs reports for each country
+Requests statistics reports for each country
 
 ### Example
 
@@ -33,7 +33,7 @@ api_instance = messente_api.StatisticsApi(messente_api.ApiClient(configuration))
 statistics_report_settings = {"start_date":"2017-01-01","end_date":"2019-06-20","message_types":["sms"]} # StatisticsReportSettings | Settings for statistics report
 
 try:
-    # Requests statistcs reports for each country
+    # Requests statistics reports for each country
     api_response = api_instance.create_statistics_report(statistics_report_settings)
     pprint(api_response)
 except ApiException as e:

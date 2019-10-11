@@ -38,7 +38,7 @@ class StatisticsApi(object):
         self.api_client = api_client
 
     def create_statistics_report(self, statistics_report_settings, **kwargs):  # noqa: E501
-        """Requests statistcs reports for each country  # noqa: E501
+        """Requests statistics reports for each country  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -62,7 +62,7 @@ class StatisticsApi(object):
         return self.create_statistics_report_with_http_info(statistics_report_settings, **kwargs)  # noqa: E501
 
     def create_statistics_report_with_http_info(self, statistics_report_settings, **kwargs):  # noqa: E501
-        """Requests statistcs reports for each country  # noqa: E501
+        """Requests statistics reports for each country  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
