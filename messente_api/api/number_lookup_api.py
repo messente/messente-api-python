@@ -37,16 +37,16 @@ class NumberLookupApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def sync_number_lookup(self, sync_number_lookup, **kwargs):  # noqa: E501
+    def fetch_info(self, numbers_to_investigate, **kwargs):  # noqa: E501
         """Requests info about phone numbers  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.sync_number_lookup(sync_number_lookup, async_req=True)
+        >>> thread = api.fetch_info(numbers_to_investigate, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
-        :param SyncNumberLookup sync_number_lookup: Numbers for lookup (required)
+        :param NumbersToInvestigate numbers_to_investigate: Numbers for lookup (required)
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -59,18 +59,18 @@ class NumberLookupApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        return self.sync_number_lookup_with_http_info(sync_number_lookup, **kwargs)  # noqa: E501
+        return self.fetch_info_with_http_info(numbers_to_investigate, **kwargs)  # noqa: E501
 
-    def sync_number_lookup_with_http_info(self, sync_number_lookup, **kwargs):  # noqa: E501
+    def fetch_info_with_http_info(self, numbers_to_investigate, **kwargs):  # noqa: E501
         """Requests info about phone numbers  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.sync_number_lookup_with_http_info(sync_number_lookup, async_req=True)
+        >>> thread = api.fetch_info_with_http_info(numbers_to_investigate, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
-        :param SyncNumberLookup sync_number_lookup: Numbers for lookup (required)
+        :param NumbersToInvestigate numbers_to_investigate: Numbers for lookup (required)
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -87,7 +87,7 @@ class NumberLookupApi(object):
 
         local_var_params = locals()
 
-        all_params = ['sync_number_lookup']  # noqa: E501
+        all_params = ['numbers_to_investigate']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -97,14 +97,14 @@ class NumberLookupApi(object):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method sync_number_lookup" % key
+                    " to method fetch_info" % key
                 )
             local_var_params[key] = val
         del local_var_params['kwargs']
-        # verify the required parameter 'sync_number_lookup' is set
-        if ('sync_number_lookup' not in local_var_params or
-                local_var_params['sync_number_lookup'] is None):
-            raise ApiValueError("Missing the required parameter `sync_number_lookup` when calling `sync_number_lookup`")  # noqa: E501
+        # verify the required parameter 'numbers_to_investigate' is set
+        if ('numbers_to_investigate' not in local_var_params or
+                local_var_params['numbers_to_investigate'] is None):
+            raise ApiValueError("Missing the required parameter `numbers_to_investigate` when calling `fetch_info`")  # noqa: E501
 
         collection_formats = {}
 
@@ -118,8 +118,8 @@ class NumberLookupApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'sync_number_lookup' in local_var_params:
-            body_params = local_var_params['sync_number_lookup']
+        if 'numbers_to_investigate' in local_var_params:
+            body_params = local_var_params['numbers_to_investigate']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501

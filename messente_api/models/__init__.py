@@ -45,6 +45,7 @@ from messente_api.models.group_response_fields import GroupResponseFields
 from messente_api.models.message_result import MessageResult
 from messente_api.models.mobile_network import MobileNetwork
 from messente_api.models.number_to_blacklist import NumberToBlacklist
+from messente_api.models.numbers_to_investigate import NumbersToInvestigate
 from messente_api.models.omni_message_create_success_response import OmniMessageCreateSuccessResponse
 from messente_api.models.omnimessage import Omnimessage
 from messente_api.models.sms import SMS
@@ -52,7 +53,6 @@ from messente_api.models.statistics_report import StatisticsReport
 from messente_api.models.statistics_report_settings import StatisticsReportSettings
 from messente_api.models.statistics_report_success import StatisticsReportSuccess
 from messente_api.models.status import Status
-from messente_api.models.sync_number_lookup import SyncNumberLookup
 from messente_api.models.sync_number_lookup_result import SyncNumberLookupResult
 from messente_api.models.sync_number_lookup_success import SyncNumberLookupSuccess
 from messente_api.models.telegram import Telegram
