@@ -1,5 +1,6 @@
 # DeliveryResult
 
+A delivery report
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

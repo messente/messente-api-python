@@ -19,7 +19,7 @@ import re  # noqa: F401
 import six
 
 from messente_api.api_client import ApiClient
-from messente_api.exceptions import (
+from messente_api.exceptions import (  # noqa: F401
     ApiTypeError,
     ApiValueError
 )
@@ -87,11 +87,17 @@ class BlacklistApi(object):
 
         local_var_params = locals()
 
-        all_params = ['number_to_blacklist']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            'number_to_blacklist'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
@@ -102,8 +108,8 @@ class BlacklistApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'number_to_blacklist' is set
-        if ('number_to_blacklist' not in local_var_params or
-                local_var_params['number_to_blacklist'] is None):
+        if self.api_client.client_side_validation and ('number_to_blacklist' not in local_var_params or  # noqa: E501
+                                                        local_var_params['number_to_blacklist'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `number_to_blacklist` when calling `add_to_blacklist`")  # noqa: E501
 
         collection_formats = {}
@@ -197,11 +203,17 @@ class BlacklistApi(object):
 
         local_var_params = locals()
 
-        all_params = ['phone']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            'phone'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
@@ -212,8 +224,8 @@ class BlacklistApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'phone' is set
-        if ('phone' not in local_var_params or
-                local_var_params['phone'] is None):
+        if self.api_client.client_side_validation and ('phone' not in local_var_params or  # noqa: E501
+                                                        local_var_params['phone'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `phone` when calling `delete_from_blacklist`")  # noqa: E501
 
         collection_formats = {}
@@ -301,11 +313,16 @@ class BlacklistApi(object):
 
         local_var_params = locals()
 
-        all_params = []  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
@@ -401,11 +418,17 @@ class BlacklistApi(object):
 
         local_var_params = locals()
 
-        all_params = ['phone']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            'phone'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
@@ -416,8 +439,8 @@ class BlacklistApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'phone' is set
-        if ('phone' not in local_var_params or
-                local_var_params['phone'] is None):
+        if self.api_client.client_side_validation and ('phone' not in local_var_params or  # noqa: E501
+                                                        local_var_params['phone'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `phone` when calling `is_blacklisted`")  # noqa: E501
 
         collection_formats = {}

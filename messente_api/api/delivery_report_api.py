@@ -19,7 +19,7 @@ import re  # noqa: F401
 import six
 
 from messente_api.api_client import ApiClient
-from messente_api.exceptions import (
+from messente_api.exceptions import (  # noqa: F401
     ApiTypeError,
     ApiValueError
 )
@@ -87,11 +87,17 @@ class DeliveryReportApi(object):
 
         local_var_params = locals()
 
-        all_params = ['omnimessage_id']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            'omnimessage_id'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
@@ -102,8 +108,8 @@ class DeliveryReportApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'omnimessage_id' is set
-        if ('omnimessage_id' not in local_var_params or
-                local_var_params['omnimessage_id'] is None):
+        if self.api_client.client_side_validation and ('omnimessage_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['omnimessage_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `omnimessage_id` when calling `retrieve_delivery_report`")  # noqa: E501
 
         collection_formats = {}

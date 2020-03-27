@@ -1,5 +1,6 @@
 # SyncNumberLookupSuccess
 
+A container for number lookup response
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

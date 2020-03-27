@@ -1,5 +1,6 @@
 # StatisticsReportSettings
 
+A container for statistics report settings
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

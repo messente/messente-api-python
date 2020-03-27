@@ -1,5 +1,6 @@
 # Omnimessage
 
+An omnimessage
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

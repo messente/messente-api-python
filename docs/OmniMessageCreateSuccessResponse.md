@@ -1,5 +1,6 @@
 # OmniMessageCreateSuccessResponse
 
+A container for a response received after successfully created omnimessage
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
