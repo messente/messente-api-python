@@ -19,7 +19,7 @@ import re  # noqa: F401
 import six
 
 from messente_api.api_client import ApiClient
-from messente_api.exceptions import (
+from messente_api.exceptions import (  # noqa: F401
     ApiTypeError,
     ApiValueError
 )
@@ -89,11 +89,18 @@ class ContactsApi(object):
 
         local_var_params = locals()
 
-        all_params = ['group_id', 'phone']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            'group_id',
+            'phone'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
@@ -104,12 +111,12 @@ class ContactsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'group_id' is set
-        if ('group_id' not in local_var_params or
-                local_var_params['group_id'] is None):
+        if self.api_client.client_side_validation and ('group_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['group_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `group_id` when calling `add_contact_to_group`")  # noqa: E501
         # verify the required parameter 'phone' is set
-        if ('phone' not in local_var_params or
-                local_var_params['phone'] is None):
+        if self.api_client.client_side_validation and ('phone' not in local_var_params or  # noqa: E501
+                                                        local_var_params['phone'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `phone` when calling `add_contact_to_group`")  # noqa: E501
 
         collection_formats = {}
@@ -201,11 +208,17 @@ class ContactsApi(object):
 
         local_var_params = locals()
 
-        all_params = ['contact_fields']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            'contact_fields'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
@@ -216,8 +229,8 @@ class ContactsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'contact_fields' is set
-        if ('contact_fields' not in local_var_params or
-                local_var_params['contact_fields'] is None):
+        if self.api_client.client_side_validation and ('contact_fields' not in local_var_params or  # noqa: E501
+                                                        local_var_params['contact_fields'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `contact_fields` when calling `create_contact`")  # noqa: E501
 
         collection_formats = {}
@@ -311,11 +324,17 @@ class ContactsApi(object):
 
         local_var_params = locals()
 
-        all_params = ['phone']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            'phone'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
@@ -326,8 +345,8 @@ class ContactsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'phone' is set
-        if ('phone' not in local_var_params or
-                local_var_params['phone'] is None):
+        if self.api_client.client_side_validation and ('phone' not in local_var_params or  # noqa: E501
+                                                        local_var_params['phone'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `phone` when calling `delete_contact`")  # noqa: E501
 
         collection_formats = {}
@@ -417,11 +436,17 @@ class ContactsApi(object):
 
         local_var_params = locals()
 
-        all_params = ['phone']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            'phone'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
@@ -432,8 +457,8 @@ class ContactsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'phone' is set
-        if ('phone' not in local_var_params or
-                local_var_params['phone'] is None):
+        if self.api_client.client_side_validation and ('phone' not in local_var_params or  # noqa: E501
+                                                        local_var_params['phone'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `phone` when calling `fetch_contact`")  # noqa: E501
 
         collection_formats = {}
@@ -523,11 +548,17 @@ class ContactsApi(object):
 
         local_var_params = locals()
 
-        all_params = ['phone']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            'phone'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
@@ -538,8 +569,8 @@ class ContactsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'phone' is set
-        if ('phone' not in local_var_params or
-                local_var_params['phone'] is None):
+        if self.api_client.client_side_validation and ('phone' not in local_var_params or  # noqa: E501
+                                                        local_var_params['phone'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `phone` when calling `fetch_contact_groups`")  # noqa: E501
 
         collection_formats = {}
@@ -629,11 +660,17 @@ class ContactsApi(object):
 
         local_var_params = locals()
 
-        all_params = ['group_ids']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            'group_ids'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
@@ -649,7 +686,7 @@ class ContactsApi(object):
         path_params = {}
 
         query_params = []
-        if 'group_ids' in local_var_params:
+        if 'group_ids' in local_var_params and local_var_params['group_ids'] is not None:  # noqa: E501
             query_params.append(('groupIds', local_var_params['group_ids']))  # noqa: E501
             collection_formats['groupIds'] = 'multi'  # noqa: E501
 
@@ -734,11 +771,18 @@ class ContactsApi(object):
 
         local_var_params = locals()
 
-        all_params = ['group_id', 'phone']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            'group_id',
+            'phone'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
@@ -749,12 +793,12 @@ class ContactsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'group_id' is set
-        if ('group_id' not in local_var_params or
-                local_var_params['group_id'] is None):
+        if self.api_client.client_side_validation and ('group_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['group_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `group_id` when calling `remove_contact_from_group`")  # noqa: E501
         # verify the required parameter 'phone' is set
-        if ('phone' not in local_var_params or
-                local_var_params['phone'] is None):
+        if self.api_client.client_side_validation and ('phone' not in local_var_params or  # noqa: E501
+                                                        local_var_params['phone'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `phone` when calling `remove_contact_from_group`")  # noqa: E501
 
         collection_formats = {}
@@ -848,11 +892,18 @@ class ContactsApi(object):
 
         local_var_params = locals()
 
-        all_params = ['phone', 'contact_update_fields']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            'phone',
+            'contact_update_fields'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
@@ -863,12 +914,12 @@ class ContactsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'phone' is set
-        if ('phone' not in local_var_params or
-                local_var_params['phone'] is None):
+        if self.api_client.client_side_validation and ('phone' not in local_var_params or  # noqa: E501
+                                                        local_var_params['phone'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `phone` when calling `update_contact`")  # noqa: E501
         # verify the required parameter 'contact_update_fields' is set
-        if ('contact_update_fields' not in local_var_params or
-                local_var_params['contact_update_fields'] is None):
+        if self.api_client.client_side_validation and ('contact_update_fields' not in local_var_params or  # noqa: E501
+                                                        local_var_params['contact_update_fields'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `contact_update_fields` when calling `update_contact`")  # noqa: E501
 
         collection_formats = {}

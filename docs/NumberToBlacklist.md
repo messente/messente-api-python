@@ -1,5 +1,6 @@
 # NumberToBlacklist
 
+A container for a soon-to-be blacklisted number
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

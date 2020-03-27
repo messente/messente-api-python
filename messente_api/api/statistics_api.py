@@ -19,7 +19,7 @@ import re  # noqa: F401
 import six
 
 from messente_api.api_client import ApiClient
-from messente_api.exceptions import (
+from messente_api.exceptions import (  # noqa: F401
     ApiTypeError,
     ApiValueError
 )
@@ -87,11 +87,17 @@ class StatisticsApi(object):
 
         local_var_params = locals()
 
-        all_params = ['statistics_report_settings']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            'statistics_report_settings'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
@@ -102,8 +108,8 @@ class StatisticsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'statistics_report_settings' is set
-        if ('statistics_report_settings' not in local_var_params or
-                local_var_params['statistics_report_settings'] is None):
+        if self.api_client.client_side_validation and ('statistics_report_settings' not in local_var_params or  # noqa: E501
+                                                        local_var_params['statistics_report_settings'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `statistics_report_settings` when calling `create_statistics_report`")  # noqa: E501
 
         collection_formats = {}

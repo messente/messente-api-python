@@ -1,5 +1,6 @@
 # GroupName
 
+A group name container
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

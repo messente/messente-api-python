@@ -28,16 +28,19 @@ configuration.password = 'YOUR_PASSWORD'
 
 # Defining host is optional and default to https://api.messente.com/v1
 configuration.host = "https://api.messente.com/v1"
-# Create an instance of the API class
-api_instance = messente_api.DeliveryReportApi(messente_api.ApiClient(configuration))
-omnimessage_id = 'omnimessage_id_example' # str | UUID of the omnimessage to for which the delivery report is to be retrieved
 
-try:
-    # Retrieves the delivery report for the Omnimessage
-    api_response = api_instance.retrieve_delivery_report(omnimessage_id)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling DeliveryReportApi->retrieve_delivery_report: %s\n" % e)
+# Enter a context with an instance of the API client
+with messente_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = messente_api.DeliveryReportApi(api_client)
+    omnimessage_id = 'omnimessage_id_example' # str | UUID of the omnimessage to for which the delivery report is to be retrieved
+
+    try:
+        # Retrieves the delivery report for the Omnimessage
+        api_response = api_instance.retrieve_delivery_report(omnimessage_id)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling DeliveryReportApi->retrieve_delivery_report: %s\n" % e)
 ```
 
 ### Parameters

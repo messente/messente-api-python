@@ -28,16 +28,19 @@ configuration.password = 'YOUR_PASSWORD'
 
 # Defining host is optional and default to https://api.messente.com/v1
 configuration.host = "https://api.messente.com/v1"
-# Create an instance of the API class
-api_instance = messente_api.StatisticsApi(messente_api.ApiClient(configuration))
-statistics_report_settings = {"start_date":"2017-01-01","end_date":"2019-06-20","message_types":["sms"]} # StatisticsReportSettings | Settings for statistics report
 
-try:
-    # Requests statistics reports for each country
-    api_response = api_instance.create_statistics_report(statistics_report_settings)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling StatisticsApi->create_statistics_report: %s\n" % e)
+# Enter a context with an instance of the API client
+with messente_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = messente_api.StatisticsApi(api_client)
+    statistics_report_settings = {"start_date":"2017-01-01","end_date":"2019-06-20","message_types":["sms"]} # StatisticsReportSettings | Settings for statistics report
+
+    try:
+        # Requests statistics reports for each country
+        api_response = api_instance.create_statistics_report(statistics_report_settings)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling StatisticsApi->create_statistics_report: %s\n" % e)
 ```
 
 ### Parameters

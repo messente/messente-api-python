@@ -32,16 +32,19 @@ configuration.password = 'YOUR_PASSWORD'
 
 # Defining host is optional and default to https://api.messente.com/v1
 configuration.host = "https://api.messente.com/v1"
-# Create an instance of the API class
-api_instance = messente_api.GroupsApi(messente_api.ApiClient(configuration))
-group_name = {"name":"Any group name"} # GroupName | 
 
-try:
-    # Creates a new group with the provided name
-    api_response = api_instance.create_group(group_name)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling GroupsApi->create_group: %s\n" % e)
+# Enter a context with an instance of the API client
+with messente_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = messente_api.GroupsApi(api_client)
+    group_name = {"name":"Any group name"} # GroupName | 
+
+    try:
+        # Creates a new group with the provided name
+        api_response = api_instance.create_group(group_name)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling GroupsApi->create_group: %s\n" % e)
 ```
 
 ### Parameters
@@ -94,15 +97,18 @@ configuration.password = 'YOUR_PASSWORD'
 
 # Defining host is optional and default to https://api.messente.com/v1
 configuration.host = "https://api.messente.com/v1"
-# Create an instance of the API class
-api_instance = messente_api.GroupsApi(messente_api.ApiClient(configuration))
-group_id = '5792a02a-e5c2-422b-a0a0-0ae65d814663' # str | String in UUID format
 
-try:
-    # Deletes a group
-    api_instance.delete_group(group_id)
-except ApiException as e:
-    print("Exception when calling GroupsApi->delete_group: %s\n" % e)
+# Enter a context with an instance of the API client
+with messente_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = messente_api.GroupsApi(api_client)
+    group_id = '5792a02a-e5c2-422b-a0a0-0ae65d814663' # str | String in UUID format
+
+    try:
+        # Deletes a group
+        api_instance.delete_group(group_id)
+    except ApiException as e:
+        print("Exception when calling GroupsApi->delete_group: %s\n" % e)
 ```
 
 ### Parameters
@@ -155,16 +161,19 @@ configuration.password = 'YOUR_PASSWORD'
 
 # Defining host is optional and default to https://api.messente.com/v1
 configuration.host = "https://api.messente.com/v1"
-# Create an instance of the API class
-api_instance = messente_api.GroupsApi(messente_api.ApiClient(configuration))
-group_id = '5792a02a-e5c2-422b-a0a0-0ae65d814663' # str | String in UUID format
 
-try:
-    # Lists a group
-    api_response = api_instance.fetch_group(group_id)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling GroupsApi->fetch_group: %s\n" % e)
+# Enter a context with an instance of the API client
+with messente_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = messente_api.GroupsApi(api_client)
+    group_id = '5792a02a-e5c2-422b-a0a0-0ae65d814663' # str | String in UUID format
+
+    try:
+        # Lists a group
+        api_response = api_instance.fetch_group(group_id)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling GroupsApi->fetch_group: %s\n" % e)
 ```
 
 ### Parameters
@@ -216,15 +225,18 @@ configuration.password = 'YOUR_PASSWORD'
 
 # Defining host is optional and default to https://api.messente.com/v1
 configuration.host = "https://api.messente.com/v1"
-# Create an instance of the API class
-api_instance = messente_api.GroupsApi(messente_api.ApiClient(configuration))
 
-try:
-    # Returns all groups
-    api_response = api_instance.fetch_groups()
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling GroupsApi->fetch_groups: %s\n" % e)
+# Enter a context with an instance of the API client
+with messente_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = messente_api.GroupsApi(api_client)
+    
+    try:
+        # Returns all groups
+        api_response = api_instance.fetch_groups()
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling GroupsApi->fetch_groups: %s\n" % e)
 ```
 
 ### Parameters
@@ -273,17 +285,20 @@ configuration.password = 'YOUR_PASSWORD'
 
 # Defining host is optional and default to https://api.messente.com/v1
 configuration.host = "https://api.messente.com/v1"
-# Create an instance of the API class
-api_instance = messente_api.GroupsApi(messente_api.ApiClient(configuration))
-group_id = '5792a02a-e5c2-422b-a0a0-0ae65d814663' # str | String in UUID format
+
+# Enter a context with an instance of the API client
+with messente_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = messente_api.GroupsApi(api_client)
+    group_id = '5792a02a-e5c2-422b-a0a0-0ae65d814663' # str | String in UUID format
 group_name = {"name":"Any group name"} # GroupName | 
 
-try:
-    # Updates a group with the provided name
-    api_response = api_instance.update_group(group_id, group_name)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling GroupsApi->update_group: %s\n" % e)
+    try:
+        # Updates a group with the provided name
+        api_response = api_instance.update_group(group_id, group_name)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling GroupsApi->update_group: %s\n" % e)
 ```
 
 ### Parameters

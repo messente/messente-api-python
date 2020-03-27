@@ -31,15 +31,18 @@ configuration.password = 'YOUR_PASSWORD'
 
 # Defining host is optional and default to https://api.messente.com/v1
 configuration.host = "https://api.messente.com/v1"
-# Create an instance of the API class
-api_instance = messente_api.BlacklistApi(messente_api.ApiClient(configuration))
-number_to_blacklist = {"phoneNumber":"+37251000000"} # NumberToBlacklist | Phone number to be blacklisted
 
-try:
-    # Adds a phone number to the blacklist
-    api_instance.add_to_blacklist(number_to_blacklist)
-except ApiException as e:
-    print("Exception when calling BlacklistApi->add_to_blacklist: %s\n" % e)
+# Enter a context with an instance of the API client
+with messente_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = messente_api.BlacklistApi(api_client)
+    number_to_blacklist = {"phoneNumber":"+37251000000"} # NumberToBlacklist | Phone number to be blacklisted
+
+    try:
+        # Adds a phone number to the blacklist
+        api_instance.add_to_blacklist(number_to_blacklist)
+    except ApiException as e:
+        print("Exception when calling BlacklistApi->add_to_blacklist: %s\n" % e)
 ```
 
 ### Parameters
@@ -93,15 +96,18 @@ configuration.password = 'YOUR_PASSWORD'
 
 # Defining host is optional and default to https://api.messente.com/v1
 configuration.host = "https://api.messente.com/v1"
-# Create an instance of the API class
-api_instance = messente_api.BlacklistApi(messente_api.ApiClient(configuration))
-phone = '+37251000000' # str | A phone number
 
-try:
-    # Deletes a phone number from the blacklist
-    api_instance.delete_from_blacklist(phone)
-except ApiException as e:
-    print("Exception when calling BlacklistApi->delete_from_blacklist: %s\n" % e)
+# Enter a context with an instance of the API client
+with messente_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = messente_api.BlacklistApi(api_client)
+    phone = '+37251000000' # str | A phone number
+
+    try:
+        # Deletes a phone number from the blacklist
+        api_instance.delete_from_blacklist(phone)
+    except ApiException as e:
+        print("Exception when calling BlacklistApi->delete_from_blacklist: %s\n" % e)
 ```
 
 ### Parameters
@@ -155,15 +161,18 @@ configuration.password = 'YOUR_PASSWORD'
 
 # Defining host is optional and default to https://api.messente.com/v1
 configuration.host = "https://api.messente.com/v1"
-# Create an instance of the API class
-api_instance = messente_api.BlacklistApi(messente_api.ApiClient(configuration))
 
-try:
-    # Returns all blacklisted phone numbers
-    api_response = api_instance.fetch_blacklist()
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling BlacklistApi->fetch_blacklist: %s\n" % e)
+# Enter a context with an instance of the API client
+with messente_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = messente_api.BlacklistApi(api_client)
+    
+    try:
+        # Returns all blacklisted phone numbers
+        api_response = api_instance.fetch_blacklist()
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling BlacklistApi->fetch_blacklist: %s\n" % e)
 ```
 
 ### Parameters
@@ -212,15 +221,18 @@ configuration.password = 'YOUR_PASSWORD'
 
 # Defining host is optional and default to https://api.messente.com/v1
 configuration.host = "https://api.messente.com/v1"
-# Create an instance of the API class
-api_instance = messente_api.BlacklistApi(messente_api.ApiClient(configuration))
-phone = '+37251000000' # str | A phone number
 
-try:
-    # Checks if a phone number is blacklisted
-    api_instance.is_blacklisted(phone)
-except ApiException as e:
-    print("Exception when calling BlacklistApi->is_blacklisted: %s\n" % e)
+# Enter a context with an instance of the API client
+with messente_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = messente_api.BlacklistApi(api_client)
+    phone = '+37251000000' # str | A phone number
+
+    try:
+        # Checks if a phone number is blacklisted
+        api_instance.is_blacklisted(phone)
+    except ApiException as e:
+        print("Exception when calling BlacklistApi->is_blacklisted: %s\n" % e)
 ```
 
 ### Parameters

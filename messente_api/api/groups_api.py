@@ -19,7 +19,7 @@ import re  # noqa: F401
 import six
 
 from messente_api.api_client import ApiClient
-from messente_api.exceptions import (
+from messente_api.exceptions import (  # noqa: F401
     ApiTypeError,
     ApiValueError
 )
@@ -87,11 +87,17 @@ class GroupsApi(object):
 
         local_var_params = locals()
 
-        all_params = ['group_name']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            'group_name'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
@@ -102,8 +108,8 @@ class GroupsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'group_name' is set
-        if ('group_name' not in local_var_params or
-                local_var_params['group_name'] is None):
+        if self.api_client.client_side_validation and ('group_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['group_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `group_name` when calling `create_group`")  # noqa: E501
 
         collection_formats = {}
@@ -197,11 +203,17 @@ class GroupsApi(object):
 
         local_var_params = locals()
 
-        all_params = ['group_id']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            'group_id'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
@@ -212,8 +224,8 @@ class GroupsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'group_id' is set
-        if ('group_id' not in local_var_params or
-                local_var_params['group_id'] is None):
+        if self.api_client.client_side_validation and ('group_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['group_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `group_id` when calling `delete_group`")  # noqa: E501
 
         collection_formats = {}
@@ -303,11 +315,17 @@ class GroupsApi(object):
 
         local_var_params = locals()
 
-        all_params = ['group_id']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            'group_id'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
@@ -318,8 +336,8 @@ class GroupsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'group_id' is set
-        if ('group_id' not in local_var_params or
-                local_var_params['group_id'] is None):
+        if self.api_client.client_side_validation and ('group_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['group_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `group_id` when calling `fetch_group`")  # noqa: E501
 
         collection_formats = {}
@@ -407,11 +425,16 @@ class GroupsApi(object):
 
         local_var_params = locals()
 
-        all_params = []  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
@@ -509,11 +532,18 @@ class GroupsApi(object):
 
         local_var_params = locals()
 
-        all_params = ['group_id', 'group_name']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            'group_id',
+            'group_name'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
@@ -524,12 +554,12 @@ class GroupsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'group_id' is set
-        if ('group_id' not in local_var_params or
-                local_var_params['group_id'] is None):
+        if self.api_client.client_side_validation and ('group_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['group_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `group_id` when calling `update_group`")  # noqa: E501
         # verify the required parameter 'group_name' is set
-        if ('group_name' not in local_var_params or
-                local_var_params['group_name'] is None):
+        if self.api_client.client_side_validation and ('group_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['group_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `group_name` when calling `update_group`")  # noqa: E501
 
         collection_formats = {}

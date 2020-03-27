@@ -1,5 +1,6 @@
 # StatisticsReportSuccess
 
+A container for statistics reports
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

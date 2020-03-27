@@ -35,17 +35,20 @@ configuration.password = 'YOUR_PASSWORD'
 
 # Defining host is optional and default to https://api.messente.com/v1
 configuration.host = "https://api.messente.com/v1"
-# Create an instance of the API class
-api_instance = messente_api.ContactsApi(messente_api.ApiClient(configuration))
-group_id = '5792a02a-e5c2-422b-a0a0-0ae65d814663' # str | String in UUID format
+
+# Enter a context with an instance of the API client
+with messente_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = messente_api.ContactsApi(api_client)
+    group_id = '5792a02a-e5c2-422b-a0a0-0ae65d814663' # str | String in UUID format
 phone = '+37251000000' # str | A phone number
 
-try:
-    # Adds a contact to a group
-    api_response = api_instance.add_contact_to_group(group_id, phone)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling ContactsApi->add_contact_to_group: %s\n" % e)
+    try:
+        # Adds a contact to a group
+        api_response = api_instance.add_contact_to_group(group_id, phone)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling ContactsApi->add_contact_to_group: %s\n" % e)
 ```
 
 ### Parameters
@@ -101,16 +104,19 @@ configuration.password = 'YOUR_PASSWORD'
 
 # Defining host is optional and default to https://api.messente.com/v1
 configuration.host = "https://api.messente.com/v1"
-# Create an instance of the API class
-api_instance = messente_api.ContactsApi(messente_api.ApiClient(configuration))
-contact_fields = {"phoneNumber":"+37251000000","email":"anyone@messente.com","firstName":"Any","lastName":"One","company":"Messente","title":"Sir","custom":"Any custom","custom2":"Any custom two","custom3":"Any custom three","custom4":"Any custom four"} # ContactFields | 
 
-try:
-    # Creates a new contact
-    api_response = api_instance.create_contact(contact_fields)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling ContactsApi->create_contact: %s\n" % e)
+# Enter a context with an instance of the API client
+with messente_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = messente_api.ContactsApi(api_client)
+    contact_fields = {"phoneNumber":"+37251000000","email":"anyone@messente.com","firstName":"Any","lastName":"One","company":"Messente","title":"Sir","custom":"Any custom","custom2":"Any custom two","custom3":"Any custom three","custom4":"Any custom four"} # ContactFields | 
+
+    try:
+        # Creates a new contact
+        api_response = api_instance.create_contact(contact_fields)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling ContactsApi->create_contact: %s\n" % e)
 ```
 
 ### Parameters
@@ -164,15 +170,18 @@ configuration.password = 'YOUR_PASSWORD'
 
 # Defining host is optional and default to https://api.messente.com/v1
 configuration.host = "https://api.messente.com/v1"
-# Create an instance of the API class
-api_instance = messente_api.ContactsApi(messente_api.ApiClient(configuration))
-phone = '+37251000000' # str | A phone number
 
-try:
-    # Deletes a contact
-    api_instance.delete_contact(phone)
-except ApiException as e:
-    print("Exception when calling ContactsApi->delete_contact: %s\n" % e)
+# Enter a context with an instance of the API client
+with messente_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = messente_api.ContactsApi(api_client)
+    phone = '+37251000000' # str | A phone number
+
+    try:
+        # Deletes a contact
+        api_instance.delete_contact(phone)
+    except ApiException as e:
+        print("Exception when calling ContactsApi->delete_contact: %s\n" % e)
 ```
 
 ### Parameters
@@ -226,16 +235,19 @@ configuration.password = 'YOUR_PASSWORD'
 
 # Defining host is optional and default to https://api.messente.com/v1
 configuration.host = "https://api.messente.com/v1"
-# Create an instance of the API class
-api_instance = messente_api.ContactsApi(messente_api.ApiClient(configuration))
-phone = '+37251000000' # str | A phone number
 
-try:
-    # Lists a contact
-    api_response = api_instance.fetch_contact(phone)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling ContactsApi->fetch_contact: %s\n" % e)
+# Enter a context with an instance of the API client
+with messente_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = messente_api.ContactsApi(api_client)
+    phone = '+37251000000' # str | A phone number
+
+    try:
+        # Lists a contact
+        api_response = api_instance.fetch_contact(phone)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling ContactsApi->fetch_contact: %s\n" % e)
 ```
 
 ### Parameters
@@ -288,16 +300,19 @@ configuration.password = 'YOUR_PASSWORD'
 
 # Defining host is optional and default to https://api.messente.com/v1
 configuration.host = "https://api.messente.com/v1"
-# Create an instance of the API class
-api_instance = messente_api.ContactsApi(messente_api.ApiClient(configuration))
-phone = '+37251000000' # str | A phone number
 
-try:
-    # Lists groups of a contact
-    api_response = api_instance.fetch_contact_groups(phone)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling ContactsApi->fetch_contact_groups: %s\n" % e)
+# Enter a context with an instance of the API client
+with messente_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = messente_api.ContactsApi(api_client)
+    phone = '+37251000000' # str | A phone number
+
+    try:
+        # Lists groups of a contact
+        api_response = api_instance.fetch_contact_groups(phone)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling ContactsApi->fetch_contact_groups: %s\n" % e)
 ```
 
 ### Parameters
@@ -350,16 +365,19 @@ configuration.password = 'YOUR_PASSWORD'
 
 # Defining host is optional and default to https://api.messente.com/v1
 configuration.host = "https://api.messente.com/v1"
-# Create an instance of the API class
-api_instance = messente_api.ContactsApi(messente_api.ApiClient(configuration))
-group_ids = ['[\"5792a02a-e5c2-422b-a0a0-0ae65d814663\",\"4792a02a-e5c2-422b-a0a0-0ae65d814662\"]'] # list[str] | Optional one or many group id strings in UUID format. For example: \"/contacts?groupIds=group_id_one&groupIds=group_id_two\"  (optional)
 
-try:
-    # Returns all contacts
-    api_response = api_instance.fetch_contacts(group_ids=group_ids)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling ContactsApi->fetch_contacts: %s\n" % e)
+# Enter a context with an instance of the API client
+with messente_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = messente_api.ContactsApi(api_client)
+    group_ids = ['[\"5792a02a-e5c2-422b-a0a0-0ae65d814663\",\"4792a02a-e5c2-422b-a0a0-0ae65d814662\"]'] # list[str] | Optional one or many group id strings in UUID format. For example: \"/contacts?groupIds=group_id_one&groupIds=group_id_two\"  (optional)
+
+    try:
+        # Returns all contacts
+        api_response = api_instance.fetch_contacts(group_ids=group_ids)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling ContactsApi->fetch_contacts: %s\n" % e)
 ```
 
 ### Parameters
@@ -412,16 +430,19 @@ configuration.password = 'YOUR_PASSWORD'
 
 # Defining host is optional and default to https://api.messente.com/v1
 configuration.host = "https://api.messente.com/v1"
-# Create an instance of the API class
-api_instance = messente_api.ContactsApi(messente_api.ApiClient(configuration))
-group_id = '5792a02a-e5c2-422b-a0a0-0ae65d814663' # str | String in UUID format
+
+# Enter a context with an instance of the API client
+with messente_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = messente_api.ContactsApi(api_client)
+    group_id = '5792a02a-e5c2-422b-a0a0-0ae65d814663' # str | String in UUID format
 phone = '+37251000000' # str | A phone number
 
-try:
-    # Removes a contact from a group
-    api_instance.remove_contact_from_group(group_id, phone)
-except ApiException as e:
-    print("Exception when calling ContactsApi->remove_contact_from_group: %s\n" % e)
+    try:
+        # Removes a contact from a group
+        api_instance.remove_contact_from_group(group_id, phone)
+    except ApiException as e:
+        print("Exception when calling ContactsApi->remove_contact_from_group: %s\n" % e)
 ```
 
 ### Parameters
@@ -476,17 +497,20 @@ configuration.password = 'YOUR_PASSWORD'
 
 # Defining host is optional and default to https://api.messente.com/v1
 configuration.host = "https://api.messente.com/v1"
-# Create an instance of the API class
-api_instance = messente_api.ContactsApi(messente_api.ApiClient(configuration))
-phone = '+37251000000' # str | A phone number
+
+# Enter a context with an instance of the API client
+with messente_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = messente_api.ContactsApi(api_client)
+    phone = '+37251000000' # str | A phone number
 contact_update_fields = {"email":"anyone@messente.com","firstName":"Any","lastName":"One","company":"Messente","title":"Sir","custom":"Any custom","custom2":"Any custom two","custom3":"Any custom three","custom4":"Any custom four"} # ContactUpdateFields | 
 
-try:
-    # Updates a contact
-    api_response = api_instance.update_contact(phone, contact_update_fields)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling ContactsApi->update_contact: %s\n" % e)
+    try:
+        # Updates a contact
+        api_response = api_instance.update_contact(phone, contact_update_fields)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling ContactsApi->update_contact: %s\n" % e)
 ```
 
 ### Parameters

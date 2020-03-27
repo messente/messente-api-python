@@ -1,5 +1,6 @@
 # ErrorTitleOmnichannel
 
+Textual value which corresponds to an error code
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

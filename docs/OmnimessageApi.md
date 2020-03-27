@@ -29,15 +29,18 @@ configuration.password = 'YOUR_PASSWORD'
 
 # Defining host is optional and default to https://api.messente.com/v1
 configuration.host = "https://api.messente.com/v1"
-# Create an instance of the API class
-api_instance = messente_api.OmnimessageApi(messente_api.ApiClient(configuration))
-omnimessage_id = 'omnimessage_id_example' # str | UUID of the scheduled omnimessage to be cancelled
 
-try:
-    # Cancels a scheduled Omnimessage
-    api_instance.cancel_scheduled_message(omnimessage_id)
-except ApiException as e:
-    print("Exception when calling OmnimessageApi->cancel_scheduled_message: %s\n" % e)
+# Enter a context with an instance of the API client
+with messente_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = messente_api.OmnimessageApi(api_client)
+    omnimessage_id = 'omnimessage_id_example' # str | UUID of the scheduled omnimessage to be cancelled
+
+    try:
+        # Cancels a scheduled Omnimessage
+        api_instance.cancel_scheduled_message(omnimessage_id)
+    except ApiException as e:
+        print("Exception when calling OmnimessageApi->cancel_scheduled_message: %s\n" % e)
 ```
 
 ### Parameters
@@ -88,16 +91,19 @@ configuration.password = 'YOUR_PASSWORD'
 
 # Defining host is optional and default to https://api.messente.com/v1
 configuration.host = "https://api.messente.com/v1"
-# Create an instance of the API class
-api_instance = messente_api.OmnimessageApi(messente_api.ApiClient(configuration))
-omnimessage = messente_api.Omnimessage() # Omnimessage | Omnimessage to be sent
 
-try:
-    # Sends an Omnimessage
-    api_response = api_instance.send_omnimessage(omnimessage)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling OmnimessageApi->send_omnimessage: %s\n" % e)
+# Enter a context with an instance of the API client
+with messente_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = messente_api.OmnimessageApi(api_client)
+    omnimessage = messente_api.Omnimessage() # Omnimessage | Omnimessage to be sent
+
+    try:
+        # Sends an Omnimessage
+        api_response = api_instance.send_omnimessage(omnimessage)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling OmnimessageApi->send_omnimessage: %s\n" % e)
 ```
 
 ### Parameters
