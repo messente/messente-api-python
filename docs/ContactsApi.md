@@ -28,13 +28,22 @@ import time
 import messente_api
 from messente_api.rest import ApiException
 from pprint import pprint
-configuration = messente_api.Configuration()
-# Configure HTTP basic authorization: basicAuth
-configuration.username = 'YOUR_USERNAME'
-configuration.password = 'YOUR_PASSWORD'
+# Defining the host is optional and defaults to https://api.messente.com/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = messente_api.Configuration(
+    host = "https://api.messente.com/v1"
+)
 
-# Defining host is optional and default to https://api.messente.com/v1
-configuration.host = "https://api.messente.com/v1"
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure HTTP basic authorization: basicAuth
+configuration = messente_api.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
 
 # Enter a context with an instance of the API client
 with messente_api.ApiClient(configuration) as api_client:
@@ -97,13 +106,22 @@ import time
 import messente_api
 from messente_api.rest import ApiException
 from pprint import pprint
-configuration = messente_api.Configuration()
-# Configure HTTP basic authorization: basicAuth
-configuration.username = 'YOUR_USERNAME'
-configuration.password = 'YOUR_PASSWORD'
+# Defining the host is optional and defaults to https://api.messente.com/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = messente_api.Configuration(
+    host = "https://api.messente.com/v1"
+)
 
-# Defining host is optional and default to https://api.messente.com/v1
-configuration.host = "https://api.messente.com/v1"
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure HTTP basic authorization: basicAuth
+configuration = messente_api.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
 
 # Enter a context with an instance of the API client
 with messente_api.ApiClient(configuration) as api_client:
@@ -163,13 +181,22 @@ import time
 import messente_api
 from messente_api.rest import ApiException
 from pprint import pprint
-configuration = messente_api.Configuration()
-# Configure HTTP basic authorization: basicAuth
-configuration.username = 'YOUR_USERNAME'
-configuration.password = 'YOUR_PASSWORD'
+# Defining the host is optional and defaults to https://api.messente.com/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = messente_api.Configuration(
+    host = "https://api.messente.com/v1"
+)
 
-# Defining host is optional and default to https://api.messente.com/v1
-configuration.host = "https://api.messente.com/v1"
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure HTTP basic authorization: basicAuth
+configuration = messente_api.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
 
 # Enter a context with an instance of the API client
 with messente_api.ApiClient(configuration) as api_client:
@@ -228,13 +255,22 @@ import time
 import messente_api
 from messente_api.rest import ApiException
 from pprint import pprint
-configuration = messente_api.Configuration()
-# Configure HTTP basic authorization: basicAuth
-configuration.username = 'YOUR_USERNAME'
-configuration.password = 'YOUR_PASSWORD'
+# Defining the host is optional and defaults to https://api.messente.com/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = messente_api.Configuration(
+    host = "https://api.messente.com/v1"
+)
 
-# Defining host is optional and default to https://api.messente.com/v1
-configuration.host = "https://api.messente.com/v1"
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure HTTP basic authorization: basicAuth
+configuration = messente_api.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
 
 # Enter a context with an instance of the API client
 with messente_api.ApiClient(configuration) as api_client:
@@ -293,13 +329,22 @@ import time
 import messente_api
 from messente_api.rest import ApiException
 from pprint import pprint
-configuration = messente_api.Configuration()
-# Configure HTTP basic authorization: basicAuth
-configuration.username = 'YOUR_USERNAME'
-configuration.password = 'YOUR_PASSWORD'
+# Defining the host is optional and defaults to https://api.messente.com/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = messente_api.Configuration(
+    host = "https://api.messente.com/v1"
+)
 
-# Defining host is optional and default to https://api.messente.com/v1
-configuration.host = "https://api.messente.com/v1"
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure HTTP basic authorization: basicAuth
+configuration = messente_api.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
 
 # Enter a context with an instance of the API client
 with messente_api.ApiClient(configuration) as api_client:
@@ -358,13 +403,22 @@ import time
 import messente_api
 from messente_api.rest import ApiException
 from pprint import pprint
-configuration = messente_api.Configuration()
-# Configure HTTP basic authorization: basicAuth
-configuration.username = 'YOUR_USERNAME'
-configuration.password = 'YOUR_PASSWORD'
+# Defining the host is optional and defaults to https://api.messente.com/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = messente_api.Configuration(
+    host = "https://api.messente.com/v1"
+)
 
-# Defining host is optional and default to https://api.messente.com/v1
-configuration.host = "https://api.messente.com/v1"
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure HTTP basic authorization: basicAuth
+configuration = messente_api.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
 
 # Enter a context with an instance of the API client
 with messente_api.ApiClient(configuration) as api_client:
@@ -423,13 +477,22 @@ import time
 import messente_api
 from messente_api.rest import ApiException
 from pprint import pprint
-configuration = messente_api.Configuration()
-# Configure HTTP basic authorization: basicAuth
-configuration.username = 'YOUR_USERNAME'
-configuration.password = 'YOUR_PASSWORD'
+# Defining the host is optional and defaults to https://api.messente.com/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = messente_api.Configuration(
+    host = "https://api.messente.com/v1"
+)
 
-# Defining host is optional and default to https://api.messente.com/v1
-configuration.host = "https://api.messente.com/v1"
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure HTTP basic authorization: basicAuth
+configuration = messente_api.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
 
 # Enter a context with an instance of the API client
 with messente_api.ApiClient(configuration) as api_client:
@@ -490,13 +553,22 @@ import time
 import messente_api
 from messente_api.rest import ApiException
 from pprint import pprint
-configuration = messente_api.Configuration()
-# Configure HTTP basic authorization: basicAuth
-configuration.username = 'YOUR_USERNAME'
-configuration.password = 'YOUR_PASSWORD'
+# Defining the host is optional and defaults to https://api.messente.com/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = messente_api.Configuration(
+    host = "https://api.messente.com/v1"
+)
 
-# Defining host is optional and default to https://api.messente.com/v1
-configuration.host = "https://api.messente.com/v1"
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure HTTP basic authorization: basicAuth
+configuration = messente_api.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
 
 # Enter a context with an instance of the API client
 with messente_api.ApiClient(configuration) as api_client:

@@ -62,10 +62,12 @@ class Configuration(object):
             scheme: basic
 
     Configure API client with HTTP basic authentication:
-      conf = messente_api.Configuration(
-          username='the-user',
-          password='the-password',
-      )
+
+conf = messente_api.Configuration(
+    username='the-user',
+    password='the-password',
+)
+
     """
 
     _default = None
@@ -179,6 +181,9 @@ class Configuration(object):
         result.logger_file = self.logger_file
         result.debug = self.debug
         return result
+
+    def __setattr__(self, name, value):
+        object.__setattr__(self, name, value)
 
     @classmethod
     def set_default(cls, default):
@@ -345,7 +350,7 @@ class Configuration(object):
                "OS: {env}\n"\
                "Python Version: {pyversion}\n"\
                "Version of the API: 1.2.0\n"\
-               "SDK Package Version: 1.2.1".\
+               "SDK Package Version: 1.2.2".\
                format(env=sys.platform, pyversion=sys.version)
 
     def get_host_settings(self):
