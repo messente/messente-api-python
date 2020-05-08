@@ -15,7 +15,7 @@
 
 from __future__ import absolute_import
 
-__version__ = "1.2.1"
+__version__ = "1.2.2"
 
 # import apis into sdk package
 from messente_api.api.blacklist_api import BlacklistApi
