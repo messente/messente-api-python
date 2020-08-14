@@ -43,7 +43,8 @@ class ContactFields(object):
         'custom': 'str',
         'custom2': 'str',
         'custom3': 'str',
-        'custom4': 'str'
+        'custom4': 'str',
+        'scheduled_deletion_date': 'date'
     }
 
     attribute_map = {
@@ -56,10 +57,11 @@ class ContactFields(object):
         'custom': 'custom',
         'custom2': 'custom2',
         'custom3': 'custom3',
-        'custom4': 'custom4'
+        'custom4': 'custom4',
+        'scheduled_deletion_date': 'scheduledDeletionDate'
     }
 
-    def __init__(self, phone_number=None, email=None, first_name=None, last_name=None, company=None, title=None, custom=None, custom2=None, custom3=None, custom4=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, phone_number=None, email=None, first_name=None, last_name=None, company=None, title=None, custom=None, custom2=None, custom3=None, custom4=None, scheduled_deletion_date=None, local_vars_configuration=None):  # noqa: E501
         """ContactFields - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -75,6 +77,7 @@ class ContactFields(object):
         self._custom2 = None
         self._custom3 = None
         self._custom4 = None
+        self._scheduled_deletion_date = None
         self.discriminator = None
 
         self.phone_number = phone_number
@@ -87,6 +90,7 @@ class ContactFields(object):
         self.custom2 = custom2
         self.custom3 = custom3
         self.custom4 = custom4
+        self.scheduled_deletion_date = scheduled_deletion_date
 
     @property
     def phone_number(self):
@@ -319,6 +323,29 @@ class ContactFields(object):
         """
 
         self._custom4 = custom4
+
+    @property
+    def scheduled_deletion_date(self):
+        """Gets the scheduled_deletion_date of this ContactFields.  # noqa: E501
+
+        The date on which the contact is going to be deleted  # noqa: E501
+
+        :return: The scheduled_deletion_date of this ContactFields.  # noqa: E501
+        :rtype: date
+        """
+        return self._scheduled_deletion_date
+
+    @scheduled_deletion_date.setter
+    def scheduled_deletion_date(self, scheduled_deletion_date):
+        """Sets the scheduled_deletion_date of this ContactFields.
+
+        The date on which the contact is going to be deleted  # noqa: E501
+
+        :param scheduled_deletion_date: The scheduled_deletion_date of this ContactFields.  # noqa: E501
+        :type: date
+        """
+
+        self._scheduled_deletion_date = scheduled_deletion_date
 
     def to_dict(self):
         """Returns the model properties as a dict"""
