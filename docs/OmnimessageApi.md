@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **cancel_scheduled_message**
-> object cancel_scheduled_message(omnimessage_id)
+> cancel_scheduled_message(omnimessage_id)
 
 Cancels a scheduled Omnimessage
 
@@ -47,8 +47,7 @@ with messente_api.ApiClient(configuration) as api_client:
 
     try:
         # Cancels a scheduled Omnimessage
-        api_response = api_instance.cancel_scheduled_message(omnimessage_id)
-        pprint(api_response)
+        api_instance.cancel_scheduled_message(omnimessage_id)
     except ApiException as e:
         print("Exception when calling OmnimessageApi->cancel_scheduled_message: %s\n" % e)
 ```
@@ -61,7 +60,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+void (empty response body)
 
 ### Authorization
 

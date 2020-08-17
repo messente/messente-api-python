@@ -328,7 +328,7 @@ class ContactFields(object):
     def scheduled_deletion_date(self):
         """Gets the scheduled_deletion_date of this ContactFields.  # noqa: E501
 
-        The date on which the contact is going to be deleted  # noqa: E501
+        The date on which the contact is going to be deletedbecause it has not belonged to a group for 30 days  # noqa: E501
 
         :return: The scheduled_deletion_date of this ContactFields.  # noqa: E501
         :rtype: date
@@ -339,7 +339,7 @@ class ContactFields(object):
     def scheduled_deletion_date(self, scheduled_deletion_date):
         """Sets the scheduled_deletion_date of this ContactFields.
 
-        The date on which the contact is going to be deleted  # noqa: E501
+        The date on which the contact is going to be deletedbecause it has not belonged to a group for 30 days  # noqa: E501
 
         :param scheduled_deletion_date: The scheduled_deletion_date of this ContactFields.  # noqa: E501
         :type: date
