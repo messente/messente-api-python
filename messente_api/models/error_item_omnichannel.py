@@ -155,8 +155,6 @@ class ErrorItemOmnichannel(object):
         :param source: The source of this ErrorItemOmnichannel.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and source is None:  # noqa: E501
-            raise ValueError("Invalid value for `source`, must not be `None`")  # noqa: E501
 
         self._source = source
 
