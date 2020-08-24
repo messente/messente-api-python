@@ -115,7 +115,7 @@ class StatisticsReportSettings(object):
     def message_types(self):
         """Gets the message_types of this StatisticsReportSettings.  # noqa: E501
 
-        Optional list of message types (sms, viber, whatsapp, hlr)  # noqa: E501
+        Optional list of message types (sms, viber, whatsapp, hlr, telegram)  # noqa: E501
 
         :return: The message_types of this StatisticsReportSettings.  # noqa: E501
         :rtype: list[str]
@@ -126,7 +126,7 @@ class StatisticsReportSettings(object):
     def message_types(self, message_types):
         """Sets the message_types of this StatisticsReportSettings.
 
-        Optional list of message types (sms, viber, whatsapp, hlr)  # noqa: E501
+        Optional list of message types (sms, viber, whatsapp, hlr, telegram)  # noqa: E501
 
         :param message_types: The message_types of this StatisticsReportSettings.  # noqa: E501
         :type: list[str]

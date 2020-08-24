@@ -31,7 +31,7 @@ setup(
     author="Messente",
     author_email="messente@messente.com",
     url="https://github.com/messente/messente-api-python",
-    keywords=["viber", "sms", "whatsapp", "phonebook"],
+    keywords=["viber", "sms", "telegram", "whatsapp", "phonebook"],
     install_requires=REQUIRES,
     packages=find_packages(exclude=["test", "tests"]),
     include_package_data=True,
