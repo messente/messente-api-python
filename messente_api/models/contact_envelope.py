@@ -34,7 +34,7 @@ class ContactEnvelope(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'contact': 'ContactFields'
+        'contact': 'ContactResponseFields'
     }
 
     attribute_map = {
@@ -59,7 +59,7 @@ class ContactEnvelope(object):
 
 
         :return: The contact of this ContactEnvelope.  # noqa: E501
-        :rtype: ContactFields
+        :rtype: ContactResponseFields
         """
         return self._contact
 
@@ -69,7 +69,7 @@ class ContactEnvelope(object):
 
 
         :param contact: The contact of this ContactEnvelope.  # noqa: E501
-        :type: ContactFields
+        :type: ContactResponseFields
         """
 
         self._contact = contact
