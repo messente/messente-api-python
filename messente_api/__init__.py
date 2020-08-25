@@ -15,7 +15,7 @@
 
 from __future__ import absolute_import
 
-__version__ = "1.3.0"
+__version__ = "1.3.1"
 
 # import apis into sdk package
 from messente_api.api.blacklist_api import BlacklistApi
@@ -39,6 +39,7 @@ from messente_api.models.channel import Channel
 from messente_api.models.contact_envelope import ContactEnvelope
 from messente_api.models.contact_fields import ContactFields
 from messente_api.models.contact_list_envelope import ContactListEnvelope
+from messente_api.models.contact_response_fields import ContactResponseFields
 from messente_api.models.contact_update_fields import ContactUpdateFields
 from messente_api.models.delivery_report_response import DeliveryReportResponse
 from messente_api.models.delivery_result import DeliveryResult
