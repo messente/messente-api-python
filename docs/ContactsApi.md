@@ -575,7 +575,7 @@ with messente_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = messente_api.ContactsApi(api_client)
     phone = '+37251000000' # str | A phone number
-contact_update_fields = {"email":"anyone@messente.com","firstName":"Any","lastName":"One","company":"Messente","title":"Sir","custom":"Any custom","custom2":"Any custom two","custom3":"Any custom three","custom4":"Any custom four","scheduledDeletionDate":"2020-08-31"} # ContactUpdateFields | 
+contact_update_fields = {"email":"anyone@messente.com","firstName":"Any","lastName":"One","company":"Messente","title":"Sir","custom":"Any custom","custom2":"Any custom two","custom3":"Any custom three","custom4":"Any custom four"} # ContactUpdateFields | 
 
     try:
         # Updates a contact
