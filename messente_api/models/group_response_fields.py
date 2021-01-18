@@ -11,9 +11,9 @@
 """
 
 
+import inspect
 import pprint
 import re  # noqa: F401
-
 import six
 
 from messente_api.configuration import Configuration
@@ -82,7 +82,7 @@ class GroupResponseFields(object):
         Id string in UUID format  # noqa: E501
 
         :param id: The id of this GroupResponseFields.  # noqa: E501
-        :type: str
+        :type id: str
         """
         if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
@@ -107,7 +107,7 @@ class GroupResponseFields(object):
         The name of the group  # noqa: E501
 
         :param name: The name of this GroupResponseFields.  # noqa: E501
-        :type: str
+        :type name: str
         """
         if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
             raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
@@ -132,7 +132,7 @@ class GroupResponseFields(object):
         When the group was created  # noqa: E501
 
         :param created_on: The created_on of this GroupResponseFields.  # noqa: E501
-        :type: str
+        :type created_on: str
         """
 
         self._created_on = created_on
@@ -155,34 +155,42 @@ class GroupResponseFields(object):
         The count of contacts in the group  # noqa: E501
 
         :param contacts_count: The contacts_count of this GroupResponseFields.  # noqa: E501
-        :type: int
+        :type contacts_count: int
         """
         if self.local_vars_configuration.client_side_validation and contacts_count is None:  # noqa: E501
             raise ValueError("Invalid value for `contacts_count`, must not be `None`")  # noqa: E501
 
         self._contacts_count = contacts_count
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = inspect.getargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    lambda x: convert(x),
                     value
                 ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
+                    lambda item: (item[0], convert(item[1])),
                     value.items()
                 ))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

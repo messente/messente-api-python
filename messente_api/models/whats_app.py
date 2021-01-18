@@ -11,9 +11,9 @@
 """
 
 
+import inspect
 import pprint
 import re  # noqa: F401
-
 import six
 
 from messente_api.configuration import Configuration
@@ -101,7 +101,7 @@ class WhatsApp(object):
         Phone number or alphanumeric sender name  # noqa: E501
 
         :param sender: The sender of this WhatsApp.  # noqa: E501
-        :type: str
+        :type sender: str
         """
 
         self._sender = sender
@@ -124,7 +124,7 @@ class WhatsApp(object):
         After how many minutes this channel is   considered as failed and the next channel is attempted  # noqa: E501
 
         :param validity: The validity of this WhatsApp.  # noqa: E501
-        :type: int
+        :type validity: int
         """
 
         self._validity = validity
@@ -145,7 +145,7 @@ class WhatsApp(object):
 
 
         :param text: The text of this WhatsApp.  # noqa: E501
-        :type: WhatsAppText
+        :type text: WhatsAppText
         """
 
         self._text = text
@@ -166,7 +166,7 @@ class WhatsApp(object):
 
 
         :param image: The image of this WhatsApp.  # noqa: E501
-        :type: WhatsAppImage
+        :type image: WhatsAppImage
         """
 
         self._image = image
@@ -187,7 +187,7 @@ class WhatsApp(object):
 
 
         :param document: The document of this WhatsApp.  # noqa: E501
-        :type: WhatsAppDocument
+        :type document: WhatsAppDocument
         """
 
         self._document = document
@@ -208,7 +208,7 @@ class WhatsApp(object):
 
 
         :param audio: The audio of this WhatsApp.  # noqa: E501
-        :type: WhatsAppAudio
+        :type audio: WhatsAppAudio
         """
 
         self._audio = audio
@@ -231,7 +231,7 @@ class WhatsApp(object):
         The channel used to deliver the message  # noqa: E501
 
         :param channel: The channel of this WhatsApp.  # noqa: E501
-        :type: str
+        :type channel: str
         """
         allowed_values = ["whatsapp"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and channel not in allowed_values:  # noqa: E501
@@ -242,27 +242,35 @@ class WhatsApp(object):
 
         self._channel = channel
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = inspect.getargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    lambda x: convert(x),
                     value
                 ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
+                    lambda item: (item[0], convert(item[1])),
                     value.items()
                 ))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

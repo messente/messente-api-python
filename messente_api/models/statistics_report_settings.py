@@ -11,9 +11,9 @@
 """
 
 
+import inspect
 import pprint
 import re  # noqa: F401
-
 import six
 
 from messente_api.configuration import Configuration
@@ -79,7 +79,7 @@ class StatisticsReportSettings(object):
         Start date for the report  # noqa: E501
 
         :param start_date: The start_date of this StatisticsReportSettings.  # noqa: E501
-        :type: date
+        :type start_date: date
         """
         if self.local_vars_configuration.client_side_validation and start_date is None:  # noqa: E501
             raise ValueError("Invalid value for `start_date`, must not be `None`")  # noqa: E501
@@ -104,7 +104,7 @@ class StatisticsReportSettings(object):
         End date for the report  # noqa: E501
 
         :param end_date: The end_date of this StatisticsReportSettings.  # noqa: E501
-        :type: date
+        :type end_date: date
         """
         if self.local_vars_configuration.client_side_validation and end_date is None:  # noqa: E501
             raise ValueError("Invalid value for `end_date`, must not be `None`")  # noqa: E501
@@ -129,32 +129,40 @@ class StatisticsReportSettings(object):
         Optional list of message types (sms, viber, whatsapp, hlr, telegram)  # noqa: E501
 
         :param message_types: The message_types of this StatisticsReportSettings.  # noqa: E501
-        :type: list[str]
+        :type message_types: list[str]
         """
 
         self._message_types = message_types
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = inspect.getargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    lambda x: convert(x),
                     value
                 ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
+                    lambda item: (item[0], convert(item[1])),
                     value.items()
                 ))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

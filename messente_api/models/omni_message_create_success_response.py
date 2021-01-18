@@ -11,9 +11,9 @@
 """
 
 
+import inspect
 import pprint
 import re  # noqa: F401
-
 import six
 
 from messente_api.configuration import Configuration
@@ -78,7 +78,7 @@ class OmniMessageCreateSuccessResponse(object):
         List of messages that compose the omnimessage  # noqa: E501
 
         :param messages: The messages of this OmniMessageCreateSuccessResponse.  # noqa: E501
-        :type: list[MessageResult]
+        :type messages: list[MessageResult]
         """
         if self.local_vars_configuration.client_side_validation and messages is None:  # noqa: E501
             raise ValueError("Invalid value for `messages`, must not be `None`")  # noqa: E501
@@ -103,7 +103,7 @@ class OmniMessageCreateSuccessResponse(object):
         Phone number in e.164 format  # noqa: E501
 
         :param to: The to of this OmniMessageCreateSuccessResponse.  # noqa: E501
-        :type: str
+        :type to: str
         """
         if self.local_vars_configuration.client_side_validation and to is None:  # noqa: E501
             raise ValueError("Invalid value for `to`, must not be `None`")  # noqa: E501
@@ -128,34 +128,42 @@ class OmniMessageCreateSuccessResponse(object):
         Unique identifier for the omnimessage  # noqa: E501
 
         :param omnimessage_id: The omnimessage_id of this OmniMessageCreateSuccessResponse.  # noqa: E501
-        :type: str
+        :type omnimessage_id: str
         """
         if self.local_vars_configuration.client_side_validation and omnimessage_id is None:  # noqa: E501
             raise ValueError("Invalid value for `omnimessage_id`, must not be `None`")  # noqa: E501
 
         self._omnimessage_id = omnimessage_id
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = inspect.getargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    lambda x: convert(x),
                     value
                 ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
+                    lambda item: (item[0], convert(item[1])),
                     value.items()
                 ))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

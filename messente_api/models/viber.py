@@ -11,9 +11,9 @@
 """
 
 
+import inspect
 import pprint
 import re  # noqa: F401
-
 import six
 
 from messente_api.configuration import Configuration
@@ -101,7 +101,7 @@ class Viber(object):
         Phone number or alphanumeric sender name  # noqa: E501
 
         :param sender: The sender of this Viber.  # noqa: E501
-        :type: str
+        :type sender: str
         """
 
         self._sender = sender
@@ -124,7 +124,7 @@ class Viber(object):
         After how many minutes this channel is considered as failed and the next channel is attempted  # noqa: E501
 
         :param validity: The validity of this Viber.  # noqa: E501
-        :type: int
+        :type validity: int
         """
 
         self._validity = validity
@@ -147,7 +147,7 @@ class Viber(object):
         Plaintext content for Viber  # noqa: E501
 
         :param text: The text of this Viber.  # noqa: E501
-        :type: str
+        :type text: str
         """
 
         self._text = text
@@ -170,7 +170,7 @@ class Viber(object):
         URL for the embedded image    Valid combinations:    1) image_url,    2) text, image_url, button_url, button_text  # noqa: E501
 
         :param image_url: The image_url of this Viber.  # noqa: E501
-        :type: str
+        :type image_url: str
         """
 
         self._image_url = image_url
@@ -193,7 +193,7 @@ class Viber(object):
         URL of the button, must be specified along with ''text'', ''button_text'' and ''image_url'' (optional)  # noqa: E501
 
         :param button_url: The button_url of this Viber.  # noqa: E501
-        :type: str
+        :type button_url: str
         """
 
         self._button_url = button_url
@@ -216,7 +216,7 @@ class Viber(object):
         Must be specified along with ''text'', ''button_url'', ''button_text'', ''image_url'' (optional)  # noqa: E501
 
         :param button_text: The button_text of this Viber.  # noqa: E501
-        :type: str
+        :type button_text: str
         """
 
         self._button_text = button_text
@@ -239,7 +239,7 @@ class Viber(object):
         The channel used to deliver the message  # noqa: E501
 
         :param channel: The channel of this Viber.  # noqa: E501
-        :type: str
+        :type channel: str
         """
         allowed_values = ["viber"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and channel not in allowed_values:  # noqa: E501
@@ -250,27 +250,35 @@ class Viber(object):
 
         self._channel = channel
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = inspect.getargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    lambda x: convert(x),
                     value
                 ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
+                    lambda item: (item[0], convert(item[1])),
                     value.items()
                 ))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

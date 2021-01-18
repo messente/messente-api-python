@@ -11,9 +11,9 @@
 """
 
 
+import inspect
 import pprint
 import re  # noqa: F401
-
 import six
 
 from messente_api.configuration import Configuration
@@ -106,7 +106,7 @@ class ContactFields(object):
         Phone number in e.164 format  # noqa: E501
 
         :param phone_number: The phone_number of this ContactFields.  # noqa: E501
-        :type: str
+        :type phone_number: str
         """
         if self.local_vars_configuration.client_side_validation and phone_number is None:  # noqa: E501
             raise ValueError("Invalid value for `phone_number`, must not be `None`")  # noqa: E501
@@ -131,7 +131,7 @@ class ContactFields(object):
         The email of the contact  # noqa: E501
 
         :param email: The email of this ContactFields.  # noqa: E501
-        :type: str
+        :type email: str
         """
 
         self._email = email
@@ -154,7 +154,7 @@ class ContactFields(object):
         The first name of the contact  # noqa: E501
 
         :param first_name: The first_name of this ContactFields.  # noqa: E501
-        :type: str
+        :type first_name: str
         """
 
         self._first_name = first_name
@@ -177,7 +177,7 @@ class ContactFields(object):
         The last name of the contact  # noqa: E501
 
         :param last_name: The last_name of this ContactFields.  # noqa: E501
-        :type: str
+        :type last_name: str
         """
 
         self._last_name = last_name
@@ -200,7 +200,7 @@ class ContactFields(object):
         The company of the contact  # noqa: E501
 
         :param company: The company of this ContactFields.  # noqa: E501
-        :type: str
+        :type company: str
         """
 
         self._company = company
@@ -223,7 +223,7 @@ class ContactFields(object):
         The title of the contact  # noqa: E501
 
         :param title: The title of this ContactFields.  # noqa: E501
-        :type: str
+        :type title: str
         """
 
         self._title = title
@@ -246,7 +246,7 @@ class ContactFields(object):
         The first custom field  # noqa: E501
 
         :param custom: The custom of this ContactFields.  # noqa: E501
-        :type: str
+        :type custom: str
         """
 
         self._custom = custom
@@ -269,7 +269,7 @@ class ContactFields(object):
         The second custom field  # noqa: E501
 
         :param custom2: The custom2 of this ContactFields.  # noqa: E501
-        :type: str
+        :type custom2: str
         """
 
         self._custom2 = custom2
@@ -292,7 +292,7 @@ class ContactFields(object):
         The third custom field  # noqa: E501
 
         :param custom3: The custom3 of this ContactFields.  # noqa: E501
-        :type: str
+        :type custom3: str
         """
 
         self._custom3 = custom3
@@ -315,32 +315,40 @@ class ContactFields(object):
         The fourth custom field  # noqa: E501
 
         :param custom4: The custom4 of this ContactFields.  # noqa: E501
-        :type: str
+        :type custom4: str
         """
 
         self._custom4 = custom4
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = inspect.getargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    lambda x: convert(x),
                     value
                 ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
+                    lambda item: (item[0], convert(item[1])),
                     value.items()
                 ))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

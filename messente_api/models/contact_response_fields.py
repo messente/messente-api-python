@@ -11,9 +11,9 @@
 """
 
 
+import inspect
 import pprint
 import re  # noqa: F401
-
 import six
 
 from messente_api.configuration import Configuration
@@ -111,7 +111,7 @@ class ContactResponseFields(object):
         Phone number in e.164 format  # noqa: E501
 
         :param phone_number: The phone_number of this ContactResponseFields.  # noqa: E501
-        :type: str
+        :type phone_number: str
         """
 
         self._phone_number = phone_number
@@ -134,7 +134,7 @@ class ContactResponseFields(object):
         The email of the contact  # noqa: E501
 
         :param email: The email of this ContactResponseFields.  # noqa: E501
-        :type: str
+        :type email: str
         """
 
         self._email = email
@@ -157,7 +157,7 @@ class ContactResponseFields(object):
         The first name of the contact  # noqa: E501
 
         :param first_name: The first_name of this ContactResponseFields.  # noqa: E501
-        :type: str
+        :type first_name: str
         """
 
         self._first_name = first_name
@@ -180,7 +180,7 @@ class ContactResponseFields(object):
         The last name of the contact  # noqa: E501
 
         :param last_name: The last_name of this ContactResponseFields.  # noqa: E501
-        :type: str
+        :type last_name: str
         """
 
         self._last_name = last_name
@@ -203,7 +203,7 @@ class ContactResponseFields(object):
         The company of the contact  # noqa: E501
 
         :param company: The company of this ContactResponseFields.  # noqa: E501
-        :type: str
+        :type company: str
         """
 
         self._company = company
@@ -226,7 +226,7 @@ class ContactResponseFields(object):
         The title of the contact  # noqa: E501
 
         :param title: The title of this ContactResponseFields.  # noqa: E501
-        :type: str
+        :type title: str
         """
 
         self._title = title
@@ -249,7 +249,7 @@ class ContactResponseFields(object):
         The first custom field  # noqa: E501
 
         :param custom: The custom of this ContactResponseFields.  # noqa: E501
-        :type: str
+        :type custom: str
         """
 
         self._custom = custom
@@ -272,7 +272,7 @@ class ContactResponseFields(object):
         The second custom field  # noqa: E501
 
         :param custom2: The custom2 of this ContactResponseFields.  # noqa: E501
-        :type: str
+        :type custom2: str
         """
 
         self._custom2 = custom2
@@ -295,7 +295,7 @@ class ContactResponseFields(object):
         The third custom field  # noqa: E501
 
         :param custom3: The custom3 of this ContactResponseFields.  # noqa: E501
-        :type: str
+        :type custom3: str
         """
 
         self._custom3 = custom3
@@ -318,7 +318,7 @@ class ContactResponseFields(object):
         The fourth custom field  # noqa: E501
 
         :param custom4: The custom4 of this ContactResponseFields.  # noqa: E501
-        :type: str
+        :type custom4: str
         """
 
         self._custom4 = custom4
@@ -341,32 +341,40 @@ class ContactResponseFields(object):
         The date in ISO 8601 format, YYYY-MM-DD,  on which the contact is going to be deleted  because it has not belonged to a group for 30 days  # noqa: E501
 
         :param scheduled_deletion_date: The scheduled_deletion_date of this ContactResponseFields.  # noqa: E501
-        :type: date
+        :type scheduled_deletion_date: date
         """
 
         self._scheduled_deletion_date = scheduled_deletion_date
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = inspect.getargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    lambda x: convert(x),
                     value
                 ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
+                    lambda item: (item[0], convert(item[1])),
                     value.items()
                 ))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

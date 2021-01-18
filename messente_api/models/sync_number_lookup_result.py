@@ -11,9 +11,9 @@
 """
 
 
+import inspect
 import pprint
 import re  # noqa: F401
-
 import six
 
 from messente_api.configuration import Configuration
@@ -83,8 +83,7 @@ class SyncNumberLookupResult(object):
         self.ported_network = ported_network
         if status is not None:
             self.status = status
-        if error is not None:
-            self.error = error
+        self.error = error
 
     @property
     def number(self):
@@ -104,7 +103,7 @@ class SyncNumberLookupResult(object):
         Phone number in e.164 format  # noqa: E501
 
         :param number: The number of this SyncNumberLookupResult.  # noqa: E501
-        :type: str
+        :type number: str
         """
         if self.local_vars_configuration.client_side_validation and number is None:  # noqa: E501
             raise ValueError("Invalid value for `number`, must not be `None`")  # noqa: E501
@@ -129,7 +128,7 @@ class SyncNumberLookupResult(object):
         Indicates if a number is roaming  # noqa: E501
 
         :param roaming: The roaming of this SyncNumberLookupResult.  # noqa: E501
-        :type: bool
+        :type roaming: bool
         """
 
         self._roaming = roaming
@@ -152,7 +151,7 @@ class SyncNumberLookupResult(object):
         Indicates if a number is ported  # noqa: E501
 
         :param ported: The ported of this SyncNumberLookupResult.  # noqa: E501
-        :type: bool
+        :type ported: bool
         """
 
         self._ported = ported
@@ -173,7 +172,7 @@ class SyncNumberLookupResult(object):
 
 
         :param roaming_network: The roaming_network of this SyncNumberLookupResult.  # noqa: E501
-        :type: MobileNetwork
+        :type roaming_network: MobileNetwork
         """
 
         self._roaming_network = roaming_network
@@ -194,7 +193,7 @@ class SyncNumberLookupResult(object):
 
 
         :param current_network: The current_network of this SyncNumberLookupResult.  # noqa: E501
-        :type: MobileNetwork
+        :type current_network: MobileNetwork
         """
 
         self._current_network = current_network
@@ -215,7 +214,7 @@ class SyncNumberLookupResult(object):
 
 
         :param original_network: The original_network of this SyncNumberLookupResult.  # noqa: E501
-        :type: MobileNetwork
+        :type original_network: MobileNetwork
         """
 
         self._original_network = original_network
@@ -236,7 +235,7 @@ class SyncNumberLookupResult(object):
 
 
         :param ported_network: The ported_network of this SyncNumberLookupResult.  # noqa: E501
-        :type: MobileNetwork
+        :type ported_network: MobileNetwork
         """
 
         self._ported_network = ported_network
@@ -259,7 +258,7 @@ class SyncNumberLookupResult(object):
         Status of the phone number  # noqa: E501
 
         :param status: The status of this SyncNumberLookupResult.  # noqa: E501
-        :type: str
+        :type status: str
         """
         allowed_values = ["ON", "OFF", "INVALID", "UNKNOWN"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and status not in allowed_values:  # noqa: E501
@@ -288,32 +287,40 @@ class SyncNumberLookupResult(object):
         Indicates if any error occurred while handling the request  # noqa: E501
 
         :param error: The error of this SyncNumberLookupResult.  # noqa: E501
-        :type: object
+        :type error: object
         """
 
         self._error = error
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = inspect.getargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    lambda x: convert(x),
                     value
                 ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
+                    lambda item: (item[0], convert(item[1])),
                     value.items()
                 ))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

@@ -11,9 +11,9 @@
 """
 
 
+import inspect
 import pprint
 import re  # noqa: F401
-
 import six
 
 from messente_api.configuration import Configuration
@@ -94,7 +94,7 @@ class Omnimessage(object):
         Phone number in e.164 format  # noqa: E501
 
         :param to: The to of this Omnimessage.  # noqa: E501
-        :type: str
+        :type to: str
         """
         if self.local_vars_configuration.client_side_validation and to is None:  # noqa: E501
             raise ValueError("Invalid value for `to`, must not be `None`")  # noqa: E501
@@ -119,7 +119,7 @@ class Omnimessage(object):
         An array of messages  # noqa: E501
 
         :param messages: The messages of this Omnimessage.  # noqa: E501
-        :type: list[OneOfViberSMSWhatsAppTelegram]
+        :type messages: list[OneOfViberSMSWhatsAppTelegram]
         """
         if self.local_vars_configuration.client_side_validation and messages is None:  # noqa: E501
             raise ValueError("Invalid value for `messages`, must not be `None`")  # noqa: E501
@@ -144,7 +144,7 @@ class Omnimessage(object):
         URL where the delivery report will be sent  # noqa: E501
 
         :param dlr_url: The dlr_url of this Omnimessage.  # noqa: E501
-        :type: str
+        :type dlr_url: str
         """
 
         self._dlr_url = dlr_url
@@ -165,7 +165,7 @@ class Omnimessage(object):
 
 
         :param text_store: The text_store of this Omnimessage.  # noqa: E501
-        :type: TextStore
+        :type text_store: TextStore
         """
 
         self._text_store = text_store
@@ -188,7 +188,7 @@ class Omnimessage(object):
         Optional parameter for sending messages at some specific time in the future.   Time must be specified in the ISO-8601 format.   If no timezone is specified, then the timezone is assumed to be UTC    Examples:    * Time specified with timezone: 2018-06-22T09:05:07+00:00 Time specified in UTC: 2018-06-22T09:05:07Z   * Time specified without timezone: 2018-06-22T09:05 (equivalent to 2018-06-22T09:05+00:00)  # noqa: E501
 
         :param time_to_send: The time_to_send of this Omnimessage.  # noqa: E501
-        :type: datetime
+        :type time_to_send: datetime
         """
 
         self._time_to_send = time_to_send
@@ -209,32 +209,40 @@ class Omnimessage(object):
 
 
         :param priority: The priority of this Omnimessage.  # noqa: E501
-        :type: Priority
+        :type priority: Priority
         """
 
         self._priority = priority
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = inspect.getargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    lambda x: convert(x),
                     value
                 ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
+                    lambda item: (item[0], convert(item[1])),
                     value.items()
                 ))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

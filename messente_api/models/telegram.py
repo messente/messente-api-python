@@ -11,9 +11,9 @@
 """
 
 
+import inspect
 import pprint
 import re  # noqa: F401
-
 import six
 
 from messente_api.configuration import Configuration
@@ -101,7 +101,7 @@ class Telegram(object):
         Phone number or alphanumeric sender name  # noqa: E501
 
         :param sender: The sender of this Telegram.  # noqa: E501
-        :type: str
+        :type sender: str
         """
 
         self._sender = sender
@@ -124,7 +124,7 @@ class Telegram(object):
         After how many minutes this channel is considered as failed and the next channel is attempted  # noqa: E501
 
         :param validity: The validity of this Telegram.  # noqa: E501
-        :type: int
+        :type validity: int
         """
 
         self._validity = validity
@@ -147,7 +147,7 @@ class Telegram(object):
         Plaintext content for Telegram  # noqa: E501
 
         :param text: The text of this Telegram.  # noqa: E501
-        :type: str
+        :type text: str
         """
 
         self._text = text
@@ -170,7 +170,7 @@ class Telegram(object):
         URL for the embedded image. Mutually exclusive with \"document_url\" and \"audio_url\"  # noqa: E501
 
         :param image_url: The image_url of this Telegram.  # noqa: E501
-        :type: str
+        :type image_url: str
         """
 
         self._image_url = image_url
@@ -193,7 +193,7 @@ class Telegram(object):
         URL for the embedded image. Mutually exclusive with \"audio_url\" and \"image_url\"  # noqa: E501
 
         :param document_url: The document_url of this Telegram.  # noqa: E501
-        :type: str
+        :type document_url: str
         """
 
         self._document_url = document_url
@@ -216,7 +216,7 @@ class Telegram(object):
         URL for the embedded image. Mutually exclusive with \"document_url\" and \"image_url\"  # noqa: E501
 
         :param audio_url: The audio_url of this Telegram.  # noqa: E501
-        :type: str
+        :type audio_url: str
         """
 
         self._audio_url = audio_url
@@ -239,7 +239,7 @@ class Telegram(object):
         The channel used to deliver the message  # noqa: E501
 
         :param channel: The channel of this Telegram.  # noqa: E501
-        :type: str
+        :type channel: str
         """
         allowed_values = ["telegram"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and channel not in allowed_values:  # noqa: E501
@@ -250,27 +250,35 @@ class Telegram(object):
 
         self._channel = channel
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = inspect.getargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    lambda x: convert(x),
                     value
                 ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
+                    lambda item: (item[0], convert(item[1])),
                     value.items()
                 ))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

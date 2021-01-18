@@ -11,9 +11,9 @@
 """
 
 
+import inspect
 import pprint
 import re  # noqa: F401
-
 import six
 
 from messente_api.configuration import Configuration
@@ -95,7 +95,7 @@ class SMS(object):
         Text content of the SMS  # noqa: E501
 
         :param text: The text of this SMS.  # noqa: E501
-        :type: str
+        :type text: str
         """
         if self.local_vars_configuration.client_side_validation and text is None:  # noqa: E501
             raise ValueError("Invalid value for `text`, must not be `None`")  # noqa: E501
@@ -120,7 +120,7 @@ class SMS(object):
         Phone number or alphanumeric sender name  # noqa: E501
 
         :param sender: The sender of this SMS.  # noqa: E501
-        :type: str
+        :type sender: str
         """
 
         self._sender = sender
@@ -143,7 +143,7 @@ class SMS(object):
         After how many minutes this channel is considered as failed and the next channel is attempted  # noqa: E501
 
         :param validity: The validity of this SMS.  # noqa: E501
-        :type: int
+        :type validity: int
         """
 
         self._validity = validity
@@ -166,7 +166,7 @@ class SMS(object):
         Defines how non-GSM characters will be treated:    - \"on\" Use replacement settings from the account's [API Auto Replace settings page](https://dashboard.messente.com/api-settings/auto-replace) (default)   - \"full\" All non GSM 03.38 characters will be replaced with suitable alternatives   - \"off\" Message content is not modified in any way  # noqa: E501
 
         :param autoconvert: The autoconvert of this SMS.  # noqa: E501
-        :type: str
+        :type autoconvert: str
         """
         allowed_values = ["full", "on", "off"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and autoconvert not in allowed_values:  # noqa: E501
@@ -195,7 +195,7 @@ class SMS(object):
         hex-encoded string containing SMS UDH  # noqa: E501
 
         :param udh: The udh of this SMS.  # noqa: E501
-        :type: str
+        :type udh: str
         """
 
         self._udh = udh
@@ -218,7 +218,7 @@ class SMS(object):
         The channel used to deliver the message  # noqa: E501
 
         :param channel: The channel of this SMS.  # noqa: E501
-        :type: str
+        :type channel: str
         """
         allowed_values = ["sms"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and channel not in allowed_values:  # noqa: E501
@@ -229,27 +229,35 @@ class SMS(object):
 
         self._channel = channel
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = inspect.getargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    lambda x: convert(x),
                     value
                 ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
+                    lambda item: (item[0], convert(item[1])),
                     value.items()
                 ))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

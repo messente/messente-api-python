@@ -11,9 +11,9 @@
 """
 
 
+import inspect
 import pprint
 import re  # noqa: F401
-
 import six
 
 from messente_api.configuration import Configuration
@@ -94,7 +94,7 @@ class DeliveryResult(object):
 
 
         :param status: The status of this DeliveryResult.  # noqa: E501
-        :type: Status
+        :type status: Status
         """
 
         self._status = status
@@ -115,7 +115,7 @@ class DeliveryResult(object):
 
 
         :param channel: The channel of this DeliveryResult.  # noqa: E501
-        :type: Channel
+        :type channel: Channel
         """
 
         self._channel = channel
@@ -138,7 +138,7 @@ class DeliveryResult(object):
         Unique identifier for the message  # noqa: E501
 
         :param message_id: The message_id of this DeliveryResult.  # noqa: E501
-        :type: str
+        :type message_id: str
         """
 
         self._message_id = message_id
@@ -161,7 +161,7 @@ class DeliveryResult(object):
         Human-readable description of what went wrong, *null* in case of success or if the message has not been processed yet  # noqa: E501
 
         :param error: The error of this DeliveryResult.  # noqa: E501
-        :type: str
+        :type error: str
         """
 
         self._error = error
@@ -182,7 +182,7 @@ class DeliveryResult(object):
 
 
         :param err: The err of this DeliveryResult.  # noqa: E501
-        :type: ErrorCodeOmnichannelMachine
+        :type err: ErrorCodeOmnichannelMachine
         """
 
         self._err = err
@@ -205,32 +205,40 @@ class DeliveryResult(object):
         When this status was received by Omnichannel API  # noqa: E501
 
         :param timestamp: The timestamp of this DeliveryResult.  # noqa: E501
-        :type: datetime
+        :type timestamp: datetime
         """
 
         self._timestamp = timestamp
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = inspect.getargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    lambda x: convert(x),
                     value
                 ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
+                    lambda item: (item[0], convert(item[1])),
                     value.items()
                 ))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

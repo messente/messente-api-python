@@ -11,9 +11,9 @@
 """
 
 
+import inspect
 import pprint
 import re  # noqa: F401
-
 import six
 
 from messente_api.configuration import Configuration
@@ -74,7 +74,7 @@ class SyncNumberLookupSuccess(object):
         ID of the request  # noqa: E501
 
         :param request_id: The request_id of this SyncNumberLookupSuccess.  # noqa: E501
-        :type: str
+        :type request_id: str
         """
         if self.local_vars_configuration.client_side_validation and request_id is None:  # noqa: E501
             raise ValueError("Invalid value for `request_id`, must not be `None`")  # noqa: E501
@@ -99,34 +99,42 @@ class SyncNumberLookupSuccess(object):
         A container for phone number info objects  # noqa: E501
 
         :param result: The result of this SyncNumberLookupSuccess.  # noqa: E501
-        :type: list[SyncNumberLookupResult]
+        :type result: list[SyncNumberLookupResult]
         """
         if self.local_vars_configuration.client_side_validation and result is None:  # noqa: E501
             raise ValueError("Invalid value for `result`, must not be `None`")  # noqa: E501
 
         self._result = result
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = inspect.getargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    lambda x: convert(x),
                     value
                 ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
+                    lambda item: (item[0], convert(item[1])),
                     value.items()
                 ))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

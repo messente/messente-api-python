@@ -15,7 +15,7 @@
 
 from __future__ import absolute_import
 
-__version__ = "1.4.0"
+__version__ = "1.4.1"
 
 # import apis into sdk package
 from messente_api.api.blacklist_api import BlacklistApi
@@ -33,6 +33,7 @@ from messente_api.exceptions import OpenApiException
 from messente_api.exceptions import ApiTypeError
 from messente_api.exceptions import ApiValueError
 from messente_api.exceptions import ApiKeyError
+from messente_api.exceptions import ApiAttributeError
 from messente_api.exceptions import ApiException
 # import models into sdk package
 from messente_api.models.channel import Channel

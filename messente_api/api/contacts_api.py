@@ -42,22 +42,28 @@ class ContactsApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.add_contact_to_group(group_id, phone, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str group_id: String in UUID format (required)
-        :param str phone: A phone number (required)
+        :param group_id: String in UUID format (required)
+        :type group_id: str
+        :param phone: A phone number (required)
+        :type phone: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: object
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: object
         """
         kwargs['_return_http_data_only'] = True
         return self.add_contact_to_group_with_http_info(group_id, phone, **kwargs)  # noqa: E501
@@ -67,24 +73,35 @@ class ContactsApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.add_contact_to_group_with_http_info(group_id, phone, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str group_id: String in UUID format (required)
-        :param str phone: A phone number (required)
+        :param group_id: String in UUID format (required)
+        :type group_id: str
+        :param phone: A phone number (required)
+        :type phone: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(object, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(object, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -98,7 +115,8 @@ class ContactsApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout'
+                '_request_timeout',
+                '_request_auth'
             ]
         )
 
@@ -141,6 +159,14 @@ class ContactsApi(object):
 
         # Authentication setting
         auth_settings = ['basicAuth']  # noqa: E501
+        
+        response_types_map = {
+            201: "object",
+            400: "ErrorPhonebook",
+            401: "ErrorPhonebook",
+            404: "ErrorPhonebook",
+            409: "ErrorPhonebook",
+        }
 
         return self.api_client.call_api(
             '/phonebook/groups/{groupId}/contacts/{phone}', 'POST',
@@ -150,34 +176,40 @@ class ContactsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='object',  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
 
     def create_contact(self, contact_fields, **kwargs):  # noqa: E501
         """Creates a new contact  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.create_contact(contact_fields, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param ContactFields contact_fields: (required)
+        :param contact_fields: (required)
+        :type contact_fields: ContactFields
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: ContactEnvelope
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: ContactEnvelope
         """
         kwargs['_return_http_data_only'] = True
         return self.create_contact_with_http_info(contact_fields, **kwargs)  # noqa: E501
@@ -187,23 +219,33 @@ class ContactsApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.create_contact_with_http_info(contact_fields, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param ContactFields contact_fields: (required)
+        :param contact_fields: (required)
+        :type contact_fields: ContactFields
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(ContactEnvelope, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(ContactEnvelope, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -216,7 +258,8 @@ class ContactsApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout'
+                '_request_timeout',
+                '_request_auth'
             ]
         )
 
@@ -257,6 +300,13 @@ class ContactsApi(object):
 
         # Authentication setting
         auth_settings = ['basicAuth']  # noqa: E501
+        
+        response_types_map = {
+            201: "ContactEnvelope",
+            400: "ErrorPhonebook",
+            401: "ErrorPhonebook",
+            409: "ErrorPhonebook",
+        }
 
         return self.api_client.call_api(
             '/phonebook/contacts', 'POST',
@@ -266,34 +316,40 @@ class ContactsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='ContactEnvelope',  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
 
     def delete_contact(self, phone, **kwargs):  # noqa: E501
         """Deletes a contact  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.delete_contact(phone, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str phone: A phone number (required)
+        :param phone: A phone number (required)
+        :type phone: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
         kwargs['_return_http_data_only'] = True
         return self.delete_contact_with_http_info(phone, **kwargs)  # noqa: E501
@@ -303,23 +359,33 @@ class ContactsApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.delete_contact_with_http_info(phone, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str phone: A phone number (required)
+        :param phone: A phone number (required)
+        :type phone: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
 
         local_var_params = locals()
@@ -332,7 +398,8 @@ class ContactsApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout'
+                '_request_timeout',
+                '_request_auth'
             ]
         )
 
@@ -369,6 +436,8 @@ class ContactsApi(object):
 
         # Authentication setting
         auth_settings = ['basicAuth']  # noqa: E501
+        
+        response_types_map = {}
 
         return self.api_client.call_api(
             '/phonebook/contacts/{phone}', 'DELETE',
@@ -378,34 +447,40 @@ class ContactsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
 
     def fetch_contact(self, phone, **kwargs):  # noqa: E501
         """Lists a contact  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.fetch_contact(phone, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str phone: A phone number (required)
+        :param phone: A phone number (required)
+        :type phone: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: ContactEnvelope
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: ContactEnvelope
         """
         kwargs['_return_http_data_only'] = True
         return self.fetch_contact_with_http_info(phone, **kwargs)  # noqa: E501
@@ -415,23 +490,33 @@ class ContactsApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.fetch_contact_with_http_info(phone, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str phone: A phone number (required)
+        :param phone: A phone number (required)
+        :type phone: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(ContactEnvelope, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(ContactEnvelope, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -444,7 +529,8 @@ class ContactsApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout'
+                '_request_timeout',
+                '_request_auth'
             ]
         )
 
@@ -481,6 +567,13 @@ class ContactsApi(object):
 
         # Authentication setting
         auth_settings = ['basicAuth']  # noqa: E501
+        
+        response_types_map = {
+            200: "ContactEnvelope",
+            400: "ErrorPhonebook",
+            401: "ErrorPhonebook",
+            404: "ErrorPhonebook",
+        }
 
         return self.api_client.call_api(
             '/phonebook/contacts/{phone}', 'GET',
@@ -490,34 +583,40 @@ class ContactsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='ContactEnvelope',  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
 
     def fetch_contact_groups(self, phone, **kwargs):  # noqa: E501
         """Lists groups of a contact  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.fetch_contact_groups(phone, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str phone: A phone number (required)
+        :param phone: A phone number (required)
+        :type phone: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: GroupListEnvelope
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: GroupListEnvelope
         """
         kwargs['_return_http_data_only'] = True
         return self.fetch_contact_groups_with_http_info(phone, **kwargs)  # noqa: E501
@@ -527,23 +626,33 @@ class ContactsApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.fetch_contact_groups_with_http_info(phone, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str phone: A phone number (required)
+        :param phone: A phone number (required)
+        :type phone: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(GroupListEnvelope, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(GroupListEnvelope, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -556,7 +665,8 @@ class ContactsApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout'
+                '_request_timeout',
+                '_request_auth'
             ]
         )
 
@@ -593,6 +703,13 @@ class ContactsApi(object):
 
         # Authentication setting
         auth_settings = ['basicAuth']  # noqa: E501
+        
+        response_types_map = {
+            200: "GroupListEnvelope",
+            400: "ErrorPhonebook",
+            401: "ErrorPhonebook",
+            404: "ErrorPhonebook",
+        }
 
         return self.api_client.call_api(
             '/phonebook/contacts/{phone}/groups', 'GET',
@@ -602,34 +719,40 @@ class ContactsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='GroupListEnvelope',  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
 
     def fetch_contacts(self, **kwargs):  # noqa: E501
         """Returns all contacts  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.fetch_contacts(async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param list[str] group_ids: Optional one or many group id strings in UUID format. For example: \"/contacts?groupIds=group_id_one&groupIds=group_id_two\" 
+        :param group_ids: Optional one or many group id strings in UUID format. For example: \"/contacts?groupIds=group_id_one&groupIds=group_id_two\" 
+        :type group_ids: list[str]
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: ContactListEnvelope
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: ContactListEnvelope
         """
         kwargs['_return_http_data_only'] = True
         return self.fetch_contacts_with_http_info(**kwargs)  # noqa: E501
@@ -639,23 +762,33 @@ class ContactsApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.fetch_contacts_with_http_info(async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param list[str] group_ids: Optional one or many group id strings in UUID format. For example: \"/contacts?groupIds=group_id_one&groupIds=group_id_two\" 
+        :param group_ids: Optional one or many group id strings in UUID format. For example: \"/contacts?groupIds=group_id_one&groupIds=group_id_two\" 
+        :type group_ids: list[str]
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(ContactListEnvelope, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(ContactListEnvelope, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -668,7 +801,8 @@ class ContactsApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout'
+                '_request_timeout',
+                '_request_auth'
             ]
         )
 
@@ -702,6 +836,12 @@ class ContactsApi(object):
 
         # Authentication setting
         auth_settings = ['basicAuth']  # noqa: E501
+        
+        response_types_map = {
+            200: "ContactListEnvelope",
+            400: "ErrorPhonebook",
+            401: "ErrorPhonebook",
+        }
 
         return self.api_client.call_api(
             '/phonebook/contacts', 'GET',
@@ -711,35 +851,42 @@ class ContactsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='ContactListEnvelope',  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
 
     def remove_contact_from_group(self, group_id, phone, **kwargs):  # noqa: E501
         """Removes a contact from a group  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.remove_contact_from_group(group_id, phone, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str group_id: String in UUID format (required)
-        :param str phone: A phone number (required)
+        :param group_id: String in UUID format (required)
+        :type group_id: str
+        :param phone: A phone number (required)
+        :type phone: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
         kwargs['_return_http_data_only'] = True
         return self.remove_contact_from_group_with_http_info(group_id, phone, **kwargs)  # noqa: E501
@@ -749,24 +896,35 @@ class ContactsApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.remove_contact_from_group_with_http_info(group_id, phone, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str group_id: String in UUID format (required)
-        :param str phone: A phone number (required)
+        :param group_id: String in UUID format (required)
+        :type group_id: str
+        :param phone: A phone number (required)
+        :type phone: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
 
         local_var_params = locals()
@@ -780,7 +938,8 @@ class ContactsApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout'
+                '_request_timeout',
+                '_request_auth'
             ]
         )
 
@@ -823,6 +982,8 @@ class ContactsApi(object):
 
         # Authentication setting
         auth_settings = ['basicAuth']  # noqa: E501
+        
+        response_types_map = {}
 
         return self.api_client.call_api(
             '/phonebook/groups/{groupId}/contacts/{phone}', 'DELETE',
@@ -832,35 +993,42 @@ class ContactsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
 
     def update_contact(self, phone, contact_update_fields, **kwargs):  # noqa: E501
         """Updates a contact  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.update_contact(phone, contact_update_fields, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str phone: A phone number (required)
-        :param ContactUpdateFields contact_update_fields: (required)
+        :param phone: A phone number (required)
+        :type phone: str
+        :param contact_update_fields: (required)
+        :type contact_update_fields: ContactUpdateFields
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: ContactEnvelope
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: ContactEnvelope
         """
         kwargs['_return_http_data_only'] = True
         return self.update_contact_with_http_info(phone, contact_update_fields, **kwargs)  # noqa: E501
@@ -870,24 +1038,35 @@ class ContactsApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.update_contact_with_http_info(phone, contact_update_fields, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str phone: A phone number (required)
-        :param ContactUpdateFields contact_update_fields: (required)
+        :param phone: A phone number (required)
+        :type phone: str
+        :param contact_update_fields: (required)
+        :type contact_update_fields: ContactUpdateFields
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(ContactEnvelope, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(ContactEnvelope, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -901,7 +1080,8 @@ class ContactsApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout'
+                '_request_timeout',
+                '_request_auth'
             ]
         )
 
@@ -948,6 +1128,13 @@ class ContactsApi(object):
 
         # Authentication setting
         auth_settings = ['basicAuth']  # noqa: E501
+        
+        response_types_map = {
+            200: "ContactEnvelope",
+            400: "ErrorPhonebook",
+            401: "ErrorPhonebook",
+            404: "ErrorPhonebook",
+        }
 
         return self.api_client.call_api(
             '/phonebook/contacts/{phone}', 'PATCH',
@@ -957,10 +1144,11 @@ class ContactsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='ContactEnvelope',  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
