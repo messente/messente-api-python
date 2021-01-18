@@ -4,6 +4,7 @@ Matches the following error title.   This field is a constant    * 201 - Invalid
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**value** | **str** | Matches the following error title.   This field is a constant    * 201 - Invalid data   * 202 - Unauthorized   * 203 - Missing resource   * 204 - Conflict   * 244 - Client error   * 205 - General error |  must be one of ["201", "202", "203", "204", "244", "205", ]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

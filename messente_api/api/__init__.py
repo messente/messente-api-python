@@ -1,12 +1,3 @@
-from __future__ import absolute_import
-
-# flake8: noqa
-
-# import apis into api package
-from messente_api.api.blacklist_api import BlacklistApi
-from messente_api.api.contacts_api import ContactsApi
-from messente_api.api.delivery_report_api import DeliveryReportApi
-from messente_api.api.groups_api import GroupsApi
-from messente_api.api.number_lookup_api import NumberLookupApi
-from messente_api.api.omnimessage_api import OmnimessageApi
-from messente_api.api.statistics_api import StatisticsApi
+# do not import all apis into this module because that uses a lot of memory and stack frames
+# if you need the ability to import all apis from one package, import them with
+# from messente_api.apis import BlacklistApi

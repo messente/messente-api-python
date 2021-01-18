@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     Messente API
 
@@ -11,18 +9,22 @@
 """
 
 
-from __future__ import absolute_import
-
 import re  # noqa: F401
+import sys  # noqa: F401
 
-# python 2 and python 3 compatibility library
-import six
-
-from messente_api.api_client import ApiClient
-from messente_api.exceptions import (  # noqa: F401
-    ApiTypeError,
-    ApiValueError
+from messente_api.api_client import ApiClient, Endpoint
+from messente_api.model_utils import (  # noqa: F401
+    check_allowed_values,
+    check_validations,
+    date,
+    datetime,
+    file_type,
+    none_type,
+    validate_and_convert_types
 )
+from messente_api.model.error_number_lookup import ErrorNumberLookup
+from messente_api.model.numbers_to_investigate import NumbersToInvestigate
+from messente_api.model.sync_number_lookup_success import SyncNumberLookupSuccess
 
 
 class NumberLookupApi(object):
@@ -37,118 +39,121 @@ class NumberLookupApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def fetch_info(self, numbers_to_investigate, **kwargs):  # noqa: E501
-        """Requests info about phone numbers  # noqa: E501
+        def __fetch_info(
+            self,
+            numbers_to_investigate,
+            **kwargs
+        ):
+            """Requests info about phone numbers  # noqa: E501
 
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.fetch_info(numbers_to_investigate, async_req=True)
-        >>> result = thread.get()
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
 
-        :param async_req bool: execute request asynchronously
-        :param NumbersToInvestigate numbers_to_investigate: Numbers for lookup (required)
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: SyncNumberLookupSuccess
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        return self.fetch_info_with_http_info(numbers_to_investigate, **kwargs)  # noqa: E501
+            >>> thread = api.fetch_info(numbers_to_investigate, async_req=True)
+            >>> result = thread.get()
 
-    def fetch_info_with_http_info(self, numbers_to_investigate, **kwargs):  # noqa: E501
-        """Requests info about phone numbers  # noqa: E501
+            Args:
+                numbers_to_investigate (NumbersToInvestigate): Numbers for lookup
 
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.fetch_info_with_http_info(numbers_to_investigate, async_req=True)
-        >>> result = thread.get()
+            Keyword Args:
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (float/tuple): timeout setting for this request. If one
+                    number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
 
-        :param async_req bool: execute request asynchronously
-        :param NumbersToInvestigate numbers_to_investigate: Numbers for lookup (required)
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(SyncNumberLookupSuccess, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
+            Returns:
+                SyncNumberLookupSuccess
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
+            kwargs['numbers_to_investigate'] = \
+                numbers_to_investigate
+            return self.call_with_http_info(**kwargs)
 
-        local_var_params = locals()
-
-        all_params = [
-            'numbers_to_investigate'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout'
-            ]
+        self.fetch_info = Endpoint(
+            settings={
+                'response_type': (SyncNumberLookupSuccess,),
+                'auth': [
+                    'basicAuth'
+                ],
+                'endpoint_path': '/hlr/sync',
+                'operation_id': 'fetch_info',
+                'http_method': 'POST',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'numbers_to_investigate',
+                ],
+                'required': [
+                    'numbers_to_investigate',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'numbers_to_investigate':
+                        (NumbersToInvestigate,),
+                },
+                'attribute_map': {
+                },
+                'location_map': {
+                    'numbers_to_investigate': 'body',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json'
+                ]
+            },
+            api_client=api_client,
+            callable=__fetch_info
         )
-
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method fetch_info" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
-        # verify the required parameter 'numbers_to_investigate' is set
-        if self.api_client.client_side_validation and ('numbers_to_investigate' not in local_var_params or  # noqa: E501
-                                                        local_var_params['numbers_to_investigate'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `numbers_to_investigate` when calling `fetch_info`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = []
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        if 'numbers_to_investigate' in local_var_params:
-            body_params = local_var_params['numbers_to_investigate']
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['basicAuth']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/hlr/sync', 'POST',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='SyncNumberLookupSuccess',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)

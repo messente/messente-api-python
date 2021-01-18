@@ -16,10 +16,12 @@ Requests info about phone numbers
 
 * Basic Authentication (basicAuth):
 ```python
-from __future__ import print_function
 import time
 import messente_api
-from messente_api.rest import ApiException
+from messente_api.api import number_lookup_api
+from messente_api.model.numbers_to_investigate import NumbersToInvestigate
+from messente_api.model.error_number_lookup import ErrorNumberLookup
+from messente_api.model.sync_number_lookup_success import SyncNumberLookupSuccess
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.messente.com/v1
 # See configuration.py for a list of all supported configuration parameters.
@@ -41,14 +43,19 @@ configuration = messente_api.Configuration(
 # Enter a context with an instance of the API client
 with messente_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = messente_api.NumberLookupApi(api_client)
-    numbers_to_investigate = {"numbers":["+37251000000","+37251000001"]} # NumbersToInvestigate | Numbers for lookup
+    api_instance = number_lookup_api.NumberLookupApi(api_client)
+    numbers_to_investigate = NumbersToInvestigate(
+        numbers=[
+            "numbers_example",
+        ],
+    ) # NumbersToInvestigate | Numbers for lookup
 
+    # example passing only required values which don't have defaults set
     try:
         # Requests info about phone numbers
         api_response = api_instance.fetch_info(numbers_to_investigate)
         pprint(api_response)
-    except ApiException as e:
+    except messente_api.ApiException as e:
         print("Exception when calling NumberLookupApi->fetch_info: %s\n" % e)
 ```
 
@@ -56,7 +63,7 @@ with messente_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **numbers_to_investigate** | [**NumbersToInvestigate**](NumbersToInvestigate.md)| Numbers for lookup | 
+ **numbers_to_investigate** | [**NumbersToInvestigate**](NumbersToInvestigate.md)| Numbers for lookup |
 
 ### Return type
 

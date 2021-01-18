@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **image** | [**WhatsAppImage**](WhatsAppImage.md) |  | [optional] 
 **document** | [**WhatsAppDocument**](WhatsAppDocument.md) |  | [optional] 
 **audio** | [**WhatsAppAudio**](WhatsAppAudio.md) |  | [optional] 
-**channel** | **str** | The channel used to deliver the message | [optional] [default to 'whatsapp']
+**channel** | **str** | The channel used to deliver the message | [optional]  if omitted the server will use the default value of "whatsapp"
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

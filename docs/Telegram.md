@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **image_url** | **str** | URL for the embedded image. Mutually exclusive with \&quot;document_url\&quot; and \&quot;audio_url\&quot; | [optional] 
 **document_url** | **str** | URL for the embedded image. Mutually exclusive with \&quot;audio_url\&quot; and \&quot;image_url\&quot; | [optional] 
 **audio_url** | **str** | URL for the embedded image. Mutually exclusive with \&quot;document_url\&quot; and \&quot;image_url\&quot; | [optional] 
-**channel** | **str** | The channel used to deliver the message | [optional] [default to 'telegram']
+**channel** | **str** | The channel used to deliver the message | [optional]  if omitted the server will use the default value of "telegram"
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
