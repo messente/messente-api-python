@@ -16,11 +16,10 @@ Retrieves the delivery report for the Omnimessage
 
 * Basic Authentication (basicAuth):
 ```python
+from __future__ import print_function
 import time
 import messente_api
-from messente_api.api import delivery_report_api
-from messente_api.model.error_omnichannel import ErrorOmnichannel
-from messente_api.model.delivery_report_response import DeliveryReportResponse
+from messente_api.rest import ApiException
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.messente.com/v1
 # See configuration.py for a list of all supported configuration parameters.
@@ -42,15 +41,14 @@ configuration = messente_api.Configuration(
 # Enter a context with an instance of the API client
 with messente_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = delivery_report_api.DeliveryReportApi(api_client)
-    omnimessage_id = "omnimessageId_example" # str | UUID of the omnimessage to for which the delivery report is to be retrieved
+    api_instance = messente_api.DeliveryReportApi(api_client)
+    omnimessage_id = 'omnimessage_id_example' # str | UUID of the omnimessage to for which the delivery report is to be retrieved
 
-    # example passing only required values which don't have defaults set
     try:
         # Retrieves the delivery report for the Omnimessage
         api_response = api_instance.retrieve_delivery_report(omnimessage_id)
         pprint(api_response)
-    except messente_api.ApiException as e:
+    except ApiException as e:
         print("Exception when calling DeliveryReportApi->retrieve_delivery_report: %s\n" % e)
 ```
 
@@ -58,7 +56,7 @@ with messente_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **omnimessage_id** | **str**| UUID of the omnimessage to for which the delivery report is to be retrieved |
+ **omnimessage_id** | **str**| UUID of the omnimessage to for which the delivery report is to be retrieved | 
 
 ### Return type
 

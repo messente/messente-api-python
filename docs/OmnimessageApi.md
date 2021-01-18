@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **cancel_scheduled_message**
-> {str: (bool, date, datetime, dict, float, int, list, str, none_type)} cancel_scheduled_message(omnimessage_id)
+> object cancel_scheduled_message(omnimessage_id)
 
 Cancels a scheduled Omnimessage
 
@@ -17,10 +17,10 @@ Cancels a scheduled Omnimessage
 
 * Basic Authentication (basicAuth):
 ```python
+from __future__ import print_function
 import time
 import messente_api
-from messente_api.api import omnimessage_api
-from messente_api.model.error_omnichannel import ErrorOmnichannel
+from messente_api.rest import ApiException
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.messente.com/v1
 # See configuration.py for a list of all supported configuration parameters.
@@ -42,15 +42,14 @@ configuration = messente_api.Configuration(
 # Enter a context with an instance of the API client
 with messente_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = omnimessage_api.OmnimessageApi(api_client)
-    omnimessage_id = "omnimessageId_example" # str | UUID of the scheduled omnimessage to be cancelled
+    api_instance = messente_api.OmnimessageApi(api_client)
+    omnimessage_id = 'omnimessage_id_example' # str | UUID of the scheduled omnimessage to be cancelled
 
-    # example passing only required values which don't have defaults set
     try:
         # Cancels a scheduled Omnimessage
         api_response = api_instance.cancel_scheduled_message(omnimessage_id)
         pprint(api_response)
-    except messente_api.ApiException as e:
+    except ApiException as e:
         print("Exception when calling OmnimessageApi->cancel_scheduled_message: %s\n" % e)
 ```
 
@@ -58,11 +57,11 @@ with messente_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **omnimessage_id** | **str**| UUID of the scheduled omnimessage to be cancelled |
+ **omnimessage_id** | **str**| UUID of the scheduled omnimessage to be cancelled | 
 
 ### Return type
 
-**{str: (bool, date, datetime, dict, float, int, list, str, none_type)}**
+**object**
 
 ### Authorization
 
@@ -90,12 +89,10 @@ Sends an Omnimessage
 
 * Basic Authentication (basicAuth):
 ```python
+from __future__ import print_function
 import time
 import messente_api
-from messente_api.api import omnimessage_api
-from messente_api.model.error_omnichannel import ErrorOmnichannel
-from messente_api.model.omni_message_create_success_response import OmniMessageCreateSuccessResponse
-from messente_api.model.omnimessage import Omnimessage
+from messente_api.rest import ApiException
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.messente.com/v1
 # See configuration.py for a list of all supported configuration parameters.
@@ -117,24 +114,14 @@ configuration = messente_api.Configuration(
 # Enter a context with an instance of the API client
 with messente_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = omnimessage_api.OmnimessageApi(api_client)
-    omnimessage = Omnimessage(
-        to="to_example",
-        messages=[
-            ,
-        ],
-        dlr_url="dlr_url_example",
-        text_store=TextStore("nostore"),
-        time_to_send=dateutil_parser('1970-01-01T00:00:00.00Z'),
-        priority=Priority("low"),
-    ) # Omnimessage | Omnimessage to be sent
+    api_instance = messente_api.OmnimessageApi(api_client)
+    omnimessage = messente_api.Omnimessage() # Omnimessage | Omnimessage to be sent
 
-    # example passing only required values which don't have defaults set
     try:
         # Sends an Omnimessage
         api_response = api_instance.send_omnimessage(omnimessage)
         pprint(api_response)
-    except messente_api.ApiException as e:
+    except ApiException as e:
         print("Exception when calling OmnimessageApi->send_omnimessage: %s\n" % e)
 ```
 
@@ -142,7 +129,7 @@ with messente_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **omnimessage** | [**Omnimessage**](Omnimessage.md)| Omnimessage to be sent |
+ **omnimessage** | [**Omnimessage**](Omnimessage.md)| Omnimessage to be sent | 
 
 ### Return type
 

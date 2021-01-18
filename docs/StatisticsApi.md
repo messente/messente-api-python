@@ -16,12 +16,10 @@ Requests statistics reports for each country
 
 * Basic Authentication (basicAuth):
 ```python
+from __future__ import print_function
 import time
 import messente_api
-from messente_api.api import statistics_api
-from messente_api.model.statistics_report_success import StatisticsReportSuccess
-from messente_api.model.statistics_report_settings import StatisticsReportSettings
-from messente_api.model.error_statistics import ErrorStatistics
+from messente_api.rest import ApiException
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.messente.com/v1
 # See configuration.py for a list of all supported configuration parameters.
@@ -43,21 +41,14 @@ configuration = messente_api.Configuration(
 # Enter a context with an instance of the API client
 with messente_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = statistics_api.StatisticsApi(api_client)
-    statistics_report_settings = StatisticsReportSettings(
-        start_date=dateutil_parser('1970-01-01').date(),
-        end_date=dateutil_parser('1970-01-01').date(),
-        message_types=[
-            "message_types_example",
-        ],
-    ) # StatisticsReportSettings | Settings for statistics report
+    api_instance = messente_api.StatisticsApi(api_client)
+    statistics_report_settings = {"start_date":"2017-01-01","end_date":"2019-06-20","message_types":["sms"]} # StatisticsReportSettings | Settings for statistics report
 
-    # example passing only required values which don't have defaults set
     try:
         # Requests statistics reports for each country
         api_response = api_instance.create_statistics_report(statistics_report_settings)
         pprint(api_response)
-    except messente_api.ApiException as e:
+    except ApiException as e:
         print("Exception when calling StatisticsApi->create_statistics_report: %s\n" % e)
 ```
 
@@ -65,7 +56,7 @@ with messente_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **statistics_report_settings** | [**StatisticsReportSettings**](StatisticsReportSettings.md)| Settings for statistics report |
+ **statistics_report_settings** | [**StatisticsReportSettings**](StatisticsReportSettings.md)| Settings for statistics report | 
 
 ### Return type
 

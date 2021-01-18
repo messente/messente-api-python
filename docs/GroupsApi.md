@@ -20,12 +20,10 @@ Creates a new group with the provided name
 
 * Basic Authentication (basicAuth):
 ```python
+from __future__ import print_function
 import time
 import messente_api
-from messente_api.api import groups_api
-from messente_api.model.group_envelope import GroupEnvelope
-from messente_api.model.group_name import GroupName
-from messente_api.model.error_phonebook import ErrorPhonebook
+from messente_api.rest import ApiException
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.messente.com/v1
 # See configuration.py for a list of all supported configuration parameters.
@@ -47,17 +45,14 @@ configuration = messente_api.Configuration(
 # Enter a context with an instance of the API client
 with messente_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = groups_api.GroupsApi(api_client)
-    group_name = GroupName(
-        name="name_example",
-    ) # GroupName | 
+    api_instance = messente_api.GroupsApi(api_client)
+    group_name = {"name":"Any group name"} # GroupName | 
 
-    # example passing only required values which don't have defaults set
     try:
         # Creates a new group with the provided name
         api_response = api_instance.create_group(group_name)
         pprint(api_response)
-    except messente_api.ApiException as e:
+    except ApiException as e:
         print("Exception when calling GroupsApi->create_group: %s\n" % e)
 ```
 
@@ -65,7 +60,7 @@ with messente_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **group_name** | [**GroupName**](GroupName.md)|  |
+ **group_name** | [**GroupName**](GroupName.md)|  | 
 
 ### Return type
 
@@ -99,10 +94,10 @@ Deletes a group
 
 * Basic Authentication (basicAuth):
 ```python
+from __future__ import print_function
 import time
 import messente_api
-from messente_api.api import groups_api
-from messente_api.model.error_phonebook import ErrorPhonebook
+from messente_api.rest import ApiException
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.messente.com/v1
 # See configuration.py for a list of all supported configuration parameters.
@@ -124,14 +119,13 @@ configuration = messente_api.Configuration(
 # Enter a context with an instance of the API client
 with messente_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = groups_api.GroupsApi(api_client)
-    group_id = "5792a02a-e5c2-422b-a0a0-0ae65d814663" # str | String in UUID format
+    api_instance = messente_api.GroupsApi(api_client)
+    group_id = '5792a02a-e5c2-422b-a0a0-0ae65d814663' # str | String in UUID format
 
-    # example passing only required values which don't have defaults set
     try:
         # Deletes a group
         api_instance.delete_group(group_id)
-    except messente_api.ApiException as e:
+    except ApiException as e:
         print("Exception when calling GroupsApi->delete_group: %s\n" % e)
 ```
 
@@ -139,7 +133,7 @@ with messente_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **group_id** | **str**| String in UUID format |
+ **group_id** | **str**| String in UUID format | 
 
 ### Return type
 
@@ -173,11 +167,10 @@ Lists a group
 
 * Basic Authentication (basicAuth):
 ```python
+from __future__ import print_function
 import time
 import messente_api
-from messente_api.api import groups_api
-from messente_api.model.group_envelope import GroupEnvelope
-from messente_api.model.error_phonebook import ErrorPhonebook
+from messente_api.rest import ApiException
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.messente.com/v1
 # See configuration.py for a list of all supported configuration parameters.
@@ -199,15 +192,14 @@ configuration = messente_api.Configuration(
 # Enter a context with an instance of the API client
 with messente_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = groups_api.GroupsApi(api_client)
-    group_id = "5792a02a-e5c2-422b-a0a0-0ae65d814663" # str | String in UUID format
+    api_instance = messente_api.GroupsApi(api_client)
+    group_id = '5792a02a-e5c2-422b-a0a0-0ae65d814663' # str | String in UUID format
 
-    # example passing only required values which don't have defaults set
     try:
         # Lists a group
         api_response = api_instance.fetch_group(group_id)
         pprint(api_response)
-    except messente_api.ApiException as e:
+    except ApiException as e:
         print("Exception when calling GroupsApi->fetch_group: %s\n" % e)
 ```
 
@@ -215,7 +207,7 @@ with messente_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **group_id** | **str**| String in UUID format |
+ **group_id** | **str**| String in UUID format | 
 
 ### Return type
 
@@ -248,11 +240,10 @@ Returns all groups
 
 * Basic Authentication (basicAuth):
 ```python
+from __future__ import print_function
 import time
 import messente_api
-from messente_api.api import groups_api
-from messente_api.model.error_phonebook import ErrorPhonebook
-from messente_api.model.group_list_envelope import GroupListEnvelope
+from messente_api.rest import ApiException
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.messente.com/v1
 # See configuration.py for a list of all supported configuration parameters.
@@ -274,14 +265,13 @@ configuration = messente_api.Configuration(
 # Enter a context with an instance of the API client
 with messente_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = groups_api.GroupsApi(api_client)
-
-    # example, this endpoint has no required or optional parameters
+    api_instance = messente_api.GroupsApi(api_client)
+    
     try:
         # Returns all groups
         api_response = api_instance.fetch_groups()
         pprint(api_response)
-    except messente_api.ApiException as e:
+    except ApiException as e:
         print("Exception when calling GroupsApi->fetch_groups: %s\n" % e)
 ```
 
@@ -319,12 +309,10 @@ Updates a group with the provided name
 
 * Basic Authentication (basicAuth):
 ```python
+from __future__ import print_function
 import time
 import messente_api
-from messente_api.api import groups_api
-from messente_api.model.group_envelope import GroupEnvelope
-from messente_api.model.group_name import GroupName
-from messente_api.model.error_phonebook import ErrorPhonebook
+from messente_api.rest import ApiException
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.messente.com/v1
 # See configuration.py for a list of all supported configuration parameters.
@@ -346,18 +334,15 @@ configuration = messente_api.Configuration(
 # Enter a context with an instance of the API client
 with messente_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = groups_api.GroupsApi(api_client)
-    group_id = "5792a02a-e5c2-422b-a0a0-0ae65d814663" # str | String in UUID format
-    group_name = GroupName(
-        name="name_example",
-    ) # GroupName | 
+    api_instance = messente_api.GroupsApi(api_client)
+    group_id = '5792a02a-e5c2-422b-a0a0-0ae65d814663' # str | String in UUID format
+group_name = {"name":"Any group name"} # GroupName | 
 
-    # example passing only required values which don't have defaults set
     try:
         # Updates a group with the provided name
         api_response = api_instance.update_group(group_id, group_name)
         pprint(api_response)
-    except messente_api.ApiException as e:
+    except ApiException as e:
         print("Exception when calling GroupsApi->update_group: %s\n" % e)
 ```
 
@@ -365,8 +350,8 @@ with messente_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **group_id** | **str**| String in UUID format |
- **group_name** | [**GroupName**](GroupName.md)|  |
+ **group_id** | **str**| String in UUID format | 
+ **group_name** | [**GroupName**](GroupName.md)|  | 
 
 ### Return type
 

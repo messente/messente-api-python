@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 
 # **add_contact_to_group**
-> {str: (bool, date, datetime, dict, float, int, list, str, none_type)} add_contact_to_group(group_id, phone)
+> object add_contact_to_group(group_id, phone)
 
 Adds a contact to a group
 
@@ -23,10 +23,10 @@ Adds a contact to a group
 
 * Basic Authentication (basicAuth):
 ```python
+from __future__ import print_function
 import time
 import messente_api
-from messente_api.api import contacts_api
-from messente_api.model.error_phonebook import ErrorPhonebook
+from messente_api.rest import ApiException
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.messente.com/v1
 # See configuration.py for a list of all supported configuration parameters.
@@ -48,16 +48,15 @@ configuration = messente_api.Configuration(
 # Enter a context with an instance of the API client
 with messente_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = contacts_api.ContactsApi(api_client)
-    group_id = "5792a02a-e5c2-422b-a0a0-0ae65d814663" # str | String in UUID format
-    phone = "+37251000000" # str | A phone number
+    api_instance = messente_api.ContactsApi(api_client)
+    group_id = '5792a02a-e5c2-422b-a0a0-0ae65d814663' # str | String in UUID format
+phone = '+37251000000' # str | A phone number
 
-    # example passing only required values which don't have defaults set
     try:
         # Adds a contact to a group
         api_response = api_instance.add_contact_to_group(group_id, phone)
         pprint(api_response)
-    except messente_api.ApiException as e:
+    except ApiException as e:
         print("Exception when calling ContactsApi->add_contact_to_group: %s\n" % e)
 ```
 
@@ -65,12 +64,12 @@ with messente_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **group_id** | **str**| String in UUID format |
- **phone** | **str**| A phone number |
+ **group_id** | **str**| String in UUID format | 
+ **phone** | **str**| A phone number | 
 
 ### Return type
 
-**{str: (bool, date, datetime, dict, float, int, list, str, none_type)}**
+**object**
 
 ### Authorization
 
@@ -102,12 +101,10 @@ Creates a new contact
 
 * Basic Authentication (basicAuth):
 ```python
+from __future__ import print_function
 import time
 import messente_api
-from messente_api.api import contacts_api
-from messente_api.model.contact_fields import ContactFields
-from messente_api.model.error_phonebook import ErrorPhonebook
-from messente_api.model.contact_envelope import ContactEnvelope
+from messente_api.rest import ApiException
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.messente.com/v1
 # See configuration.py for a list of all supported configuration parameters.
@@ -129,26 +126,14 @@ configuration = messente_api.Configuration(
 # Enter a context with an instance of the API client
 with messente_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = contacts_api.ContactsApi(api_client)
-    contact_fields = ContactFields(
-        phone_number="phone_number_example",
-        email="email_example",
-        first_name="first_name_example",
-        last_name="last_name_example",
-        company="company_example",
-        title="title_example",
-        custom="custom_example",
-        custom2="custom2_example",
-        custom3="custom3_example",
-        custom4="custom4_example",
-    ) # ContactFields | 
+    api_instance = messente_api.ContactsApi(api_client)
+    contact_fields = {"phoneNumber":"+37251000000","email":"anyone@messente.com","firstName":"Any","lastName":"One","company":"Messente","title":"Sir","custom":"Any custom","custom2":"Any custom two","custom3":"Any custom three","custom4":"Any custom four"} # ContactFields | 
 
-    # example passing only required values which don't have defaults set
     try:
         # Creates a new contact
         api_response = api_instance.create_contact(contact_fields)
         pprint(api_response)
-    except messente_api.ApiException as e:
+    except ApiException as e:
         print("Exception when calling ContactsApi->create_contact: %s\n" % e)
 ```
 
@@ -156,7 +141,7 @@ with messente_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **contact_fields** | [**ContactFields**](ContactFields.md)|  |
+ **contact_fields** | [**ContactFields**](ContactFields.md)|  | 
 
 ### Return type
 
@@ -191,10 +176,10 @@ Deletes a contact
 
 * Basic Authentication (basicAuth):
 ```python
+from __future__ import print_function
 import time
 import messente_api
-from messente_api.api import contacts_api
-from messente_api.model.error_phonebook import ErrorPhonebook
+from messente_api.rest import ApiException
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.messente.com/v1
 # See configuration.py for a list of all supported configuration parameters.
@@ -216,14 +201,13 @@ configuration = messente_api.Configuration(
 # Enter a context with an instance of the API client
 with messente_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = contacts_api.ContactsApi(api_client)
-    phone = "+37251000000" # str | A phone number
+    api_instance = messente_api.ContactsApi(api_client)
+    phone = '+37251000000' # str | A phone number
 
-    # example passing only required values which don't have defaults set
     try:
         # Deletes a contact
         api_instance.delete_contact(phone)
-    except messente_api.ApiException as e:
+    except ApiException as e:
         print("Exception when calling ContactsApi->delete_contact: %s\n" % e)
 ```
 
@@ -231,7 +215,7 @@ with messente_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **phone** | **str**| A phone number |
+ **phone** | **str**| A phone number | 
 
 ### Return type
 
@@ -266,11 +250,10 @@ Lists a contact
 
 * Basic Authentication (basicAuth):
 ```python
+from __future__ import print_function
 import time
 import messente_api
-from messente_api.api import contacts_api
-from messente_api.model.error_phonebook import ErrorPhonebook
-from messente_api.model.contact_envelope import ContactEnvelope
+from messente_api.rest import ApiException
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.messente.com/v1
 # See configuration.py for a list of all supported configuration parameters.
@@ -292,15 +275,14 @@ configuration = messente_api.Configuration(
 # Enter a context with an instance of the API client
 with messente_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = contacts_api.ContactsApi(api_client)
-    phone = "+37251000000" # str | A phone number
+    api_instance = messente_api.ContactsApi(api_client)
+    phone = '+37251000000' # str | A phone number
 
-    # example passing only required values which don't have defaults set
     try:
         # Lists a contact
         api_response = api_instance.fetch_contact(phone)
         pprint(api_response)
-    except messente_api.ApiException as e:
+    except ApiException as e:
         print("Exception when calling ContactsApi->fetch_contact: %s\n" % e)
 ```
 
@@ -308,7 +290,7 @@ with messente_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **phone** | **str**| A phone number |
+ **phone** | **str**| A phone number | 
 
 ### Return type
 
@@ -342,11 +324,10 @@ Lists groups of a contact
 
 * Basic Authentication (basicAuth):
 ```python
+from __future__ import print_function
 import time
 import messente_api
-from messente_api.api import contacts_api
-from messente_api.model.error_phonebook import ErrorPhonebook
-from messente_api.model.group_list_envelope import GroupListEnvelope
+from messente_api.rest import ApiException
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.messente.com/v1
 # See configuration.py for a list of all supported configuration parameters.
@@ -368,15 +349,14 @@ configuration = messente_api.Configuration(
 # Enter a context with an instance of the API client
 with messente_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = contacts_api.ContactsApi(api_client)
-    phone = "+37251000000" # str | A phone number
+    api_instance = messente_api.ContactsApi(api_client)
+    phone = '+37251000000' # str | A phone number
 
-    # example passing only required values which don't have defaults set
     try:
         # Lists groups of a contact
         api_response = api_instance.fetch_contact_groups(phone)
         pprint(api_response)
-    except messente_api.ApiException as e:
+    except ApiException as e:
         print("Exception when calling ContactsApi->fetch_contact_groups: %s\n" % e)
 ```
 
@@ -384,7 +364,7 @@ with messente_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **phone** | **str**| A phone number |
+ **phone** | **str**| A phone number | 
 
 ### Return type
 
@@ -410,7 +390,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **fetch_contacts**
-> ContactListEnvelope fetch_contacts()
+> ContactListEnvelope fetch_contacts(group_ids=group_ids)
 
 Returns all contacts
 
@@ -418,11 +398,10 @@ Returns all contacts
 
 * Basic Authentication (basicAuth):
 ```python
+from __future__ import print_function
 import time
 import messente_api
-from messente_api.api import contacts_api
-from messente_api.model.contact_list_envelope import ContactListEnvelope
-from messente_api.model.error_phonebook import ErrorPhonebook
+from messente_api.rest import ApiException
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.messente.com/v1
 # See configuration.py for a list of all supported configuration parameters.
@@ -444,16 +423,14 @@ configuration = messente_api.Configuration(
 # Enter a context with an instance of the API client
 with messente_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = contacts_api.ContactsApi(api_client)
-    group_ids = ["5792a02a-e5c2-422b-a0a0-0ae65d814663","4792a02a-e5c2-422b-a0a0-0ae65d814662"] # [str] | Optional one or many group id strings in UUID format. For example: \"/contacts?groupIds=group_id_one&groupIds=group_id_two\"  (optional)
+    api_instance = messente_api.ContactsApi(api_client)
+    group_ids = ['[\"5792a02a-e5c2-422b-a0a0-0ae65d814663\",\"4792a02a-e5c2-422b-a0a0-0ae65d814662\"]'] # list[str] | Optional one or many group id strings in UUID format. For example: \"/contacts?groupIds=group_id_one&groupIds=group_id_two\"  (optional)
 
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         # Returns all contacts
         api_response = api_instance.fetch_contacts(group_ids=group_ids)
         pprint(api_response)
-    except messente_api.ApiException as e:
+    except ApiException as e:
         print("Exception when calling ContactsApi->fetch_contacts: %s\n" % e)
 ```
 
@@ -461,7 +438,7 @@ with messente_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **group_ids** | **[str]**| Optional one or many group id strings in UUID format. For example: \&quot;/contacts?groupIds&#x3D;group_id_one&amp;groupIds&#x3D;group_id_two\&quot;  | [optional]
+ **group_ids** | [**list[str]**](str.md)| Optional one or many group id strings in UUID format. For example: \&quot;/contacts?groupIds&#x3D;group_id_one&amp;groupIds&#x3D;group_id_two\&quot;  | [optional] 
 
 ### Return type
 
@@ -495,10 +472,10 @@ Removes a contact from a group
 
 * Basic Authentication (basicAuth):
 ```python
+from __future__ import print_function
 import time
 import messente_api
-from messente_api.api import contacts_api
-from messente_api.model.error_phonebook import ErrorPhonebook
+from messente_api.rest import ApiException
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.messente.com/v1
 # See configuration.py for a list of all supported configuration parameters.
@@ -520,15 +497,14 @@ configuration = messente_api.Configuration(
 # Enter a context with an instance of the API client
 with messente_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = contacts_api.ContactsApi(api_client)
-    group_id = "5792a02a-e5c2-422b-a0a0-0ae65d814663" # str | String in UUID format
-    phone = "+37251000000" # str | A phone number
+    api_instance = messente_api.ContactsApi(api_client)
+    group_id = '5792a02a-e5c2-422b-a0a0-0ae65d814663' # str | String in UUID format
+phone = '+37251000000' # str | A phone number
 
-    # example passing only required values which don't have defaults set
     try:
         # Removes a contact from a group
         api_instance.remove_contact_from_group(group_id, phone)
-    except messente_api.ApiException as e:
+    except ApiException as e:
         print("Exception when calling ContactsApi->remove_contact_from_group: %s\n" % e)
 ```
 
@@ -536,8 +512,8 @@ with messente_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **group_id** | **str**| String in UUID format |
- **phone** | **str**| A phone number |
+ **group_id** | **str**| String in UUID format | 
+ **phone** | **str**| A phone number | 
 
 ### Return type
 
@@ -572,12 +548,10 @@ Updates a contact
 
 * Basic Authentication (basicAuth):
 ```python
+from __future__ import print_function
 import time
 import messente_api
-from messente_api.api import contacts_api
-from messente_api.model.error_phonebook import ErrorPhonebook
-from messente_api.model.contact_update_fields import ContactUpdateFields
-from messente_api.model.contact_envelope import ContactEnvelope
+from messente_api.rest import ApiException
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.messente.com/v1
 # See configuration.py for a list of all supported configuration parameters.
@@ -599,26 +573,15 @@ configuration = messente_api.Configuration(
 # Enter a context with an instance of the API client
 with messente_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = contacts_api.ContactsApi(api_client)
-    phone = "+37251000000" # str | A phone number
-    contact_update_fields = ContactUpdateFields(
-        email="email_example",
-        first_name="first_name_example",
-        last_name="last_name_example",
-        company="company_example",
-        title="title_example",
-        custom="custom_example",
-        custom2="custom2_example",
-        custom3="custom3_example",
-        custom4="custom4_example",
-    ) # ContactUpdateFields | 
+    api_instance = messente_api.ContactsApi(api_client)
+    phone = '+37251000000' # str | A phone number
+contact_update_fields = {"email":"anyone@messente.com","firstName":"Any","lastName":"One","company":"Messente","title":"Sir","custom":"Any custom","custom2":"Any custom two","custom3":"Any custom three","custom4":"Any custom four"} # ContactUpdateFields | 
 
-    # example passing only required values which don't have defaults set
     try:
         # Updates a contact
         api_response = api_instance.update_contact(phone, contact_update_fields)
         pprint(api_response)
-    except messente_api.ApiException as e:
+    except ApiException as e:
         print("Exception when calling ContactsApi->update_contact: %s\n" % e)
 ```
 
@@ -626,8 +589,8 @@ with messente_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **phone** | **str**| A phone number |
- **contact_update_fields** | [**ContactUpdateFields**](ContactUpdateFields.md)|  |
+ **phone** | **str**| A phone number | 
+ **contact_update_fields** | [**ContactUpdateFields**](ContactUpdateFields.md)|  | 
 
 ### Return type
 
