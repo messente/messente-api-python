@@ -1,6 +1,5 @@
 # GroupResponseFields
 
-A container for fields of a group
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

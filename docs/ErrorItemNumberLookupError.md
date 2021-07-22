@@ -1,6 +1,5 @@
 # ErrorItemNumberLookupError
 
-Error fields container
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

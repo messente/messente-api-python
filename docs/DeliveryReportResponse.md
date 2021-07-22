@@ -1,6 +1,5 @@
 # DeliveryReportResponse
 
-A container for successful delivery report response
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

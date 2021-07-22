@@ -21,35 +21,23 @@ import time
 import messente_api
 from messente_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.messente.com/v1
-# See configuration.py for a list of all supported configuration parameters.
-configuration = messente_api.Configuration(
-    host = "https://api.messente.com/v1"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
+configuration = messente_api.Configuration()
 # Configure HTTP basic authorization: basicAuth
-configuration = messente_api.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
 
-# Enter a context with an instance of the API client
-with messente_api.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = messente_api.DeliveryReportApi(api_client)
-    omnimessage_id = 'omnimessage_id_example' # str | UUID of the omnimessage to for which the delivery report is to be retrieved
+# Defining host is optional and default to https://api.messente.com/v1
+configuration.host = "https://api.messente.com/v1"
+# Create an instance of the API class
+api_instance = messente_api.DeliveryReportApi(messente_api.ApiClient(configuration))
+omnimessage_id = 'omnimessage_id_example' # str | UUID of the omnimessage to for which the delivery report is to be retrieved
 
-    try:
-        # Retrieves the delivery report for the Omnimessage
-        api_response = api_instance.retrieve_delivery_report(omnimessage_id)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling DeliveryReportApi->retrieve_delivery_report: %s\n" % e)
+try:
+    # Retrieves the delivery report for the Omnimessage
+    api_response = api_instance.retrieve_delivery_report(omnimessage_id)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DeliveryReportApi->retrieve_delivery_report: %s\n" % e)
 ```
 
 ### Parameters

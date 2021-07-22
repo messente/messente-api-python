@@ -1,6 +1,5 @@
 # GroupListEnvelope
 
-A container for groups
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

@@ -1,6 +1,5 @@
 # ContactUpdateFields
 
-A container for fields of a contact
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

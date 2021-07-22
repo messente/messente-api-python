@@ -1,6 +1,5 @@
 # ErrorItemOmnichannel
 
-A container for Omnichannel API error
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

@@ -1,6 +1,5 @@
 # StatisticsReport
 
-Report for one country
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

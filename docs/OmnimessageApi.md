@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **cancel_scheduled_message**
-> object cancel_scheduled_message(omnimessage_id)
+> cancel_scheduled_message(omnimessage_id)
 
 Cancels a scheduled Omnimessage
 
@@ -22,35 +22,22 @@ import time
 import messente_api
 from messente_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.messente.com/v1
-# See configuration.py for a list of all supported configuration parameters.
-configuration = messente_api.Configuration(
-    host = "https://api.messente.com/v1"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
+configuration = messente_api.Configuration()
 # Configure HTTP basic authorization: basicAuth
-configuration = messente_api.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
 
-# Enter a context with an instance of the API client
-with messente_api.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = messente_api.OmnimessageApi(api_client)
-    omnimessage_id = 'omnimessage_id_example' # str | UUID of the scheduled omnimessage to be cancelled
+# Defining host is optional and default to https://api.messente.com/v1
+configuration.host = "https://api.messente.com/v1"
+# Create an instance of the API class
+api_instance = messente_api.OmnimessageApi(messente_api.ApiClient(configuration))
+omnimessage_id = 'omnimessage_id_example' # str | UUID of the scheduled omnimessage to be cancelled
 
-    try:
-        # Cancels a scheduled Omnimessage
-        api_response = api_instance.cancel_scheduled_message(omnimessage_id)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling OmnimessageApi->cancel_scheduled_message: %s\n" % e)
+try:
+    # Cancels a scheduled Omnimessage
+    api_instance.cancel_scheduled_message(omnimessage_id)
+except ApiException as e:
+    print("Exception when calling OmnimessageApi->cancel_scheduled_message: %s\n" % e)
 ```
 
 ### Parameters
@@ -61,7 +48,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+void (empty response body)
 
 ### Authorization
 
@@ -94,35 +81,23 @@ import time
 import messente_api
 from messente_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.messente.com/v1
-# See configuration.py for a list of all supported configuration parameters.
-configuration = messente_api.Configuration(
-    host = "https://api.messente.com/v1"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
+configuration = messente_api.Configuration()
 # Configure HTTP basic authorization: basicAuth
-configuration = messente_api.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
 
-# Enter a context with an instance of the API client
-with messente_api.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = messente_api.OmnimessageApi(api_client)
-    omnimessage = messente_api.Omnimessage() # Omnimessage | Omnimessage to be sent
+# Defining host is optional and default to https://api.messente.com/v1
+configuration.host = "https://api.messente.com/v1"
+# Create an instance of the API class
+api_instance = messente_api.OmnimessageApi(messente_api.ApiClient(configuration))
+omnimessage = messente_api.Omnimessage() # Omnimessage | Omnimessage to be sent
 
-    try:
-        # Sends an Omnimessage
-        api_response = api_instance.send_omnimessage(omnimessage)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling OmnimessageApi->send_omnimessage: %s\n" % e)
+try:
+    # Sends an Omnimessage
+    api_response = api_instance.send_omnimessage(omnimessage)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling OmnimessageApi->send_omnimessage: %s\n" % e)
 ```
 
 ### Parameters

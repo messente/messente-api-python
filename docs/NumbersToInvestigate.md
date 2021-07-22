@@ -1,6 +1,5 @@
 # NumbersToInvestigate
 
-A container for phone numbers
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

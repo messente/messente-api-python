@@ -1,6 +1,5 @@
 # Telegram
 
-Telegram message content
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

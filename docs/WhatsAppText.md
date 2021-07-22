@@ -1,6 +1,5 @@
 # WhatsAppText
 
-A text
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

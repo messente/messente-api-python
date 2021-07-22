@@ -1,6 +1,5 @@
 # WhatsAppImage
 
-An image
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

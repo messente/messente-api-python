@@ -25,35 +25,23 @@ import time
 import messente_api
 from messente_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.messente.com/v1
-# See configuration.py for a list of all supported configuration parameters.
-configuration = messente_api.Configuration(
-    host = "https://api.messente.com/v1"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
+configuration = messente_api.Configuration()
 # Configure HTTP basic authorization: basicAuth
-configuration = messente_api.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
 
-# Enter a context with an instance of the API client
-with messente_api.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = messente_api.GroupsApi(api_client)
-    group_name = {"name":"Any group name"} # GroupName | 
+# Defining host is optional and default to https://api.messente.com/v1
+configuration.host = "https://api.messente.com/v1"
+# Create an instance of the API class
+api_instance = messente_api.GroupsApi(messente_api.ApiClient(configuration))
+group_name = {"name":"Any group name"} # GroupName | 
 
-    try:
-        # Creates a new group with the provided name
-        api_response = api_instance.create_group(group_name)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling GroupsApi->create_group: %s\n" % e)
+try:
+    # Creates a new group with the provided name
+    api_response = api_instance.create_group(group_name)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling GroupsApi->create_group: %s\n" % e)
 ```
 
 ### Parameters
@@ -99,34 +87,22 @@ import time
 import messente_api
 from messente_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.messente.com/v1
-# See configuration.py for a list of all supported configuration parameters.
-configuration = messente_api.Configuration(
-    host = "https://api.messente.com/v1"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
+configuration = messente_api.Configuration()
 # Configure HTTP basic authorization: basicAuth
-configuration = messente_api.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
 
-# Enter a context with an instance of the API client
-with messente_api.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = messente_api.GroupsApi(api_client)
-    group_id = '5792a02a-e5c2-422b-a0a0-0ae65d814663' # str | String in UUID format
+# Defining host is optional and default to https://api.messente.com/v1
+configuration.host = "https://api.messente.com/v1"
+# Create an instance of the API class
+api_instance = messente_api.GroupsApi(messente_api.ApiClient(configuration))
+group_id = '5792a02a-e5c2-422b-a0a0-0ae65d814663' # str | String in UUID format
 
-    try:
-        # Deletes a group
-        api_instance.delete_group(group_id)
-    except ApiException as e:
-        print("Exception when calling GroupsApi->delete_group: %s\n" % e)
+try:
+    # Deletes a group
+    api_instance.delete_group(group_id)
+except ApiException as e:
+    print("Exception when calling GroupsApi->delete_group: %s\n" % e)
 ```
 
 ### Parameters
@@ -172,35 +148,23 @@ import time
 import messente_api
 from messente_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.messente.com/v1
-# See configuration.py for a list of all supported configuration parameters.
-configuration = messente_api.Configuration(
-    host = "https://api.messente.com/v1"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
+configuration = messente_api.Configuration()
 # Configure HTTP basic authorization: basicAuth
-configuration = messente_api.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
 
-# Enter a context with an instance of the API client
-with messente_api.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = messente_api.GroupsApi(api_client)
-    group_id = '5792a02a-e5c2-422b-a0a0-0ae65d814663' # str | String in UUID format
+# Defining host is optional and default to https://api.messente.com/v1
+configuration.host = "https://api.messente.com/v1"
+# Create an instance of the API class
+api_instance = messente_api.GroupsApi(messente_api.ApiClient(configuration))
+group_id = '5792a02a-e5c2-422b-a0a0-0ae65d814663' # str | String in UUID format
 
-    try:
-        # Lists a group
-        api_response = api_instance.fetch_group(group_id)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling GroupsApi->fetch_group: %s\n" % e)
+try:
+    # Lists a group
+    api_response = api_instance.fetch_group(group_id)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling GroupsApi->fetch_group: %s\n" % e)
 ```
 
 ### Parameters
@@ -245,34 +209,22 @@ import time
 import messente_api
 from messente_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.messente.com/v1
-# See configuration.py for a list of all supported configuration parameters.
-configuration = messente_api.Configuration(
-    host = "https://api.messente.com/v1"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
+configuration = messente_api.Configuration()
 # Configure HTTP basic authorization: basicAuth
-configuration = messente_api.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
 
-# Enter a context with an instance of the API client
-with messente_api.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = messente_api.GroupsApi(api_client)
-    
-    try:
-        # Returns all groups
-        api_response = api_instance.fetch_groups()
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling GroupsApi->fetch_groups: %s\n" % e)
+# Defining host is optional and default to https://api.messente.com/v1
+configuration.host = "https://api.messente.com/v1"
+# Create an instance of the API class
+api_instance = messente_api.GroupsApi(messente_api.ApiClient(configuration))
+
+try:
+    # Returns all groups
+    api_response = api_instance.fetch_groups()
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling GroupsApi->fetch_groups: %s\n" % e)
 ```
 
 ### Parameters
@@ -314,36 +266,24 @@ import time
 import messente_api
 from messente_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.messente.com/v1
-# See configuration.py for a list of all supported configuration parameters.
-configuration = messente_api.Configuration(
-    host = "https://api.messente.com/v1"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
+configuration = messente_api.Configuration()
 # Configure HTTP basic authorization: basicAuth
-configuration = messente_api.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
 
-# Enter a context with an instance of the API client
-with messente_api.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = messente_api.GroupsApi(api_client)
-    group_id = '5792a02a-e5c2-422b-a0a0-0ae65d814663' # str | String in UUID format
+# Defining host is optional and default to https://api.messente.com/v1
+configuration.host = "https://api.messente.com/v1"
+# Create an instance of the API class
+api_instance = messente_api.GroupsApi(messente_api.ApiClient(configuration))
+group_id = '5792a02a-e5c2-422b-a0a0-0ae65d814663' # str | String in UUID format
 group_name = {"name":"Any group name"} # GroupName | 
 
-    try:
-        # Updates a group with the provided name
-        api_response = api_instance.update_group(group_id, group_name)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling GroupsApi->update_group: %s\n" % e)
+try:
+    # Updates a group with the provided name
+    api_response = api_instance.update_group(group_id, group_name)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling GroupsApi->update_group: %s\n" % e)
 ```
 
 ### Parameters

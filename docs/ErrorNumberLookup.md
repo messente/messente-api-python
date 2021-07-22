@@ -1,6 +1,5 @@
 # ErrorNumberLookup
 
-A container for errors
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

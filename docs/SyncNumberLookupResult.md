@@ -1,6 +1,5 @@
 # SyncNumberLookupResult
 
-Info about a phone number
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

@@ -1,6 +1,5 @@
 # SMS
 
-SMS message content
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

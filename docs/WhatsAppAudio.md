@@ -1,6 +1,5 @@
 # WhatsAppAudio
 
-A sound
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
