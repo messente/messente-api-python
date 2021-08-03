@@ -1,5 +1,6 @@
 # MessageResult
 
+A message part of an omnimessage
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

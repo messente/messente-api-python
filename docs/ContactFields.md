@@ -1,5 +1,6 @@
 # ContactFields
 
+A container for fields of a request body of a contact
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

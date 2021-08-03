@@ -1,5 +1,6 @@
 # Viber
 
+Viber message content
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

@@ -1,5 +1,6 @@
 # WhatsApp
 
+WhatsApp message content.   Only one of \"text\", \"image\", \"document\" or \"audio\" can be provided
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

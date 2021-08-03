@@ -21,23 +21,35 @@ import time
 import messente_api
 from messente_api.rest import ApiException
 from pprint import pprint
-configuration = messente_api.Configuration()
+# Defining the host is optional and defaults to https://api.messente.com/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = messente_api.Configuration(
+    host = "https://api.messente.com/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure HTTP basic authorization: basicAuth
-configuration.username = 'YOUR_USERNAME'
-configuration.password = 'YOUR_PASSWORD'
+configuration = messente_api.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
 
-# Defining host is optional and default to https://api.messente.com/v1
-configuration.host = "https://api.messente.com/v1"
-# Create an instance of the API class
-api_instance = messente_api.NumberLookupApi(messente_api.ApiClient(configuration))
-numbers_to_investigate = {"numbers":["+37251000000","+37251000001"]} # NumbersToInvestigate | Numbers for lookup
+# Enter a context with an instance of the API client
+with messente_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = messente_api.NumberLookupApi(api_client)
+    numbers_to_investigate = {"numbers":["+37251000000","+37251000001"]} # NumbersToInvestigate | Numbers for lookup
 
-try:
-    # Requests info about phone numbers
-    api_response = api_instance.fetch_info(numbers_to_investigate)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling NumberLookupApi->fetch_info: %s\n" % e)
+    try:
+        # Requests info about phone numbers
+        api_response = api_instance.fetch_info(numbers_to_investigate)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling NumberLookupApi->fetch_info: %s\n" % e)
 ```
 
 ### Parameters
