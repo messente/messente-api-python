@@ -71,8 +71,7 @@ class DeliveryResult(object):
             self.channel = channel
         if message_id is not None:
             self.message_id = message_id
-        if error is not None:
-            self.error = error
+        self.error = error
         if err is not None:
             self.err = err
         if timestamp is not None:
