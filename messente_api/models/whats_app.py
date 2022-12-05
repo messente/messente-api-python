@@ -36,7 +36,6 @@ class WhatsApp(object):
     openapi_types = {
         'sender': 'str',
         'validity': 'int',
-        'ttl': 'int',
         'text': 'WhatsAppText',
         'image': 'WhatsAppImage',
         'document': 'WhatsAppDocument',
@@ -47,7 +46,6 @@ class WhatsApp(object):
     attribute_map = {
         'sender': 'sender',
         'validity': 'validity',
-        'ttl': 'ttl',
         'text': 'text',
         'image': 'image',
         'document': 'document',
@@ -55,7 +53,7 @@ class WhatsApp(object):
         'channel': 'channel'
     }
 
-    def __init__(self, sender=None, validity=None, ttl=None, text=None, image=None, document=None, audio=None, channel='whatsapp', local_vars_configuration=None):  # noqa: E501
+    def __init__(self, sender=None, validity=None, text=None, image=None, document=None, audio=None, channel='whatsapp', local_vars_configuration=None):  # noqa: E501
         """WhatsApp - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -63,7 +61,6 @@ class WhatsApp(object):
 
         self._sender = None
         self._validity = None
-        self._ttl = None
         self._text = None
         self._image = None
         self._document = None
@@ -75,8 +72,6 @@ class WhatsApp(object):
             self.sender = sender
         if validity is not None:
             self.validity = validity
-        if ttl is not None:
-            self.ttl = ttl
         if text is not None:
             self.text = text
         if image is not None:
@@ -133,29 +128,6 @@ class WhatsApp(object):
         """
 
         self._validity = validity
-
-    @property
-    def ttl(self):
-        """Gets the ttl of this WhatsApp.  # noqa: E501
-
-        After how many seconds this channel is considered as failed and the next channel is attempted.       Only one of \"ttl\" and \"validity\" can be used.  # noqa: E501
-
-        :return: The ttl of this WhatsApp.  # noqa: E501
-        :rtype: int
-        """
-        return self._ttl
-
-    @ttl.setter
-    def ttl(self, ttl):
-        """Sets the ttl of this WhatsApp.
-
-        After how many seconds this channel is considered as failed and the next channel is attempted.       Only one of \"ttl\" and \"validity\" can be used.  # noqa: E501
-
-        :param ttl: The ttl of this WhatsApp.  # noqa: E501
-        :type ttl: int
-        """
-
-        self._ttl = ttl
 
     @property
     def text(self):
