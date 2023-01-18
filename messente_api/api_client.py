@@ -520,8 +520,8 @@ class ApiClient(object):
 
         if 'application/json' in accepts:
             return 'application/json'
-        else:
-            return ', '.join(accepts)
+
+        return ', '.join(accepts)
 
     def select_header_content_type(self, content_types):
         """Returns `Content-Type` based on an array of content_types provided.
