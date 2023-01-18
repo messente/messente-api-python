@@ -121,8 +121,7 @@ class OmnimessageApi(object):
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method cancel_scheduled_message" % key
+                    f"Got an unexpected keyword argument {key} to method cancel_scheduled_message"
                 )
             local_var_params[key] = val
         del local_var_params['kwargs']
@@ -255,8 +254,7 @@ class OmnimessageApi(object):
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method send_omnimessage" % key
+                    f"Got an unexpected keyword argument {key} to method send_omnimessage"
                 )
             local_var_params[key] = val
         del local_var_params['kwargs']
