@@ -121,8 +121,7 @@ class GroupsApi(object):
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_group" % key
+                    f"Got an unexpected keyword argument {key} to method create_group"
                 )
             local_var_params[key] = val
         del local_var_params['kwargs']
@@ -260,8 +259,7 @@ class GroupsApi(object):
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method delete_group" % key
+                    f"Got an unexpected keyword argument {key} to method delete_group"
                 )
             local_var_params[key] = val
         del local_var_params['kwargs']
@@ -391,8 +389,7 @@ class GroupsApi(object):
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method fetch_group" % key
+                    f"Got an unexpected keyword argument {key} to method fetch_group"
                 )
             local_var_params[key] = val
         del local_var_params['kwargs']
@@ -521,8 +518,7 @@ class GroupsApi(object):
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method fetch_groups" % key
+                    f"Got an unexpected keyword argument {key} to method fetch_groups"
                 )
             local_var_params[key] = val
         del local_var_params['kwargs']
@@ -654,8 +650,7 @@ class GroupsApi(object):
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method update_group" % key
+                    f"Got an unexpected keyword argument {key} to method update_group"
                 )
             local_var_params[key] = val
         del local_var_params['kwargs']
