@@ -163,7 +163,7 @@ class ContactsApi(object):
 
         # Authentication setting
         auth_settings = ['basicAuth']  # noqa: E501
-        
+
         response_types_map = {
             201: "object",
             400: "ErrorPhonebook",
@@ -304,7 +304,7 @@ class ContactsApi(object):
 
         # Authentication setting
         auth_settings = ['basicAuth']  # noqa: E501
-        
+
         response_types_map = {
             201: "ContactEnvelope",
             400: "ErrorPhonebook",
@@ -440,7 +440,7 @@ class ContactsApi(object):
 
         # Authentication setting
         auth_settings = ['basicAuth']  # noqa: E501
-        
+
         response_types_map = {}
 
         return self.api_client.call_api(
@@ -571,7 +571,7 @@ class ContactsApi(object):
 
         # Authentication setting
         auth_settings = ['basicAuth']  # noqa: E501
-        
+
         response_types_map = {
             200: "ContactEnvelope",
             400: "ErrorPhonebook",
@@ -707,7 +707,7 @@ class ContactsApi(object):
 
         # Authentication setting
         auth_settings = ['basicAuth']  # noqa: E501
-        
+
         response_types_map = {
             200: "GroupListEnvelope",
             400: "ErrorPhonebook",
@@ -770,7 +770,7 @@ class ContactsApi(object):
         >>> thread = api.fetch_contacts_with_http_info(async_req=True)
         >>> result = thread.get()
 
-        :param group_ids: Optional one or many group id strings in UUID format. For example: \"/contacts?groupIds=group_id_one&groupIds=group_id_two\" 
+        :param group_ids: Optional one or many group id strings in UUID format. For example: \"/contacts?groupIds=group_id_one&groupIds=group_id_two\"
         :type group_ids: list[str]
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -840,7 +840,7 @@ class ContactsApi(object):
 
         # Authentication setting
         auth_settings = ['basicAuth']  # noqa: E501
-        
+
         response_types_map = {
             200: "ContactListEnvelope",
             400: "ErrorPhonebook",
@@ -986,7 +986,7 @@ class ContactsApi(object):
 
         # Authentication setting
         auth_settings = ['basicAuth']  # noqa: E501
-        
+
         response_types_map = {}
 
         return self.api_client.call_api(
@@ -1132,7 +1132,7 @@ class ContactsApi(object):
 
         # Authentication setting
         auth_settings = ['basicAuth']  # noqa: E501
-        
+
         response_types_map = {
             200: "ContactEnvelope",
             400: "ErrorPhonebook",
