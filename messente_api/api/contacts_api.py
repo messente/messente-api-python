@@ -125,8 +125,7 @@ class ContactsApi(object):
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method add_contact_to_group" % key
+                    f"Got an unexpected keyword argument {key} to method add_contact_to_group"
                 )
             local_var_params[key] = val
         del local_var_params['kwargs']
@@ -268,8 +267,7 @@ class ContactsApi(object):
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_contact" % key
+                    f"Got an unexpected keyword argument {key} to method create_contact"
                 )
             local_var_params[key] = val
         del local_var_params['kwargs']
@@ -408,8 +406,7 @@ class ContactsApi(object):
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method delete_contact" % key
+                    f"Got an unexpected keyword argument {key} to method delete_contact"
                 )
             local_var_params[key] = val
         del local_var_params['kwargs']
@@ -539,8 +536,7 @@ class ContactsApi(object):
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method fetch_contact" % key
+                    f"Got an unexpected keyword argument {key} to method fetch_contact"
                 )
             local_var_params[key] = val
         del local_var_params['kwargs']
@@ -675,8 +671,7 @@ class ContactsApi(object):
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method fetch_contact_groups" % key
+                    f"Got an unexpected keyword argument {key} to method fetch_contact_groups"
                 )
             local_var_params[key] = val
         del local_var_params['kwargs']
@@ -811,8 +806,7 @@ class ContactsApi(object):
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method fetch_contacts" % key
+                    f"Got an unexpected keyword argument {key} to method fetch_contacts"
                 )
             local_var_params[key] = val
         del local_var_params['kwargs']
@@ -948,8 +942,7 @@ class ContactsApi(object):
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method remove_contact_from_group" % key
+                    f"Got an unexpected keyword argument {key} to method remove_contact_from_group"
                 )
             local_var_params[key] = val
         del local_var_params['kwargs']
@@ -1090,8 +1083,7 @@ class ContactsApi(object):
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method update_contact" % key
+                    f"Got an unexpected keyword argument {key} to method update_contact"
                 )
             local_var_params[key] = val
         del local_var_params['kwargs']
