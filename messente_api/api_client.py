@@ -536,8 +536,8 @@ class ApiClient(object):
 
         if 'application/json' in content_types or '*/*' in content_types:
             return 'application/json'
-        else:
-            return content_types[0]
+
+        return content_types[0]
 
     def update_params_for_auth(self, headers, querys, auth_settings,
                                request_auth=None):
