@@ -11,15 +11,16 @@
 
 from __future__ import absolute_import
 
-import atexit
-import datetime
-from dateutil.parser import parse
-import json
-import mimetypes
-from multiprocessing.pool import ThreadPool
 import os
 import re
 import tempfile
+import atexit
+import datetime
+import json
+import mimetypes
+from multiprocessing.pool import ThreadPool
+from dateutil.parser import parse
+
 
 # python 2 and python 3 compatibility library
 import six
