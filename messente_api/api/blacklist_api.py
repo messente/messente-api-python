@@ -120,8 +120,7 @@ class BlacklistApi(object):
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method add_to_blacklist" % key
+                    f"Got an unexpected keyword argument {key} to method add_to_blacklist" % key
                 )
             local_var_params[key] = val
         del local_var_params['kwargs']
@@ -255,8 +254,7 @@ class BlacklistApi(object):
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method delete_from_blacklist" % key
+                    f"Got an unexpected keyword argument {key} to method delete_from_blacklist"
                 )
             local_var_params[key] = val
         del local_var_params['kwargs']
@@ -381,8 +379,7 @@ class BlacklistApi(object):
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method fetch_blacklist" % key
+                    f"Got an unexpected keyword argument {key} to method fetch_blacklist"
                 )
             local_var_params[key] = val
         del local_var_params['kwargs']
@@ -509,8 +506,7 @@ class BlacklistApi(object):
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method is_blacklisted" % key
+                    f"Got an unexpected keyword argument {key} to method is_blacklisted"
                 )
             local_var_params[key] = val
         del local_var_params['kwargs']
