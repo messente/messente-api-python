@@ -121,8 +121,7 @@ class NumberLookupApi(object):
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method fetch_info" % key
+                    f"Got an unexpected keyword argument {key} to method fetch_info"
                 )
             local_var_params[key] = val
         del local_var_params['kwargs']
