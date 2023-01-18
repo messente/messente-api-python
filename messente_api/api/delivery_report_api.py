@@ -123,8 +123,7 @@ class DeliveryReportApi(object):
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method retrieve_delivery_report" % key
+                    f"Got an unexpected keyword argument {key} to method retrieve_delivery_report"
                 )
             local_var_params[key] = val
         del local_var_params['kwargs']
