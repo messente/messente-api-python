@@ -153,7 +153,7 @@ class BlacklistApi(object):
 
         # Authentication setting
         auth_settings = ['basicAuth']  # noqa: E501
-        
+
         response_types_map = {}
 
         return self.api_client.call_api(
@@ -283,7 +283,7 @@ class BlacklistApi(object):
 
         # Authentication setting
         auth_settings = ['basicAuth']  # noqa: E501
-        
+
         response_types_map = {}
 
         return self.api_client.call_api(
@@ -402,7 +402,7 @@ class BlacklistApi(object):
 
         # Authentication setting
         auth_settings = ['basicAuth']  # noqa: E501
-        
+
         response_types_map = {
             200: "FetchBlacklistSuccess",
             401: "ErrorPhonebook",
@@ -535,7 +535,7 @@ class BlacklistApi(object):
 
         # Authentication setting
         auth_settings = ['basicAuth']  # noqa: E501
-        
+
         response_types_map = {}
 
         return self.api_client.call_api(
