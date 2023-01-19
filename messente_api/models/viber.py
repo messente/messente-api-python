@@ -36,6 +36,7 @@ class Viber(object):
     openapi_types = {
         'sender': 'str',
         'validity': 'int',
+        'ttl': 'int',
         'text': 'str',
         'image_url': 'str',
         'button_url': 'str',
@@ -46,6 +47,7 @@ class Viber(object):
     attribute_map = {
         'sender': 'sender',
         'validity': 'validity',
+        'ttl': 'ttl',
         'text': 'text',
         'image_url': 'image_url',
         'button_url': 'button_url',
@@ -53,7 +55,7 @@ class Viber(object):
         'channel': 'channel'
     }
 
-    def __init__(self, sender=None, validity=None, text=None, image_url=None, button_url=None, button_text=None, channel='viber', local_vars_configuration=None):  # noqa: E501
+    def __init__(self, sender=None, validity=None, ttl=None, text=None, image_url=None, button_url=None, button_text=None, channel='viber', local_vars_configuration=None):  # noqa: E501
         """Viber - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -61,6 +63,7 @@ class Viber(object):
 
         self._sender = None
         self._validity = None
+        self._ttl = None
         self._text = None
         self._image_url = None
         self._button_url = None
@@ -72,6 +75,8 @@ class Viber(object):
             self.sender = sender
         if validity is not None:
             self.validity = validity
+        if ttl is not None:
+            self.ttl = ttl
         if text is not None:
             self.text = text
         if image_url is not None:
@@ -110,7 +115,7 @@ class Viber(object):
     def validity(self):
         """Gets the validity of this Viber.  # noqa: E501
 
-        After how many minutes this channel is considered as failed and the next channel is attempted  # noqa: E501
+        After how many minutes this channel is considered as failed and the next channel is attempted.       Only one of \"ttl\" and \"validity\" can be used.  # noqa: E501
 
         :return: The validity of this Viber.  # noqa: E501
         :rtype: int
@@ -121,13 +126,36 @@ class Viber(object):
     def validity(self, validity):
         """Sets the validity of this Viber.
 
-        After how many minutes this channel is considered as failed and the next channel is attempted  # noqa: E501
+        After how many minutes this channel is considered as failed and the next channel is attempted.       Only one of \"ttl\" and \"validity\" can be used.  # noqa: E501
 
         :param validity: The validity of this Viber.  # noqa: E501
         :type validity: int
         """
 
         self._validity = validity
+
+    @property
+    def ttl(self):
+        """Gets the ttl of this Viber.  # noqa: E501
+
+        After how many seconds this channel is considered as failed and the next channel is attempted.       Only one of \"ttl\" and \"validity\" can be used.  # noqa: E501
+
+        :return: The ttl of this Viber.  # noqa: E501
+        :rtype: int
+        """
+        return self._ttl
+
+    @ttl.setter
+    def ttl(self, ttl):
+        """Sets the ttl of this Viber.
+
+        After how many seconds this channel is considered as failed and the next channel is attempted.       Only one of \"ttl\" and \"validity\" can be used.  # noqa: E501
+
+        :param ttl: The ttl of this Viber.  # noqa: E501
+        :type ttl: int
+        """
+
+        self._ttl = ttl
 
     @property
     def text(self):

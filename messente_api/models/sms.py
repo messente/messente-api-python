@@ -37,6 +37,7 @@ class SMS(object):
         'text': 'str',
         'sender': 'str',
         'validity': 'int',
+        'ttl': 'int',
         'autoconvert': 'str',
         'udh': 'str',
         'channel': 'str'
@@ -46,12 +47,13 @@ class SMS(object):
         'text': 'text',
         'sender': 'sender',
         'validity': 'validity',
+        'ttl': 'ttl',
         'autoconvert': 'autoconvert',
         'udh': 'udh',
         'channel': 'channel'
     }
 
-    def __init__(self, text=None, sender=None, validity=None, autoconvert=None, udh=None, channel='sms', local_vars_configuration=None):  # noqa: E501
+    def __init__(self, text=None, sender=None, validity=None, ttl=None, autoconvert=None, udh=None, channel='sms', local_vars_configuration=None):  # noqa: E501
         """SMS - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -60,6 +62,7 @@ class SMS(object):
         self._text = None
         self._sender = None
         self._validity = None
+        self._ttl = None
         self._autoconvert = None
         self._udh = None
         self._channel = None
@@ -70,6 +73,8 @@ class SMS(object):
             self.sender = sender
         if validity is not None:
             self.validity = validity
+        if ttl is not None:
+            self.ttl = ttl
         if autoconvert is not None:
             self.autoconvert = autoconvert
         if udh is not None:
@@ -129,7 +134,7 @@ class SMS(object):
     def validity(self):
         """Gets the validity of this SMS.  # noqa: E501
 
-        After how many minutes this channel is considered as failed and the next channel is attempted  # noqa: E501
+        After how many minutes this channel is considered as failed and the next channel is attempted.                     Only one of \"ttl\" and \"validity\" can be used.  # noqa: E501
 
         :return: The validity of this SMS.  # noqa: E501
         :rtype: int
@@ -140,13 +145,36 @@ class SMS(object):
     def validity(self, validity):
         """Sets the validity of this SMS.
 
-        After how many minutes this channel is considered as failed and the next channel is attempted  # noqa: E501
+        After how many minutes this channel is considered as failed and the next channel is attempted.                     Only one of \"ttl\" and \"validity\" can be used.  # noqa: E501
 
         :param validity: The validity of this SMS.  # noqa: E501
         :type validity: int
         """
 
         self._validity = validity
+
+    @property
+    def ttl(self):
+        """Gets the ttl of this SMS.  # noqa: E501
+
+        After how many seconds this channel is considered as failed and the next channel is attempted.                     Only one of \"ttl\" and \"validity\" can be used.  # noqa: E501
+
+        :return: The ttl of this SMS.  # noqa: E501
+        :rtype: int
+        """
+        return self._ttl
+
+    @ttl.setter
+    def ttl(self, ttl):
+        """Sets the ttl of this SMS.
+
+        After how many seconds this channel is considered as failed and the next channel is attempted.                     Only one of \"ttl\" and \"validity\" can be used.  # noqa: E501
+
+        :param ttl: The ttl of this SMS.  # noqa: E501
+        :type ttl: int
+        """
+
+        self._ttl = ttl
 
     @property
     def autoconvert(self):
