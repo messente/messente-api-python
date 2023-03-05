@@ -151,7 +151,6 @@ class OmnimessageApi(object):
         
         response_types_map = {
             202: "object",
-            401: "ErrorOmnichannel",
             404: "ErrorOmnichannel",
         }
 
@@ -291,7 +290,6 @@ class OmnimessageApi(object):
         response_types_map = {
             201: "OmniMessageCreateSuccessResponse",
             400: "ErrorOmnichannel",
-            401: "ErrorOmnichannel",
         }
 
         return self.api_client.call_api(

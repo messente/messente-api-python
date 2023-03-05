@@ -76,7 +76,6 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **202** | Scheduled omnimessage successfully cancelled |  -  |
-**401** | Unauthorized |  -  |
 **404** | If the omnimessage has already been sent or no such message exists |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -150,7 +149,6 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **201** | Omnimessage success response |  -  |
 **400** | Invalid input |  -  |
-**401** | Unauthorized |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

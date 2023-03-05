@@ -151,7 +151,6 @@ class DeliveryReportApi(object):
         
         response_types_map = {
             200: "DeliveryReportResponse",
-            401: "ErrorOmnichannel",
             404: "ErrorOmnichannel",
         }
 
