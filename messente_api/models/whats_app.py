@@ -37,10 +37,7 @@ class WhatsApp(object):
         'sender': 'str',
         'validity': 'int',
         'ttl': 'int',
-        'text': 'WhatsAppText',
-        'image': 'WhatsAppImage',
-        'document': 'WhatsAppDocument',
-        'audio': 'WhatsAppAudio',
+        'template': 'WhatsAppTemplate',
         'channel': 'str'
     }
 
@@ -48,14 +45,11 @@ class WhatsApp(object):
         'sender': 'sender',
         'validity': 'validity',
         'ttl': 'ttl',
-        'text': 'text',
-        'image': 'image',
-        'document': 'document',
-        'audio': 'audio',
+        'template': 'template',
         'channel': 'channel'
     }
 
-    def __init__(self, sender=None, validity=None, ttl=None, text=None, image=None, document=None, audio=None, channel='whatsapp', local_vars_configuration=None):  # noqa: E501
+    def __init__(self, sender=None, validity=None, ttl=None, template=None, channel='whatsapp', local_vars_configuration=None):  # noqa: E501
         """WhatsApp - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -64,10 +58,7 @@ class WhatsApp(object):
         self._sender = None
         self._validity = None
         self._ttl = None
-        self._text = None
-        self._image = None
-        self._document = None
-        self._audio = None
+        self._template = None
         self._channel = None
         self.discriminator = None
 
@@ -77,14 +68,8 @@ class WhatsApp(object):
             self.validity = validity
         if ttl is not None:
             self.ttl = ttl
-        if text is not None:
-            self.text = text
-        if image is not None:
-            self.image = image
-        if document is not None:
-            self.document = document
-        if audio is not None:
-            self.audio = audio
+        if template is not None:
+            self.template = template
         if channel is not None:
             self.channel = channel
 
@@ -158,88 +143,25 @@ class WhatsApp(object):
         self._ttl = ttl
 
     @property
-    def text(self):
-        """Gets the text of this WhatsApp.  # noqa: E501
+    def template(self):
+        """Gets the template of this WhatsApp.  # noqa: E501
 
 
-        :return: The text of this WhatsApp.  # noqa: E501
-        :rtype: WhatsAppText
+        :return: The template of this WhatsApp.  # noqa: E501
+        :rtype: WhatsAppTemplate
         """
-        return self._text
+        return self._template
 
-    @text.setter
-    def text(self, text):
-        """Sets the text of this WhatsApp.
-
-
-        :param text: The text of this WhatsApp.  # noqa: E501
-        :type text: WhatsAppText
-        """
-
-        self._text = text
-
-    @property
-    def image(self):
-        """Gets the image of this WhatsApp.  # noqa: E501
+    @template.setter
+    def template(self, template):
+        """Sets the template of this WhatsApp.
 
 
-        :return: The image of this WhatsApp.  # noqa: E501
-        :rtype: WhatsAppImage
-        """
-        return self._image
-
-    @image.setter
-    def image(self, image):
-        """Sets the image of this WhatsApp.
-
-
-        :param image: The image of this WhatsApp.  # noqa: E501
-        :type image: WhatsAppImage
+        :param template: The template of this WhatsApp.  # noqa: E501
+        :type template: WhatsAppTemplate
         """
 
-        self._image = image
-
-    @property
-    def document(self):
-        """Gets the document of this WhatsApp.  # noqa: E501
-
-
-        :return: The document of this WhatsApp.  # noqa: E501
-        :rtype: WhatsAppDocument
-        """
-        return self._document
-
-    @document.setter
-    def document(self, document):
-        """Sets the document of this WhatsApp.
-
-
-        :param document: The document of this WhatsApp.  # noqa: E501
-        :type document: WhatsAppDocument
-        """
-
-        self._document = document
-
-    @property
-    def audio(self):
-        """Gets the audio of this WhatsApp.  # noqa: E501
-
-
-        :return: The audio of this WhatsApp.  # noqa: E501
-        :rtype: WhatsAppAudio
-        """
-        return self._audio
-
-    @audio.setter
-    def audio(self, audio):
-        """Sets the audio of this WhatsApp.
-
-
-        :param audio: The audio of this WhatsApp.  # noqa: E501
-        :type audio: WhatsAppAudio
-        """
-
-        self._audio = audio
+        self._template = template
 
     @property
     def channel(self):

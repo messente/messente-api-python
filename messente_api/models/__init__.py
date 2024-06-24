@@ -61,7 +61,7 @@ from messente_api.models.telegram import Telegram
 from messente_api.models.text_store import TextStore
 from messente_api.models.viber import Viber
 from messente_api.models.whats_app import WhatsApp
-from messente_api.models.whats_app_audio import WhatsAppAudio
-from messente_api.models.whats_app_document import WhatsAppDocument
-from messente_api.models.whats_app_image import WhatsAppImage
-from messente_api.models.whats_app_text import WhatsAppText
+from messente_api.models.whats_app_component import WhatsAppComponent
+from messente_api.models.whats_app_language import WhatsAppLanguage
+from messente_api.models.whats_app_parameter import WhatsAppParameter
+from messente_api.models.whats_app_template import WhatsAppTemplate

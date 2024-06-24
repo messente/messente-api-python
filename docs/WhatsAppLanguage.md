@@ -1,11 +1,11 @@
-# WhatsAppText
+# WhatsAppLanguage
 
-A text
+Whatsapp template language
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**preview_url** | **bool** | Whether to display link preview if the message contains a hyperlink | [optional] [default to True]
-**body** | **str** | Plaintext content for WhatsApp, can contain URLs, emojis and formatting | 
+**code** | **str** | Language code | 
+**policy** | **str** | Language policy | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
