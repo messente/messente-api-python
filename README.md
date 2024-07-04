@@ -1,7 +1,7 @@
 # Messente API Library
 
 - Messente API version: 2.0.0
-- Python package version: 1.5.0
+- Python package version: 2.0.0
 
 [Messente](https://messente.com) is a global provider of messaging and user verification services.  * Send and receive SMS, Viber, WhatsApp and Telegram messages. * Manage contacts and groups. * Fetch detailed info about phone numbers. * Blacklist phone numbers to make sure you&#39;re not sending any unwanted messages.  Messente builds [tools](https://messente.com/documentation) to help organizations connect their services to people anywhere in the world.
 
@@ -24,6 +24,10 @@ Messente API Library provides the operations described below to access the featu
 1. Deletes a phone number from the blacklist [`delete_from_blacklist`](docs/BlacklistApi.md#delete_from_blacklist)
 1. Returns all blacklisted phone numbers [`fetch_blacklist`](docs/BlacklistApi.md#fetch_blacklist)
 1. Checks if a phone number is blacklisted [`is_blacklisted`](docs/BlacklistApi.md#is_blacklisted)
+
+### BulkMessagingApi
+
+1. Sends a bulk Omnimessage [`send_bulk_omnimessage`](docs/BulkMessagingApi.md#send_bulk_omnimessage)
 
 ### ContactsApi
 
@@ -73,13 +77,17 @@ Read the [external getting-started article](https://messente.com/documentation/g
 from pprint import pprint
 from messente_api import (
     OmnimessageApi,
-    Viber,
-    SMS,
     Omnimessage,
+    OmnimessageMessagesInner,
     Configuration,
     ApiClient,
+    Viber,
+    SMS,
     WhatsApp,
-    WhatsAppText
+    WhatsAppParameter,
+    WhatsAppComponent,
+    WhatsAppTemplate,
+    WhatsAppLanguage,
 )
 from messente_api.rest import ApiException
 
@@ -91,29 +99,30 @@ configuration.password = '<MESSENTE_API_PASSWORD>'
 # create an instance of the API class
 api_instance = OmnimessageApi(ApiClient(configuration))
 
-whatsapp = WhatsApp(
-    sender='<sender name (optional)>',
-    text=WhatsAppText(
-        body='hello whatsapp'
-    )
-)
+wa_parameters = [WhatsAppParameter(type='text', text='hello whatsapp')]
+wa_component = WhatsAppComponent(type='body', parameters=wa_parameters)
+wa_template = WhatsAppTemplate(name='<template name>', language=WhatsAppLanguage(code='<language_code>'), components=[wa_component])
+whatsapp = WhatsApp(sender='<sender name (optional)>', template=wa_template)
+whatsapp_inner = OmnimessageMessagesInner(whatsapp)
 
 viber = Viber(
     sender='<sender name (optional)>',
     text='hello python',
 )
+viber_inner = OmnimessageMessagesInner(viber)
 
 sms = SMS(
     sender='<sender name (optional)>',
     text='hello python',
 )
+sms_inner = OmnimessageMessagesInner(sms)
 
 # The order of items in 'messages' specifies the sending order:
 # WhatsApp will be attempted first,
 # then Viber,
 # and SMS as the final fallback
 omnimessage = Omnimessage(
-    messages=(whatsapp, viber, sms),
+    messages=(whatsapp_inner, viber_inner, sms_inner),
     to='<recipient_phone_number>',
 )  # Omnimessage | Omnimessage object that is to be sent
 

@@ -1,7 +1,9 @@
 # ErrorCodeStatistics
 
 Matches the following error title.   This field is a constant  * 100 - Client Error * 103 - Unauthorized * 104 - Invalid data * 105 - Internal Server Error
+
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 

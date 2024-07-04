@@ -15,12 +15,14 @@ Requests info about phone numbers
 ### Example
 
 * Basic Authentication (basicAuth):
+
 ```python
-from __future__ import print_function
-import time
 import messente_api
+from messente_api.models.numbers_to_investigate import NumbersToInvestigate
+from messente_api.models.sync_number_lookup_success import SyncNumberLookupSuccess
 from messente_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.messente.com/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = messente_api.Configuration(
@@ -34,8 +36,8 @@ configuration = messente_api.Configuration(
 
 # Configure HTTP basic authorization: basicAuth
 configuration = messente_api.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
@@ -47,12 +49,16 @@ with messente_api.ApiClient(configuration) as api_client:
     try:
         # Requests info about phone numbers
         api_response = api_instance.fetch_info(numbers_to_investigate)
+        print("The response of NumberLookupApi->fetch_info:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling NumberLookupApi->fetch_info: %s\n" % e)
 ```
 
+
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -72,6 +78,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Info about phone numbers returned |  -  |

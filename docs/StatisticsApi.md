@@ -15,12 +15,14 @@ Requests statistics reports for each country
 ### Example
 
 * Basic Authentication (basicAuth):
+
 ```python
-from __future__ import print_function
-import time
 import messente_api
+from messente_api.models.statistics_report_settings import StatisticsReportSettings
+from messente_api.models.statistics_report_success import StatisticsReportSuccess
 from messente_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.messente.com/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = messente_api.Configuration(
@@ -34,8 +36,8 @@ configuration = messente_api.Configuration(
 
 # Configure HTTP basic authorization: basicAuth
 configuration = messente_api.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
@@ -47,12 +49,16 @@ with messente_api.ApiClient(configuration) as api_client:
     try:
         # Requests statistics reports for each country
         api_response = api_instance.create_statistics_report(statistics_report_settings)
+        print("The response of StatisticsApi->create_statistics_report:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling StatisticsApi->create_statistics_report: %s\n" % e)
 ```
 
+
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -72,6 +78,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Created reports by countries |  -  |

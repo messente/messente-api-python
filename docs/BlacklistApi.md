@@ -18,12 +18,13 @@ Adds a phone number to the blacklist
 ### Example
 
 * Basic Authentication (basicAuth):
+
 ```python
-from __future__ import print_function
-import time
 import messente_api
+from messente_api.models.number_to_blacklist import NumberToBlacklist
 from messente_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.messente.com/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = messente_api.Configuration(
@@ -37,8 +38,8 @@ configuration = messente_api.Configuration(
 
 # Configure HTTP basic authorization: basicAuth
 configuration = messente_api.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
@@ -50,11 +51,14 @@ with messente_api.ApiClient(configuration) as api_client:
     try:
         # Adds a phone number to the blacklist
         api_instance.add_to_blacklist(number_to_blacklist)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling BlacklistApi->add_to_blacklist: %s\n" % e)
 ```
 
+
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -74,6 +78,7 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | Phone number added to the blacklist |  -  |
@@ -92,12 +97,12 @@ Deletes a phone number from the blacklist
 ### Example
 
 * Basic Authentication (basicAuth):
+
 ```python
-from __future__ import print_function
-import time
 import messente_api
 from messente_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.messente.com/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = messente_api.Configuration(
@@ -111,8 +116,8 @@ configuration = messente_api.Configuration(
 
 # Configure HTTP basic authorization: basicAuth
 configuration = messente_api.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
@@ -124,11 +129,14 @@ with messente_api.ApiClient(configuration) as api_client:
     try:
         # Deletes a phone number from the blacklist
         api_instance.delete_from_blacklist(phone)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling BlacklistApi->delete_from_blacklist: %s\n" % e)
 ```
 
+
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -148,6 +156,7 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | Phone number deleted from the blacklist |  -  |
@@ -166,12 +175,13 @@ Returns all blacklisted phone numbers
 ### Example
 
 * Basic Authentication (basicAuth):
+
 ```python
-from __future__ import print_function
-import time
 import messente_api
+from messente_api.models.fetch_blacklist_success import FetchBlacklistSuccess
 from messente_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.messente.com/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = messente_api.Configuration(
@@ -185,24 +195,28 @@ configuration = messente_api.Configuration(
 
 # Configure HTTP basic authorization: basicAuth
 configuration = messente_api.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
 with messente_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = messente_api.BlacklistApi(api_client)
-    
+
     try:
         # Returns all blacklisted phone numbers
         api_response = api_instance.fetch_blacklist()
+        print("The response of BlacklistApi->fetch_blacklist:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling BlacklistApi->fetch_blacklist: %s\n" % e)
 ```
 
+
+
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -219,6 +233,7 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | An object containing a list of blacklisted phone numbers |  -  |
@@ -235,12 +250,12 @@ Checks if a phone number is blacklisted
 ### Example
 
 * Basic Authentication (basicAuth):
+
 ```python
-from __future__ import print_function
-import time
 import messente_api
 from messente_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.messente.com/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = messente_api.Configuration(
@@ -254,8 +269,8 @@ configuration = messente_api.Configuration(
 
 # Configure HTTP basic authorization: basicAuth
 configuration = messente_api.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
@@ -267,11 +282,14 @@ with messente_api.ApiClient(configuration) as api_client:
     try:
         # Checks if a phone number is blacklisted
         api_instance.is_blacklisted(phone)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling BlacklistApi->is_blacklisted: %s\n" % e)
 ```
 
+
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -291,6 +309,7 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | Phone number is in the blacklist |  -  |
