@@ -22,12 +22,12 @@ Adds a contact to a group
 ### Example
 
 * Basic Authentication (basicAuth):
+
 ```python
-from __future__ import print_function
-import time
 import messente_api
 from messente_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.messente.com/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = messente_api.Configuration(
@@ -41,8 +41,8 @@ configuration = messente_api.Configuration(
 
 # Configure HTTP basic authorization: basicAuth
 configuration = messente_api.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
@@ -50,17 +50,21 @@ with messente_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = messente_api.ContactsApi(api_client)
     group_id = '5792a02a-e5c2-422b-a0a0-0ae65d814663' # str | String in UUID format
-phone = '+37251000000' # str | A phone number
+    phone = '+37251000000' # str | A phone number
 
     try:
         # Adds a contact to a group
         api_response = api_instance.add_contact_to_group(group_id, phone)
+        print("The response of ContactsApi->add_contact_to_group:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling ContactsApi->add_contact_to_group: %s\n" % e)
 ```
 
+
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -81,6 +85,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | An empty object |  -  |
@@ -100,12 +105,14 @@ Creates a new contact
 ### Example
 
 * Basic Authentication (basicAuth):
+
 ```python
-from __future__ import print_function
-import time
 import messente_api
+from messente_api.models.contact_envelope import ContactEnvelope
+from messente_api.models.contact_fields import ContactFields
 from messente_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.messente.com/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = messente_api.Configuration(
@@ -119,8 +126,8 @@ configuration = messente_api.Configuration(
 
 # Configure HTTP basic authorization: basicAuth
 configuration = messente_api.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
@@ -132,12 +139,16 @@ with messente_api.ApiClient(configuration) as api_client:
     try:
         # Creates a new contact
         api_response = api_instance.create_contact(contact_fields)
+        print("The response of ContactsApi->create_contact:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling ContactsApi->create_contact: %s\n" % e)
 ```
 
+
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -157,6 +168,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | An object containing a contact object |  -  |
@@ -175,12 +187,12 @@ Deletes a contact
 ### Example
 
 * Basic Authentication (basicAuth):
+
 ```python
-from __future__ import print_function
-import time
 import messente_api
 from messente_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.messente.com/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = messente_api.Configuration(
@@ -194,8 +206,8 @@ configuration = messente_api.Configuration(
 
 # Configure HTTP basic authorization: basicAuth
 configuration = messente_api.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
@@ -207,11 +219,14 @@ with messente_api.ApiClient(configuration) as api_client:
     try:
         # Deletes a contact
         api_instance.delete_contact(phone)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling ContactsApi->delete_contact: %s\n" % e)
 ```
 
+
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -231,6 +246,7 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | Contact deleted |  -  |
@@ -249,12 +265,13 @@ Lists a contact
 ### Example
 
 * Basic Authentication (basicAuth):
+
 ```python
-from __future__ import print_function
-import time
 import messente_api
+from messente_api.models.contact_envelope import ContactEnvelope
 from messente_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.messente.com/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = messente_api.Configuration(
@@ -268,8 +285,8 @@ configuration = messente_api.Configuration(
 
 # Configure HTTP basic authorization: basicAuth
 configuration = messente_api.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
@@ -281,12 +298,16 @@ with messente_api.ApiClient(configuration) as api_client:
     try:
         # Lists a contact
         api_response = api_instance.fetch_contact(phone)
+        print("The response of ContactsApi->fetch_contact:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling ContactsApi->fetch_contact: %s\n" % e)
 ```
 
+
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -306,6 +327,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | An object containing a contact object |  -  |
@@ -323,12 +345,13 @@ Lists groups of a contact
 ### Example
 
 * Basic Authentication (basicAuth):
+
 ```python
-from __future__ import print_function
-import time
 import messente_api
+from messente_api.models.group_list_envelope import GroupListEnvelope
 from messente_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.messente.com/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = messente_api.Configuration(
@@ -342,8 +365,8 @@ configuration = messente_api.Configuration(
 
 # Configure HTTP basic authorization: basicAuth
 configuration = messente_api.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
@@ -355,12 +378,16 @@ with messente_api.ApiClient(configuration) as api_client:
     try:
         # Lists groups of a contact
         api_response = api_instance.fetch_contact_groups(phone)
+        print("The response of ContactsApi->fetch_contact_groups:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling ContactsApi->fetch_contact_groups: %s\n" % e)
 ```
 
+
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -380,6 +407,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | An object containing a list of group objects |  -  |
@@ -397,12 +425,13 @@ Returns all contacts
 ### Example
 
 * Basic Authentication (basicAuth):
+
 ```python
-from __future__ import print_function
-import time
 import messente_api
+from messente_api.models.contact_list_envelope import ContactListEnvelope
 from messente_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.messente.com/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = messente_api.Configuration(
@@ -416,29 +445,33 @@ configuration = messente_api.Configuration(
 
 # Configure HTTP basic authorization: basicAuth
 configuration = messente_api.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
 with messente_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = messente_api.ContactsApi(api_client)
-    group_ids = ['[\"5792a02a-e5c2-422b-a0a0-0ae65d814663\",\"4792a02a-e5c2-422b-a0a0-0ae65d814662\"]'] # list[str] | Optional one or many group id strings in UUID format. For example: \"/contacts?groupIds=group_id_one&groupIds=group_id_two\"  (optional)
+    group_ids = ['[\"5792a02a-e5c2-422b-a0a0-0ae65d814663\",\"4792a02a-e5c2-422b-a0a0-0ae65d814662\"]'] # List[str] | Optional one or many group id strings in UUID format. For example: \"/contacts?groupIds=group_id_one&groupIds=group_id_two\"  (optional)
 
     try:
         # Returns all contacts
         api_response = api_instance.fetch_contacts(group_ids=group_ids)
+        print("The response of ContactsApi->fetch_contacts:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling ContactsApi->fetch_contacts: %s\n" % e)
 ```
 
+
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **group_ids** | [**list[str]**](str.md)| Optional one or many group id strings in UUID format. For example: \&quot;/contacts?groupIds&#x3D;group_id_one&amp;groupIds&#x3D;group_id_two\&quot;  | [optional] 
+ **group_ids** | [**List[str]**](str.md)| Optional one or many group id strings in UUID format. For example: \&quot;/contacts?groupIds&#x3D;group_id_one&amp;groupIds&#x3D;group_id_two\&quot;  | [optional] 
 
 ### Return type
 
@@ -454,6 +487,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | An object containing a list of contact objects |  -  |
@@ -471,12 +505,12 @@ Removes a contact from a group
 ### Example
 
 * Basic Authentication (basicAuth):
+
 ```python
-from __future__ import print_function
-import time
 import messente_api
 from messente_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.messente.com/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = messente_api.Configuration(
@@ -490,8 +524,8 @@ configuration = messente_api.Configuration(
 
 # Configure HTTP basic authorization: basicAuth
 configuration = messente_api.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
@@ -499,16 +533,19 @@ with messente_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = messente_api.ContactsApi(api_client)
     group_id = '5792a02a-e5c2-422b-a0a0-0ae65d814663' # str | String in UUID format
-phone = '+37251000000' # str | A phone number
+    phone = '+37251000000' # str | A phone number
 
     try:
         # Removes a contact from a group
         api_instance.remove_contact_from_group(group_id, phone)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling ContactsApi->remove_contact_from_group: %s\n" % e)
 ```
 
+
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -529,6 +566,7 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | Contact removed from group |  -  |
@@ -547,12 +585,14 @@ Updates a contact
 ### Example
 
 * Basic Authentication (basicAuth):
+
 ```python
-from __future__ import print_function
-import time
 import messente_api
+from messente_api.models.contact_envelope import ContactEnvelope
+from messente_api.models.contact_update_fields import ContactUpdateFields
 from messente_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.messente.com/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = messente_api.Configuration(
@@ -566,8 +606,8 @@ configuration = messente_api.Configuration(
 
 # Configure HTTP basic authorization: basicAuth
 configuration = messente_api.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
@@ -575,17 +615,21 @@ with messente_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = messente_api.ContactsApi(api_client)
     phone = '+37251000000' # str | A phone number
-contact_update_fields = {"email":"anyone@messente.com","firstName":"Any","lastName":"One","company":"Messente","title":"Sir","custom":"Any custom","custom2":"Any custom two","custom3":"Any custom three","custom4":"Any custom four"} # ContactUpdateFields | 
+    contact_update_fields = {"email":"anyone@messente.com","firstName":"Any","lastName":"One","company":"Messente","title":"Sir","custom":"Any custom","custom2":"Any custom two","custom3":"Any custom three","custom4":"Any custom four"} # ContactUpdateFields | 
 
     try:
         # Updates a contact
         api_response = api_instance.update_contact(phone, contact_update_fields)
+        print("The response of ContactsApi->update_contact:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling ContactsApi->update_contact: %s\n" % e)
 ```
 
+
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -606,6 +650,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | An object containing a contact object |  -  |
