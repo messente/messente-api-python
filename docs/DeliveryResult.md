@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **error** | **str** | Human-readable description of what went wrong, *null* in case of success or if the message has not been processed yet | [optional] 
 **err** | [**ErrorCodeOmnichannelMachine**](ErrorCodeOmnichannelMachine.md) |  | [optional] 
 **timestamp** | **datetime** | When this status was received by Omnichannel API | [optional] 
+**price_info** | [**PriceInfo**](PriceInfo.md) |  | [optional] 
 
 ## Example
 

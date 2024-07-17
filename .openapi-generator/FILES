@@ -49,6 +49,7 @@ docs/OmniMessageCreateSuccessResponse.md
 docs/Omnimessage.md
 docs/OmnimessageApi.md
 docs/OmnimessageMessagesInner.md
+docs/PriceInfo.md
 docs/Priority.md
 docs/SMS.md
 docs/StatisticsApi.md
@@ -123,6 +124,7 @@ messente_api/models/numbers_to_investigate.py
 messente_api/models/omni_message_create_success_response.py
 messente_api/models/omnimessage.py
 messente_api/models/omnimessage_messages_inner.py
+messente_api/models/price_info.py
 messente_api/models/priority.py
 messente_api/models/sms.py
 messente_api/models/statistics_report.py
