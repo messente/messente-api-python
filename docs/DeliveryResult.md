@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **err** | [**ErrorCodeOmnichannelMachine**](ErrorCodeOmnichannelMachine.md) |  | [optional] 
 **timestamp** | **datetime** | When this status was received by Omnichannel API | [optional] 
 **price_info** | [**PriceInfo**](PriceInfo.md) |  | [optional] 
+**sender** | **str** | the sender of the message | [optional] 
 
 ## Example
 

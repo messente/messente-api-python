@@ -39,7 +39,8 @@ class DeliveryResult(BaseModel):
     err: Optional[ErrorCodeOmnichannelMachine] = None
     timestamp: Optional[datetime] = Field(default=None, description="When this status was received by Omnichannel API")
     price_info: Optional[PriceInfo] = None
-    __properties: ClassVar[List[str]] = ["status", "channel", "message_id", "error", "err", "timestamp", "price_info"]
+    sender: Optional[StrictStr] = Field(default=None, description="the sender of the message")
+    __properties: ClassVar[List[str]] = ["status", "channel", "message_id", "error", "err", "timestamp", "price_info", "sender"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -106,7 +107,8 @@ class DeliveryResult(BaseModel):
             "error": obj.get("error"),
             "err": obj.get("err"),
             "timestamp": obj.get("timestamp"),
-            "price_info": PriceInfo.from_dict(obj["price_info"]) if obj.get("price_info") is not None else None
+            "price_info": PriceInfo.from_dict(obj["price_info"]) if obj.get("price_info") is not None else None,
+            "sender": obj.get("sender")
         })
         return _obj
 
