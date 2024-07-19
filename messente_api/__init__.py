@@ -15,7 +15,7 @@
 """  # noqa: E501
 
 
-__version__ = "2.0.0"
+__version__ = "2.1.0"
 
 # import apis into sdk package
 from messente_api.api.blacklist_api import BlacklistApi
@@ -77,6 +77,7 @@ from messente_api.models.numbers_to_investigate import NumbersToInvestigate
 from messente_api.models.omni_message_create_success_response import OmniMessageCreateSuccessResponse
 from messente_api.models.omnimessage import Omnimessage
 from messente_api.models.omnimessage_messages_inner import OmnimessageMessagesInner
+from messente_api.models.price_info import PriceInfo
 from messente_api.models.priority import Priority
 from messente_api.models.sms import SMS
 from messente_api.models.statistics_report import StatisticsReport

@@ -18,29 +18,19 @@ import pprint
 import re  # noqa: F401
 import json
 
-from datetime import datetime
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
-from messente_api.models.channel import Channel
-from messente_api.models.error_code_omnichannel_machine import ErrorCodeOmnichannelMachine
-from messente_api.models.price_info import PriceInfo
-from messente_api.models.status import Status
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List
 from typing import Optional, Set
 from typing_extensions import Self
 
-class DeliveryResult(BaseModel):
+class PriceInfo(BaseModel):
     """
-    A delivery report
+    Contains price information for the message. This value is *null* if the message is still being processed
     """ # noqa: E501
-    status: Optional[Status] = None
-    channel: Optional[Channel] = None
-    message_id: Optional[StrictStr] = Field(default=None, description="Unique identifier for the message")
-    error: Optional[StrictStr] = Field(default=None, description="Human-readable description of what went wrong, *null* in case of success or if the message has not been processed yet")
-    err: Optional[ErrorCodeOmnichannelMachine] = None
-    timestamp: Optional[datetime] = Field(default=None, description="When this status was received by Omnichannel API")
-    price_info: Optional[PriceInfo] = None
-    sender: Optional[StrictStr] = Field(default=None, description="the sender of the message")
-    __properties: ClassVar[List[str]] = ["status", "channel", "message_id", "error", "err", "timestamp", "price_info", "sender"]
+    part_price: StrictStr = Field(description="price per message part - relevant mostly for SMS")
+    parts_count: StrictInt = Field(description="the number of parts the message consists of")
+    total_price: StrictStr = Field(description="total price for the message")
+    __properties: ClassVar[List[str]] = ["part_price", "parts_count", "total_price"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -60,7 +50,7 @@ class DeliveryResult(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of DeliveryResult from a JSON string"""
+        """Create an instance of PriceInfo from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -81,19 +71,11 @@ class DeliveryResult(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of price_info
-        if self.price_info:
-            _dict['price_info'] = self.price_info.to_dict()
-        # set to None if error (nullable) is None
-        # and model_fields_set contains the field
-        if self.error is None and "error" in self.model_fields_set:
-            _dict['error'] = None
-
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of DeliveryResult from a dict"""
+        """Create an instance of PriceInfo from a dict"""
         if obj is None:
             return None
 
@@ -101,14 +83,9 @@ class DeliveryResult(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "status": obj.get("status"),
-            "channel": obj.get("channel"),
-            "message_id": obj.get("message_id"),
-            "error": obj.get("error"),
-            "err": obj.get("err"),
-            "timestamp": obj.get("timestamp"),
-            "price_info": PriceInfo.from_dict(obj["price_info"]) if obj.get("price_info") is not None else None,
-            "sender": obj.get("sender")
+            "part_price": obj.get("part_price"),
+            "parts_count": obj.get("parts_count"),
+            "total_price": obj.get("total_price")
         })
         return _obj
 
