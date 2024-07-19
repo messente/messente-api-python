@@ -35,6 +35,7 @@ class Viber(BaseModel):
     button_url: Optional[StrictStr] = Field(default=None, description="URL of the button, must be specified along with ''text'', ''button_text'' and ''image_url'' (optional)")
     button_text: Optional[StrictStr] = Field(default=None, description="Must be specified along with ''text'', ''button_url'', ''button_text'', ''image_url'' (optional)")
     channel: Optional[StrictStr] = Field(default='viber', description="The channel used to deliver the message")
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["sender", "validity", "ttl", "text", "image_url", "button_url", "button_text", "channel"]
 
     @field_validator('channel')
@@ -77,8 +78,10 @@ class Viber(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -86,6 +89,11 @@ class Viber(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         return _dict
 
     @classmethod
@@ -107,6 +115,11 @@ class Viber(BaseModel):
             "button_text": obj.get("button_text"),
             "channel": obj.get("channel") if obj.get("channel") is not None else 'viber'
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

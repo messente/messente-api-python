@@ -34,6 +34,7 @@ class Telegram(BaseModel):
     document_url: Optional[StrictStr] = Field(default=None, description="URL for the embedded image. Mutually exclusive with \"audio_url\" and \"image_url\"")
     audio_url: Optional[StrictStr] = Field(default=None, description="URL for the embedded image. Mutually exclusive with \"document_url\" and \"image_url\"")
     channel: Optional[StrictStr] = Field(default='telegram', description="The channel used to deliver the message")
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["sender", "validity", "text", "image_url", "document_url", "audio_url", "channel"]
 
     @field_validator('channel')
@@ -76,8 +77,10 @@ class Telegram(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -85,6 +88,11 @@ class Telegram(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         return _dict
 
     @classmethod
@@ -105,6 +113,11 @@ class Telegram(BaseModel):
             "audio_url": obj.get("audio_url"),
             "channel": obj.get("channel") if obj.get("channel") is not None else 'telegram'
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

@@ -37,6 +37,7 @@ class Omnimessage(BaseModel):
     text_store: Optional[TextStore] = None
     time_to_send: Optional[datetime] = Field(default=None, description="Optional parameter for sending messages at some specific time in the future.   Time must be specified in the ISO-8601 format.   If no timezone is specified, then the timezone is assumed to be UTC    Examples:    * Time specified with timezone: 2018-06-22T09:05:07+00:00 Time specified in UTC: 2018-06-22T09:05:07Z   * Time specified without timezone: 2018-06-22T09:05 (equivalent to 2018-06-22T09:05+00:00)")
     priority: Optional[Priority] = None
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["to", "messages", "dlr_url", "text_store", "time_to_send", "priority"]
 
     model_config = ConfigDict(
@@ -69,8 +70,10 @@ class Omnimessage(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -85,6 +88,11 @@ class Omnimessage(BaseModel):
                 if _item:
                     _items.append(_item.to_dict())
             _dict['messages'] = _items
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         return _dict
 
     @classmethod
@@ -104,6 +112,11 @@ class Omnimessage(BaseModel):
             "time_to_send": obj.get("time_to_send"),
             "priority": obj.get("priority")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

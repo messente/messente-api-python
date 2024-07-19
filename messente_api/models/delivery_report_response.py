@@ -31,6 +31,7 @@ class DeliveryReportResponse(BaseModel):
     statuses: List[DeliveryResult] = Field(description="Contains the delivery reports for each channel, ordered by send order")
     to: StrictStr = Field(description="Phone number in e.164 format")
     omnimessage_id: StrictStr = Field(description="Unique identifier for the omnimessage")
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["statuses", "to", "omnimessage_id"]
 
     model_config = ConfigDict(
@@ -63,8 +64,10 @@ class DeliveryReportResponse(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -79,6 +82,11 @@ class DeliveryReportResponse(BaseModel):
                 if _item:
                     _items.append(_item.to_dict())
             _dict['statuses'] = _items
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         return _dict
 
     @classmethod
@@ -95,6 +103,11 @@ class DeliveryReportResponse(BaseModel):
             "to": obj.get("to"),
             "omnimessage_id": obj.get("omnimessage_id")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

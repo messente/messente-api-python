@@ -34,6 +34,7 @@ class SMS(BaseModel):
     autoconvert: Optional[StrictStr] = Field(default=None, description="Defines how non-GSM characters will be treated:    - \"on\" Use replacement settings from the account's [API Auto Replace settings page](https://dashboard.messente.com/api-settings/auto-replace) (default)   - \"full\" All non GSM 03.38 characters will be replaced with suitable alternatives   - \"off\" Message content is not modified in any way")
     udh: Optional[StrictStr] = Field(default=None, description="hex-encoded string containing SMS UDH")
     channel: Optional[StrictStr] = Field(default='sms', description="The channel used to deliver the message")
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["text", "sender", "validity", "ttl", "autoconvert", "udh", "channel"]
 
     @field_validator('autoconvert')
@@ -86,8 +87,10 @@ class SMS(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -95,6 +98,11 @@ class SMS(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         return _dict
 
     @classmethod
@@ -115,6 +123,11 @@ class SMS(BaseModel):
             "udh": obj.get("udh"),
             "channel": obj.get("channel") if obj.get("channel") is not None else 'sms'
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

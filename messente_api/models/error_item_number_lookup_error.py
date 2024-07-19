@@ -30,6 +30,7 @@ class ErrorItemNumberLookupError(BaseModel):
     """ # noqa: E501
     description: StrictStr = Field(description="Error description")
     code: Annotated[int, Field(le=106, strict=True, ge=101)] = Field(description="Matches the following error title.   This field is a constant  * 101 - Unauthorized * 102 - Invalid arguments or parameters * 103 - Server error * 104 - Crediting error #1 * 105 - Crediting error #2 * 106 - Client error")
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["description", "code"]
 
     model_config = ConfigDict(
@@ -62,8 +63,10 @@ class ErrorItemNumberLookupError(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -71,6 +74,11 @@ class ErrorItemNumberLookupError(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         return _dict
 
     @classmethod
@@ -86,6 +94,11 @@ class ErrorItemNumberLookupError(BaseModel):
             "description": obj.get("description"),
             "code": obj.get("code")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 
