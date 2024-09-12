@@ -15,7 +15,7 @@
 """  # noqa: E501
 
 
-__version__ = "2.1.0"
+__version__ = "2.2.0"
 
 # import apis into sdk package
 from messente_api.api.blacklist_api import BlacklistApi
