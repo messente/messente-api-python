@@ -62,7 +62,6 @@ docs/SyncNumberLookupSuccess.md
 docs/Telegram.md
 docs/TextStore.md
 docs/Viber.md
-docs/ViberVideo.md
 docs/WhatsApp.md
 docs/WhatsAppComponent.md
 docs/WhatsAppCurrency.md
@@ -137,7 +136,6 @@ messente_api/models/sync_number_lookup_success.py
 messente_api/models/telegram.py
 messente_api/models/text_store.py
 messente_api/models/viber.py
-messente_api/models/viber_video.py
 messente_api/models/whats_app.py
 messente_api/models/whats_app_component.py
 messente_api/models/whats_app_currency.py
