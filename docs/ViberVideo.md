@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **url** | **str** | URL pointing to the video resource. | 
 **thumbnail** | **str** | URL pointing to the video thumbnail resource. | 
 **file_size** | **int** | Size of the video file in bytes. Cannot be larger than 200MB. | 
-**duration** | [**List[WhatsAppParameter]**](WhatsAppParameter.md) | Duration of the video in seconds. Cannot be longer than 600 seconds. | 
+**duration** | **int** | Duration of the video in seconds. Cannot be longer than 600 seconds. | 
 
 ## Example
 

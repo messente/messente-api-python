@@ -20,7 +20,6 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List
-from messente_api.models.whats_app_parameter import WhatsAppParameter
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -31,7 +30,7 @@ class ViberVideo(BaseModel):
     url: StrictStr = Field(description="URL pointing to the video resource.")
     thumbnail: StrictStr = Field(description="URL pointing to the video thumbnail resource.")
     file_size: StrictInt = Field(description="Size of the video file in bytes. Cannot be larger than 200MB.")
-    duration: List[WhatsAppParameter] = Field(description="Duration of the video in seconds. Cannot be longer than 600 seconds.")
+    duration: StrictInt = Field(description="Duration of the video in seconds. Cannot be longer than 600 seconds.")
     additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["url", "thumbnail", "file_size", "duration"]
 
@@ -76,13 +75,6 @@ class ViberVideo(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in duration (list)
-        _items = []
-        if self.duration:
-            for _item in self.duration:
-                if _item:
-                    _items.append(_item.to_dict())
-            _dict['duration'] = _items
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
@@ -103,7 +95,7 @@ class ViberVideo(BaseModel):
             "url": obj.get("url"),
             "thumbnail": obj.get("thumbnail"),
             "file_size": obj.get("file_size"),
-            "duration": [WhatsAppParameter.from_dict(_item) for _item in obj["duration"]] if obj.get("duration") is not None else None
+            "duration": obj.get("duration")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():
