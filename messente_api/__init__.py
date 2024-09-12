@@ -89,6 +89,7 @@ from messente_api.models.sync_number_lookup_success import SyncNumberLookupSucce
 from messente_api.models.telegram import Telegram
 from messente_api.models.text_store import TextStore
 from messente_api.models.viber import Viber
+from messente_api.models.viber_video import ViberVideo
 from messente_api.models.whats_app import WhatsApp
 from messente_api.models.whats_app_component import WhatsAppComponent
 from messente_api.models.whats_app_currency import WhatsAppCurrency
