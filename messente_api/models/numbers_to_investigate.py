@@ -29,6 +29,7 @@ class NumbersToInvestigate(BaseModel):
     A container for phone numbers
     """ # noqa: E501
     numbers: Annotated[List[StrictStr], Field(min_length=1, max_length=10)] = Field(description="A list of phone numbers. Max 10 numbers per request")
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["numbers"]
 
     model_config = ConfigDict(
@@ -61,8 +62,10 @@ class NumbersToInvestigate(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -70,6 +73,11 @@ class NumbersToInvestigate(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         return _dict
 
     @classmethod
@@ -84,6 +92,11 @@ class NumbersToInvestigate(BaseModel):
         _obj = cls.model_validate({
             "numbers": obj.get("numbers")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

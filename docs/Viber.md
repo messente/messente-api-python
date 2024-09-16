@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **button_url** | **str** | URL of the button, must be specified along with &#39;&#39;text&#39;&#39;, &#39;&#39;button_text&#39;&#39; and &#39;&#39;image_url&#39;&#39; (optional) | [optional] 
 **button_text** | **str** | Must be specified along with &#39;&#39;text&#39;&#39;, &#39;&#39;button_url&#39;&#39;, &#39;&#39;button_text&#39;&#39;, &#39;&#39;image_url&#39;&#39; (optional) | [optional] 
 **channel** | **str** | The channel used to deliver the message | [optional] [default to 'viber']
+**video** | [**ViberVideo**](ViberVideo.md) |  | [optional] 
 
 ## Example
 

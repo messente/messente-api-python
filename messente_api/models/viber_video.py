@@ -18,27 +18,21 @@ import pprint
 import re  # noqa: F401
 import json
 
-from datetime import datetime
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
-from messente_api.models.omnimessage_messages_inner import OmnimessageMessagesInner
-from messente_api.models.priority import Priority
-from messente_api.models.text_store import TextStore
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List
 from typing import Optional, Set
 from typing_extensions import Self
 
-class Omnimessage(BaseModel):
+class ViberVideo(BaseModel):
     """
-    An omnimessage
+    Viber video object
     """ # noqa: E501
-    to: StrictStr = Field(description="Phone number in e.164 format")
-    messages: List[OmnimessageMessagesInner] = Field(description="An array of messages")
-    dlr_url: Optional[StrictStr] = Field(default=None, description="URL where the delivery report will be sent")
-    text_store: Optional[TextStore] = None
-    time_to_send: Optional[datetime] = Field(default=None, description="Optional parameter for sending messages at some specific time in the future.   Time must be specified in the ISO-8601 format.   If no timezone is specified, then the timezone is assumed to be UTC    Examples:    * Time specified with timezone: 2018-06-22T09:05:07+00:00 Time specified in UTC: 2018-06-22T09:05:07Z   * Time specified without timezone: 2018-06-22T09:05 (equivalent to 2018-06-22T09:05+00:00)")
-    priority: Optional[Priority] = None
+    url: StrictStr = Field(description="URL pointing to the video resource.")
+    thumbnail: StrictStr = Field(description="URL pointing to the video thumbnail resource.")
+    file_size: StrictInt = Field(description="Size of the video file in bytes. Cannot be larger than 200MB.")
+    duration: StrictInt = Field(description="Duration of the video in seconds. Cannot be longer than 600 seconds.")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["to", "messages", "dlr_url", "text_store", "time_to_send", "priority"]
+    __properties: ClassVar[List[str]] = ["url", "thumbnail", "file_size", "duration"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -58,7 +52,7 @@ class Omnimessage(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of Omnimessage from a JSON string"""
+        """Create an instance of ViberVideo from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -81,13 +75,6 @@ class Omnimessage(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in messages (list)
-        _items = []
-        if self.messages:
-            for _item in self.messages:
-                if _item:
-                    _items.append(_item.to_dict())
-            _dict['messages'] = _items
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
@@ -97,7 +84,7 @@ class Omnimessage(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of Omnimessage from a dict"""
+        """Create an instance of ViberVideo from a dict"""
         if obj is None:
             return None
 
@@ -105,12 +92,10 @@ class Omnimessage(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "to": obj.get("to"),
-            "messages": [OmnimessageMessagesInner.from_dict(_item) for _item in obj["messages"]] if obj.get("messages") is not None else None,
-            "dlr_url": obj.get("dlr_url"),
-            "text_store": obj.get("text_store"),
-            "time_to_send": obj.get("time_to_send"),
-            "priority": obj.get("priority")
+            "url": obj.get("url"),
+            "thumbnail": obj.get("thumbnail"),
+            "file_size": obj.get("file_size"),
+            "duration": obj.get("duration")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

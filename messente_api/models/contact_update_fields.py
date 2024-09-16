@@ -36,6 +36,7 @@ class ContactUpdateFields(BaseModel):
     custom2: Optional[StrictStr] = Field(default=None, description="The second custom field")
     custom3: Optional[StrictStr] = Field(default=None, description="The third custom field")
     custom4: Optional[StrictStr] = Field(default=None, description="The fourth custom field")
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["email", "firstName", "lastName", "company", "title", "custom", "custom2", "custom3", "custom4"]
 
     model_config = ConfigDict(
@@ -68,8 +69,10 @@ class ContactUpdateFields(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -77,6 +80,11 @@ class ContactUpdateFields(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         # set to None if email (nullable) is None
         # and model_fields_set contains the field
         if self.email is None and "email" in self.model_fields_set:
@@ -144,6 +152,11 @@ class ContactUpdateFields(BaseModel):
             "custom3": obj.get("custom3"),
             "custom4": obj.get("custom4")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

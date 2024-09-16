@@ -29,6 +29,7 @@ class GroupListEnvelope(BaseModel):
     A container for groups
     """ # noqa: E501
     groups: Optional[List[GroupResponseFields]] = Field(default=None, description="An array of groups")
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["groups"]
 
     model_config = ConfigDict(
@@ -61,8 +62,10 @@ class GroupListEnvelope(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -77,6 +80,11 @@ class GroupListEnvelope(BaseModel):
                 if _item:
                     _items.append(_item.to_dict())
             _dict['groups'] = _items
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         return _dict
 
     @classmethod
@@ -91,6 +99,11 @@ class GroupListEnvelope(BaseModel):
         _obj = cls.model_validate({
             "groups": [GroupResponseFields.from_dict(_item) for _item in obj["groups"]] if obj.get("groups") is not None else None
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

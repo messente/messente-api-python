@@ -31,6 +31,7 @@ class WhatsAppMedia(BaseModel):
     link: Optional[StrictStr] = Field(default=None, description="The protocol and URL of the media to be sent. Use only with HTTP/HTTPS URLs.       Do not use this field when message type is set to text.")
     caption: Optional[StrictStr] = Field(default=None, description="Media asset caption. Do not use with audio or sticker media.")
     filename: Optional[StrictStr] = Field(default=None, description="Describes the filename for the specific document. Use only with document media.")
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["id", "link", "caption", "filename"]
 
     model_config = ConfigDict(
@@ -63,8 +64,10 @@ class WhatsAppMedia(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -72,6 +75,11 @@ class WhatsAppMedia(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         return _dict
 
     @classmethod
@@ -89,6 +97,11 @@ class WhatsAppMedia(BaseModel):
             "caption": obj.get("caption"),
             "filename": obj.get("filename")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

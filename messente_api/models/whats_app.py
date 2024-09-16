@@ -33,6 +33,7 @@ class WhatsApp(BaseModel):
     ttl: Optional[StrictInt] = Field(default=None, description="After how many seconds this channel is considered as failed and the next channel is attempted.       Only one of \"ttl\" and \"validity\" can be used.")
     template: Optional[WhatsAppTemplate] = None
     channel: Optional[StrictStr] = Field(default='whatsapp', description="The channel used to deliver the message")
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["sender", "validity", "ttl", "template", "channel"]
 
     @field_validator('channel')
@@ -75,8 +76,10 @@ class WhatsApp(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -87,6 +90,11 @@ class WhatsApp(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of template
         if self.template:
             _dict['template'] = self.template.to_dict()
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         return _dict
 
     @classmethod
@@ -105,6 +113,11 @@ class WhatsApp(BaseModel):
             "template": WhatsAppTemplate.from_dict(obj["template"]) if obj.get("template") is not None else None,
             "channel": obj.get("channel") if obj.get("channel") is not None else 'whatsapp'
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

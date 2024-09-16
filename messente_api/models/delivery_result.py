@@ -40,6 +40,7 @@ class DeliveryResult(BaseModel):
     timestamp: Optional[datetime] = Field(default=None, description="When this status was received by Omnichannel API")
     price_info: Optional[PriceInfo] = None
     sender: Optional[StrictStr] = Field(default=None, description="the sender of the message")
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["status", "channel", "message_id", "error", "err", "timestamp", "price_info", "sender"]
 
     model_config = ConfigDict(
@@ -72,8 +73,10 @@ class DeliveryResult(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -84,6 +87,11 @@ class DeliveryResult(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of price_info
         if self.price_info:
             _dict['price_info'] = self.price_info.to_dict()
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         # set to None if error (nullable) is None
         # and model_fields_set contains the field
         if self.error is None and "error" in self.model_fields_set:
@@ -110,6 +118,11 @@ class DeliveryResult(BaseModel):
             "price_info": PriceInfo.from_dict(obj["price_info"]) if obj.get("price_info") is not None else None,
             "sender": obj.get("sender")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

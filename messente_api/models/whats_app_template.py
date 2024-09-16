@@ -32,6 +32,7 @@ class WhatsAppTemplate(BaseModel):
     name: StrictStr = Field(description="Name of the template")
     language: WhatsAppLanguage
     components: Optional[List[WhatsAppComponent]] = Field(default=None, description="List of template components")
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["name", "language", "components"]
 
     model_config = ConfigDict(
@@ -64,8 +65,10 @@ class WhatsAppTemplate(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -83,6 +86,11 @@ class WhatsAppTemplate(BaseModel):
                 if _item:
                     _items.append(_item.to_dict())
             _dict['components'] = _items
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         return _dict
 
     @classmethod
@@ -99,6 +107,11 @@ class WhatsAppTemplate(BaseModel):
             "language": WhatsAppLanguage.from_dict(obj["language"]) if obj.get("language") is not None else None,
             "components": [WhatsAppComponent.from_dict(_item) for _item in obj["components"]] if obj.get("components") is not None else None
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 
