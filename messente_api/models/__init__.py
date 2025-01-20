@@ -74,3 +74,4 @@ from messente_api.models.whats_app_language import WhatsAppLanguage
 from messente_api.models.whats_app_media import WhatsAppMedia
 from messente_api.models.whats_app_parameter import WhatsAppParameter
 from messente_api.models.whats_app_template import WhatsAppTemplate
+from messente_api.models.whats_app_text import WhatsAppText

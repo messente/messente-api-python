@@ -71,6 +71,7 @@ docs/WhatsAppLanguage.md
 docs/WhatsAppMedia.md
 docs/WhatsAppParameter.md
 docs/WhatsAppTemplate.md
+docs/WhatsAppText.md
 git_push.sh
 messente_api/__init__.py
 messente_api/api/__init__.py
@@ -146,6 +147,7 @@ messente_api/models/whats_app_language.py
 messente_api/models/whats_app_media.py
 messente_api/models/whats_app_parameter.py
 messente_api/models/whats_app_template.py
+messente_api/models/whats_app_text.py
 messente_api/py.typed
 messente_api/rest.py
 pyproject.toml

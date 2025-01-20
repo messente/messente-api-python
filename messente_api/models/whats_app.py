@@ -21,6 +21,7 @@ import json
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from messente_api.models.whats_app_template import WhatsAppTemplate
+from messente_api.models.whats_app_text import WhatsAppText
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -32,9 +33,10 @@ class WhatsApp(BaseModel):
     validity: Optional[StrictInt] = Field(default=None, description="After how many minutes this channel is   considered as failed and the next channel is attempted")
     ttl: Optional[StrictInt] = Field(default=None, description="After how many seconds this channel is considered as failed and the next channel is attempted.       Only one of \"ttl\" and \"validity\" can be used.")
     template: Optional[WhatsAppTemplate] = None
+    text: Optional[WhatsAppText] = None
     channel: Optional[StrictStr] = Field(default='whatsapp', description="The channel used to deliver the message")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["sender", "validity", "ttl", "template", "channel"]
+    __properties: ClassVar[List[str]] = ["sender", "validity", "ttl", "template", "text", "channel"]
 
     @field_validator('channel')
     def channel_validate_enum(cls, value):
@@ -90,6 +92,9 @@ class WhatsApp(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of template
         if self.template:
             _dict['template'] = self.template.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of text
+        if self.text:
+            _dict['text'] = self.text.to_dict()
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
@@ -111,6 +116,7 @@ class WhatsApp(BaseModel):
             "validity": obj.get("validity"),
             "ttl": obj.get("ttl"),
             "template": WhatsAppTemplate.from_dict(obj["template"]) if obj.get("template") is not None else None,
+            "text": WhatsAppText.from_dict(obj["text"]) if obj.get("text") is not None else None,
             "channel": obj.get("channel") if obj.get("channel") is not None else 'whatsapp'
         })
         # store additional fields in additional_properties

@@ -18,29 +18,19 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from messente_api.models.whats_app_currency import WhatsAppCurrency
-from messente_api.models.whats_app_datetime import WhatsAppDatetime
-from messente_api.models.whats_app_media import WhatsAppMedia
 from typing import Optional, Set
 from typing_extensions import Self
 
-class WhatsAppParameter(BaseModel):
+class WhatsAppText(BaseModel):
     """
-    Whatsapp component parameter.
+    A text
     """ # noqa: E501
-    type: StrictStr = Field(description="Type of the parameter.")
-    text: Optional[StrictStr] = Field(default=None, description="A text.")
-    currency: Optional[WhatsAppCurrency] = None
-    date_time: Optional[WhatsAppDatetime] = None
-    image: Optional[WhatsAppMedia] = None
-    document: Optional[WhatsAppMedia] = None
-    video: Optional[WhatsAppMedia] = None
-    coupon_code: Optional[StrictStr] = Field(default=None, description="A coupon code.")
-    payload: Optional[StrictStr] = Field(default=None, description="A payload.")
+    preview_url: Optional[StrictBool] = Field(default=True, description="Whether to display link preview if the message contains a hyperlink")
+    body: StrictStr = Field(description="Plaintext content for WhatsApp, can contain URLs, emojis and formatting")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["type", "text", "currency", "date_time", "image", "document", "video", "coupon_code", "payload"]
+    __properties: ClassVar[List[str]] = ["preview_url", "body"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -60,7 +50,7 @@ class WhatsAppParameter(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of WhatsAppParameter from a JSON string"""
+        """Create an instance of WhatsAppText from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -83,21 +73,6 @@ class WhatsAppParameter(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of currency
-        if self.currency:
-            _dict['currency'] = self.currency.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of date_time
-        if self.date_time:
-            _dict['date_time'] = self.date_time.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of image
-        if self.image:
-            _dict['image'] = self.image.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of document
-        if self.document:
-            _dict['document'] = self.document.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of video
-        if self.video:
-            _dict['video'] = self.video.to_dict()
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
@@ -107,7 +82,7 @@ class WhatsAppParameter(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of WhatsAppParameter from a dict"""
+        """Create an instance of WhatsAppText from a dict"""
         if obj is None:
             return None
 
@@ -115,15 +90,8 @@ class WhatsAppParameter(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "type": obj.get("type"),
-            "text": obj.get("text"),
-            "currency": WhatsAppCurrency.from_dict(obj["currency"]) if obj.get("currency") is not None else None,
-            "date_time": WhatsAppDatetime.from_dict(obj["date_time"]) if obj.get("date_time") is not None else None,
-            "image": WhatsAppMedia.from_dict(obj["image"]) if obj.get("image") is not None else None,
-            "document": WhatsAppMedia.from_dict(obj["document"]) if obj.get("document") is not None else None,
-            "video": WhatsAppMedia.from_dict(obj["video"]) if obj.get("video") is not None else None,
-            "coupon_code": obj.get("coupon_code"),
-            "payload": obj.get("payload")
+            "preview_url": obj.get("preview_url") if obj.get("preview_url") is not None else True,
+            "body": obj.get("body")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

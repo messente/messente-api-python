@@ -13,6 +13,8 @@ Name | Type | Description | Notes
 **image** | [**WhatsAppMedia**](WhatsAppMedia.md) |  | [optional] 
 **document** | [**WhatsAppMedia**](WhatsAppMedia.md) |  | [optional] 
 **video** | [**WhatsAppMedia**](WhatsAppMedia.md) |  | [optional] 
+**coupon_code** | **str** | A coupon code. | [optional] 
+**payload** | **str** | A payload. | [optional] 
 
 ## Example
 
