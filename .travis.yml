@@ -1,7 +1,12 @@
 language: python
-dist: jammy
-python:
-  - 3.10
 
 script:
 - echo "skipping tests"
+
+deploy:
+  provider: pypi
+  user: messente
+  password:
+    secure: T6b+hfVKTyJUUprT/7c6+nuEpqjENHWbZ5OrFLq/fo0N++aUgB7/VgsY7L2U9vmuog2xf34Di0C66fe/Tmy5czc+iXbwSnS6uP0aJk6dnERrdhiarUHgsDq4/txx59qYXZfelCO38M54GBPAlDzVp5/ONocbOrrJUPnt++0t/ocwbq2x5m6RSycJCEBWjxkBuLclrIkUvI+0IgJl/CXUro2OeVUg4J7rrwI68XAKAZF2SOQm/V3Ak30ax7CE2XFScVSvfz2g5kJbvtamFwdPRAwA5ThU4q6TDlL49DEblZCSKzAwOTkKkIkjFY5m6PPkNnxFAEsBjRyU5tl+T1pPvM0Gd/AY3lBXruRbU8SmGJgZbz59q1SQ1NRm5gHKpFEQ0kwWJvEJMOwRDLH16nFY4XX15ffVWFqw8Pkaso6NV6RTRVFTV3rVY2YPa1ili2QvkHYjejMZRDG+13MR+gJGWbjU2Uql3kj/QbIBFMyzXcfbLSpdn65KkzI5Svvzl/CsBZ0NsXIhH8rRsK464bZUuDY7qLbNca4IxARZRb2jH9C3Zas4kjJzl9J5TjkZTc8HTl+5PB8k+XsBaPSa1BvGvS3YEpQF6mVOr/SkQGX/yMV/WcmZJekSaWVrgdt5twPlfah0bwfKx60FKJqQYP2+2HeoA56UPrwSGT5ocz0wQC8=
+  on:
+    tags: true
