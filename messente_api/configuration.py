@@ -14,16 +14,14 @@
 
 
 import copy
-import http.client as httplib
 import logging
 from logging import FileHandler
 import multiprocessing
 import sys
-from typing import Any, ClassVar, Dict, List, Literal, Optional, TypedDict
-from typing_extensions import NotRequired, Self
-
+from typing import Optional
 import urllib3
 
+import http.client as httplib
 
 JSON_SCHEMA_VALIDATION_KEYWORDS = {
     'multipleOf', 'maximum', 'exclusiveMaximum',
@@ -31,114 +29,10 @@ JSON_SCHEMA_VALIDATION_KEYWORDS = {
     'minLength', 'pattern', 'maxItems', 'minItems'
 }
 
-ServerVariablesT = Dict[str, str]
-
-GenericAuthSetting = TypedDict(
-    "GenericAuthSetting",
-    {
-        "type": str,
-        "in": str,
-        "key": str,
-        "value": str,
-    },
-)
-
-
-OAuth2AuthSetting = TypedDict(
-    "OAuth2AuthSetting",
-    {
-        "type": Literal["oauth2"],
-        "in": Literal["header"],
-        "key": Literal["Authorization"],
-        "value": str,
-    },
-)
-
-
-APIKeyAuthSetting = TypedDict(
-    "APIKeyAuthSetting",
-    {
-        "type": Literal["api_key"],
-        "in": str,
-        "key": str,
-        "value": Optional[str],
-    },
-)
-
-
-BasicAuthSetting = TypedDict(
-    "BasicAuthSetting",
-    {
-        "type": Literal["basic"],
-        "in": Literal["header"],
-        "key": Literal["Authorization"],
-        "value": Optional[str],
-    },
-)
-
-
-BearerFormatAuthSetting = TypedDict(
-    "BearerFormatAuthSetting",
-    {
-        "type": Literal["bearer"],
-        "in": Literal["header"],
-        "format": Literal["JWT"],
-        "key": Literal["Authorization"],
-        "value": str,
-    },
-)
-
-
-BearerAuthSetting = TypedDict(
-    "BearerAuthSetting",
-    {
-        "type": Literal["bearer"],
-        "in": Literal["header"],
-        "key": Literal["Authorization"],
-        "value": str,
-    },
-)
-
-
-HTTPSignatureAuthSetting = TypedDict(
-    "HTTPSignatureAuthSetting",
-    {
-        "type": Literal["http-signature"],
-        "in": Literal["header"],
-        "key": Literal["Authorization"],
-        "value": None,
-    },
-)
-
-
-AuthSettings = TypedDict(
-    "AuthSettings",
-    {
-        "basicAuth": BasicAuthSetting,
-    },
-    total=False,
-)
-
-
-class HostSettingVariable(TypedDict):
-    description: str
-    default_value: str
-    enum_values: List[str]
-
-
-class HostSetting(TypedDict):
-    url: str
-    description: str
-    variables: NotRequired[Dict[str, HostSettingVariable]]
-
-
 class Configuration:
     """This class contains various settings of the API client.
 
     :param host: Base url.
-    :param ignore_operation_servers
-      Boolean to ignore operation servers for the API client.
-      Config will use `host` as the base url regardless of the operation servers.
     :param api_key: Dict to store API key(s).
       Each entry in the dict specifies an API key.
       The dict key is the name of the security scheme in the OAS specification.
@@ -161,7 +55,6 @@ class Configuration:
       values before.
     :param ssl_ca_cert: str - the path to a file of concatenated CA certificates
       in PEM format.
-    :param retries: Number of retries for API requests.
 
     :Example:
 
@@ -182,26 +75,16 @@ conf = messente_api.Configuration(
 
     """
 
-    _default: ClassVar[Optional[Self]] = None
+    _default = None
 
-    def __init__(
-        self,
-        host: Optional[str]=None,
-        api_key: Optional[Dict[str, str]]=None,
-        api_key_prefix: Optional[Dict[str, str]]=None,
-        username: Optional[str]=None,
-        password: Optional[str]=None,
-        access_token: Optional[str]=None,
-        server_index: Optional[int]=None, 
-        server_variables: Optional[ServerVariablesT]=None,
-        server_operation_index: Optional[Dict[int, int]]=None,
-        server_operation_variables: Optional[Dict[int, ServerVariablesT]]=None,
-        ignore_operation_servers: bool=False,
-        ssl_ca_cert: Optional[str]=None,
-        retries: Optional[int] = None,
-        *,
-        debug: Optional[bool] = None,
-    ) -> None:
+    def __init__(self, host=None,
+                 api_key=None, api_key_prefix=None,
+                 username=None, password=None,
+                 access_token=None,
+                 server_index=None, server_variables=None,
+                 server_operation_index=None, server_operation_variables=None,
+                 ssl_ca_cert=None,
+                 ) -> None:
         """Constructor
         """
         self._base_path = "https://api.messente.com/v1" if host is None else host
@@ -214,9 +97,6 @@ conf = messente_api.Configuration(
         self.server_variables = server_variables or {}
         self.server_operation_variables = server_operation_variables or {}
         """Default server variables
-        """
-        self.ignore_operation_servers = ignore_operation_servers
-        """Ignore operation servers
         """
         self.temp_folder_path = None
         """Temp file folder for downloading files
@@ -261,10 +141,7 @@ conf = messente_api.Configuration(
         self.logger_file = None
         """Debug file location
         """
-        if debug is not None:
-            self.debug = debug
-        else:
-            self.__debug = False
+        self.debug = False
         """Debug switch
         """
 
@@ -307,7 +184,7 @@ conf = messente_api.Configuration(
         self.safe_chars_for_path_param = ''
         """Safe chars for path_param
         """
-        self.retries = retries
+        self.retries = None
         """Adding retries to override urllib3 default value 3
         """
         # Enable client side validation
@@ -325,7 +202,7 @@ conf = messente_api.Configuration(
         """date format
         """
 
-    def __deepcopy__(self, memo:  Dict[int, Any]) -> Self:
+    def __deepcopy__(self, memo):
         cls = self.__class__
         result = cls.__new__(cls)
         memo[id(self)] = result
@@ -339,11 +216,11 @@ conf = messente_api.Configuration(
         result.debug = self.debug
         return result
 
-    def __setattr__(self, name: str, value: Any) -> None:
+    def __setattr__(self, name, value):
         object.__setattr__(self, name, value)
 
     @classmethod
-    def set_default(cls, default: Optional[Self]) -> None:
+    def set_default(cls, default):
         """Set default instance of configuration.
 
         It stores default configuration, which can be
@@ -354,7 +231,7 @@ conf = messente_api.Configuration(
         cls._default = default
 
     @classmethod
-    def get_default_copy(cls) -> Self:
+    def get_default_copy(cls):
         """Deprecated. Please use `get_default` instead.
 
         Deprecated. Please use `get_default` instead.
@@ -364,7 +241,7 @@ conf = messente_api.Configuration(
         return cls.get_default()
 
     @classmethod
-    def get_default(cls) -> Self:
+    def get_default(cls):
         """Return the default configuration.
 
         This method returns newly created, based on default constructor,
@@ -374,11 +251,11 @@ conf = messente_api.Configuration(
         :return: The configuration object.
         """
         if cls._default is None:
-            cls._default = cls()
+            cls._default = Configuration()
         return cls._default
 
     @property
-    def logger_file(self) -> Optional[str]:
+    def logger_file(self):
         """The logger file.
 
         If the logger_file is None, then add stream handler and remove file
@@ -390,7 +267,7 @@ conf = messente_api.Configuration(
         return self.__logger_file
 
     @logger_file.setter
-    def logger_file(self, value: Optional[str]) -> None:
+    def logger_file(self, value):
         """The logger file.
 
         If the logger_file is None, then add stream handler and remove file
@@ -409,7 +286,7 @@ conf = messente_api.Configuration(
                 logger.addHandler(self.logger_file_handler)
 
     @property
-    def debug(self) -> bool:
+    def debug(self):
         """Debug status
 
         :param value: The debug status, True or False.
@@ -418,7 +295,7 @@ conf = messente_api.Configuration(
         return self.__debug
 
     @debug.setter
-    def debug(self, value: bool) -> None:
+    def debug(self, value):
         """Debug status
 
         :param value: The debug status, True or False.
@@ -440,7 +317,7 @@ conf = messente_api.Configuration(
             httplib.HTTPConnection.debuglevel = 0
 
     @property
-    def logger_format(self) -> str:
+    def logger_format(self):
         """The logger format.
 
         The logger_formatter will be updated when sets logger_format.
@@ -451,7 +328,7 @@ conf = messente_api.Configuration(
         return self.__logger_format
 
     @logger_format.setter
-    def logger_format(self, value: str) -> None:
+    def logger_format(self, value):
         """The logger format.
 
         The logger_formatter will be updated when sets logger_format.
@@ -462,7 +339,7 @@ conf = messente_api.Configuration(
         self.__logger_format = value
         self.logger_formatter = logging.Formatter(self.__logger_format)
 
-    def get_api_key_with_prefix(self, identifier: str, alias: Optional[str]=None) -> Optional[str]:
+    def get_api_key_with_prefix(self, identifier, alias=None):
         """Gets API key (with prefix if set).
 
         :param identifier: The identifier of apiKey.
@@ -479,9 +356,7 @@ conf = messente_api.Configuration(
             else:
                 return key
 
-        return None
-
-    def get_basic_auth_token(self) -> Optional[str]:
+    def get_basic_auth_token(self):
         """Gets HTTP basic authentication header (string).
 
         :return: The token for basic HTTP authentication.
@@ -496,12 +371,12 @@ conf = messente_api.Configuration(
             basic_auth=username + ':' + password
         ).get('authorization')
 
-    def auth_settings(self)-> AuthSettings:
+    def auth_settings(self):
         """Gets Auth Settings dict for api client.
 
         :return: The Auth Settings information dict.
         """
-        auth: AuthSettings = {}
+        auth = {}
         if self.username is not None and self.password is not None:
             auth['basicAuth'] = {
                 'type': 'basic',
@@ -511,7 +386,7 @@ conf = messente_api.Configuration(
             }
         return auth
 
-    def to_debug_report(self) -> str:
+    def to_debug_report(self):
         """Gets the essential information for debugging.
 
         :return: The report for debugging.
@@ -520,10 +395,10 @@ conf = messente_api.Configuration(
                "OS: {env}\n"\
                "Python Version: {pyversion}\n"\
                "Version of the API: 2.0.0\n"\
-               "SDK Package Version: 2.3.0".\
+               "SDK Package Version: 2.4.0".\
                format(env=sys.platform, pyversion=sys.version)
 
-    def get_host_settings(self) -> List[HostSetting]:
+    def get_host_settings(self):
         """Gets an array of host settings
 
         :return: An array of host settings
@@ -535,12 +410,7 @@ conf = messente_api.Configuration(
             }
         ]
 
-    def get_host_from_settings(
-        self,
-        index: Optional[int],
-        variables: Optional[ServerVariablesT]=None,
-        servers: Optional[List[HostSetting]]=None,
-    ) -> str:
+    def get_host_from_settings(self, index, variables=None, servers=None):
         """Gets host URL based on the index and variables
         :param index: array index of the host settings
         :param variables: hash of variable and the corresponding value
@@ -580,12 +450,12 @@ conf = messente_api.Configuration(
         return url
 
     @property
-    def host(self) -> str:
+    def host(self):
         """Return generated host."""
         return self.get_host_from_settings(self.server_index, variables=self.server_variables)
 
     @host.setter
-    def host(self, value: str) -> None:
+    def host(self, value):
         """Fix base path."""
         self._base_path = value
         self.server_index = None
