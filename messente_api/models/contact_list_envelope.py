@@ -76,9 +76,9 @@ class ContactListEnvelope(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in contacts (list)
         _items = []
         if self.contacts:
-            for _item in self.contacts:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_contacts in self.contacts:
+                if _item_contacts:
+                    _items.append(_item_contacts.to_dict())
             _dict['contacts'] = _items
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:
