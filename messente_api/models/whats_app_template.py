@@ -82,9 +82,9 @@ class WhatsAppTemplate(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in components (list)
         _items = []
         if self.components:
-            for _item in self.components:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_components in self.components:
+                if _item_components:
+                    _items.append(_item_components.to_dict())
             _dict['components'] = _items
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:

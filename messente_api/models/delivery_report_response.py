@@ -78,9 +78,9 @@ class DeliveryReportResponse(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in statuses (list)
         _items = []
         if self.statuses:
-            for _item in self.statuses:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_statuses in self.statuses:
+                if _item_statuses:
+                    _items.append(_item_statuses.to_dict())
             _dict['statuses'] = _items
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:
