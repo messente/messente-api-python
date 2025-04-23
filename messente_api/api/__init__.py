@@ -9,4 +9,5 @@ from messente_api.api.groups_api import GroupsApi
 from messente_api.api.number_lookup_api import NumberLookupApi
 from messente_api.api.omnimessage_api import OmnimessageApi
 from messente_api.api.statistics_api import StatisticsApi
+from messente_api.api.whats_app_templates_api import WhatsAppTemplatesApi
 

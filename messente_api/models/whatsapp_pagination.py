@@ -19,21 +19,20 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List
-from messente_api.models.whats_app_component import WhatsAppComponent
-from messente_api.models.whats_app_language import WhatsAppLanguage
+from typing import Any, ClassVar, Dict, List, Optional
+from messente_api.models.whatsapp_paging_cursors import WhatsappPagingCursors
 from typing import Optional, Set
 from typing_extensions import Self
 
-class WhatsAppTemplate(BaseModel):
+class WhatsappPagination(BaseModel):
     """
-    Whatsapp Cloud API template
+    Whatsapp media object.
     """ # noqa: E501
-    name: StrictStr = Field(description="Name of the template")
-    language: WhatsAppLanguage
-    components: List[WhatsAppComponent] = Field(description="List of template components")
+    previous: Optional[StrictStr] = Field(default=None, description="A URL to ge the previous paginated page.")
+    next: Optional[StrictStr] = Field(default=None, description="A URL to ge the next paginated page.")
+    cursors: WhatsappPagingCursors
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["name", "language", "components"]
+    __properties: ClassVar[List[str]] = ["previous", "next", "cursors"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -53,7 +52,7 @@ class WhatsAppTemplate(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of WhatsAppTemplate from a JSON string"""
+        """Create an instance of WhatsappPagination from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -76,16 +75,9 @@ class WhatsAppTemplate(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of language
-        if self.language:
-            _dict['language'] = self.language.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of each item in components (list)
-        _items = []
-        if self.components:
-            for _item_components in self.components:
-                if _item_components:
-                    _items.append(_item_components.to_dict())
-            _dict['components'] = _items
+        # override the default output from pydantic by calling `to_dict()` of cursors
+        if self.cursors:
+            _dict['cursors'] = self.cursors.to_dict()
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
@@ -95,7 +87,7 @@ class WhatsAppTemplate(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of WhatsAppTemplate from a dict"""
+        """Create an instance of WhatsappPagination from a dict"""
         if obj is None:
             return None
 
@@ -103,9 +95,9 @@ class WhatsAppTemplate(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "name": obj.get("name"),
-            "language": WhatsAppLanguage.from_dict(obj["language"]) if obj.get("language") is not None else None,
-            "components": [WhatsAppComponent.from_dict(_item) for _item in obj["components"]] if obj.get("components") is not None else None
+            "previous": obj.get("previous"),
+            "next": obj.get("next"),
+            "cursors": WhatsappPagingCursors.from_dict(obj["cursors"]) if obj.get("cursors") is not None else None
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

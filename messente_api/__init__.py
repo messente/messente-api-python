@@ -26,6 +26,7 @@ from messente_api.api.groups_api import GroupsApi
 from messente_api.api.number_lookup_api import NumberLookupApi
 from messente_api.api.omnimessage_api import OmnimessageApi
 from messente_api.api.statistics_api import StatisticsApi
+from messente_api.api.whats_app_templates_api import WhatsAppTemplatesApi
 
 # import ApiClient
 from messente_api.api_response import ApiResponse
@@ -99,3 +100,20 @@ from messente_api.models.whats_app_media import WhatsAppMedia
 from messente_api.models.whats_app_parameter import WhatsAppParameter
 from messente_api.models.whats_app_template import WhatsAppTemplate
 from messente_api.models.whats_app_text import WhatsAppText
+from messente_api.models.whatsapp_button_type import WhatsappButtonType
+from messente_api.models.whatsapp_component_type import WhatsappComponentType
+from messente_api.models.whatsapp_create_template_request import WhatsappCreateTemplateRequest
+from messente_api.models.whatsapp_create_template_response import WhatsappCreateTemplateResponse
+from messente_api.models.whatsapp_header_format import WhatsappHeaderFormat
+from messente_api.models.whatsapp_list_templates_response import WhatsappListTemplatesResponse
+from messente_api.models.whatsapp_otp_button_type import WhatsappOtpButtonType
+from messente_api.models.whatsapp_pagination import WhatsappPagination
+from messente_api.models.whatsapp_paging_cursors import WhatsappPagingCursors
+from messente_api.models.whatsapp_supported_app import WhatsappSupportedApp
+from messente_api.models.whatsapp_template_button import WhatsappTemplateButton
+from messente_api.models.whatsapp_template_category import WhatsappTemplateCategory
+from messente_api.models.whatsapp_template_component import WhatsappTemplateComponent
+from messente_api.models.whatsapp_template_example import WhatsappTemplateExample
+from messente_api.models.whatsapp_template_response import WhatsappTemplateResponse
+from messente_api.models.whatsapp_template_status import WhatsappTemplateStatus
+from messente_api.models.whatsapp_update_template_request import WhatsappUpdateTemplateRequest

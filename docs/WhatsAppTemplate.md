@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** | Name of the template | 
 **language** | [**WhatsAppLanguage**](WhatsAppLanguage.md) |  | 
-**components** | [**List[WhatsAppComponent]**](WhatsAppComponent.md) | List of template components | [optional] 
+**components** | [**List[WhatsAppComponent]**](WhatsAppComponent.md) | List of template components | 
 
 ## Example
 
