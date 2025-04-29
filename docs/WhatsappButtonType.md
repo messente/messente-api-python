@@ -12,6 +12,12 @@ Type of the button
 
 * `URL` (value: `'url'`)
 
+* `CATALOG` (value: `'catalog'`)
+
+* `FLOW` (value: `'flow'`)
+
+* `COPY_CODE` (value: `'copy_code'`)
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 

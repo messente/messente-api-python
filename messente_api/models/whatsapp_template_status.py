@@ -30,6 +30,7 @@ class WhatsappTemplateStatus(str, Enum):
     APPROVED = 'approved'
     REJECTED = 'rejected'
     PENDING = 'pending'
+    PENDING_DELETION = 'pending_deletion'
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:

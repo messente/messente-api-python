@@ -31,6 +31,9 @@ class WhatsappButtonType(str, Enum):
     PHONE_NUMBER = 'phone_number'
     OTP = 'otp'
     URL = 'url'
+    CATALOG = 'catalog'
+    FLOW = 'flow'
+    COPY_CODE = 'copy_code'
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:

@@ -6,7 +6,7 @@ Example of the templated content
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**header_text** | **List[List[str]]** | Example of the templated text for the header | [optional] 
+**header_text** | **List[str]** | Example of the templated text for the header | [optional] 
 **body_text** | **List[List[str]]** | Example of the templated text for the body | [optional] 
 
 ## Example

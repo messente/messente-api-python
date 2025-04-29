@@ -27,7 +27,7 @@ class WhatsappTemplateExample(BaseModel):
     """
     Example of the templated content
     """ # noqa: E501
-    header_text: Optional[List[List[StrictStr]]] = Field(default=None, description="Example of the templated text for the header")
+    header_text: Optional[List[StrictStr]] = Field(default=None, description="Example of the templated text for the header")
     body_text: Optional[List[List[StrictStr]]] = Field(default=None, description="Example of the templated text for the body")
     additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["header_text", "body_text"]
