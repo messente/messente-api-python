@@ -18,8 +18,8 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from typing import Any, ClassVar, Dict, List
 from messente_api.models.whatsapp_template_category import WhatsappTemplateCategory
 from messente_api.models.whatsapp_template_component import WhatsappTemplateComponent
 from typing import Optional, Set
@@ -31,11 +31,10 @@ class WhatsappCreateTemplateRequest(BaseModel):
     """ # noqa: E501
     name: StrictStr = Field(description="Name of the template")
     category: WhatsappTemplateCategory
-    allow_category_change: Optional[StrictBool] = Field(default=False, description="Allow category change")
     language: StrictStr = Field(description="Language of the template")
     components: List[WhatsappTemplateComponent] = Field(description="List of template components")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["name", "category", "allow_category_change", "language", "components"]
+    __properties: ClassVar[List[str]] = ["name", "category", "language", "components"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -104,7 +103,6 @@ class WhatsappCreateTemplateRequest(BaseModel):
         _obj = cls.model_validate({
             "name": obj.get("name"),
             "category": obj.get("category"),
-            "allow_category_change": obj.get("allow_category_change") if obj.get("allow_category_change") is not None else False,
             "language": obj.get("language"),
             "components": [WhatsappTemplateComponent.from_dict(_item) for _item in obj["components"]] if obj.get("components") is not None else None
         })
