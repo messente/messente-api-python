@@ -28,9 +28,14 @@ class WhatsappTemplateStatus(str, Enum):
     allowed enum values
     """
     APPROVED = 'approved'
+    IN_APPEAL = 'in_appeal'
     REJECTED = 'rejected'
     PENDING = 'pending'
     PENDING_DELETION = 'pending_deletion'
+    DELETED = 'deleted'
+    DISABLED = 'disabled'
+    PAUSED = 'paused'
+    LIMIT_EXCEEDED = 'limit_exceeded'
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:
