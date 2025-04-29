@@ -87,7 +87,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | OK |  -  |
+**200** | template creation successful |  -  |
 **400** | Invalid input |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
@@ -254,7 +254,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | OK |  -  |
+**200** | template fetched successfully |  -  |
 **400** | Invalid input |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
