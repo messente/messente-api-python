@@ -115,6 +115,8 @@ AuthSettings = TypedDict(
     "AuthSettings",
     {
         "basicAuth": BasicAuthSetting,
+        "apiUsername": APIKeyAuthSetting,
+        "apiPassword": APIKeyAuthSetting,
     },
     total=False,
 )
@@ -164,6 +166,25 @@ class Configuration:
     :param retries: Number of retries for API requests.
 
     :Example:
+
+    API Key Authentication Example.
+    Given the following security scheme in the OpenAPI specification:
+      components:
+        securitySchemes:
+          cookieAuth:         # name for the security scheme
+            type: apiKey
+            in: cookie
+            name: JSESSIONID  # cookie name
+
+    You can programmatically set the cookie:
+
+conf = messente_api.Configuration(
+    api_key={'cookieAuth': 'abc123'}
+    api_key_prefix={'cookieAuth': 'JSESSIONID'}
+)
+
+    The following cookie will be added to the HTTP request:
+       Cookie: JSESSIONID abc123
 
     HTTP Basic Authentication Example.
     Given the following security scheme in the OpenAPI specification:
@@ -508,6 +529,24 @@ conf = messente_api.Configuration(
                 'in': 'header',
                 'key': 'Authorization',
                 'value': self.get_basic_auth_token()
+            }
+        if 'apiUsername' in self.api_key:
+            auth['apiUsername'] = {
+                'type': 'api_key',
+                'in': 'query',
+                'key': 'username',
+                'value': self.get_api_key_with_prefix(
+                    'apiUsername',
+                ),
+            }
+        if 'apiPassword' in self.api_key:
+            auth['apiPassword'] = {
+                'type': 'api_key',
+                'in': 'query',
+                'key': 'password',
+                'value': self.get_api_key_with_prefix(
+                    'apiPassword',
+                ),
             }
         return auth
 
