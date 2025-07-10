@@ -57,14 +57,14 @@ Messente API Library provides the operations described below to access the featu
 1. Returns all groups [`fetch_groups`](docs/GroupsApi.md#fetch_groups)
 1. Updates a group with the provided name [`update_group`](docs/GroupsApi.md#update_group)
 
+### NumberLookupApi
+
+1. Requests info about phone numbers [`fetch_info`](docs/NumberLookupApi.md#fetch_info)
+
 ### NumberVerificationApi
 
 1. verify number [`verify_number`](docs/NumberVerificationApi.md#verify_number)
 1. verified the PIN code entered by the user. [`verify_pin`](docs/NumberVerificationApi.md#verify_pin)
-
-### NumberLookupApi
-
-1. Requests info about phone numbers [`fetch_info`](docs/NumberLookupApi.md#fetch_info)
 
 ### OmnimessageApi
 
