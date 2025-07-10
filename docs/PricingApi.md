@@ -138,7 +138,7 @@ with messente_api.ApiClient(configuration) as api_client:
     api_instance = messente_api.PricingApi(api_client)
     username = 'username_example' # str | The API username
     password = 'password_example' # str | The API password
-    country = 'country_example' # str | The country code, for which to get the prices
+    country = 'EE' # str | The country code, for which to get the prices
     format = 'format_example' # str | The format of the response. Can be either 'json' or 'xml'. If not specified, defaults to 'json'. (optional)
 
     try:
