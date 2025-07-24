@@ -362,7 +362,7 @@ class WhatsAppTemplatesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Dict[str, object]:
+    ) -> object:
         """Deletes a WhatsApp template
 
 
@@ -405,7 +405,7 @@ class WhatsAppTemplatesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Dict[str, object]",
+            '200': "object",
             '400': "ErrorOmnichannel",
             '401': "ErrorOmnichannel",
             '403': "ErrorOmnichannel",
@@ -440,7 +440,7 @@ class WhatsAppTemplatesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Dict[str, object]]:
+    ) -> ApiResponse[object]:
         """Deletes a WhatsApp template
 
 
@@ -483,7 +483,7 @@ class WhatsAppTemplatesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Dict[str, object]",
+            '200': "object",
             '400': "ErrorOmnichannel",
             '401': "ErrorOmnichannel",
             '403': "ErrorOmnichannel",
@@ -561,7 +561,7 @@ class WhatsAppTemplatesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Dict[str, object]",
+            '200': "object",
             '400': "ErrorOmnichannel",
             '401': "ErrorOmnichannel",
             '403': "ErrorOmnichannel",
@@ -1357,7 +1357,7 @@ class WhatsAppTemplatesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Dict[str, object]:
+    ) -> object:
         """Updates a WhatsApp template
 
 
@@ -1400,7 +1400,7 @@ class WhatsAppTemplatesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Dict[str, object]",
+            '200': "object",
             '400': "ErrorOmnichannel",
             '401': "ErrorOmnichannel",
             '403': "ErrorOmnichannel",
@@ -1435,7 +1435,7 @@ class WhatsAppTemplatesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Dict[str, object]]:
+    ) -> ApiResponse[object]:
         """Updates a WhatsApp template
 
 
@@ -1478,7 +1478,7 @@ class WhatsAppTemplatesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Dict[str, object]",
+            '200': "object",
             '400': "ErrorOmnichannel",
             '401': "ErrorOmnichannel",
             '403': "ErrorOmnichannel",
@@ -1556,7 +1556,7 @@ class WhatsAppTemplatesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Dict[str, object]",
+            '200': "object",
             '400': "ErrorOmnichannel",
             '401': "ErrorOmnichannel",
             '403': "ErrorOmnichannel",

@@ -96,7 +96,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_whatsapp_template**
-> Dict[str, object] delete_whatsapp_template(waba_id, name, hsm_id=hsm_id)
+> object delete_whatsapp_template(waba_id, name, hsm_id=hsm_id)
 
 Deletes a WhatsApp template
 
@@ -156,7 +156,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**Dict[str, object]**
+**object**
 
 ### Authorization
 
@@ -362,7 +362,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_whatsapp_template**
-> Dict[str, object] update_whatsapp_template(waba_id, template_id, whatsapp_update_template_request)
+> object update_whatsapp_template(waba_id, template_id, whatsapp_update_template_request)
 
 Updates a WhatsApp template
 
@@ -423,7 +423,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**Dict[str, object]**
+**object**
 
 ### Authorization
 
