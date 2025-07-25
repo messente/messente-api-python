@@ -18,22 +18,21 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List
-from messente_api.models.whats_app_component import WhatsAppComponent
-from messente_api.models.whats_app_language import WhatsAppLanguage
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class WhatsAppTemplate(BaseModel):
+class WhatsAppSticker(BaseModel):
     """
-    Whatsapp Cloud API template
+    WhatsApp sticker content. Either \"id\" or \"link\" must be provided, but not both.
     """ # noqa: E501
-    name: StrictStr = Field(description="Name of the template")
-    language: WhatsAppLanguage
-    components: List[WhatsAppComponent] = Field(description="List of template components")
+    id: Optional[StrictStr] = Field(default=None, description="Unique identifier for the sticker file.")
+    mime_type: Optional[StrictStr] = Field(default=None, description="MIME type of the sticker file.")
+    animated: Optional[StrictBool] = Field(default=None, description="Indicates whether the sticker is animated.")
+    link: Optional[StrictStr] = Field(default=None, description="URL link to the sticker file.")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["name", "language", "components"]
+    __properties: ClassVar[List[str]] = ["id", "mime_type", "animated", "link"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -53,7 +52,7 @@ class WhatsAppTemplate(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of WhatsAppTemplate from a JSON string"""
+        """Create an instance of WhatsAppSticker from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -76,26 +75,36 @@ class WhatsAppTemplate(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of language
-        if self.language:
-            _dict['language'] = self.language.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of each item in components (list)
-        _items = []
-        if self.components:
-            for _item_components in self.components:
-                if _item_components:
-                    _items.append(_item_components.to_dict())
-            _dict['components'] = _items
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
                 _dict[_key] = _value
 
+        # set to None if id (nullable) is None
+        # and model_fields_set contains the field
+        if self.id is None and "id" in self.model_fields_set:
+            _dict['id'] = None
+
+        # set to None if mime_type (nullable) is None
+        # and model_fields_set contains the field
+        if self.mime_type is None and "mime_type" in self.model_fields_set:
+            _dict['mime_type'] = None
+
+        # set to None if animated (nullable) is None
+        # and model_fields_set contains the field
+        if self.animated is None and "animated" in self.model_fields_set:
+            _dict['animated'] = None
+
+        # set to None if link (nullable) is None
+        # and model_fields_set contains the field
+        if self.link is None and "link" in self.model_fields_set:
+            _dict['link'] = None
+
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of WhatsAppTemplate from a dict"""
+        """Create an instance of WhatsAppSticker from a dict"""
         if obj is None:
             return None
 
@@ -103,9 +112,10 @@ class WhatsAppTemplate(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "name": obj.get("name"),
-            "language": WhatsAppLanguage.from_dict(obj["language"]) if obj.get("language") is not None else None,
-            "components": [WhatsAppComponent.from_dict(_item) for _item in obj["components"]] if obj.get("components") is not None else None
+            "id": obj.get("id"),
+            "mime_type": obj.get("mime_type"),
+            "animated": obj.get("animated"),
+            "link": obj.get("link")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

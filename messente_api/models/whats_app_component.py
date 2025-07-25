@@ -88,6 +88,11 @@ class WhatsAppComponent(BaseModel):
             for _key, _value in self.additional_properties.items():
                 _dict[_key] = _value
 
+        # set to None if index (nullable) is None
+        # and model_fields_set contains the field
+        if self.index is None and "index" in self.model_fields_set:
+            _dict['index'] = None
+
         return _dict
 
     @classmethod

@@ -15,17 +15,21 @@
 """  # noqa: E501
 
 
-__version__ = "2.4.0"
+__version__ = "2.5.0"
 
 # import apis into sdk package
+from messente_api.api.account_balance_api import AccountBalanceApi
 from messente_api.api.blacklist_api import BlacklistApi
 from messente_api.api.bulk_messaging_api import BulkMessagingApi
 from messente_api.api.contacts_api import ContactsApi
 from messente_api.api.delivery_report_api import DeliveryReportApi
 from messente_api.api.groups_api import GroupsApi
 from messente_api.api.number_lookup_api import NumberLookupApi
+from messente_api.api.number_verification_api import NumberVerificationApi
 from messente_api.api.omnimessage_api import OmnimessageApi
+from messente_api.api.pricing_api import PricingApi
 from messente_api.api.statistics_api import StatisticsApi
+from messente_api.api.whats_app_templates_api import WhatsAppTemplatesApi
 
 # import ApiClient
 from messente_api.api_response import ApiResponse
@@ -77,7 +81,9 @@ from messente_api.models.numbers_to_investigate import NumbersToInvestigate
 from messente_api.models.omni_message_create_success_response import OmniMessageCreateSuccessResponse
 from messente_api.models.omnimessage import Omnimessage
 from messente_api.models.omnimessage_messages_inner import OmnimessageMessagesInner
+from messente_api.models.price import Price
 from messente_api.models.price_info import PriceInfo
+from messente_api.models.price_networks_inner import PriceNetworksInner
 from messente_api.models.priority import Priority
 from messente_api.models.sms import SMS
 from messente_api.models.statistics_report import StatisticsReport
@@ -91,11 +97,33 @@ from messente_api.models.text_store import TextStore
 from messente_api.models.viber import Viber
 from messente_api.models.viber_video import ViberVideo
 from messente_api.models.whats_app import WhatsApp
+from messente_api.models.whats_app_audio import WhatsAppAudio
 from messente_api.models.whats_app_component import WhatsAppComponent
 from messente_api.models.whats_app_currency import WhatsAppCurrency
 from messente_api.models.whats_app_datetime import WhatsAppDatetime
+from messente_api.models.whats_app_document import WhatsAppDocument
+from messente_api.models.whats_app_image import WhatsAppImage
 from messente_api.models.whats_app_language import WhatsAppLanguage
 from messente_api.models.whats_app_media import WhatsAppMedia
 from messente_api.models.whats_app_parameter import WhatsAppParameter
+from messente_api.models.whats_app_sticker import WhatsAppSticker
 from messente_api.models.whats_app_template import WhatsAppTemplate
 from messente_api.models.whats_app_text import WhatsAppText
+from messente_api.models.whats_app_video import WhatsAppVideo
+from messente_api.models.whatsapp_button_type import WhatsappButtonType
+from messente_api.models.whatsapp_component_type import WhatsappComponentType
+from messente_api.models.whatsapp_create_template_request import WhatsappCreateTemplateRequest
+from messente_api.models.whatsapp_create_template_response import WhatsappCreateTemplateResponse
+from messente_api.models.whatsapp_header_format import WhatsappHeaderFormat
+from messente_api.models.whatsapp_list_templates_response import WhatsappListTemplatesResponse
+from messente_api.models.whatsapp_otp_button_type import WhatsappOtpButtonType
+from messente_api.models.whatsapp_pagination import WhatsappPagination
+from messente_api.models.whatsapp_paging_cursors import WhatsappPagingCursors
+from messente_api.models.whatsapp_supported_app import WhatsappSupportedApp
+from messente_api.models.whatsapp_template_button import WhatsappTemplateButton
+from messente_api.models.whatsapp_template_category import WhatsappTemplateCategory
+from messente_api.models.whatsapp_template_component import WhatsappTemplateComponent
+from messente_api.models.whatsapp_template_example import WhatsappTemplateExample
+from messente_api.models.whatsapp_template_response import WhatsappTemplateResponse
+from messente_api.models.whatsapp_template_status import WhatsappTemplateStatus
+from messente_api.models.whatsapp_update_template_request import WhatsappUpdateTemplateRequest

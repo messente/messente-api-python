@@ -18,22 +18,21 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List
-from messente_api.models.whats_app_component import WhatsAppComponent
-from messente_api.models.whats_app_language import WhatsAppLanguage
+from messente_api.models.whatsapp_pagination import WhatsappPagination
+from messente_api.models.whatsapp_template_response import WhatsappTemplateResponse
 from typing import Optional, Set
 from typing_extensions import Self
 
-class WhatsAppTemplate(BaseModel):
+class WhatsappListTemplatesResponse(BaseModel):
     """
-    Whatsapp Cloud API template
+    Whatsapp Cloud API list of templates response
     """ # noqa: E501
-    name: StrictStr = Field(description="Name of the template")
-    language: WhatsAppLanguage
-    components: List[WhatsAppComponent] = Field(description="List of template components")
+    templates: List[WhatsappTemplateResponse] = Field(description="List of templates")
+    paging: WhatsappPagination
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["name", "language", "components"]
+    __properties: ClassVar[List[str]] = ["templates", "paging"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -53,7 +52,7 @@ class WhatsAppTemplate(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of WhatsAppTemplate from a JSON string"""
+        """Create an instance of WhatsappListTemplatesResponse from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -76,16 +75,16 @@ class WhatsAppTemplate(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of language
-        if self.language:
-            _dict['language'] = self.language.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of each item in components (list)
+        # override the default output from pydantic by calling `to_dict()` of each item in templates (list)
         _items = []
-        if self.components:
-            for _item_components in self.components:
-                if _item_components:
-                    _items.append(_item_components.to_dict())
-            _dict['components'] = _items
+        if self.templates:
+            for _item_templates in self.templates:
+                if _item_templates:
+                    _items.append(_item_templates.to_dict())
+            _dict['templates'] = _items
+        # override the default output from pydantic by calling `to_dict()` of paging
+        if self.paging:
+            _dict['paging'] = self.paging.to_dict()
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
@@ -95,7 +94,7 @@ class WhatsAppTemplate(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of WhatsAppTemplate from a dict"""
+        """Create an instance of WhatsappListTemplatesResponse from a dict"""
         if obj is None:
             return None
 
@@ -103,9 +102,8 @@ class WhatsAppTemplate(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "name": obj.get("name"),
-            "language": WhatsAppLanguage.from_dict(obj["language"]) if obj.get("language") is not None else None,
-            "components": [WhatsAppComponent.from_dict(_item) for _item in obj["components"]] if obj.get("components") is not None else None
+            "templates": [WhatsappTemplateResponse.from_dict(_item) for _item in obj["templates"]] if obj.get("templates") is not None else None,
+            "paging": WhatsappPagination.from_dict(obj["paging"]) if obj.get("paging") is not None else None
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

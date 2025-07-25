@@ -20,8 +20,13 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
+from messente_api.models.whats_app_audio import WhatsAppAudio
+from messente_api.models.whats_app_document import WhatsAppDocument
+from messente_api.models.whats_app_image import WhatsAppImage
+from messente_api.models.whats_app_sticker import WhatsAppSticker
 from messente_api.models.whats_app_template import WhatsAppTemplate
 from messente_api.models.whats_app_text import WhatsAppText
+from messente_api.models.whats_app_video import WhatsAppVideo
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -33,10 +38,15 @@ class WhatsApp(BaseModel):
     validity: Optional[StrictInt] = Field(default=None, description="After how many minutes this channel is   considered as failed and the next channel is attempted")
     ttl: Optional[StrictInt] = Field(default=None, description="After how many seconds this channel is considered as failed and the next channel is attempted.       Only one of \"ttl\" and \"validity\" can be used.")
     template: Optional[WhatsAppTemplate] = None
-    text: Optional[WhatsAppText] = None
     channel: Optional[StrictStr] = Field(default='whatsapp', description="The channel used to deliver the message")
+    text: Optional[WhatsAppText] = None
+    image: Optional[WhatsAppImage] = None
+    video: Optional[WhatsAppVideo] = None
+    audio: Optional[WhatsAppAudio] = None
+    document: Optional[WhatsAppDocument] = None
+    sticker: Optional[WhatsAppSticker] = None
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["sender", "validity", "ttl", "template", "text", "channel"]
+    __properties: ClassVar[List[str]] = ["sender", "validity", "ttl", "template", "channel", "text", "image", "video", "audio", "document", "sticker"]
 
     @field_validator('channel')
     def channel_validate_enum(cls, value):
@@ -95,6 +105,21 @@ class WhatsApp(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of text
         if self.text:
             _dict['text'] = self.text.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of image
+        if self.image:
+            _dict['image'] = self.image.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of video
+        if self.video:
+            _dict['video'] = self.video.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of audio
+        if self.audio:
+            _dict['audio'] = self.audio.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of document
+        if self.document:
+            _dict['document'] = self.document.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of sticker
+        if self.sticker:
+            _dict['sticker'] = self.sticker.to_dict()
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
@@ -116,8 +141,13 @@ class WhatsApp(BaseModel):
             "validity": obj.get("validity"),
             "ttl": obj.get("ttl"),
             "template": WhatsAppTemplate.from_dict(obj["template"]) if obj.get("template") is not None else None,
+            "channel": obj.get("channel") if obj.get("channel") is not None else 'whatsapp',
             "text": WhatsAppText.from_dict(obj["text"]) if obj.get("text") is not None else None,
-            "channel": obj.get("channel") if obj.get("channel") is not None else 'whatsapp'
+            "image": WhatsAppImage.from_dict(obj["image"]) if obj.get("image") is not None else None,
+            "video": WhatsAppVideo.from_dict(obj["video"]) if obj.get("video") is not None else None,
+            "audio": WhatsAppAudio.from_dict(obj["audio"]) if obj.get("audio") is not None else None,
+            "document": WhatsAppDocument.from_dict(obj["document"]) if obj.get("document") is not None else None,
+            "sticker": WhatsAppSticker.from_dict(obj["sticker"]) if obj.get("sticker") is not None else None
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

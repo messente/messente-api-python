@@ -20,20 +20,20 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List
-from messente_api.models.whats_app_component import WhatsAppComponent
-from messente_api.models.whats_app_language import WhatsAppLanguage
+from messente_api.models.price_networks_inner import PriceNetworksInner
 from typing import Optional, Set
 from typing_extensions import Self
 
-class WhatsAppTemplate(BaseModel):
+class Price(BaseModel):
     """
-    Whatsapp Cloud API template
+    An object containing the pricing information for a given country
     """ # noqa: E501
-    name: StrictStr = Field(description="Name of the template")
-    language: WhatsAppLanguage
-    components: List[WhatsAppComponent] = Field(description="List of template components")
+    country: StrictStr = Field(description="The alpha-2 code for the country")
+    name: StrictStr = Field(description="The name of the country")
+    prefix: StrictStr = Field(description="The country code prefix")
+    networks: List[PriceNetworksInner] = Field(description="A list of networks available in the country")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["name", "language", "components"]
+    __properties: ClassVar[List[str]] = ["country", "name", "prefix", "networks"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -53,7 +53,7 @@ class WhatsAppTemplate(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of WhatsAppTemplate from a JSON string"""
+        """Create an instance of Price from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -76,16 +76,13 @@ class WhatsAppTemplate(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of language
-        if self.language:
-            _dict['language'] = self.language.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of each item in components (list)
+        # override the default output from pydantic by calling `to_dict()` of each item in networks (list)
         _items = []
-        if self.components:
-            for _item_components in self.components:
-                if _item_components:
-                    _items.append(_item_components.to_dict())
-            _dict['components'] = _items
+        if self.networks:
+            for _item_networks in self.networks:
+                if _item_networks:
+                    _items.append(_item_networks.to_dict())
+            _dict['networks'] = _items
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
@@ -95,7 +92,7 @@ class WhatsAppTemplate(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of WhatsAppTemplate from a dict"""
+        """Create an instance of Price from a dict"""
         if obj is None:
             return None
 
@@ -103,9 +100,10 @@ class WhatsAppTemplate(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "country": obj.get("country"),
             "name": obj.get("name"),
-            "language": WhatsAppLanguage.from_dict(obj["language"]) if obj.get("language") is not None else None,
-            "components": [WhatsAppComponent.from_dict(_item) for _item in obj["components"]] if obj.get("components") is not None else None
+            "prefix": obj.get("prefix"),
+            "networks": [PriceNetworksInner.from_dict(_item) for _item in obj["networks"]] if obj.get("networks") is not None else None
         })
         # store additional fields in additional_properties
         for _key in obj.keys():
