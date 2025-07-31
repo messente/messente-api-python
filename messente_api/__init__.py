@@ -15,7 +15,7 @@
 """  # noqa: E501
 
 
-__version__ = "2.5.0"
+__version__ = "2.5.1"
 
 # import apis into sdk package
 from messente_api.api.account_balance_api import AccountBalanceApi
