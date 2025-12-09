@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **start_date** | **date** | Start date for the report | 
 **end_date** | **date** | End date for the report | 
-**message_types** | **List[str]** | Optional list of message types (sms, viber, whatsapp, hlr, telegram) | [optional] 
+**message_types** | **List[str]** | Optional list of message types (sms, viber, whatsapp, rcs, hlr) | [optional] 
 
 ## Example
 

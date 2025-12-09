@@ -18,21 +18,24 @@ import pprint
 import re  # noqa: F401
 import json
 
-from datetime import date
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List, Optional
+from typing_extensions import Annotated
+from messente_api.models.rcs_media import RcsMedia
+from messente_api.models.rcs_suggestion import RcsSuggestion
 from typing import Optional, Set
 from typing_extensions import Self
 
-class StatisticsReportSettings(BaseModel):
+class RcsCardContent(BaseModel):
     """
-    A container for statistics report settings
+    RCS Card Content
     """ # noqa: E501
-    start_date: date = Field(description="Start date for the report")
-    end_date: date = Field(description="End date for the report")
-    message_types: Optional[List[StrictStr]] = Field(default=None, description="Optional list of message types (sms, viber, whatsapp, rcs, hlr)")
+    title: Optional[Annotated[str, Field(strict=True, max_length=200)]] = Field(default=None, description="Title of the card content")
+    description: Optional[Annotated[str, Field(strict=True, max_length=2000)]] = Field(default=None, description="Description of the card content")
+    media: Optional[RcsMedia] = None
+    suggestions: Optional[Annotated[List[RcsSuggestion], Field(max_length=4)]] = Field(default=None, description="List of suggestions that the recipient can use to respond.")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["start_date", "end_date", "message_types"]
+    __properties: ClassVar[List[str]] = ["title", "description", "media", "suggestions"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -52,7 +55,7 @@ class StatisticsReportSettings(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of StatisticsReportSettings from a JSON string"""
+        """Create an instance of RcsCardContent from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -75,16 +78,36 @@ class StatisticsReportSettings(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of media
+        if self.media:
+            _dict['media'] = self.media.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each item in suggestions (list)
+        _items = []
+        if self.suggestions:
+            for _item_suggestions in self.suggestions:
+                if _item_suggestions:
+                    _items.append(_item_suggestions.to_dict())
+            _dict['suggestions'] = _items
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
                 _dict[_key] = _value
 
+        # set to None if title (nullable) is None
+        # and model_fields_set contains the field
+        if self.title is None and "title" in self.model_fields_set:
+            _dict['title'] = None
+
+        # set to None if description (nullable) is None
+        # and model_fields_set contains the field
+        if self.description is None and "description" in self.model_fields_set:
+            _dict['description'] = None
+
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of StatisticsReportSettings from a dict"""
+        """Create an instance of RcsCardContent from a dict"""
         if obj is None:
             return None
 
@@ -92,9 +115,10 @@ class StatisticsReportSettings(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "start_date": obj.get("start_date"),
-            "end_date": obj.get("end_date"),
-            "message_types": obj.get("message_types")
+            "title": obj.get("title"),
+            "description": obj.get("description"),
+            "media": RcsMedia.from_dict(obj["media"]) if obj.get("media") is not None else None,
+            "suggestions": [RcsSuggestion.from_dict(_item) for _item in obj["suggestions"]] if obj.get("suggestions") is not None else None
         })
         # store additional fields in additional_properties
         for _key in obj.keys():
