@@ -1,16 +1,12 @@
-# Channel
+# RcsOpenUrlApplication
 
-Defines the delivery channel
+RCS open URL application
 
 ## Enum
 
-* `SMS` (value: `'sms'`)
+* `BROWSER` (value: `'BROWSER'`)
 
-* `VIBER` (value: `'viber'`)
-
-* `WHATSAPP` (value: `'whatsapp'`)
-
-* `RCS` (value: `'rcs'`)
+* `WEBVIEW` (value: `'WEBVIEW'`)
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
