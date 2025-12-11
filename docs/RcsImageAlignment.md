@@ -1,16 +1,12 @@
-# Channel
+# RcsImageAlignment
 
-Defines the delivery channel
+RCS image alignment
 
 ## Enum
 
-* `SMS` (value: `'sms'`)
+* `LEFT` (value: `'LEFT'`)
 
-* `VIBER` (value: `'viber'`)
-
-* `WHATSAPP` (value: `'whatsapp'`)
-
-* `RCS` (value: `'rcs'`)
+* `RIGHT` (value: `'RIGHT'`)
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

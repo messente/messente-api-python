@@ -18,21 +18,23 @@ import pprint
 import re  # noqa: F401
 import json
 
-from datetime import date
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, ConfigDict
+from typing import Any, ClassVar, Dict, List
+from messente_api.models.rcs_card_content import RcsCardContent
+from messente_api.models.rcs_card_orientation import RcsCardOrientation
+from messente_api.models.rcs_image_alignment import RcsImageAlignment
 from typing import Optional, Set
 from typing_extensions import Self
 
-class StatisticsReportSettings(BaseModel):
+class RcsStandaloneCard(BaseModel):
     """
-    A container for statistics report settings
+    RCS standalone card object.
     """ # noqa: E501
-    start_date: date = Field(description="Start date for the report")
-    end_date: date = Field(description="End date for the report")
-    message_types: Optional[List[StrictStr]] = Field(default=None, description="Optional list of message types (sms, viber, whatsapp, rcs, hlr)")
+    card_orientation: RcsCardOrientation
+    thumbnail_image_alignment: RcsImageAlignment
+    card_content: RcsCardContent
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["start_date", "end_date", "message_types"]
+    __properties: ClassVar[List[str]] = ["card_orientation", "thumbnail_image_alignment", "card_content"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -52,7 +54,7 @@ class StatisticsReportSettings(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of StatisticsReportSettings from a JSON string"""
+        """Create an instance of RcsStandaloneCard from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -75,6 +77,9 @@ class StatisticsReportSettings(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of card_content
+        if self.card_content:
+            _dict['card_content'] = self.card_content.to_dict()
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
@@ -84,7 +89,7 @@ class StatisticsReportSettings(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of StatisticsReportSettings from a dict"""
+        """Create an instance of RcsStandaloneCard from a dict"""
         if obj is None:
             return None
 
@@ -92,9 +97,9 @@ class StatisticsReportSettings(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "start_date": obj.get("start_date"),
-            "end_date": obj.get("end_date"),
-            "message_types": obj.get("message_types")
+            "card_orientation": obj.get("card_orientation"),
+            "thumbnail_image_alignment": obj.get("thumbnail_image_alignment"),
+            "card_content": RcsCardContent.from_dict(obj["card_content"]) if obj.get("card_content") is not None else None
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

@@ -22,7 +22,7 @@ from setuptools import setup, find_packages  # noqa: H301
 # prerequisite: setuptools
 # http://pypi.python.org/pypi/setuptools
 NAME = "messente-api"
-VERSION = "2.5.2"
+VERSION = "2.6.0"
 PYTHON_REQUIRES = ">= 3.8"
 REQUIRES = [
     "urllib3 >= 1.25.3, < 3.0.0",
@@ -38,7 +38,7 @@ setup(
     author="Messente",
     author_email="messente@messente.com",
     url="https://github.com/messente/messente-api-python",
-    keywords=["viber", "sms", "whatsapp", "phonebook"],
+    keywords=["viber", "sms", "whatsapp", "rcs"],
     install_requires=REQUIRES,
     packages=find_packages(exclude=["test", "tests"]),
     include_package_data=True,

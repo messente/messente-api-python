@@ -14,40 +14,45 @@
 
 
 from __future__ import annotations
+from inspect import getfullargspec
 import json
 import pprint
+import re  # noqa: F401
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, ValidationError, field_validator
-from typing import Any, List, Optional
+from typing import Optional
+from messente_api.models.rcs import Rcs
 from messente_api.models.sms import SMS
-from messente_api.models.telegram import Telegram
 from messente_api.models.viber import Viber
 from messente_api.models.whats_app import WhatsApp
-from pydantic import StrictStr, Field
-from typing import Union, List, Set, Optional, Dict
+from typing import Union, Any, List, Set, TYPE_CHECKING, Optional, Dict
 from typing_extensions import Literal, Self
+from pydantic import Field
 
-OMNIMESSAGEMESSAGESINNER_ONE_OF_SCHEMAS = ["SMS", "Telegram", "Viber", "WhatsApp"]
+OMNIMESSAGEMESSAGESINNER_ANY_OF_SCHEMAS = ["Rcs", "SMS", "Viber", "WhatsApp"]
 
 class OmnimessageMessagesInner(BaseModel):
     """
     OmnimessageMessagesInner
     """
+
     # data type: Viber
-    oneof_schema_1_validator: Optional[Viber] = None
+    anyof_schema_1_validator: Optional[Viber] = None
     # data type: SMS
-    oneof_schema_2_validator: Optional[SMS] = None
+    anyof_schema_2_validator: Optional[SMS] = None
     # data type: WhatsApp
-    oneof_schema_3_validator: Optional[WhatsApp] = None
-    # data type: Telegram
-    oneof_schema_4_validator: Optional[Telegram] = None
-    actual_instance: Optional[Union[SMS, Telegram, Viber, WhatsApp]] = None
-    one_of_schemas: Set[str] = { "SMS", "Telegram", "Viber", "WhatsApp" }
+    anyof_schema_3_validator: Optional[WhatsApp] = None
+    # data type: Rcs
+    anyof_schema_4_validator: Optional[Rcs] = None
+    if TYPE_CHECKING:
+        actual_instance: Optional[Union[Rcs, SMS, Viber, WhatsApp]] = None
+    else:
+        actual_instance: Any = None
+    any_of_schemas: Set[str] = { "Rcs", "SMS", "Viber", "WhatsApp" }
 
-    model_config = ConfigDict(
-        validate_assignment=True,
-        protected_namespaces=(),
-    )
-
+    model_config = {
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def __init__(self, *args, **kwargs) -> None:
         if args:
@@ -60,41 +65,41 @@ class OmnimessageMessagesInner(BaseModel):
             super().__init__(**kwargs)
 
     @field_validator('actual_instance')
-    def actual_instance_must_validate_oneof(cls, v):
+    def actual_instance_must_validate_anyof(cls, v):
         instance = OmnimessageMessagesInner.model_construct()
         error_messages = []
-        match = 0
         # validate data type: Viber
         if not isinstance(v, Viber):
             error_messages.append(f"Error! Input type `{type(v)}` is not `Viber`")
         else:
-            match += 1
+            return v
+
         # validate data type: SMS
         if not isinstance(v, SMS):
             error_messages.append(f"Error! Input type `{type(v)}` is not `SMS`")
         else:
-            match += 1
+            return v
+
         # validate data type: WhatsApp
         if not isinstance(v, WhatsApp):
             error_messages.append(f"Error! Input type `{type(v)}` is not `WhatsApp`")
         else:
-            match += 1
-        # validate data type: Telegram
-        if not isinstance(v, Telegram):
-            error_messages.append(f"Error! Input type `{type(v)}` is not `Telegram`")
+            return v
+
+        # validate data type: Rcs
+        if not isinstance(v, Rcs):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `Rcs`")
         else:
-            match += 1
-        if match > 1:
-            # more than 1 match
-            raise ValueError("Multiple matches found when setting `actual_instance` in OmnimessageMessagesInner with oneOf schemas: SMS, Telegram, Viber, WhatsApp. Details: " + ", ".join(error_messages))
-        elif match == 0:
+            return v
+
+        if error_messages:
             # no match
-            raise ValueError("No match found when setting `actual_instance` in OmnimessageMessagesInner with oneOf schemas: SMS, Telegram, Viber, WhatsApp. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when setting the actual_instance in OmnimessageMessagesInner with anyOf schemas: Rcs, SMS, Viber, WhatsApp. Details: " + ", ".join(error_messages))
         else:
             return v
 
     @classmethod
-    def from_dict(cls, obj: Union[str, Dict[str, Any]]) -> Self:
+    def from_dict(cls, obj: Dict[str, Any]) -> Self:
         return cls.from_json(json.dumps(obj))
 
     @classmethod
@@ -102,39 +107,34 @@ class OmnimessageMessagesInner(BaseModel):
         """Returns the object represented by the json string"""
         instance = cls.model_construct()
         error_messages = []
-        match = 0
-
-        # deserialize data into Viber
+        # anyof_schema_1_validator: Optional[Viber] = None
         try:
             instance.actual_instance = Viber.from_json(json_str)
-            match += 1
+            return instance
         except (ValidationError, ValueError) as e:
-            error_messages.append(str(e))
-        # deserialize data into SMS
+             error_messages.append(str(e))
+        # anyof_schema_2_validator: Optional[SMS] = None
         try:
             instance.actual_instance = SMS.from_json(json_str)
-            match += 1
+            return instance
         except (ValidationError, ValueError) as e:
-            error_messages.append(str(e))
-        # deserialize data into WhatsApp
+             error_messages.append(str(e))
+        # anyof_schema_3_validator: Optional[WhatsApp] = None
         try:
             instance.actual_instance = WhatsApp.from_json(json_str)
-            match += 1
+            return instance
         except (ValidationError, ValueError) as e:
-            error_messages.append(str(e))
-        # deserialize data into Telegram
+             error_messages.append(str(e))
+        # anyof_schema_4_validator: Optional[Rcs] = None
         try:
-            instance.actual_instance = Telegram.from_json(json_str)
-            match += 1
+            instance.actual_instance = Rcs.from_json(json_str)
+            return instance
         except (ValidationError, ValueError) as e:
-            error_messages.append(str(e))
+             error_messages.append(str(e))
 
-        if match > 1:
-            # more than 1 match
-            raise ValueError("Multiple matches found when deserializing the JSON string into OmnimessageMessagesInner with oneOf schemas: SMS, Telegram, Viber, WhatsApp. Details: " + ", ".join(error_messages))
-        elif match == 0:
+        if error_messages:
             # no match
-            raise ValueError("No match found when deserializing the JSON string into OmnimessageMessagesInner with oneOf schemas: SMS, Telegram, Viber, WhatsApp. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when deserializing the JSON string into OmnimessageMessagesInner with anyOf schemas: Rcs, SMS, Viber, WhatsApp. Details: " + ", ".join(error_messages))
         else:
             return instance
 
@@ -148,7 +148,7 @@ class OmnimessageMessagesInner(BaseModel):
         else:
             return json.dumps(self.actual_instance)
 
-    def to_dict(self) -> Optional[Union[Dict[str, Any], SMS, Telegram, Viber, WhatsApp]]:
+    def to_dict(self) -> Optional[Union[Dict[str, Any], Rcs, SMS, Viber, WhatsApp]]:
         """Returns the dict representation of the actual instance"""
         if self.actual_instance is None:
             return None
@@ -156,7 +156,6 @@ class OmnimessageMessagesInner(BaseModel):
         if hasattr(self.actual_instance, "to_dict") and callable(self.actual_instance.to_dict):
             return self.actual_instance.to_dict()
         else:
-            # primitive type
             return self.actual_instance
 
     def to_str(self) -> str:

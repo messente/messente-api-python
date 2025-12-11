@@ -1,16 +1,12 @@
-# Channel
+# RcsCardOrientation
 
-Defines the delivery channel
+RCS card orientation
 
 ## Enum
 
-* `SMS` (value: `'sms'`)
+* `VERTICAL` (value: `'VERTICAL'`)
 
-* `VIBER` (value: `'viber'`)
-
-* `WHATSAPP` (value: `'whatsapp'`)
-
-* `RCS` (value: `'rcs'`)
+* `HORIZONTAL` (value: `'HORIZONTAL'`)
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
