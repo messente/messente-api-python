@@ -18,21 +18,20 @@ import pprint
 import re  # noqa: F401
 import json
 
-from datetime import date
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class StatisticsReportSettings(BaseModel):
+class RcsContentInfo(BaseModel):
     """
-    A container for statistics report settings
+    RCS content info object.
     """ # noqa: E501
-    start_date: date = Field(description="Start date for the report")
-    end_date: date = Field(description="End date for the report")
-    message_types: Optional[List[StrictStr]] = Field(default=None, description="Optional list of message types (sms, viber, whatsapp, rcs, hlr)")
+    file_url: StrictStr = Field(description="Required file URL")
+    thumbnail_url: Optional[StrictStr] = Field(default=None, description="Optional thumbnail URL")
+    force_refresh: StrictBool = Field(description="Force refresh the content")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["start_date", "end_date", "message_types"]
+    __properties: ClassVar[List[str]] = ["file_url", "thumbnail_url", "force_refresh"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -52,7 +51,7 @@ class StatisticsReportSettings(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of StatisticsReportSettings from a JSON string"""
+        """Create an instance of RcsContentInfo from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -80,11 +79,16 @@ class StatisticsReportSettings(BaseModel):
             for _key, _value in self.additional_properties.items():
                 _dict[_key] = _value
 
+        # set to None if thumbnail_url (nullable) is None
+        # and model_fields_set contains the field
+        if self.thumbnail_url is None and "thumbnail_url" in self.model_fields_set:
+            _dict['thumbnail_url'] = None
+
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of StatisticsReportSettings from a dict"""
+        """Create an instance of RcsContentInfo from a dict"""
         if obj is None:
             return None
 
@@ -92,9 +96,9 @@ class StatisticsReportSettings(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "start_date": obj.get("start_date"),
-            "end_date": obj.get("end_date"),
-            "message_types": obj.get("message_types")
+            "file_url": obj.get("file_url"),
+            "thumbnail_url": obj.get("thumbnail_url"),
+            "force_refresh": obj.get("force_refresh")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

@@ -1,16 +1,14 @@
-# Channel
+# RcsMediaHeight
 
-Defines the delivery channel
+RCS media height
 
 ## Enum
 
-* `SMS` (value: `'sms'`)
+* `SHORT` (value: `'SHORT'`)
 
-* `VIBER` (value: `'viber'`)
+* `MEDIUM` (value: `'MEDIUM'`)
 
-* `WHATSAPP` (value: `'whatsapp'`)
-
-* `RCS` (value: `'rcs'`)
+* `TALL` (value: `'TALL'`)
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
