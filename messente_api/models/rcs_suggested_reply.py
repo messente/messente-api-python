@@ -18,21 +18,20 @@ import pprint
 import re  # noqa: F401
 import json
 
-from datetime import date
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, ConfigDict, Field
+from typing import Any, ClassVar, Dict, List
+from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
 
-class StatisticsReportSettings(BaseModel):
+class RcsSuggestedReply(BaseModel):
     """
-    A container for statistics report settings
+    RCS suggested reply.
     """ # noqa: E501
-    start_date: date = Field(description="Start date for the report")
-    end_date: date = Field(description="End date for the report")
-    message_types: Optional[List[StrictStr]] = Field(default=None, description="Optional list of message types (sms, viber, whatsapp, rcs, hlr)")
+    text: Annotated[str, Field(strict=True, max_length=25)] = Field(description="The text of the suggested reply.")
+    postback_data: Annotated[str, Field(strict=True, max_length=2048)] = Field(description="The postback data associated with the suggested reply. This is sent back to the sender when the user selects the suggested reply.")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["start_date", "end_date", "message_types"]
+    __properties: ClassVar[List[str]] = ["text", "postback_data"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -52,7 +51,7 @@ class StatisticsReportSettings(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of StatisticsReportSettings from a JSON string"""
+        """Create an instance of RcsSuggestedReply from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -84,7 +83,7 @@ class StatisticsReportSettings(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of StatisticsReportSettings from a dict"""
+        """Create an instance of RcsSuggestedReply from a dict"""
         if obj is None:
             return None
 
@@ -92,9 +91,8 @@ class StatisticsReportSettings(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "start_date": obj.get("start_date"),
-            "end_date": obj.get("end_date"),
-            "message_types": obj.get("message_types")
+            "text": obj.get("text"),
+            "postback_data": obj.get("postback_data")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():
