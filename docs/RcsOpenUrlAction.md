@@ -7,9 +7,9 @@ Action to open a URL in a browser.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **url** | **str** | The URL to open. | 
-**description** | **str** | A description of the URL being opened. | 
+**description** | **str** | A description of the URL being opened. | [optional] 
 **application** | [**RcsOpenUrlApplication**](RcsOpenUrlApplication.md) |  | 
-**webview_view_mode** | [**RcsWebviewViewMode**](RcsWebviewViewMode.md) |  | 
+**webview_view_mode** | [**RcsWebviewViewMode**](RcsWebviewViewMode.md) |  | [optional] 
 
 ## Example
 

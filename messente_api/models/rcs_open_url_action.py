@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List
+from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from messente_api.models.rcs_open_url_application import RcsOpenUrlApplication
 from messente_api.models.rcs_webview_view_mode import RcsWebviewViewMode
@@ -31,9 +31,9 @@ class RcsOpenUrlAction(BaseModel):
     Action to open a URL in a browser.
     """ # noqa: E501
     url: Annotated[str, Field(strict=True, max_length=2048)] = Field(description="The URL to open.")
-    description: StrictStr = Field(description="A description of the URL being opened.")
+    description: Optional[StrictStr] = Field(default=None, description="A description of the URL being opened.")
     application: RcsOpenUrlApplication
-    webview_view_mode: RcsWebviewViewMode
+    webview_view_mode: Optional[RcsWebviewViewMode] = None
     additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["url", "description", "application", "webview_view_mode"]
 
