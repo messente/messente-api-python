@@ -1,16 +1,14 @@
-# Channel
+# RcsWebviewViewMode
 
-Defines the delivery channel
+RCS webview view mode
 
 ## Enum
 
-* `SMS` (value: `'sms'`)
+* `FULL` (value: `'FULL'`)
 
-* `VIBER` (value: `'viber'`)
+* `HALF` (value: `'HALF'`)
 
-* `WHATSAPP` (value: `'whatsapp'`)
-
-* `RCS` (value: `'rcs'`)
+* `TALL` (value: `'TALL'`)
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

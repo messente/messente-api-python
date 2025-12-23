@@ -19,22 +19,21 @@ from enum import Enum
 from typing_extensions import Self
 
 
-class Channel(str, Enum):
+class RcsMediaHeight(str, Enum):
     """
-    Defines the delivery channel
+    RCS media height
     """
 
     """
     allowed enum values
     """
-    SMS = 'sms'
-    VIBER = 'viber'
-    WHATSAPP = 'whatsapp'
-    RCS = 'rcs'
+    SHORT = 'SHORT'
+    MEDIUM = 'MEDIUM'
+    TALL = 'TALL'
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:
-        """Create an instance of Channel from a JSON string"""
+        """Create an instance of RcsMediaHeight from a JSON string"""
         return cls(json.loads(json_str))
 
 
