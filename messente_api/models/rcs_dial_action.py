@@ -18,34 +18,18 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
-from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from typing import Any, ClassVar, Dict, List
 from typing import Optional, Set
 from typing_extensions import Self
 
-class Telegram(BaseModel):
+class RcsDialAction(BaseModel):
     """
-    Telegram message content
+    Action to dial a phone number.
     """ # noqa: E501
-    sender: Optional[StrictStr] = Field(default=None, description="Phone number or alphanumeric sender name")
-    validity: Optional[StrictInt] = Field(default=None, description="After how many minutes this channel is considered as failed and the next channel is attempted")
-    text: Optional[StrictStr] = Field(default=None, description="Plaintext content for Telegram")
-    image_url: Optional[StrictStr] = Field(default=None, description="URL for the embedded image. Mutually exclusive with \"document_url\" and \"audio_url\"")
-    document_url: Optional[StrictStr] = Field(default=None, description="URL for the embedded image. Mutually exclusive with \"audio_url\" and \"image_url\"")
-    audio_url: Optional[StrictStr] = Field(default=None, description="URL for the embedded image. Mutually exclusive with \"document_url\" and \"image_url\"")
-    channel: Optional[StrictStr] = Field(default='telegram', description="The channel used to deliver the message")
+    phone_number: StrictStr = Field(description="The phone number to dial in E.164 format.")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["sender", "validity", "text", "image_url", "document_url", "audio_url", "channel"]
-
-    @field_validator('channel')
-    def channel_validate_enum(cls, value):
-        """Validates the enum"""
-        if value is None:
-            return value
-
-        if value not in set(['telegram']):
-            raise ValueError("must be one of enum values ('telegram')")
-        return value
+    __properties: ClassVar[List[str]] = ["phone_number"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -65,7 +49,7 @@ class Telegram(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of Telegram from a JSON string"""
+        """Create an instance of RcsDialAction from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -97,7 +81,7 @@ class Telegram(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of Telegram from a dict"""
+        """Create an instance of RcsDialAction from a dict"""
         if obj is None:
             return None
 
@@ -105,13 +89,7 @@ class Telegram(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "sender": obj.get("sender"),
-            "validity": obj.get("validity"),
-            "text": obj.get("text"),
-            "image_url": obj.get("image_url"),
-            "document_url": obj.get("document_url"),
-            "audio_url": obj.get("audio_url"),
-            "channel": obj.get("channel") if obj.get("channel") is not None else 'telegram'
+            "phone_number": obj.get("phone_number")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

@@ -18,21 +18,22 @@ import pprint
 import re  # noqa: F401
 import json
 
-from datetime import date
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, ConfigDict, Field
+from typing import Any, ClassVar, Dict, List
+from typing_extensions import Annotated
+from messente_api.models.rcs_card_content import RcsCardContent
+from messente_api.models.rcs_card_width import RcsCardWidth
 from typing import Optional, Set
 from typing_extensions import Self
 
-class StatisticsReportSettings(BaseModel):
+class RcsCarouselCard(BaseModel):
     """
-    A container for statistics report settings
+    RCS Carousel Card.
     """ # noqa: E501
-    start_date: date = Field(description="Start date for the report")
-    end_date: date = Field(description="End date for the report")
-    message_types: Optional[List[StrictStr]] = Field(default=None, description="Optional list of message types (sms, viber, whatsapp, rcs, hlr)")
+    card_width: RcsCardWidth
+    card_contents: Annotated[List[RcsCardContent], Field(min_length=2, max_length=10)] = Field(description="The contents of the carousel card.")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["start_date", "end_date", "message_types"]
+    __properties: ClassVar[List[str]] = ["card_width", "card_contents"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -52,7 +53,7 @@ class StatisticsReportSettings(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of StatisticsReportSettings from a JSON string"""
+        """Create an instance of RcsCarouselCard from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -75,6 +76,13 @@ class StatisticsReportSettings(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in card_contents (list)
+        _items = []
+        if self.card_contents:
+            for _item_card_contents in self.card_contents:
+                if _item_card_contents:
+                    _items.append(_item_card_contents.to_dict())
+            _dict['card_contents'] = _items
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
@@ -84,7 +92,7 @@ class StatisticsReportSettings(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of StatisticsReportSettings from a dict"""
+        """Create an instance of RcsCarouselCard from a dict"""
         if obj is None:
             return None
 
@@ -92,9 +100,8 @@ class StatisticsReportSettings(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "start_date": obj.get("start_date"),
-            "end_date": obj.get("end_date"),
-            "message_types": obj.get("message_types")
+            "card_width": obj.get("card_width"),
+            "card_contents": [RcsCardContent.from_dict(_item) for _item in obj["card_contents"]] if obj.get("card_contents") is not None else None
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

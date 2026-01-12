@@ -19,22 +19,20 @@ from enum import Enum
 from typing_extensions import Self
 
 
-class Channel(str, Enum):
+class RcsOpenUrlApplication(str, Enum):
     """
-    Defines the delivery channel
+    RCS open URL application
     """
 
     """
     allowed enum values
     """
-    SMS = 'sms'
-    VIBER = 'viber'
-    WHATSAPP = 'whatsapp'
-    RCS = 'rcs'
+    BROWSER = 'BROWSER'
+    WEBVIEW = 'WEBVIEW'
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:
-        """Create an instance of Channel from a JSON string"""
+        """Create an instance of RcsOpenUrlApplication from a JSON string"""
         return cls(json.loads(json_str))
 
 
