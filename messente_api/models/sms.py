@@ -43,8 +43,8 @@ class SMS(BaseModel):
         if value is None:
             return value
 
-        if value not in set(['full', 'on', 'off']):
-            raise ValueError("must be one of enum values ('full', 'on', 'off')")
+        if value not in set(['full', 'true', 'false']):
+            raise ValueError("must be one of enum values ('full', 'true', 'false')")
         return value
 
     @field_validator('channel')
