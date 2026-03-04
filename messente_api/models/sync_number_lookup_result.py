@@ -46,8 +46,8 @@ class SyncNumberLookupResult(BaseModel):
         if value is None:
             return value
 
-        if value not in set(['ON', 'OFF', 'INVALID', 'UNKNOWN']):
-            raise ValueError("must be one of enum values ('ON', 'OFF', 'INVALID', 'UNKNOWN')")
+        if value not in set(['true', 'false', 'INVALID', 'UNKNOWN']):
+            raise ValueError("must be one of enum values ('true', 'false', 'INVALID', 'UNKNOWN')")
         return value
 
     model_config = ConfigDict(
