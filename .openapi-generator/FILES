@@ -87,6 +87,10 @@ docs/SyncNumberLookupResult.md
 docs/SyncNumberLookupSuccess.md
 docs/TextStore.md
 docs/Viber.md
+docs/ViberCarousel.md
+docs/ViberCarouselButton.md
+docs/ViberCarouselItem.md
+docs/ViberTemplate.md
 docs/ViberVideo.md
 docs/WhatsApp.md
 docs/WhatsAppAudio.md
@@ -212,6 +216,10 @@ messente_api/models/sync_number_lookup_result.py
 messente_api/models/sync_number_lookup_success.py
 messente_api/models/text_store.py
 messente_api/models/viber.py
+messente_api/models/viber_carousel.py
+messente_api/models/viber_carousel_button.py
+messente_api/models/viber_carousel_item.py
+messente_api/models/viber_template.py
 messente_api/models/viber_video.py
 messente_api/models/whats_app.py
 messente_api/models/whats_app_audio.py
