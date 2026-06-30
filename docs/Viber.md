@@ -1,6 +1,6 @@
 # Viber
 
-Viber message content
+Viber message content. You must provide one of these combinations:  * image_url  * text  * text, button_text and button_url  * text, image_url, button_text and button_url  * video  * video, text  * video, text, button_text  * video, text, button_text and button_url  * carousel and text
 
 ## Properties
 
@@ -10,11 +10,13 @@ Name | Type | Description | Notes
 **validity** | **int** | After how many minutes this channel is considered as failed and the next channel is attempted.       Only one of \&quot;ttl\&quot; and \&quot;validity\&quot; can be used. | [optional] 
 **ttl** | **int** | After how many seconds this channel is considered as failed and the next channel is attempted.       Only one of \&quot;ttl\&quot; and \&quot;validity\&quot; can be used. | [optional] 
 **text** | **str** | Plaintext content for Viber | [optional] 
-**image_url** | **str** | URL for the embedded image    Valid combinations:    1) image_url,    2) text, image_url, button_url, button_text | [optional] 
+**image_url** | **str** | URL for the embedded image. | [optional] 
 **button_url** | **str** | URL of the button, must be specified along with &#39;&#39;text&#39;&#39;, &#39;&#39;button_text&#39;&#39; and &#39;&#39;image_url&#39;&#39; (optional) | [optional] 
 **button_text** | **str** | Must be specified along with &#39;&#39;text&#39;&#39;, &#39;&#39;button_url&#39;&#39;, &#39;&#39;button_text&#39;&#39;, &#39;&#39;image_url&#39;&#39; (optional) | [optional] 
 **channel** | **str** | The channel used to deliver the message | [optional] [default to 'viber']
 **video** | [**ViberVideo**](ViberVideo.md) |  | [optional] 
+**template** | [**ViberTemplate**](ViberTemplate.md) |  | [optional] 
+**carousel** | [**ViberCarousel**](ViberCarousel.md) |  | [optional] 
 
 ## Example
 
